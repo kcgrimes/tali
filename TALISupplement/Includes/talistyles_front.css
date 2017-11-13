@@ -1,0 +1,252 @@
+/* TALI */
+
+/* TALI Module - Home Slider*/
+
+.homeslider {
+	width: 100%;
+	margin-bottom: 10px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #999;
+	border-right-color: #666;
+	border-bottom-color: #333;
+	border-left-color: #666;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+/* Responsive images */
+.homeslider_img img {
+	width: 100%;
+	height: auto;
+}
+
+/* For the buttons that are hovered over to change the image */
+.homeslider_hoverbox_1, .homeslider_hoverbox_2, .homeslider_hoverbox_3 {
+	width: 33.333333333%;
+	height: 33px;
+	float: left;
+	background-image: url(../HomeSlider/Buttons/NewsFlip.png);
+	background-repeat: repeat-x;
+}
+
+.homeslider_hoverbox_1:hover, .homeslider_hoverbox_2:hover, .homeslider_hoverbox_3:hover {
+	background-image: url(../HomeSlider/Buttons/NewsFlipHover.png);
+}
+
+/* Homeslider button text is responsive */
+.homeslider p {
+	text-align: center;
+	color: #fff;
+	line-height: 33px;
+	font-size: 100%;
+}
+
+@media (min-width: 560px) {
+	.homeslider p {
+		font-size: 150%;
+	}
+}
+
+/* */
+
+/* TALI Module - News */
+/* bug - make these div names more meaningful?*/
+
+.recentnews {
+	position: relative;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+}
+
+.frontnewsentry {
+	position: relative;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.indexnewsentry {
+	position: relative;
+	margin-bottom: 10px;
+	padding-bottom: 10px; 
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%
+}
+
+.frontnewsarchivetb {
+	vertical-align: center;
+	font-size: 100%;
+	font-weight: normal;
+	font-family: verdana;
+	margin-left: auto;
+	margin-right: auto;
+	width: 96%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-color: grey;
+	background-color: #d6d6d6;
+	margin-bottom: 10px;
+	margin-top: 60px;
+}
+
+.frontnewsarchivetb tr, .frontnewsarchivetb th, .frontnewsarchivetb td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-color: grey;
+}
+
+.frontnewsarchivetb th {
+	background-color: #575551;
+	color: #fff;
+}
+
+.frontnewsarchivetb tr:nth-child(even) {
+    background-color: #e4e6e8;
+}
+
+.frontnewstitle { 
+	height: 10px;
+	margin-top: 0;
+	color: #FFF;
+	padding-left: 5px;
+	text-align: left;
+	vertical-align: top;
+	line-height: 16pt;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 120%;
+}
+
+.frontnewsauthor { 
+	margin-top: 0;
+	color: #FFF;
+	padding-right: 5px;
+	text-align: right;
+	vertical-align: top; 
+	line-height: 16pt;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+newstime {
+	text-align: right;
+	padding-right: 5px
+}
+/* */
+
+/* TALI Module - Personnel - Roster */
+.tali_personnel_roster_front_links {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.tali_personnel_roster_front_designation {
+	text-align: center;
+	vertical-align: center;
+	font-size: 80%;
+	font-weight: normal;
+	font-family: verdana;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-color: grey;
+	background-color: #d6d6d6;
+}
+
+.tali_personnel_roster_front_designation tr, 
+.tali_personnel_roster_front_designation th, 
+.tali_personnel_roster_front_designation td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-color: grey;
+	height: 25px;
+}
+
+.tali_personnel_roster_front_designation th {
+	background-color: #575551;
+	color: #fff;
+}
+
+.tali_personnel_roster_front_designation tr:nth-child(even) {
+    background-color: #e4e6e8;
+}
+
+/**/
+
+/* TALI Module - Personnel - Roster - Profile */
+.tali_personnel_roster_profile_top {
+	text-align: center;
+	vertical-align: center;
+	font-size: 150%;
+	font-weight: normal;
+	font-family: verdana;
+	margin-left: auto;
+	margin-right: auto;
+	width: 98%;
+}
+
+.tali_personnel_roster_profile_top th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-color: grey;
+	height: 25px;
+	background-color: #575551;
+	color: #fff;
+}
+
+.tali_personnel_roster_profile_body {
+	text-align: center;
+	vertical-align: center;
+	font-size: 80%;
+	font-weight: normal;
+	font-family: verdana;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	width: 98%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-color: grey;
+	background-color: #d6d6d6;
+}
+
+.tali_personnel_roster_profile_body tr, 
+.tali_personnel_roster_profile_body th, 
+.tali_personnel_roster_profile_body td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-color: grey;
+	height: 25px;
+}
+
+.tali_personnel_roster_profile_body th {
+	background-color: #575551;
+	color: #fff;
+}
+
+.tali_personnel_roster_profile_body img {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	max-width: 100%;
+	min-width: 20px;
+	height: auto;
+}
+
+#tali_personnel_roster_profile_uniform {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	max-width: 100%;
+	height: auto;
+}
+
+/* */

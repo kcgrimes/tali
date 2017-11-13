@@ -1,0 +1,589 @@
+/* Global text settings*/
+body {
+	color: #000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	line-height: 1.4;
+	padding: 0;
+	margin: 0;
+	background-repeat: no-repeat;
+	background-color: #CCC;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+
+/* Global text settings */
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+	padding-right: 15px;
+	padding-left: 15px;
+	line-height: 16pt;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000;
+	text-align: left;
+}
+
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+	/*background-color: #000;*/ /* Edited out to avoid default black bg */
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+/* Unvisited links*/
+a:link {
+	color:#414958;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+/* Visited links*/
+a:visited {
+	color: #4E5869;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+.container {
+	max-width: 1260px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 0;
+	padding-right: 0;
+	position: relative;
+	background-color: #CCC;
+}
+
+/* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
+.header {
+	background-color: #fff;
+}
+
+.header img {
+	max-height: 100px;
+}
+
+/* Space for back, account, logout, etc. text */
+.header_text_table {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 1000;
+	background-color: #fff;
+	color: #000;
+	padding: 0;
+}
+
+/* "block" for content */
+.PageFrame {
+	background-color: #FFFFFF;
+	background-size: 75px;
+	border-top-width: 2px;
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+	border-left-width: 2px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #999;
+	border-right-color: #666;
+	border-bottom-color: #333;
+	border-left-color: #666;
+	background-repeat: repeat-x;
+	color: #000;
+	border-radius: 15px; 
+}
+
+.content {
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol {
+	padding-top: 0;
+	padding-left: 40px;
+	padding-bottom: 15px;
+	padding-right: 15px;
+}
+
+h1 strong {
+	color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: large;
+}
+
+h5 {
+	font-weight: normal;
+	font-size: small;	
+}
+
+.container .main .contentslide.PageFrame div h1 strong {
+	font-style: italic;
+	text-align: center;
+}
+
+/* FOOTER */
+.footer {
+	position: relative;
+	text-align: center;
+	padding: 0px;
+	clear: both;
+	background-color: #FFF;
+}
+
+/* */
+
+/* TALI Modules*/ 
+
+/* bug - what's this doing?*/
+.selectcontent {
+	position: relative;
+	margin-bottom: 10px;
+}
+
+/* bug - need useful title*/
+.logtex1 {
+	width: 200px; 
+}
+
+/* bug - need useful title*/
+.logtex2 {
+	width: 200px;
+	margin-left: 6px;
+}
+
+/*TALI Module - Admin Accounts*/
+.adminaccountstb {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.adminaccountstb tr, .adminaccountstb th, .adminaccountstb td {
+	border: 1px solid black;
+}
+
+/* bug - make this unique or global*/
+.bu {
+	margin-top: 10px;
+	margin-left: 4%;
+	margin-bottom: 10px;
+}
+
+/* bug - make this unique or global*/
+.tb {
+	width: 40px;
+}
+
+.adminaccountstbbut {
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: center;
+}
+
+/* bug - make this unique or global*/
+.fo {
+	width: 99%;	
+}
+
+/* bug - make this unique or global*/
+.bo {
+	width: 90%;
+}
+
+/* */
+
+/* TALI Module - News */
+.newsentry {
+	width: 100%;
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.newslist {
+	width: 100%;
+	position: relative;
+	clear: both;
+	float: left; 
+	margin-bottom: 10px;
+}
+
+.newsentryinput {
+	margin-left: 4%;
+	margin-right: auto;
+	margin-bottom: 10px;  
+}
+
+.newsid {
+	width: 30px;	
+}
+
+.newstime, .newsauthor {
+	width: 330px;	
+}
+
+.newstitle {
+	width: 680px;
+}
+
+.newsbodyc {
+	width: 680px;
+	height: 400px;
+}
+
+/* */
+
+/*TALI Module - Pages*/
+
+.newpagetitleform {
+	margin-left: 15px;
+}
+
+.newpagetitle {
+	width: 200px; 
+}
+
+.newpagetitlebu {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+editpagedropdown {
+	margin-left: 15px;
+}
+
+.editpagetitlebu {
+	margin-top: 10px;
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+
+.delpagetitlebu {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.editpageinput {
+	margin-left: 15px;
+	margin-bottom: 10px;  
+}
+
+.editbody {
+	width: 680px;
+	height: 400px;
+}
+
+.talipageeditbu {
+	margin-top: 10px;
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+
+/* */
+
+/*TALI Module - Master History Report*/
+.managehistory {
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.masterhistorytb {
+	font-size: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.masterhistorytb tr {
+	border: 1px solid black;
+}
+
+.masterhistorytb th {
+	border: 1px solid black;
+}
+
+.masterhistorytb td {
+	border: 1px solid black;
+}
+
+.masterhistorytoptb {
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+}
+
+.masterhistorytoptb td + td {
+    white-space: nowrap;
+}
+
+.tali_masterhistory_rowperpage_dropdown {
+	width: 45px;
+}
+
+/* */
+
+/*TALI Module - Admin Permissions*/
+
+.c_tali_admin_permissions_levelsfield {
+	margin-left: 15px;
+	width: 40px;
+}
+
+.c_tali_admin_permissions_form {
+	margin-left: 15px;
+}
+
+.c_tali_manage_modules_enabled_form {
+	margin-left: 15px;
+}
+
+/* */
+
+/*TALI Module - Home Slider*/
+/* bug - what is this stuff doing here?*/
+.container:before,
+.container:after,
+.row:before,
+.row:after {
+  display: table;
+  content: " ";
+}
+
+/*Clear to break zoomed rows*/
+.row:after {
+	clear:both;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.thumbnail > img,
+.thumbnail a > img {
+	display: block;
+	max-width: 100%;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	height: auto;
+}
+
+.thumbnail:hover,
+.thumbnail:focus,
+.thumbnail.active {
+	border-color: #333;
+}
+
+.thumbnail {
+	display: block;
+	min-height: 120px;
+	margin-left: 15px;
+	margin-right: 15px;
+	padding: 4px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 4px;
+	-webkit-transition: border .2s ease-in-out;
+	-moz-transition: border .2s ease-in-out;
+	-o-transition: border .2s ease-in-out;
+	transition: border .2s ease-in-out;
+}
+
+.col {
+	position: relative;
+	min-height: 1px;
+}
+
+.col p {
+	text-align: center;
+	margin-top: 5px;
+}
+
+.col a {
+	text-decoration: none;
+}
+
+@media (min-width: 500px) {
+	.col {
+		float: left;
+		width: 50%;
+	}
+}
+
+@media (min-width: 768px) {
+	.col {
+		float: left;
+		width: 20%;
+	}
+}
+
+/* TALI HomeSlider */
+/* bug - why does this stuff have "personnel" in the name?*/
+
+.tali_personnel_homeslider {
+	text-align: center;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.tali_personnel_homeslider img {
+	padding: 5px;
+}
+
+.tali_personnel_homeslider tr, .tali_personnel_homeslider th, .tali_personnel_homeslider td {
+	border: 1px solid black;
+}
+
+.tali_personnel_homeslider_textinput {
+	margin-left: 15px;
+	width: 80px;
+	margin-bottom: 10px;
+}
+
+/* */
+
+/*TALI Module - Personnel - Configuration*/
+
+.ranksconfigtb {
+	width: 50%;
+	margin-left: 15px;
+	margin-right: auto;
+	margin-bottom: 15px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.ranksconfigtb tr {
+	border: 1px solid black;
+}
+
+.ranksconfigtb th {
+	border: 1px solid black;
+}
+
+.ranksconfigtb td { 
+	border: 1px solid black;
+}
+
+.tali_personnel_configuration_designations_dropdown {
+	width: 90%;
+}
+
+/* */
+
+/*TALI Module - Personnel - Roster*/
+.tali_personnel_roster_links {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.tali_personnel_roster_table {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.tali_personnel_roster_table tr, .tali_personnel_roster_table th, .tali_personnel_roster_table td {
+	border: 1px solid black;
+}
+
+.tali_personnel_roster_add_table {
+	width: 100%;
+}
+
+.tali_personnel_roster_add_textbox {
+	width: 30%;
+}
+
+.tali_personnel_roster_add_textarea {
+	width: 30%;
+	height: 100px;
+}
+
+.tali_personnel_roster_add_dropdown {
+	width: 30%;
+}
+
+.tali_personnel_roster_add_btn {
+	margin-top: 10px;
+	margin-left: 40%;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+
+/*For Designations Dropdown*/
+.secondary {
+	display:none;
+}
+
+/* */
+
+/* TALI Module - Personnel - Points */
+.tali_personnel_points_update {
+	width: 30px;
+}
+
+/* */
+
+/* TALI Module - Personnel - Drill Reports */
+.desigSelect_report {
+	margin-left: 15px;
+}
+
+.tali_personnel_drillreports_textarea {
+	margin-left: 15px;
+	margin-bottom: 15px;
+	height: 200px;
+	width: 50%;
+}
+
+.tali_personnel_drillreports_textinput {
+	margin-left: 15px;
+	width: 80px;
+	margin-bottom: 10px;
+}
+
+.attendedCheckbox_class {
+	margin-left: 15px;
+}
+
+/* */
+
+/* TALI Module - Personnel - Awards */
+.tali_personnel_awards_addaward_dropdown {
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+
+.tali_personnel_awards_textinput {
+	width: 50%;
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+
+/* */
