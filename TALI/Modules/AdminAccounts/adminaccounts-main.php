@@ -324,6 +324,10 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 	$username=$db_field['username'];
 	$email=$db_field['email'];
 	$personnel_id=$db_field['personnel_id'];
+	//Display visibly empty instead of 0
+	if ($personnel_id == 0) {
+		$personnel_id = "";
+	}
 	echo "
 		<tr>
 			<td>$id</td>
