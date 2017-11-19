@@ -101,7 +101,6 @@ function TALI_Create_History_Report($action_str, $module, $db_handle, $db_Table,
 	$db_field = mysqli_fetch_assoc($result);
 
 	$time = date('Y-m-d H:i:s');
-	$time_sql = TALI_quote_smart($time, $db_handle);
 	
 	$item_name = $db_field[$db_item_col];
 	$username = $_SESSION['username'];
@@ -110,7 +109,7 @@ function TALI_Create_History_Report($action_str, $module, $db_handle, $db_Table,
 	$insertHistory = "$time - $id_type_str $item_id, $item_name, $action_str by $username";
 	$insertHistory_sql = TALI_quote_smart($insertHistory, $db_handle);
 	
-	$SQL = "INSERT INTO tali_master_history (time, username_id, module, item_id, event) VALUES ($time_sql, $username_id, '$module', $item_id, $insertHistory_sql)";
+	$SQL = "INSERT INTO tali_master_history (time, username_id, module, item_id, event) VALUES (CURRENT_TIMESTAMP, $username_id, '$module', $item_id, $insertHistory_sql)";
 	$result = mysqli_query($db_handle, $SQL);
 	
 	return $insertHistory;

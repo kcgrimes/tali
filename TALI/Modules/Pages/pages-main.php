@@ -26,14 +26,11 @@ if (!isset($_POST['tali_page_edit'])) {
 				if ($newtitle != "") {
 					$newtitle = htmlspecialchars($newtitle);
 					$newtitle = TALI_quote_smart($newtitle, $db_handle);
-					
-					$newtime = date('Y-m-d H:i:s');
-					$newtime_sql = TALI_quote_smart($newtime, $db_handle);
-					
-					$SQL = "INSERT INTO tali_pages (title, time) VALUES ($newtitle, $newtime_sql)";
+										
+					$SQL = "INSERT INTO tali_pages (title, time) VALUES ($newtitle, CURRENT_TIMESTAMP)";
 					$result = mysqli_query($db_handle, $SQL);
 					
-					$SQL = "SELECT * FROM tali_pages ORDER BY id DESC LIMIT 1";
+					$SQL = "SELECT id FROM tali_pages ORDER BY id DESC LIMIT 1";
 					$result = mysqli_query($db_handle, $SQL);
 					$db_field = mysqli_fetch_assoc($result);
 					$newid=$db_field['id'];	
@@ -41,9 +38,6 @@ if (!isset($_POST['tali_page_edit'])) {
 					$newHistory = TALI_Create_History_Report('created', $module, $db_handle, 'tali_pages', 'id', $newid, 'Page ID#', 'title');
 					
 					//Local history report
-					$SQL = "SELECT * FROM tali_pages WHERE id=$newid";
-					$result = mysqli_query($db_handle, $SQL);
-					$db_field = mysqli_fetch_assoc($result);
 					$newHistory = TALI_quote_smart($newHistory, $db_handle);
 					$SQL = "UPDATE tali_pages SET history=$newHistory WHERE id=$newid"; 
 					$result = mysqli_query($db_handle, $SQL);
@@ -158,7 +152,7 @@ if (!isset($_POST['tali_page_edit'])) {
 		";
 		
 		//Display History Report
-		$historySQL = "SELECT * FROM tali_pages WHERE id = $id";
+		$historySQL = "SELECT history FROM tali_pages WHERE id = $id";
 					
 		$historyresult = mysqli_query($db_handle, $historySQL);
 		
@@ -183,17 +177,14 @@ else
 	
 	$editbody_sql = TALI_quote_smart($editbody, $db_handle);
 	$editbody_sql = htmlspecialchars($editbody_sql);
-	
-	$newtime = date('Y-m-d H:i:s');
-	$newtime_sql = TALI_quote_smart($newtime, $db_handle);
-	
-	$SQL = "UPDATE tali_pages SET title=$edittitle_sql, body=$editbody_sql, time=$newtime_sql WHERE id=$editid"; 
+		
+	$SQL = "UPDATE tali_pages SET title=$edittitle_sql, body=$editbody_sql, time=CURRENT_TIMESTAMP WHERE id=$editid"; 
 	$result = mysqli_query($db_handle, $SQL);
 	
 	$newHistory = TALI_Create_History_Report('edited', $module, $db_handle, 'tali_pages', 'id', $editid, 'Page ID#', 'title');
 					
 	//Local history report
-	$SQL = "SELECT * FROM tali_pages WHERE id=$editid";
+	$SQL = "SELECT history FROM tali_pages WHERE id=$editid";
 	$result = mysqli_query($db_handle, $SQL);
 	$db_field = mysqli_fetch_assoc($result);
 	$history=$db_field['history'];
@@ -202,7 +193,6 @@ else
 	$SQL = "UPDATE tali_pages SET history=$newHistory WHERE id=$editid"; 
 	$result = mysqli_query($db_handle, $SQL);
 	
-	$newtime = "";
 	$editid = "";
 	$edittitle = "";
 	$editbody = "";

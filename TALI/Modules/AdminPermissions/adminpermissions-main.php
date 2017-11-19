@@ -14,7 +14,7 @@ TALI_sessionCheck($module, $db_handle);
 
 
 //Get number of permission levels currently in db, which is used as baseline throughout page
-$SQL = "SELECT * FROM tali_admin_permissions";
+$SQL = "SELECT level FROM tali_admin_permissions";
 $result = mysqli_query($db_handle, $SQL);
 $levels = mysqli_num_rows($result);
 

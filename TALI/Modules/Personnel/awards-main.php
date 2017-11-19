@@ -27,6 +27,12 @@ if (isset($_GET['action'])) {
 				$name_sql = htmlspecialchars($name);
 				$name_sql = TALI_quote_smart($name_sql, $db_handle);
 				
+				//Round weight value to prevent silliness aka decimals
+				$weight = round($weight);
+				if ($weight < 1) {
+					$weight = 1;
+				}
+				
 				$weight_sql = htmlspecialchars($weight);
 				$weight_sql = TALI_quote_smart($weight_sql, $db_handle);
 				
@@ -51,6 +57,12 @@ if (isset($_GET['action'])) {
 				
 				$name_sql = htmlspecialchars($name);
 				$name_sql = TALI_quote_smart($name_sql, $db_handle);
+				
+				//Round weight value to prevent silliness aka decimals
+				$weight = round($weight);
+				if ($weight < 1) {
+					$weight = 1;
+				}
 				
 				$weight_sql = htmlspecialchars($weight);
 				$weight_sql = TALI_quote_smart($weight_sql, $db_handle);
@@ -110,6 +122,12 @@ if (isset($_GET['action'])) {
 							$description_sql = htmlspecialchars($description);
 							$description_sql = TALI_quote_smart($description_sql, $db_handle);
 							
+							//Round weight value to prevent silliness aka decimals
+							$weight = round($weight);
+							if ($weight < 1) {
+								$weight = 1;
+							}
+							
 							$weight_sql = htmlspecialchars($weight);
 							$weight_sql = TALI_quote_smart($weight_sql, $db_handle);
 							
@@ -145,6 +163,12 @@ if (isset($_GET['action'])) {
 										
 				$description_sql = htmlspecialchars($description);
 				$description_sql = TALI_quote_smart($description_sql, $db_handle);
+				
+				//Round weight value to prevent silliness aka decimals
+				$weight = round($weight);
+				if ($weight < 1) {
+					$weight = 1;
+				}
 				
 				$weight_sql = htmlspecialchars($weight);
 				$weight_sql = TALI_quote_smart($weight_sql, $db_handle);

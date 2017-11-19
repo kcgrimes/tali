@@ -55,6 +55,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							$rank_addabbreviation_sql = htmlspecialchars($rank_addabbreviation);
 							$rank_addabbreviation_sql = TALI_quote_smart($rank_addabbreviation_sql, $db_handle);
 
+							//Round weight value to prevent silliness aka decimals
+							$rank_addweight = round($rank_addweight);
+							if ($rank_addweight < 1) {
+								$rank_addweight = 1;
+							}
+							
 							$rank_addweight_sql = htmlspecialchars($rank_addweight);
 							$rank_addweight_sql = TALI_quote_smart($rank_addweight_sql, $db_handle);
 							
@@ -128,13 +134,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 								$rank_addimage_sql = htmlspecialchars($_FILES['rank_file']['name']);
 								$rank_addimage_sql = TALI_quote_smart($rank_addimage_sql, $db_handle);
 
+								//Round weight value to prevent silliness aka decimals
+								$rank_addweight = round($rank_addweight);
+								if ($rank_addweight < 1) {
+									$rank_addweight = 1;
+								}
+								
 								$rank_addweight_sql = htmlspecialchars($rank_addweight);
 								$rank_addweight_sql = TALI_quote_smart($rank_addweight_sql, $db_handle);
 								
 								$SQL = "INSERT INTO tali_personnel_ranks (name, abbreviation, image, weight) VALUES ($rank_addname_sql, $rank_addabbreviation_sql, $rank_addimage_sql, $rank_addweight_sql)";
 								$result = mysqli_query($db_handle, $SQL);
 								
-								$timeSQL = "SELECT * FROM tali_personnel_ranks ORDER BY rank_id DESC LIMIT 1";
+								$timeSQL = "SELECT rank_id FROM tali_personnel_ranks ORDER BY rank_id DESC LIMIT 1";
 								$timeresult = mysqli_query($db_handle, $timeSQL);
 								$db_field = mysqli_fetch_assoc($timeresult);
 								$newid=$db_field['rank_id'];		
@@ -178,6 +190,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							$status_addname_sql = htmlspecialchars($status_addname);
 							$status_addname_sql = TALI_quote_smart($status_addname_sql, $db_handle);
 							
+							//Round weight value to prevent silliness aka decimals
+							$status_addweight = round($status_addweight);
+							if ($status_addweight < 1) {
+								$status_addweight = 1;
+							}
+							
 							$status_addweight_sql = htmlspecialchars($status_addweight);
 							$status_addweight_sql = TALI_quote_smart($status_addweight_sql, $db_handle);
 							
@@ -207,13 +225,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$status_addname_sql = htmlspecialchars($status_addname);
 					$status_addname_sql = TALI_quote_smart($status_addname_sql, $db_handle);
 					
+					//Round weight value to prevent silliness aka decimals
+					$status_addweight = round($status_addweight);
+					if ($status_addweight < 1) {
+						$status_addweight = 1;
+					}
+					
 					$status_addweight_sql = htmlspecialchars($status_addweight);
 					$status_addweight_sql = TALI_quote_smart($status_addweight_sql, $db_handle);
 					
 					$SQL = "INSERT INTO tali_personnel_statuses (name, weight) VALUES ($status_addname_sql, $status_addweight_sql)";
 					$result = mysqli_query($db_handle, $SQL);
 					
-					$timeSQL = "SELECT * FROM tali_personnel_statuses ORDER BY status_id DESC LIMIT 1";
+					$timeSQL = "SELECT status_id FROM tali_personnel_statuses ORDER BY status_id DESC LIMIT 1";
 					$timeresult = mysqli_query($db_handle, $timeSQL);
 					$db_field = mysqli_fetch_assoc($timeresult);
 					$newid=$db_field['status_id'];		
@@ -248,6 +272,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							$role_addname_sql = htmlspecialchars($role_addname);
 							$role_addname_sql = TALI_quote_smart($role_addname_sql, $db_handle);
 
+							//Round weight value to prevent silliness aka decimals
+							$role_addweight = round($role_addweight);
+							if ($role_addweight < 1) {
+								$role_addweight = 1;
+							}
+							
 							$role_addweight_sql = htmlspecialchars($role_addweight);
 							$role_addweight_sql = TALI_quote_smart($role_addweight_sql, $db_handle);
 							
@@ -277,13 +307,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$role_addname_sql = htmlspecialchars($role_addname);
 					$role_addname_sql = TALI_quote_smart($role_addname_sql, $db_handle);
 
+					//Round weight value to prevent silliness aka decimals
+					$role_addweight = round($role_addweight);
+					if ($role_addweight < 1) {
+						$role_addweight = 1;
+					}
+					
 					$role_addweight_sql = htmlspecialchars($role_addweight);
 					$role_addweight_sql = TALI_quote_smart($role_addweight_sql, $db_handle);
 
 					$SQL = "INSERT INTO tali_personnel_roles (name, weight) VALUES ($role_addname_sql, $role_addweight_sql)";
 					$result = mysqli_query($db_handle, $SQL);
 					
-					$timeSQL = "SELECT * FROM tali_personnel_roles ORDER BY role_id DESC LIMIT 1";
+					$timeSQL = "SELECT role_id FROM tali_personnel_roles ORDER BY role_id DESC LIMIT 1";
 					$timeresult = mysqli_query($db_handle, $timeSQL);
 					$db_field = mysqli_fetch_assoc($timeresult);
 					$newid=$db_field['role_id'];		
@@ -319,6 +355,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				//Reports to no one/is top of chain of command
 				$desig_addreportsTo = 0;
 			}
+			//bug - what is this query doing?
 			$SQL = "SELECT * FROM tali_personnel_roster WHERE personnel_id=$desig_addleader";
 			if (($desig_addname != "") && ($desig_addweight != "")) {
 				if ((isset($_GET['id'])) && (isset($_GET['button']))) {
@@ -351,15 +388,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						case "desig_delete":
 							//First check to make sure that deleting this wouldn't destabilize things
 							$designation_id = $_GET['id'];
-							$SQL = "SELECT * FROM tali_personnel_roster WHERE designation_id=$designation_id";
+							$SQL = "SELECT designation_id FROM tali_personnel_roster WHERE designation_id=$designation_id";
 							$result = mysqli_query($db_handle, $SQL);
-							$num_rows = mysqli_num_rows($checkresult);
+							$num_rows = mysqli_num_rows($result);
 							if ($num_rows > 0) {
 								$errorMessage = "ERROR: Can't delete designation while personnel are assigned to it!";
 								goto ErrorTriggered;
 							}
 							
-							$checkSQL = "SELECT * FROM tali_personnel_designations WHERE reportsto_designation_id=$designation_id";
+							$checkSQL = "SELECT reportsto_designation_id FROM tali_personnel_designations WHERE reportsto_designation_id=$designation_id";
 							$checkresult = mysqli_query($db_handle, $checkSQL);
 							$num_rows = mysqli_num_rows($checkresult);
 							if ($num_rows > 0) {
@@ -386,16 +423,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$desig_addleader_sql = htmlspecialchars($desig_addleader);
 					$desig_addleader_sql = TALI_quote_smart($desig_addleader_sql, $db_handle);
 					
+					//Round weight value to prevent silliness aka decimals
+					$desig_addweight = round($desig_addweight);
+					if ($desig_addweight < 1) {
+						$desig_addweight = 1;
+					}
+					
 					$desig_addweight_sql = htmlspecialchars($desig_addweight);
 					$desig_addweight_sql = TALI_quote_smart($desig_addweight_sql, $db_handle);
 					
 					$desig_addreportsTo_sql = htmlspecialchars($desig_addreportsTo);
 					$desig_addreportsTo_sql = TALI_quote_smart($desig_addreportsTo_sql, $db_handle);
 					
-					$SQL = "INSERT INTO tali_personnel_designations (name, leader_personnel_id, reportsto_designation_id, weight) VALUES ($desig_addname_sql, $desig_addleader_sql, $desig_addreportsTo_sql, $desig_addweight_sql)";
+					$desig_addinactive = 0;
+					
+					$desig_addinactive_sql = htmlspecialchars($desig_addinactive);
+					$desig_addinactive_sql = TALI_quote_smart($desig_addinactive_sql, $db_handle);
+										
+					$SQL = "INSERT INTO tali_personnel_designations (name, leader_personnel_id, reportsto_designation_id, weight, inactive) VALUES ($desig_addname_sql, $desig_addleader_sql, $desig_addreportsTo_sql, $desig_addweight_sql, $desig_addinactive_sql)";
 					$result = mysqli_query($db_handle, $SQL);
 					
-					$timeSQL = "SELECT * FROM tali_personnel_designations ORDER BY designation_id DESC LIMIT 1";
+					$timeSQL = "SELECT designation_id FROM tali_personnel_designations ORDER BY designation_id DESC LIMIT 1";
 					$timeresult = mysqli_query($db_handle, $timeSQL);
 					$db_field = mysqli_fetch_assoc($timeresult);
 					$newid=$db_field['designation_id'];		
@@ -424,7 +472,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (isset($_POST['desig_button_deactivate'])) {
 		$designation_id = $_GET['id'];
 		
-		$SQL = "SELECT * FROM tali_personnel_roster WHERE designation_id=$designation_id";
+		$SQL = "SELECT designation_id FROM tali_personnel_roster WHERE designation_id=$designation_id";
 		$result = mysqli_query($db_handle, $SQL);
 		$num_rows = mysqli_num_rows($result);
 		if ($num_rows > 0) {
@@ -432,7 +480,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			goto ErrorTriggered;
 		}
 		
-		$checkSQL = "SELECT * FROM tali_personnel_designations WHERE reportsto_designation_id=$designation_id";
+		$checkSQL = "SELECT reportsto_designation_id FROM tali_personnel_designations WHERE reportsto_designation_id=$designation_id";
 		$checkresult = mysqli_query($db_handle, $checkSQL);
 		$num_rows = mysqli_num_rows($checkresult);
 		if ($num_rows > 0) {

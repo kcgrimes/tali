@@ -16,7 +16,7 @@ echo "
 	<h1><strong>Master History Report</strong></h1>
 ";
 
-$countSQL = "SELECT * FROM tali_master_history ORDER BY id DESC";
+$countSQL = "SELECT id FROM tali_master_history ORDER BY id DESC";
 $countresult = mysqli_query($db_handle, $countSQL);
 $num_rows = mysqli_num_rows($countresult);
 

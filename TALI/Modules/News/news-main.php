@@ -50,20 +50,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//news.php?action=new - New entry
 		if (($_GET['action']) == "new") {
 			if (($newauthor != "") && ($newtitle != "") && ($newbody != "")) {
-				$newtime = date('Y-m-d H:i:s');
-				$newtime_sql = TALI_quote_smart($newtime, $db_handle);
 				$newauthor_sql = htmlspecialchars($newauthor);
 				$newauthor_sql = TALI_quote_smart($newauthor_sql, $db_handle);
 				$newtitle_sql = htmlspecialchars($newtitle);
 				$newtitle_sql = TALI_quote_smart($newtitle_sql, $db_handle);
 				
-				$newbody_sql = htmlspecialchars($newbody_sql);
+				$newbody_sql = htmlspecialchars($newbody);
 				$newbody_sql = TALI_quote_smart($newbody_sql, $db_handle);
 				
-				$SQL = "INSERT INTO tali_news (author, time, title, body) VALUES ($newauthor_sql, $newtime_sql, $newtitle_sql, $newbody_sql)";
+				$SQL = "INSERT INTO tali_news (author, time, title, body) VALUES ($newauthor_sql, CURRENT_TIMESTAMP, $newtitle_sql, $newbody_sql)";
 				$result = mysqli_query($db_handle, $SQL);
 				
-				$SQL = "SELECT * FROM tali_news ORDER BY id DESC LIMIT 1";
+				$SQL = "SELECT id FROM tali_news ORDER BY id DESC LIMIT 1";
 				$result = mysqli_query($db_handle, $SQL);
 				$db_field = mysqli_fetch_assoc($result);
 				$newid=$db_field['id'];
@@ -184,7 +182,7 @@ echo "
 //news.php?action=edit&id=$id - Display History Report
 if ((isset($_GET['action'])) && (($_GET['action']) == "edit")) {
 	$histid = $_GET['id'];
-	$historySQL = "SELECT * FROM tali_news WHERE id = $histid";
+	$historySQL = "SELECT history FROM tali_news WHERE id = $histid";
 				
 	$historyresult = mysqli_query($db_handle, $historySQL);
 	

@@ -46,7 +46,7 @@ if (isset($_POST['btnCancel'])) {
 }
 
 //Return - Delete button clicked
-//bug - is associated admin account managed properly here?
+//bug - What about the associated admin account, if any?
 if ((isset($_POST['btnDelete'])) && (isset($_GET['id']))) {
 	$delid = $_GET['id'];
 	
@@ -70,6 +70,8 @@ if ((isset($_POST['btnDischarge'])) && (isset($_GET['id']))) {
 	$db_field = mysqli_fetch_assoc($result);
 	
 	//Pull date_discharged, which may or may not be defined
+	//bug - um... why are you pulling date_discharged from the entry? It's probably not defined
+	//there yet...
 	$date_discharged = $db_field['date_discharged'];
 	if (is_null($date_discharged)) {
 		//If date_discharged wasn't defined, just use today's date
@@ -84,6 +86,7 @@ if ((isset($_POST['btnDischarge'])) && (isset($_GET['id']))) {
 	$designation_id = $db_field['designation_id'];
 	if (is_null($designation_id)) {
 		//bug - error here, not sure how to manage it, so BOOM!
+			//This should never be null now, so... now what?
 		header ("Location: personnel.php?sub=roster");
 		exit();
 	}
@@ -123,7 +126,8 @@ if ((isset($_POST['btnDischarge'])) && (isset($_GET['id']))) {
 	$discharged_designation_sql = TALI_quote_smart($discharged_designation_sql, $db_handle);
 	
 	//Update personnel file values for discharge and reset active designations
-	$SQL = "UPDATE tali_personnel_roster SET date_discharged=$date_discharged_sql, designation_id=NULL, discharged=1, discharged_designation=$discharged_designation_sql WHERE personnel_id=$personnel_id"; 
+	//bug - well, should the designation be reset?
+	$SQL = "UPDATE tali_personnel_roster SET date_discharged=$date_discharged_sql, designation_id='', discharged=1, discharged_designation=$discharged_designation_sql WHERE personnel_id=$personnel_id"; 
 	$result = mysqli_query($db_handle, $SQL);
 	
 	//History Report
@@ -138,7 +142,7 @@ if ((isset($_POST['btnUnDischarge'])) && (isset($_GET['id']))) {
 	$personnel_id = $_GET['id'];
 	
 	//Update personnel file with values to move out of discharged status
-	$SQL = "UPDATE tali_personnel_roster SET date_discharged=NULL, discharged=0, discharged_designation=NULL WHERE personnel_id=$personnel_id"; 
+	$SQL = "UPDATE tali_personnel_roster SET date_discharged=NULL, discharged=0, discharged_designation='' WHERE personnel_id=$personnel_id"; 
 	$result = mysqli_query($db_handle, $SQL);
 	
 	//History Report
@@ -806,7 +810,7 @@ if (isset($_GET['action'])) {
 				else
 				{
 					//ADD
-					$SQL = "INSERT INTO tali_personnel_roster (rank_id, firstname, lastname, nickname, status_id, designation_id, role_id, email, othercontact, location, biography, dateofbirth, date_enlisted, date_promoted, date_discharged) VALUES ($add_rank_id, $add_firstname_sql, $add_lastname_sql, $add_nickname_sql, $add_status_id, '$add_designation_id', $add_role_id, $add_email_sql, $add_othercontact_sql, $add_location_sql, $add_biography_sql, $add_dateofbirth_sql, $add_dateenlisted_sql, $add_datepromoted_sql, $add_datedischarged_sql)";
+					$SQL = "INSERT INTO tali_personnel_roster (rank_id, firstname, lastname, nickname, status_id, designation_id, role_id, email, othercontact, location, biography, dateofbirth, date_enlisted, date_promoted, date_discharged, discharged) VALUES ($add_rank_id, $add_firstname_sql, $add_lastname_sql, $add_nickname_sql, $add_status_id, '$add_designation_id', $add_role_id, $add_email_sql, $add_othercontact_sql, $add_location_sql, $add_biography_sql, $add_dateofbirth_sql, $add_dateenlisted_sql, $add_datepromoted_sql, $add_datedischarged_sql, 0)";
 					$result = mysqli_query($db_handle, $SQL);
 					
 					$SQL = "SELECT personnel_id FROM tali_personnel_roster ORDER BY personnel_id DESC LIMIT 1";
@@ -852,11 +856,15 @@ if (isset($_GET['action'])) {
 			$add_email = $db_field['email'];
 			$add_othercontact = $db_field['othercontact'];
 			$add_location = $db_field['location'];
+			$add_biography = $db_field['biography'];
+
+			//For dates below, converting dates from SQL format (YYYY-MM-DD) to 
+			//human format (MM/DD/YYYY), respecting NULL value
+			
 			$add_dateofbirth = $db_field['dateofbirth'];
 			if (!is_null($add_dateofbirth)) {
 				$add_dateofbirth = date("m/d/Y", strtotime($add_dateofbirth));
 			}
-			$add_biography = $db_field['biography'];
 			$add_dateenlisted = $db_field['date_enlisted'];
 			if (!is_null($add_dateenlisted)) {
 				$add_dateenlisted = date("m/d/Y", strtotime($add_dateenlisted));
@@ -869,7 +877,6 @@ if (isset($_GET['action'])) {
 			if (!is_null($add_datedischarged)) {
 				$add_datedischarged = date("m/d/Y", strtotime($add_datedischarged));
 			}
-			//Converted dates from SQL format (YYYY-MM-DD) to human format (MM/DD/YYYY), respecting NULL value
 			
 			//Pull admin account, if associated
 			$SQL = "SELECT username FROM tali_admin_accounts WHERE personnel_id=$personnel_id";

@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$SQL = "SELECT level FROM tali_admin_permissions";
 			$result = mysqli_query($db_handle, $SQL);
 			$maxlevel = mysqli_num_rows($result);
+			//Force correction of invalid entry to be the lowest available permission level
 			if (($newlevel < 1) OR (($newlevel - $maxlevel) > 0)) {
 				$newlevel = $maxlevel;
 			}
@@ -124,14 +125,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 			else
 			{
-				//No personnel id to be associated
-				$newpersonnel_id = "NULL";
+				//No personnel id to be associated, so set as empty
+				$newpersonnel_id = "";
 			}
 			
 			$SQL = "INSERT INTO tali_admin_accounts (level, username, password, email, personnel_id) VALUES ($newlevel_sql, $newusername_sql, md5($newpassword_sql), $newemail_sql, $newpersonnel_id_sql)";
 			$result = mysqli_query($db_handle, $SQL);
 			
-			$SQL = "SELECT * FROM tali_admin_accounts ORDER BY id DESC LIMIT 1";
+			$SQL = "SELECT id FROM tali_admin_accounts ORDER BY id DESC LIMIT 1";
 			$result = mysqli_query($db_handle, $SQL);
 			$db_field = mysqli_fetch_assoc($result);
 			$newid=$db_field['id'];	
@@ -169,10 +170,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//Manage level
 		if ((isset($_POST['level'])) && (($_POST['level'] != ""))) {
 			$newlevel = $_POST['level'];
+			//Round value to prevent silliness aka decimals
 			$newlevel = round($newlevel);
 			$SQL = "SELECT level FROM tali_admin_permissions";
 			$result = mysqli_query($db_handle, $SQL);
 			$maxlevel = mysqli_num_rows($result);
+			//Force correction of invalid entry to be the lowest available permission level
 			if (($newlevel < 0) OR (($newlevel - $maxlevel) > 0)) {
 				$newlevel = $maxlevel;
 			}

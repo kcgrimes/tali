@@ -30,7 +30,7 @@ if (isset($_GET['token'])) {
 		$_SESSION['level'] = $db_field['level'];
 		
 		//Remove the token
-		$SQL = "UPDATE tali_admin_accounts SET password_reset_token=NULL WHERE password_reset_token=$token_sql";
+		$SQL = "UPDATE tali_admin_accounts SET password_reset_token = '' WHERE password_reset_token = $token_sql";
 		$result = mysqli_query($db_handle, $SQL);
 		
 		//Head to account.php to change password
