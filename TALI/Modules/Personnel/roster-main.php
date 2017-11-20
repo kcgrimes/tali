@@ -762,7 +762,8 @@ if (isset($_GET['action'])) {
 							$newpassword_sql = TALI_quote_smart($newpassword_sql, $db_handle);
 							
 							//Obtain highest (lowest power) admin level from database for default
-							SQL = "SELECT level FROM tali_admin_permissions LIMIT 1";
+								//bug - make more edits to allow below "$" fix, delete this bug line?
+							$SQL = "SELECT level FROM tali_admin_permissions LIMIT 1";
 							$result = mysqli_query($db_handle, $SQL);
 							$db_field = mysqli_fetch_assoc($result);
 							$newlevel_sql = TALI_quote_smart($db_field['level'], $db_handle);
