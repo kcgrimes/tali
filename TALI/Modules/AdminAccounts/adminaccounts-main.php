@@ -54,9 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$newemail = $_POST['newemail'];
 		$newpersonnel_id = $_POST['newpersonnel_id'];
 		if ($newusername != "") {
-			$SQL = "SELECT level FROM tali_admin_permissions";
+			$SQL = "SELECT level FROM tali_admin_permissions LIMIT 1";
 			$result = mysqli_query($db_handle, $SQL);
-			$maxlevel = mysqli_num_rows($result);
+			$db_field = mysqli_fetch_assoc($result);
+			$maxlevel = $db_field['level'];	
 			//Force correction of invalid entry to be the lowest available permission level
 			if (($newlevel < 1) OR (($newlevel - $maxlevel) > 0)) {
 				$newlevel = $maxlevel;
@@ -90,12 +91,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$newemail_sql = TALI_quote_smart($newemail_sql, $db_handle);
 			
 			//Check if email exists
-			$SQL = "SELECT id FROM tali_admin_accounts WHERE email=$newemail_sql";
-			$result = mysqli_query($db_handle, $SQL);
-			$num_rows = mysqli_num_rows($result);
-			if ($num_rows > 0) {
-				$errorMessage = "ERROR: The e-mail you have entered already exists.";
-				goto POSTErrored;
+			if ($newemail != "") {
+				$SQL = "SELECT id FROM tali_admin_accounts WHERE email=$newemail_sql";
+				$result = mysqli_query($db_handle, $SQL);
+				$num_rows = mysqli_num_rows($result);
+				if ($num_rows > 0) {
+					$errorMessage = "ERROR: The e-mail you have entered already exists.";
+					goto POSTErrored;
+				}
 			}
 			
 			//Manage personnel id association
@@ -172,11 +175,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$newlevel = $_POST['level'];
 			//Round value to prevent silliness aka decimals
 			$newlevel = round($newlevel);
-			$SQL = "SELECT level FROM tali_admin_permissions";
+			$SQL = "SELECT level FROM tali_admin_permissions LIMIT 1";
 			$result = mysqli_query($db_handle, $SQL);
-			$maxlevel = mysqli_num_rows($result);
+			$db_field = mysqli_fetch_assoc($result);
+			$maxlevel = $db_field['level'];	
 			//Force correction of invalid entry to be the lowest available permission level
-			if (($newlevel < 0) OR (($newlevel - $maxlevel) > 0)) {
+			if (($newlevel < 1) OR (($newlevel - $maxlevel) > 0)) {
 				$newlevel = $maxlevel;
 			}
 		}

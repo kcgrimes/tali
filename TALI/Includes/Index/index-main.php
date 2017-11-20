@@ -25,22 +25,18 @@ echo "
 		<h1><strong>TALI Modules</strong></h1>
 		<p style=\"text-align:center;color:red\">$error</p>
 ";
-		
+
+//Prepare array of all modules that can be viewed by this
+//session's permission level
 $SQL = "SELECT * FROM tali_modules";
 $result = mysqli_query($db_handle, $SQL);
 $module_array = [];
 while ($db_field = mysqli_fetch_assoc($result)) {
-	$module_array[] = $db_field['module'];
-	$enabledvalue_array[] = $db_field['enabled'];
-}
-
-$enabledmodule_array = [];
-$cnt = 0;
-forEach ($enabledvalue_array as $value) {
-	if ($value == 1) {
-		$enabledmodule_array[] = $module_array[$cnt];
+	//Check if level is permitted in module (permitted levels are stored as an array-as-string)
+	if (in_array($_SESSION['level'],explode(",", $db_field['permission']))) {
+		//Permission granted
+		$module_array[] = $db_field['module'];
 	}
-	$cnt++;
 }
 		
 echo "
@@ -52,7 +48,7 @@ echo "
 				</a>
 			</div>
 ";
-if (in_array('TALI_Admin_Accounts',$enabledmodule_array,true)) {
+if (in_array('TALI_Admin_Accounts',$module_array,true)) {
 	echo "
 			<div class=\"col\">
 				<a href=\"Modules/adminaccounts.php\" class=\"thumbnail\">
@@ -63,7 +59,7 @@ if (in_array('TALI_Admin_Accounts',$enabledmodule_array,true)) {
 	";
 }
 
-if (in_array('TALI_Admin_Permissions',$enabledmodule_array,true)) {
+if (in_array('TALI_Admin_Permissions',$module_array,true)) {
 	echo "
 			<div class=\"col\">
 				<a href=\"Modules/adminpermissions.php\" class=\"thumbnail\">
@@ -91,7 +87,7 @@ echo "
 		
 		<div class=\"row\">
 ";
-if (in_array('TALI_Pages',$enabledmodule_array,true)) {
+if (in_array('TALI_Pages',$module_array,true)) {
 	echo "
 			<div class=\"col\">
 				<a href=\"Modules/pages.php\" class=\"thumbnail\">
@@ -101,7 +97,7 @@ if (in_array('TALI_Pages',$enabledmodule_array,true)) {
 			</div>
 	";
 }
-if (in_array('TALI_News',$enabledmodule_array,true)) {
+if (in_array('TALI_News',$module_array,true)) {
 	echo "
 			<div class=\"col\">
 				<a href=\"Modules/news.php\" class=\"thumbnail\">
@@ -111,7 +107,7 @@ if (in_array('TALI_News',$enabledmodule_array,true)) {
 			</div>
 	";
 }
-if (in_array('TALI_Home_Slider',$enabledmodule_array,true)) {
+if (in_array('TALI_Home_Slider',$module_array,true)) {
 	echo "
 			<div class=\"col\">
 				<a href=\"Modules/homeslider.php\" class=\"thumbnail\">
@@ -121,7 +117,7 @@ if (in_array('TALI_Home_Slider',$enabledmodule_array,true)) {
 			</div>
 	";
 }
-if (in_array('TALI_Master_History',$enabledmodule_array,true)) {
+if (in_array('TALI_Master_History',$module_array,true)) {
 	echo "
 			<div class=\"col\">
 				<a href=\"Modules/masterhistory.php\" class=\"thumbnail\">
@@ -131,7 +127,7 @@ if (in_array('TALI_Master_History',$enabledmodule_array,true)) {
 			</div>
 	";
 }
-if (in_array('TALI_Versions',$enabledmodule_array,true)) {
+if (in_array('TALI_Versions',$module_array,true)) {
 	echo "
 			<div class=\"col\">
 				<a href=\"Modules/versions.php\" class=\"thumbnail\">
@@ -148,7 +144,7 @@ echo "
 		
 		<div class=\"row\">
 ";
-if (in_array('TALI_Personnel',$enabledmodule_array,true)) {
+if (in_array('TALI_Personnel',$module_array,true)) {
 	echo "
 			<div class=\"col\">
 				<a href=\"Modules/personnel.php\" class=\"thumbnail\">
@@ -160,7 +156,7 @@ if (in_array('TALI_Personnel',$enabledmodule_array,true)) {
 }
 
 //bug - for 3rd ID so all have drill report access
-if (in_array('TALI_Personnel',$enabledmodule_array,true)) {
+if (in_array('TALI_Personnel',$module_array,true)) {
 	echo "
 			<div class=\"col\">
 				<a href=\"Modules/personnel.php?sub=drillreports\" class=\"thumbnail\">

@@ -58,19 +58,20 @@ function TALI_sessionCheck($module, $db_handle) {
 		exit();
 	}
 	
-	//Verify if user has permission to access this particular module
+	//Verify if user has permission to access this particular module, unless it is TALI Index
 	if ((isset($_SESSION['level'])) && ($module != 'TALI_Index')) {
-		$level=$_SESSION['level'];
-		$SQL = "SELECT $module FROM tali_admin_permissions WHERE level=$level";
+		$SQL = "SELECT permission FROM tali_modules WHERE module = '$module'";
 		$result = mysqli_query($db_handle, $SQL);
 		$db_field = mysqli_fetch_assoc($result);
-		$value = $db_field[$module];
-		if ($value == 0) {
+		
+		//Check if level is permitted in module (permitted levels are stored as an array-as-string)
+		//Note - Checking for false
+		if (!in_array($_SESSION['level'],explode(",", $db_field['permission']))) {
 			//User does not have permission, so redirect to landing page
 			//bug - for 3rd ID to allow all access to Drill Reports
 				//Make dyanmic by having setting in tali_init?
 			if ((isset($_GET['sub'])) && ($_GET['sub'] == "drillreports")) {
-				//nothing
+				//nothing, so it proceeds
 			}
 			else
 			{
