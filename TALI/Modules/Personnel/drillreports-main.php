@@ -248,7 +248,10 @@ else
 				//Designation
 				if (isset($_GET['id'])) {
 					//Editing, so use existing designation id
-					$designation_id = $_GET['id'];
+					$SQL = "SELECT designation_id FROM tali_personnel_drillreports WHERE drillreport_id=$drillreport_id";
+					$result = mysqli_query($db_handle, $SQL);
+					$db_field = mysqli_fetch_assoc($result);
+					$designation_id = $db_field['designation_id'];
 				}
 				else
 				{
