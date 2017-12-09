@@ -95,7 +95,7 @@ if (!isset($_POST['tali_page_edit'])) {
 						<option value=\"empty\"></option>
 		";
 		
-		$SQL = "SELECT * FROM tali_pages";
+		$SQL = "SELECT * FROM tali_pages ORDER BY title ASC";
 		$result = mysqli_query($db_handle, $SQL);
 		while ($db_field = mysqli_fetch_assoc($result)) {
 			$id=$db_field['id'];
