@@ -166,6 +166,17 @@ if (in_array('TALI_Personnel',$module_array,true)) {
 			</div>
 	";
 }
+
+if (in_array('TALI_Mailing_List',$module_array,true)) {
+	echo "
+			<div class=\"col\">
+				<a href=\"Modules/mailinglist.php?\" class=\"thumbnail\">
+					<img src=\"Images/Display/Icons/Index-MailingList.png\" alt=\"Mailing List Icon\" name=\"Mailing List Icon\">
+					<p>Manage Mailing List</p>
+				</a>
+			</div>
+	";
+}
 echo "
 		</div>
 	</div>

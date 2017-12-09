@@ -259,7 +259,7 @@ else
 					$designation_id = $_POST['designation_select'];
 				}
 				
-				//Managing Attenance
+				//Managing Attendance
 				
 				if (isset($_GET['id'])) {
 					//Editing, so reset previous attendance counts
