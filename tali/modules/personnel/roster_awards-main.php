@@ -248,12 +248,12 @@ else
 					<td style=\"text-align:center;\">$record</td>
 					<td style=\"text-align:center;\">
 						<a href=\"personnel.php?sub=roster_awards&id=$personnel_id&awardrecord_id=$awardrecord_id&action=editaward\">
-							<img src=\"../Images/Display/Icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+							<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 						</a>
 					</td>
 					<td style=\"text-align:center;\">
 						<a href=\"personnel.php?sub=roster_awards&id=$personnel_id&awardrecord_id=$awardrecord_id&action=deleteaward\" onclick=\"return confirm('Are you sure you want to delete this award?');\">
-							<img src=\"../Images/Display/Icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+							<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
 						</a>
 					</td>
 				</tr>

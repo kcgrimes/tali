@@ -406,12 +406,12 @@ else
 					<td style=\"text-align:center;\">$name</td>
 					<td style=\"text-align:center;\">
 						<a href=\"personnel.php?sub=awards&action=editclass&id=$awardclass_id\">
-							<img src=\"../Images/Display/Icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+							<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 						</a>
 					</td>
 					<td style=\"text-align:center;\">
 						<a href=\"personnel.php?sub=awards&action=deleteclass&id=$awardclass_id\" onclick=\"return confirm('Are you sure you want to delete this award class?');\">
-							<img src=\"../Images/Display/Icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+							<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
 						</a>
 					</td>
 				</tr>
@@ -468,12 +468,12 @@ else
 					<td style=\"text-align:center;\">$weight</td>
 					<td style=\"text-align:center;\">
 						<a href=\"personnel.php?sub=awards&action=editaward&id=$award_id\">
-							<img src=\"../Images/Display/Icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+							<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 						</a>
 					</td>
 					<td style=\"text-align:center;\">
 						<a href=\"personnel.php?sub=awards&action=deleteaward&id=$award_id\" onclick=\"return confirm('Are you sure you want to delete this award?');\">
-							<img src=\"../Images/Display/Icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+							<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
 						</a>
 					</td>
 				</tr>

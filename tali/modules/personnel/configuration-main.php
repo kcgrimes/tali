@@ -588,12 +588,12 @@ while ($db_field = mysqli_fetch_assoc($rankresult)) {
 			<td style=\"text-align:center;\">$weight</td>
 			<td style=\"text-align:center;\">
 				<a href=\"personnel.php?sub=configuration&id=$rank_id&button=rank_edit\">
-					<img src=\"../Images/Display/Icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+					<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 				</a>
 			</td>
 			<td style=\"text-align:center;\">
 				<a href=\"personnel.php?sub=configuration&id=$rank_id&button=rank_delete\">
-					<img src=\"../Images/Display/Icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+					<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
 				</a>
 			</td>
 		</tr>
@@ -740,12 +740,12 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 			<td style=\"text-align:center;\">$weight</td>
 			<td style=\"text-align:center;\">
 				<a href=\"personnel.php?sub=configuration&id=$status_id&button=status_edit\">
-					<img src=\"../Images/Display/Icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+					<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 				</a>
 			</td>
 			<td style=\"text-align:center;\">
 				<a href=\"personnel.php?sub=configuration&id=$status_id&button=status_delete\">
-					<img src=\"../Images/Display/Icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+					<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
 				</a>
 			</td>
 		</tr>
@@ -864,12 +864,12 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 			<td style=\"text-align:center;\">$weight</td>
 			<td style=\"text-align:center;\">
 				<a href=\"personnel.php?sub=configuration&id=$role_id&button=role_edit\">
-					<img src=\"../Images/Display/Icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+					<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 				</a>
 			</td>
 			<td style=\"text-align:center;\">
 				<a href=\"personnel.php?sub=configuration&id=$role_id&button=role_delete\">
-					<img src=\"../Images/Display/Icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+					<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
 				</a>
 			</td>
 		</tr>
@@ -1159,12 +1159,12 @@ function designationRow ($db_handle, $arrayDesignation_selected) {
 			<td style=\"text-align:center;\">$weight</td>
 			<td style=\"text-align:center;\">
 				<a href=\"personnel.php?sub=configuration&action=designation&id=$designation_id&button=desig_edit\">
-					<img src=\"../Images/Display/Icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+					<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 				</a>
 			</td>
 			<td style=\"text-align:center;\">
 				<a href=\"personnel.php?sub=configuration&action=designation&id=$designation_id&button=desig_delete\">
-					<img src=\"../Images/Display/Icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+					<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
 				</a>
 			</td>
 		</tr>

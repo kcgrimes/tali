@@ -32,7 +32,7 @@
 	
 	$absolute_root_directory = "".getcwd()."/"; //Default = getcwd()
 	//If tali_init_in_root is false, you must re-define this as a string of the absolute root
-	//Ex: "/home/username/public_html/CMS" (no slash (/) on the right end)
+	//Ex: "/home/username/public_html/cms" (no slash (/) on the right end)
 	//To find out the root directory, uncomment and execute the below code:
 	
 	//echo getcwd();
@@ -58,13 +58,13 @@
 	
 	//Below are the definitions of various critical paths; incorrect inputs will result
 	//in critical and obvious failure upon execution of any TALI components
-	//"TALI" folder location relative to the web root
-	$_SESSION['TALI_ROOT_URL'] = "TALI"; //Default = "TALI", indicating it is in the web root
-	//If folder is not in web root, add pathing to last part of string, ex: "CMS/TALI"
+	//"tali" folder location relative to the web root
+	$_SESSION['TALI_ROOT_URL'] = "tali"; //Default = "tali", indicating it is in the web root
+	//If folder is not in web root, add pathing to last part of string, ex: "cms/tali"
 	
 	//"tali_init.php" file location relative to the web root
 	$_SESSION['tali_init_URL'] = "tali_init.php"; //Default = "tali_init.php", indicating it is in the web root
-	//If file not in web root, add pathing, ex: "CMS/tali_init.php"
+	//If file not in web root, add pathing, ex: "cms/tali_init.php"
 	
 	//Location of file containing sensitive information
 	//This file is usually a *.ini file which may or may not be in the web root
@@ -140,13 +140,13 @@
 	$_SESSION['TALI_SMTP_fromName'] = "From Me";
 	
 	//TALI HomeSlider images folder location from web root
-	$_SESSION['TALI_HomeSlider_Images_Directory'] = "/TALI/TALISupplement/HomeSlider/";
+	$_SESSION['TALI_HomeSlider_Images_Directory'] = "/tali/talisupplement/homeslider/";
 	
 	//TALI Awards images folder location from web root
-	$_SESSION['TALI_Awards_Images_Directory'] = "/TALI/TALISupplement/Personnel/Awards/";
+	$_SESSION['TALI_Awards_Images_Directory'] = "/tali/talisupplement/personnel/awards/";
 	
 	//TALI Ranks images folder location from web root
-	$_SESSION['TALI_Ranks_Images_Directory'] = "/TALI/TALISupplement/Personnel/Ranks/";
+	$_SESSION['TALI_Ranks_Images_Directory'] = "/tali/talisupplement/personnel/ranks/";
 	
 	//Web URL to cPanel
 	$_SESSION['TALI_Index_cPanel_Link'] = "https://cpanel.hostname.com/";
@@ -169,24 +169,24 @@
 	//Correct absolute directory if session started within TALI directory
 	//bug - kind of dirty, eh?
 	if ($tali_init_in_root == true) {
-		$absolute_root_directory = str_replace("\TALI", "", $absolute_root_directory);
-		$absolute_root_directory = str_replace("/TALI", "", $absolute_root_directory);
-		$absolute_root_directory = str_replace("\Modules", "", $absolute_root_directory);
-		$absolute_root_directory = str_replace("/Modules", "", $absolute_root_directory);
+		$absolute_root_directory = str_replace("\\tali", "", $absolute_root_directory);
+		$absolute_root_directory = str_replace("/tali", "", $absolute_root_directory);
+		$absolute_root_directory = str_replace("\\modules", "", $absolute_root_directory);
+		$absolute_root_directory = str_replace("/modules", "", $absolute_root_directory);
 	}
 		
 	//Defines TALI directory by combining the absolute root of the website with the URL root of the folder as defined above
 	$_SESSION['TALI_ROOT_DIR'] = "".$absolute_root_directory."".$_SESSION['TALI_ROOT_URL'].""; 
 		
 	//Defines TALISupplement directory by combining the absolute root of the website with the URL root of the TALI folder
-	$_SESSION['TALISupplement_ROOT_DIR'] = "".$absolute_root_directory."".$_SESSION['TALI_ROOT_URL']."/TALISupplement"; 
-	$_SESSION['TALISupplement_ROOT_URL'] = "".$_SESSION['TALI_ROOT_URL']."/TALISupplement";
+	$_SESSION['TALISupplement_ROOT_DIR'] = "".$absolute_root_directory."".$_SESSION['TALI_ROOT_URL']."/talisupplement"; 
+	$_SESSION['TALISupplement_ROOT_URL'] = "".$_SESSION['TALI_ROOT_URL']."/talisupplement";
 	
 	//Defines tali_init.php directory by combining the absolute root of the website with the URL root of the file as defined above
 	$_SESSION['tali_init_DIR'] = "".$absolute_root_directory."".$_SESSION['tali_init_URL'].""; 
 	
 	//Enter TALI
-	require "".$_SESSION['TALISupplement_ROOT_DIR']."/Includes/talihead.php";
+	require "".$_SESSION['TALISupplement_ROOT_DIR']."/includes/talihead.php";
 	
 	/* */
 ?>

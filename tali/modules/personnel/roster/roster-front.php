@@ -13,13 +13,13 @@ if (isset($_GET['action'])) {
 	
 switch ($action) {
 	case "profile":
-		require "".$_SESSION['TALI_ROOT_DIR']."/Modules/Personnel/Roster/roster-profile.php";
+		require "".$_SESSION['TALI_ROOT_DIR']."/modules/personnel/roster/roster-profile.php";
 	break;
 	case "awards":
-		require "".$_SESSION['TALI_ROOT_DIR']."/Modules/Personnel/Roster/roster-awards.php";
+		require "".$_SESSION['TALI_ROOT_DIR']."/modules/personnel/roster/roster-awards.php";
 	break;
 	case "ranks":
-		require "".$_SESSION['TALI_ROOT_DIR']."/Modules/Personnel/Roster/roster-ranks.php";
+		require "".$_SESSION['TALI_ROOT_DIR']."/modules/personnel/roster/roster-ranks.php";
 	break;
 	case "active":
 		echo "
@@ -78,7 +78,7 @@ switch ($action) {
 					//BUG - WOAH this iamge file is not dynamic!
 					echo "
 					<tr>
-						<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/Personnel/Ranks/tiny/$image\" alt=\"Rank\"></img></td>
+						<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/personnel/ranks/tiny/$image\" alt=\"Rank\"></img></td>
 						<td><a href=\"roster.php?action=profile&personnel_id=".$personnel['personnel_id']."\">" . $personnel['rank'] . " " . $personnel['firstname'] . " " . $personnel['lastname'] . "</a></td>
 						<td>" . $personnel['role'] . "</td>
 						<td>" . $personnel['nickname'] . "</td>
@@ -211,7 +211,7 @@ switch ($action) {
 				$image = $personnel['image'];
 				echo "
 					<tr>
-						<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/Personnel/Ranks/tiny/$image\" alt=\"Rank\"></img></td>
+						<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/personnel/ranks/tiny/$image\" alt=\"Rank\"></img></td>
 						<td><a href=\"roster.php?action=profile&personnel_id=".$personnel['personnel_id']."\">" . $personnel['rank'] . " " . $personnel['firstname'] . " " . $personnel['lastname'] . "</a></td>
 						<td>" . $personnel['role'] . "</td>
 						<td>" . $personnel['nickname'] . "</td>

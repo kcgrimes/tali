@@ -29,7 +29,7 @@ else
 {
 	switch ($_GET['sub']) {
 		case "manage": 
-			require 'MailingList/mailinglist-manage.php';
+			require 'mailinglist/mailinglist-manage.php';
 			break;
 	}
 }

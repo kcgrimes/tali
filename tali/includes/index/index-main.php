@@ -43,7 +43,7 @@ echo "
 		<div class=\"row\">
 			<div class=\"col\">
 				<a href=\"login.php\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-LogOut.png\" alt=\"Log Out Icon\" name=\"Log Out Icon\">
+					<img src=\"images/display/icons/Index-LogOut.png\" alt=\"Log Out Icon\" name=\"Log Out Icon\">
 					<p>Log Out</p>
 				</a>
 			</div>
@@ -51,8 +51,8 @@ echo "
 if (in_array('TALI_Admin_Accounts',$module_array,true)) {
 	echo "
 			<div class=\"col\">
-				<a href=\"Modules/adminaccounts.php\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-ManageAdminAccounts.png\" alt=\"Manage Admin Accounts Icon\" name=\"Manage Admin Accounts Icon\">
+				<a href=\"modules/adminaccounts.php\" class=\"thumbnail\">
+					<img src=\"images/display/icons/Index-ManageAdminAccounts.png\" alt=\"Manage Admin Accounts Icon\" name=\"Manage Admin Accounts Icon\">
 					<p>Manage Admin Accounts</p>
 				</a>
 			</div>
@@ -62,8 +62,8 @@ if (in_array('TALI_Admin_Accounts',$module_array,true)) {
 if (in_array('TALI_Admin_Permissions',$module_array,true)) {
 	echo "
 			<div class=\"col\">
-				<a href=\"Modules/adminpermissions.php\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-ManageAdminPermissions.png\" alt=\"Manage Admin Permissions Icon\" name=\"Manage Admin Permissions Icon\">
+				<a href=\"modules/adminpermissions.php\" class=\"thumbnail\">
+					<img src=\"images/display/icons/Index-ManageAdminPermissions.png\" alt=\"Manage Admin Permissions Icon\" name=\"Manage Admin Permissions Icon\">
 					<p>Manage Admin Permissions</p>
 				</a>
 			</div>
@@ -73,13 +73,13 @@ if (in_array('TALI_Admin_Permissions',$module_array,true)) {
 echo "
 			<div class=\"col\">
 				<a target=\"_blank\" href=\"".$_SESSION['TALI_Index_cPanel_Link']."\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-AccesscPanel.png\" alt=\"Access cPanel Icon\" name=\"Access cPanel Icon\">
+					<img src=\"images/display/icons/Index-AccesscPanel.png\" alt=\"Access cPanel Icon\" name=\"Access cPanel Icon\">
 					<p>Access cPanel</p>
 				</a>
 			</div>
 			<div class=\"col\">
 				<a href=\"".$_SESSION['TALI_Domain_URL']."\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-Home.png\" alt=\"Return to Homepage Icon\" name=\"Return to Homepage Icon\">
+					<img src=\"images/display/icons/Index-Home.png\" alt=\"Return to Homepage Icon\" name=\"Return to Homepage Icon\">
 					<p>Return To Homepage</p>
 				</a>
 			</div>
@@ -90,8 +90,8 @@ echo "
 if (in_array('TALI_Pages',$module_array,true)) {
 	echo "
 			<div class=\"col\">
-				<a href=\"Modules/pages.php\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-Pages.png\" alt=\"Pages & Content Icon\" name=\"Pages & Content Icon\">
+				<a href=\"modules/pages.php\" class=\"thumbnail\">
+					<img src=\"images/display/icons/Index-Pages.png\" alt=\"Pages & Content Icon\" name=\"Pages & Content Icon\">
 					<p>Manage Pages & Content</p>
 				</a>
 			</div>
@@ -100,8 +100,8 @@ if (in_array('TALI_Pages',$module_array,true)) {
 if (in_array('TALI_News',$module_array,true)) {
 	echo "
 			<div class=\"col\">
-				<a href=\"Modules/news.php\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-News.png\" alt=\"News Icon\" name=\"News Icon\">
+				<a href=\"modules/news.php\" class=\"thumbnail\">
+					<img src=\"images/display/icons/Index-News.png\" alt=\"News Icon\" name=\"News Icon\">
 					<p>Manage News Entries</p>
 				</a>
 			</div>
@@ -110,8 +110,8 @@ if (in_array('TALI_News',$module_array,true)) {
 if (in_array('TALI_Home_Slider',$module_array,true)) {
 	echo "
 			<div class=\"col\">
-				<a href=\"Modules/homeslider.php\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-HomeSlider.png\" alt=\"Home Slider Icon\" name=\"Home Slider Icon\">
+				<a href=\"modules/homeslider.php\" class=\"thumbnail\">
+					<img src=\"images/display/icons/Index-HomeSlider.png\" alt=\"Home Slider Icon\" name=\"Home Slider Icon\">
 					<p>Manage Home Slider</p>
 				</a>
 			</div>
@@ -120,8 +120,8 @@ if (in_array('TALI_Home_Slider',$module_array,true)) {
 if (in_array('TALI_Master_History',$module_array,true)) {
 	echo "
 			<div class=\"col\">
-				<a href=\"Modules/masterhistory.php\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-MasterHistory.png\" alt=\"Master History Report Icon\" name=\"Master History Report Icon\">
+				<a href=\"modules/masterhistory.php\" class=\"thumbnail\">
+					<img src=\"images/display/icons/Index-MasterHistory.png\" alt=\"Master History Report Icon\" name=\"Master History Report Icon\">
 					<p>Master History Report</p>
 				</a>
 			</div>
@@ -130,8 +130,8 @@ if (in_array('TALI_Master_History',$module_array,true)) {
 if (in_array('TALI_Versions',$module_array,true)) {
 	echo "
 			<div class=\"col\">
-				<a href=\"Modules/versions.php\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-Versions.png\" alt=\"Software Versions Icon\" name=\"Software Versions Icon\">
+				<a href=\"modules/versions.php\" class=\"thumbnail\">
+					<img src=\"images/display/icons/Index-Versions.png\" alt=\"Software Versions Icon\" name=\"Software Versions Icon\">
 					<p>Software Versions</p>
 				</a>
 			</div>
@@ -147,8 +147,8 @@ echo "
 if (in_array('TALI_Personnel',$module_array,true)) {
 	echo "
 			<div class=\"col\">
-				<a href=\"Modules/personnel.php\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-Personnel.png\" alt=\"Personnel Icon\" name=\"Personnel Icon\">
+				<a href=\"modules/personnel.php\" class=\"thumbnail\">
+					<img src=\"images/display/icons/Index-Personnel.png\" alt=\"Personnel Icon\" name=\"Personnel Icon\">
 					<p>Manage Personnel</p>
 				</a>
 			</div>
@@ -159,8 +159,8 @@ if (in_array('TALI_Personnel',$module_array,true)) {
 if (in_array('TALI_Personnel',$module_array,true)) {
 	echo "
 			<div class=\"col\">
-				<a href=\"Modules/personnel.php?sub=drillreports\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Personnel-DrillReports.png\" alt=\"Drill Reports Icon\" name=\"Drill Reports Icon\">
+				<a href=\"modules/personnel.php?sub=drillreports\" class=\"thumbnail\">
+					<img src=\"images/display/icons/Personnel-DrillReports.png\" alt=\"Drill Reports Icon\" name=\"Drill Reports Icon\">
 					<p>Manage Drill Reports (Shortcut)</p>
 				</a>
 			</div>
@@ -170,8 +170,8 @@ if (in_array('TALI_Personnel',$module_array,true)) {
 if (in_array('TALI_Mailing_List',$module_array,true)) {
 	echo "
 			<div class=\"col\">
-				<a href=\"Modules/mailinglist.php?\" class=\"thumbnail\">
-					<img src=\"Images/Display/Icons/Index-MailingList.png\" alt=\"Mailing List Icon\" name=\"Mailing List Icon\">
+				<a href=\"modules/mailinglist.php?\" class=\"thumbnail\">
+					<img src=\"images/display/icons/Index-MailingList.png\" alt=\"Mailing List Icon\" name=\"Mailing List Icon\">
 					<p>Manage Mailing List</p>
 				</a>
 			</div>

@@ -32,12 +32,12 @@
 	width: 33.333333333%;
 	height: 33px;
 	float: left;
-	background-image: url(../HomeSlider/Buttons/NewsFlip.png);
+	background-image: url(../homeslider/buttons/NewsFlip.png);
 	background-repeat: repeat-x;
 }
 
 .homeslider_hoverbox_1:hover, .homeslider_hoverbox_2:hover, .homeslider_hoverbox_3:hover {
-	background-image: url(../HomeSlider/Buttons/NewsFlipHover.png);
+	background-image: url(../homeslider/buttons/NewsFlipHover.png);
 }
 
 /* Homeslider button text is responsive */

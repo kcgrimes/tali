@@ -3,14 +3,14 @@
 //that execute tali_init.php in their <head>.
 
 echo "
-	<link href=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/Includes/talistyles_front.css\" rel=\"stylesheet\" type=\"text/css\" />
+	<link href=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/includes/talistyles_front.css\" rel=\"stylesheet\" type=\"text/css\" />
 	<script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
 "; 
 
 
 //markitup functions
 //function BBCode2Html($text) - Parses BB Code to HTML via "markitup"
-require "".$_SESSION['TALI_ROOT_DIR']."/Modules/markitup/markitup.bbcode-parser.php";
+require "".$_SESSION['TALI_ROOT_DIR']."/modules/markitup/markitup.bbcode-parser.php";
 
 //Function to execute "markitup" editing
 function markItUp_editing () {
@@ -126,7 +126,7 @@ Function - TALI_FTP_Connect
 Used to connect to the FTP server for file manipulation.
 Select 1 - String - Name of input used to select file (not the actual file name itself)
 Select 2 - String - Post-root upload directory with leading and 
-	trailing slash "/" (e.g. '/TALISupplement/HomeSlider/')
+	trailing slash "/" (e.g. '/talisupplement/homeslider/')
 */
 function TALI_FTP_Connect() {
 	//Baseline connection = false
@@ -184,7 +184,7 @@ function TALI_FTP_Connect() {
 Function - TALI_FTP_Upload
 Used to connect to the FTP server and upload a single file.
 Select 1 - String - Name of input used to select file (not the actual file name itself)
-Select 2 - String - Post-root upload directory with leading and trailing slash "/" (e.g. '/TALISupplement/HomeSlider/')
+Select 2 - String - Post-root upload directory with leading and trailing slash "/" (e.g. '/talisupplement/homeslider/')
 */
 function TALI_FTP_Upload($file_input, $upload_directory) {
 	//Attempt to connect to FTP
@@ -235,7 +235,7 @@ Function - TALI_FTP_Delete
 Used to connect to the FTP server and delete a single file.
 //Bug - what is select 1 technically?
 Select 1 - String - File name, including extension, to be deleted from the Select 2 directory
-Select 2 - String - Post-root directory with leading and trailing slash "/" from which file is to be deleted (e.g. '/TALISupplement/HomeSlider/')
+Select 2 - String - Post-root directory with leading and trailing slash "/" from which file is to be deleted (e.g. '/talisupplement/homeslider/')
 */
 function TALI_FTP_Delete($source_file, $delete_directory) {
 	//Attempt to connect to FTP

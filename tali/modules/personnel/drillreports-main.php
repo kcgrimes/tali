@@ -29,13 +29,13 @@ if (!isset($_GET['location'])) {
 			<div class=\"row\">
 				<div class=\"col\">
 					<a href=\"personnel.php?sub=drillreports&location=create\" class=\"thumbnail\">
-						<img src=\"../Images/Display/Icons/DrillReports-New.png\" alt=\"Create New Drill Report Icon\" name=\"Create New Drill Report Icon\">
+						<img src=\"../images/display/icons/DrillReports-New.png\" alt=\"Create New Drill Report Icon\" name=\"Create New Drill Report Icon\">
 						<p>Create New Drill Report</p>
 					</a>
 				</div>
 				<div class=\"col\">
 					<a href=\"personnel.php?sub=drillreports&location=view\" class=\"thumbnail\">
-						<img src=\"../Images/Display/Icons/DrillReports-View.png\" alt=\"View/Edit Past Drill Reports Icon\" name=\"View Past Drill Reports Icon\">
+						<img src=\"../images/display/icons/DrillReports-View.png\" alt=\"View/Edit Past Drill Reports Icon\" name=\"View Past Drill Reports Icon\">
 						<p>View/Edit Past Drill Reports</p>
 					</a>
 				</div>
@@ -201,7 +201,7 @@ else
 							for (i = 0; i < arrayDrillReports_json.length; i++) {
 								if (arrayDrillReports_json[i].designation_id == chosenDesignation_id) {
 									drillreportsTable_jq.append(
-										'<tr><td style="text-align:center;">' + arrayDrillReports_json[i].name + '</td><td style="text-align:center;">' + arrayDrillReports_json[i].date_drill + '</td><td style="text-align:center;"><a href="personnel.php?sub=drillreports&location=create&id=' + arrayDrillReports_json[i].drillreport_id + '"><img src="../Images/Display/Icons/edit.png" alt="Edit Icon" name="Edit Icon"></a></td></tr>'
+										'<tr><td style="text-align:center;">' + arrayDrillReports_json[i].name + '</td><td style="text-align:center;">' + arrayDrillReports_json[i].date_drill + '</td><td style="text-align:center;"><a href="personnel.php?sub=drillreports&location=create&id=' + arrayDrillReports_json[i].drillreport_id + '"><img src="../images/display/icons/edit.png" alt="Edit Icon" name="Edit Icon"></a></td></tr>'
 									);
 								};
 							};

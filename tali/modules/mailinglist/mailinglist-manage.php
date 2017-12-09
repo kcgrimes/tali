@@ -63,12 +63,12 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 				<td style=\"text-align:left;\">$name</td>
 				<td style=\"text-align:center;\">
 					<a href=\"mailinglist.php?sub=manage&action=Edit&id=$mailinglist_id\">
-						<img src=\"../Images/Display/Icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+						<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 					</a>
 				</td>
 				<td style=\"text-align:center;\">
 					<a href=\"mailinglist.php?sub=manage&action=Delete&id=$mailinglist_id\" onclick=\"return confirm('Are you sure you want to delete this custom mailing list?');\">
-						<img src=\"../Images/Display/Icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+						<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
 					</a>
 				</td>
 			</tr>

@@ -8,14 +8,14 @@ echo '
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>'.$_SESSION['TALI_Organization_Name'].' - Admin</title>
-	<link href="'.TALI_ROOT_URL.'/Includes/Global/talistyles.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" href="'.TALI_ROOT_URL.'/Images/Display/favicon.ico"/>
-	<link rel="icon" href="'.TALI_ROOT_URL.'/Images/Display/favicon.ico"/>
+	<link href="'.TALI_ROOT_URL.'/includes/global/talistyles.css" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" href="'.TALI_ROOT_URL.'/images/display/favicon.ico"/>
+	<link rel="icon" href="'.TALI_ROOT_URL.'/images/display/favicon.ico"/>
 ';
 
 function TALI_bodyContent ($bodyContentDir) {
 	echo "	<body>";
-				require 'Includes/Global/header.php';
+				require 'includes/global/header.php';
 		
 	echo "		<div class=\"container\">
 		
@@ -24,13 +24,13 @@ function TALI_bodyContent ($bodyContentDir) {
 					
 	echo "		</div>";
 						
-				require 'Includes/Global/footer.php';
+				require 'includes/global/footer.php';
 	echo "	</body>";
 }
 
 function TALI_bodyContent_Module ($bodyContentDir) {
 	echo "	<body>";
-				require '../Includes/Global/header.php';
+				require '../includes/global/header.php';
 		
 	echo "		<div class=\"container\">
 		
@@ -39,7 +39,7 @@ function TALI_bodyContent_Module ($bodyContentDir) {
 					
 	echo "		</div>";
 
-				require '../Includes/Global/footer.php';
+				require '../includes/global/footer.php';
 	echo "	</body>";
 }
 

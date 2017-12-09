@@ -20,7 +20,7 @@ $rank = $rank_db_field['name'];
 $firstname = $db_field['firstname'];
 $lastname = $db_field['lastname'];
 
-$uniform_dir = "".$_SESSION['TALISupplement_ROOT_DIR']."/Personnel/Uniforms/active/".$firstname[0]."".$lastname.".png";
+$uniform_dir = "".$_SESSION['TALISupplement_ROOT_DIR']."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png";
 $uniformExists = 0;
 
 if (!file_exists($uniform_dir)) {
@@ -28,21 +28,21 @@ if (!file_exists($uniform_dir)) {
 	$arrayUniDirs = ["1_DoD-CoD", "2_CoD2", "3_CoD2-CoD4", "4_CoD4-BF3", "5_PS2"];
 	$arrayUniDirs = array_reverse($arrayUniDirs);
 	foreach ($arrayUniDirs as $path) {
-		$uniform_dir = "".$_SESSION['TALISupplement_ROOT_DIR']."/Personnel/Uniforms/past/".$path."/".$firstname[0]."".$lastname.".png";
+		$uniform_dir = "".$_SESSION['TALISupplement_ROOT_DIR']."/personnel/uniforms/past/".$path."/".$firstname[0]."".$lastname.".png";
 		if (file_exists($uniform_dir)) {
 			$uniformExists = 1;
-			$uniform_dir = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/Personnel/Uniforms/past/".$path."/".$firstname[0]."".$lastname.".png";
+			$uniform_dir = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/personnel/uniforms/past/".$path."/".$firstname[0]."".$lastname.".png";
 			break;
 		}
 	}
 	if ($uniformExists == 0) {
 		//bug - make this dynamic
-		$uniform_dir = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/Personnel/Uniforms/notfound.png";
+		$uniform_dir = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/personnel/uniforms/notfound.png";
 	}
 }
 else
 {
-	$uniform_dir = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/Personnel/Uniforms/active/".$firstname[0]."".$lastname.".png";
+	$uniform_dir = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png";
 }
 
 $nickname = $db_field['nickname'];
@@ -291,7 +291,7 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 			<tr>
 				<th>".date("m/d/Y", strtotime($db_field['date_awarded']))."</th>
 				<td align=\"left\" style=\"padding:5px;\">".$award_db_field['name']."</td>
-				<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/Personnel/Awards/".$award_db_field['image']."\" alt=\"Award\"></img></td>
+				<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/personnel/awards/".$award_db_field['image']."\" alt=\"Award\"></img></td>
 				<td align=\"left\" style=\"padding:5px;\">".$db_field['record']."</td>
 			</tr>
 	";

@@ -21,7 +21,7 @@
 	echo '
 		<div class="header">
 			<a href="'.$_SESSION["TALI_Domain_URL"].''.$_SESSION["TALI_ROOT_URL"].'/index.php">
-				<img src="'.$_SESSION["TALI_Domain_URL"].''.$_SESSION["TALI_ROOT_URL"].'/Images/Display/TALIBanner.png" alt="TALI Banner" name="Team Administration/Logistics Interface" style="display:block;max-width:100%;max-height:100px;margin-left:auto;margin-right:auto;"/>
+				<img src="'.$_SESSION["TALI_Domain_URL"].''.$_SESSION["TALI_ROOT_URL"].'/images/display/TALIBanner.png" alt="TALI Banner" name="Team Administration/Logistics Interface" style="display:block;max-width:100%;max-height:100px;margin-left:auto;margin-right:auto;"/>
 			</a>
 	';
 	if ($text != "") {
