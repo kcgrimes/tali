@@ -5,7 +5,7 @@ echo "
 			<div class=\"tali-page-frame\">
 				<h1>Privacy Statement</h1>
 				<p>Travis County Search & Rescue is committed to protecting your privacy and developing technology that gives you the most powerful and safe online experience. This Statement of Privacy applies to the Travis County Search & Rescue Web site and governs data collection and usage. By using the Travis County Search & Rescue website, you consent to the data practices described in this statement.</p>
-				<h4>Collection of your Personal Information</h4>
+				<h1>Collection of your Personal Information</h4>
 
 				<p>Travis County Search & Rescue collects personally identifiable information, such as your e-mail address, name, home or work address or telephone number. Travis County Search & Rescue also collects anonymous demographic information, which is not unique to you, such as your ZIP code, age, gender, preferences, interests and favorites.</p>
 
@@ -15,7 +15,7 @@ echo "
 
 				<p>Travis County Search & Rescue encourages you to review the privacy statements of Web sites you choose to link to from Travis County Search & Rescue so that you can understand how those Web sites collect, use and share your information. Travis County Search & Rescue is not responsible for the privacy statements or other content on Web sites outside of the Travis County Search & Rescue and Travis County Search & Rescue family of Web sites.</p>
 
-				<h4>Use of your Personal Information</h4>
+				<h1>Use of your Personal Information</h4>
 
 				<p>Travis County Search & Rescue collects and uses your personal information to operate the Travis County Search & Rescue Web site and deliver the services you have requested. Travis County Search & Rescue also uses your personally identifiable information to inform you of other products or services available from Travis County Search & Rescue and its affiliates. Travis County Search & Rescue may also contact you via surveys to conduct research about your opinion of current services or of potential new services that may be offered.</p>
 
@@ -27,7 +27,7 @@ echo "
 
 				<p>Travis County Search & Rescue Web sites will disclose your personal information, without notice, only if required to do so by law or in the good faith belief that such action is necessary to: (a) conform to the edicts of the law or comply with legal process served on Travis County Search & Rescue or the site; (b) protect and defend the rights or property of Travis County Search & Rescue; and, (c) act under exigent circumstances to protect the personal safety of users of Travis County Search & Rescue, or the public.</p>
 
-				<h4>Use of Cookies</h4>
+				<h1>Use of Cookies</h4>
 
 				<p>The Travis County Search & Rescue Web site use \"cookies\" to help you personalize your online experience. A cookie is a text file that is placed on your hard disk by a Web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you, and can only be read by a web server in the domain that issued the cookie to you.</p>
 
@@ -35,15 +35,15 @@ echo "
 
 				<p>You have the ability to accept or decline cookies. Most Web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. If you choose to decline cookies, you may not be able to fully experience the interactive features of the Travis County Search & Rescue services or Web sites you visit.</p>
 
-				<h4>Security of your Personal Information</h4>
+				<h1>Security of your Personal Information</h4>
 
 				<p>Travis County Search & Rescue secures your personal information from unauthorized access, use or disclosure. Travis County Search & Rescue secures the personally identifiable information you provide on computer servers in a controlled, secure environment, protected from unauthorized access, use or disclosure. When personal information (such as a credit card number) is transmitted to other Web sites, it is protected through the use of encryption, such as the Secure Socket Layer (SSL) protocol.</p>
 
-				<h4>Changes to this Statement</h4>
+				<h1>Changes to this Statement</h4>
 
 				<p>Travis County Search & Rescue will occasionally update this Statement of Privacy to reflect company and customer feedback. Travis County Search & Rescue encourages you to periodically review this Statement to be informed of how Travis County Search & Rescue is protecting your information.</p>
 
-				<h4>Contact Information</h4>
+				<h1>Contact Information</h4>
 
 				<p>Travis County Search & Rescue welcomes your comments regarding this Statement of Privacy. If you believe that Travis County Search & Rescue has not adhered to this Statement, please contact Travis County Search & Rescue at <a href=\"mailto:kc.grimes@tcsar.org\">kc.grimes@tcsar.org</a>. We will use commercially reasonable efforts to promptly determine and remedy the problem.</p> 
 			</div>

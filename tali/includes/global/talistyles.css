@@ -471,6 +471,19 @@ p, h1, h2, h3, h4, h5, h6, ul, ol, dl {
 	padding-right: 15px;
 }
 
+/* bug - using this or no?*/
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+ul, ol {
+	padding-top: 0;
+	padding-left: 40px;
+	padding-bottom: 15px;
+	padding-right: 15px;
+}
+
+h1 {
+	font-size: 112.5%;
+}
+
 /* Hyperlink Styling */
 /* Styling for links must remain in this order, including group of selectors creating "hover" effect */
 a:link { /* New Link */
@@ -487,7 +500,6 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 
 /* */
 
-/* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
 .tali-container {
 	padding-left: 15px;
 	padding-right: 15px;
@@ -576,8 +588,6 @@ header {
 	margin-bottom: 10px;
 }
 
-/* ***/
-
 /* ClearFix Hack for proper clearing of container that contains floated elements */ 
 .tali-responsive-row::before, /* In case page has more than one container */
 .tali-responsive-row::after {
@@ -641,37 +651,11 @@ a.tali-responsive-icon {
 	}
 }
 
-/****/
-
-/* ~~ This grouped selector gives the lists in the .content area space ~~ */
-ul, ol {
-	padding-top: 0;
-	padding-left: 40px;
-	padding-bottom: 15px;
-	padding-right: 15px;
-}
-
-h1 {
-	color: #000000;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: large;
-}
-
-h5 {
-	font-weight: normal;
-	font-size: small;	
-}
-
-.tali-container .main .contentslide.tali-page-frame div h1 {
-	font-style: italic;
-	text-align: center;
-}
-
 /* FOOTER */
 footer {
 	position: relative;
 	text-align: center;
-	padding: 0px;
+	padding: 10px;
 	clear: both;
 	background-color: #eee;
 }
@@ -681,12 +665,12 @@ footer {
 /* TALI Modules*/ 
 
 /* bug - need useful title*/
-.logtex1 {
+tali-login-username {
 	width: 200px; 
 }
 
 /* bug - need useful title*/
-.logtex2 {
+tali-login-password {
 	width: 200px;
 	margin-left: 6px;
 }

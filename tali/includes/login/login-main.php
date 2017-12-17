@@ -165,9 +165,9 @@ echo "
 				<h1>Team Administration/Logistics Interface (TALI)</h1>
 				<form name=\"form1\" method=\"POST\" action=\"login.php\">
 
-					&nbsp;&nbsp;&nbsp;Username: <input type=\"text\" name=\"username\" class=\"logtex1\" value=\"$uname\" maxlength=\"40\">
+					&nbsp;&nbsp;&nbsp;Username: <input type=\"text\" name=\"username\" id=\"tali-login-username\" value=\"$uname\" maxlength=\"40\">
 					<br/>
-					&nbsp;&nbsp;&nbsp;Password: <input type=\"password\" name=\"password\" class=\"logtex2\" value=\"$pword\" maxlength=\"40\">
+					&nbsp;&nbsp;&nbsp;Password: <input type=\"password\" name=\"password\" id=\"tali-login-password\" value=\"$pword\" maxlength=\"40\">
 					
 					<p align = center>
 					<input type=\"Submit\" Name=\"btnSubmit\" value=\"Login\">
