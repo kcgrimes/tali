@@ -665,6 +665,12 @@ footer {
 
 /* TALI Modules*/ 
 
+.tali-submit_button {
+	margin-top: 10px;
+	margin-left: 4%;
+	margin-bottom: 10px;
+}
+
 /* TALI Login */
 
 #tali-login-username, #tali-login-password {
@@ -684,43 +690,27 @@ footer {
 /* */
 
 /*TALI Module - Admin Accounts*/
-.adminaccountstb {
+.tali-adminaccounts-table {
+	width: 94%;
 	border: 1px solid black;
 	border-collapse: collapse;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.adminaccountstb tr, .adminaccountstb th, .adminaccountstb td {
+.tali-adminaccounts-table tr, .tali-adminaccounts-table th, .tali-adminaccounts-table td {
 	border: 1px solid black;
 }
 
-/* bug - make this unique or global*/
-.bu {
-	margin-top: 10px;
-	margin-left: 4%;
-	margin-bottom: 10px;
-}
-
-/* bug - make this unique or global*/
-.tb {
-	width: 40px;
-}
-
-.adminaccountstbbut {
+.tali-adminaccounts-table-input {
+	width: 94%;
 	margin-left: auto;
 	margin-right: auto;
 	vertical-align: center;
 }
 
-/* bug - make this unique or global*/
-.fo {
-	width: 99%;	
-}
-
-/* bug - make this unique or global*/
-.bo {
-	width: 90%;
+.tali-adminaccounts-inline_input {
+	width: 100%;
 }
 
 /* */
@@ -905,6 +895,11 @@ editpagedropdown {
 /* */
 
 /*TALI Module - Personnel - Configuration*/
+
+/* bug - make this unique or global*/
+.bo {
+	width: 90%; /* see .tali-adminacounts-inline_input, which is width:100%*/
+}
 
 .ranksconfigtb {
 	width: 50%;

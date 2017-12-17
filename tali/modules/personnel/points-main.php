@@ -105,7 +105,7 @@ echo "
 				</table>
 			
 				<form method=\"POST\" id=\"update_points\" action=\"personnel.php?sub=points\">
-					<input type=\"submit\" name=\"update_bu\" class=\"bu\" value=\"Update Points Record\"/>
+					<input type=\"submit\" name=\"update_bu\" class=\"tali-submit_button\" value=\"Update Points Record\"/>
 				</form>
 			</div>
 		</div>

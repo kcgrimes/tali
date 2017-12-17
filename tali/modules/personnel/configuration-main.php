@@ -704,7 +704,7 @@ else
 
 echo "
 				<form method=\"POST\" enctype=\"multipart/form-data\" id=\"tali_modules_personnel_ranks_add_form\" action=$rank_form_action>
-					<input type=\"submit\" name=\"ranks_bu\" class=\"bu\" value='$rank_form_value'/>
+					<input type=\"submit\" name=\"ranks_bu\" class=\"tali-submit_button\" value='$rank_form_value'/>
 				</form>
 			</div>
 ";
@@ -828,7 +828,7 @@ else
 
 echo "
 				<form method=\"POST\" id=\"tali_modules_personnel_status_add_form\" action=$status_form_action>
-					<input type=\"submit\" name=\"statuses_bu\" class=\"bu\" value='$status_form_value'/>
+					<input type=\"submit\" name=\"statuses_bu\" class=\"tali-submit_button\" value='$status_form_value'/>
 				</form>
 			</div>
 ";
@@ -952,7 +952,7 @@ else
 
 echo "
 				<form method=\"POST\" id=\"tali_modules_personnel_role_add_form\" action=$role_form_action>
-					<input type=\"submit\" name=\"roles_bu\" class=\"bu\" value='$role_form_value'/>
+					<input type=\"submit\" name=\"roles_bu\" class=\"tali-submit_button\" value='$role_form_value'/>
 				</form>
 			</div>
 ";
@@ -1221,14 +1221,14 @@ else
 				
 	echo "
 				<form method=\"POST\" id='tali_modules_personnel_designation_add_form' action=$desig_form_action>
-					<input type=\"submit\" name='desig_bu' class=\"bu\" value='$desig_form_value'/>
+					<input type=\"submit\" name='desig_bu' class=\"tali-submit_button\" value='$desig_form_value'/>
 				</form>
 	";
 	
 	if ((isset($_GET['id'])) && (isset($_GET['button'])) && ($_GET['button'] == "desig_edit")) {
 		echo "
 				<form method=\"POST\" id='tali_modules_personnel_designation_add_form' action=$desig_form_action>
-					<input type=\"submit\" name='desig_button_deactivate' class=\"bu\" value='Deactivate Designation'/>
+					<input type=\"submit\" name='desig_button_deactivate' class=\"tali-submit_button\" value='Deactivate Designation'/>
 				</form>
 		";
 	}
@@ -1253,7 +1253,7 @@ else
 	echo "
 				</select>
 				<form method=\"POST\" id='tali_modules_personnel_designation_reactivate_form' action=$desig_form_action>
-					<input type=\"submit\" name='desig_button_reactivate' class=\"bu\" value='Reactivate Designation'/>
+					<input type=\"submit\" name='desig_button_reactivate' class=\"tali-submit_button\" value='Reactivate Designation'/>
 				</form>
 	";
 echo "

@@ -174,7 +174,7 @@ echo "
 					<br/>
 					<font color=\"red\">$displayMessage</font>
 					<br/>
-					<input type=\"Submit\" class=\"bu\" name=\"tali_news_newentry\" value=\"$headingTitle\">
+					<input type=\"Submit\" class=\"tali-submit_button\" name=\"tali_news_newentry\" value=\"$headingTitle\">
 					$updateSpecButton
 				</form>
 			</div>
@@ -240,7 +240,7 @@ else
 					<br/>
 					<textarea readonly class=\"newsbodyc\" name=\"newsbody\" id=\"newsbodyid\">$body</textarea>
 					<br/>
-					<input type=\"Submit\" class=\"bu\" Name=\"tali_news_editentry\" value=\"Edit Entry\">
+					<input type=\"Submit\" class=\"tali-submit_button\" Name=\"tali_news_editentry\" value=\"Edit Entry\">
 				</form>
 				<br/>
 		";
