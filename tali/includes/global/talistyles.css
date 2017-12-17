@@ -576,15 +576,15 @@ header img {
 /* ***/
 
 /* ClearFix Hack for proper clearing of container that contains floated elements */ 
-.tali-index-row::before, /* In case page has more than one container */
-.tali-index-row::after {
+.tali-responsive-row::before, /* In case page has more than one container */
+.tali-responsive-row::after {
   content: " ";
   display: table;
   clear: both;
 }
 
-.tali-index-icon > img,
-.tali-index-icon a > img {
+.tali-responsive-icon > img,
+.tali-responsive-icon a > img {
 	display: block;
 	max-width: 100%;
 	margin-top: 10px;
@@ -593,22 +593,22 @@ header img {
 	height: auto;
 }
 
-.tali-index-icon:hover,
-.tali-index-icon:focus,
-.tali-index-icon.active {
+.tali-responsive-icon:hover,
+.tali-responsive-icon:focus,
+.tali-responsive-icon.active {
 	border-color: #001967;
 }
 
-.tali-index-icon p {
+.tali-responsive-icon p {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
 
-a.tali-index-icon {
+a.tali-responsive-icon {
 	text-decoration: none;
 }
 
-.tali-index-icon {
+.tali-responsive-icon {
 	display: block;
 	min-height: 120px;
 	margin-left: 1%;
@@ -625,14 +625,14 @@ a.tali-index-icon {
 }
 
 @media (min-width: 500px) {
-	.tali-index-icon {
+	.tali-responsive-icon {
 		float: left;
 		width: 48%;
 	}
 }
 
 @media (min-width: 768px) {
-	.tali-index-icon {
+	.tali-responsive-icon {
 		float: left;
 		width: 18%;
 	}

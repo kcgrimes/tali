@@ -28,19 +28,15 @@ if (!isset($_GET['location'])) {
 				</div>
 
 				<div class=\"tali-page-frame\">
-					<div class=\"row\">
-						<div class=\"col\">
-							<a href=\"personnel.php?sub=drillreports&location=create\" class=\"thumbnail\">
-								<img src=\"../images/display/icons/DrillReports-New.png\" alt=\"Create New Drill Report Icon\" name=\"Create New Drill Report Icon\">
-								<p>Create New Drill Report</p>
-							</a>
-						</div>
-						<div class=\"col\">
-							<a href=\"personnel.php?sub=drillreports&location=view\" class=\"thumbnail\">
-								<img src=\"../images/display/icons/DrillReports-View.png\" alt=\"View/Edit Past Drill Reports Icon\" name=\"View Past Drill Reports Icon\">
-								<p>View/Edit Past Drill Reports</p>
-							</a>
-						</div>
+					<div class=\"tali-responsive-row\">
+						<a href=\"personnel.php?sub=drillreports&location=create\" class=\"tali-responsive-icon\">
+							<img src=\"../images/display/icons/DrillReports-New.png\" alt=\"Create New Drill Report Icon\" name=\"Create New Drill Report Icon\">
+							<p>Create New Drill Report</p>
+						</a>
+						<a href=\"personnel.php?sub=drillreports&location=view\" class=\"tali-responsive-icon\">
+							<img src=\"../images/display/icons/DrillReports-View.png\" alt=\"View/Edit Past Drill Reports Icon\" name=\"View Past Drill Reports Icon\">
+							<p>View/Edit Past Drill Reports</p>
+						</a>
 					</div>
 				</div>
 			</div>
