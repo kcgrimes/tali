@@ -534,12 +534,15 @@ header {
 	background-color: #eee;
 }
 
-header img {
-	max-height: 100px;
-	background-color: #eee;
-}
-
 /* header > .tali-container */
+
+.tali-header-banner_img {
+	display: block;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
 
 /* Space for back, account, logout, etc. text */
 .tali-header-text_table {
