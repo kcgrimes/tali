@@ -584,6 +584,7 @@ header {
 	color: #000;
 	border-radius: 15px;
 	position: relative;
+	padding-top: 15px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -664,16 +665,23 @@ footer {
 
 /* TALI Modules*/ 
 
-/* bug - need useful title*/
-tali-login-username {
-	width: 200px; 
+/* TALI Login */
+
+#tali-login-username, #tali-login-password {
+	width: 100%; 
 }
 
-/* bug - need useful title*/
-tali-login-password {
-	width: 200px;
-	margin-left: 6px;
+@media (min-width: 480px) {
+	#tali-login-username, #tali-login-password {
+		width: 200px;
+	}
+	
+	#tali-login-password {
+		margin-left: 6px; /* to line up with username input */
+	}
 }
+
+/* */
 
 /*TALI Module - Admin Accounts*/
 .adminaccountstb {
