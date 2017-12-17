@@ -11,9 +11,13 @@ if (is_bool($db_handle)) {
 TALI_sessionCheck($module, $db_handle);
 
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Manage Personnel</strong></h1>
-		<p>TBD</p>
-	</div>
+	<main>
+		<div class=\"tali-container\">
+			<div class=\"tali-page-frame\">
+				<h1>Manage Personnel</h1>
+				<p>TBD</p>
+			</div>
+		</div>
+	</main>
 ";
 ?>

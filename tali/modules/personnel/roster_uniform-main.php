@@ -77,17 +77,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $personnel_id = $_GET['id'];
 
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Manage Personnel Uniforms</strong></h1>
-		<p>This page allows you to manage uniforms for a specific individual.</p>
+	<main>
+		<div class=\"tali-container\">
+			<div class=\"tali-page-frame\">
+				<h1>Manage Personnel Uniforms</h1>
+				<p>This page allows you to manage uniforms for a specific individual.</p>
 ";
 if ($errorMessage != "") {
 	echo "
-		<p><font color=\"red\">$errorMessage</font></p>
+				<p><font color=\"red\">$errorMessage</font></p>
 	";
 }
 echo "
-	</div>
+			</div>
 ";
 
 $SQL = "SELECT * FROM tali_personnel_roster JOIN tali_personnel_ranks ON tali_personnel_roster.rank_id=tali_personnel_ranks.rank_id WHERE personnel_id=$personnel_id";
@@ -123,29 +125,32 @@ else
 
 //bug - 3rd - make the Logistics_Storage part dynammic?
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Manage Personnel Uniform for ".$db_field['abbreviation']." ".$db_field['firstname']." ".$db_field['lastname']."</strong></h1>
-						
-		<p><img src=\"$uniform_dir\" id=\"tali_personnel_roster_profile_uniform\" alt=\"Uniform\"></p>
-		
-		<a download=\"".$firstname[0]."".$lastname.".psd\" href=\"".$_SESSION['TALI_Domain_URL']."/Logistics_Storage/Uniform PSDs/Active Uniform PSDs/".$firstname[0]."".$lastname.".psd\"><p>Download .PSD</p></a>
-		
-		<a download=\"".$firstname[0]."".$lastname.".png\" href=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png\"><p>Download .PNG</p></a>
+			<div class=\"tali-page-frame\">
+				<h1>Manage Personnel Uniform for ".$db_field['abbreviation']." ".$db_field['firstname']." ".$db_field['lastname']."</h1>
+								
+				<p><img src=\"$uniform_dir\" class=\"tali-personnel-roster-front-profile-uniform\" alt=\"Uniform\"></p>
+				
+				<a download=\"".$firstname[0]."".$lastname.".psd\" href=\"".$_SESSION['TALI_Domain_URL']."/Logistics_Storage/Uniform PSDs/Active Uniform PSDs/".$firstname[0]."".$lastname.".psd\"><p>Download .PSD</p></a>
+				
+				<a download=\"".$firstname[0]."".$lastname.".png\" href=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png\"><p>Download .PNG</p></a>
 
-		<p>
-		Upload .PSD:
-		<br/>
-		<input type=\"file\" name=\"uniform_file_psd\" id=\"uniform_file_psd\" form=\"add_uniform\"/>
-		</p>
-		
-		<p>
-		Upload .PNG:
-		<br/>
-		<input type=\"file\" name=\"uniform_file_png\" id=\"uniform_file_png\" form=\"add_uniform\"/>
-		</p>
-		
-		<form method=\"POST\" enctype=\"multipart/form-data\" id=\"add_uniform\" action=\"personnel.php?sub=roster_uniform&id=$personnel_id\">
-			<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
-		</form>
+				<p>
+				Upload .PSD:
+				<br/>
+				<input type=\"file\" name=\"uniform_file_psd\" id=\"uniform_file_psd\" form=\"add_uniform\"/>
+				</p>
+				
+				<p>
+				Upload .PNG:
+				<br/>
+				<input type=\"file\" name=\"uniform_file_png\" id=\"uniform_file_png\" form=\"add_uniform\"/>
+				</p>
+				
+				<form method=\"POST\" enctype=\"multipart/form-data\" id=\"add_uniform\" action=\"personnel.php?sub=roster_uniform&id=$personnel_id\">
+					<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
+				</form>
+			</div>
+		</div>
+	</main>
 ";
 ?>

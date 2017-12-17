@@ -38,18 +38,20 @@ if (isset($_GET['action'])) {
 }
 
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Manage Custom Mailing Lists</strong></h1>
-		<table id=\"mailinglistTable_manage\" class=\"tali_personnel_roster_table\">
-			<col width=\"70%\">
-			<col width=\"15%\">
-			<col width=\"15%\">
-			
-			<tr>
-				<th>List Name</th>
-				<th>Edit</th>
-				<th>Delete</th>
-			</tr>
+	<main>
+		<div class=\"tali-container\">
+			<div class=\"tali-page-frame\">
+				<h1>Manage Custom Mailing Lists</h1>
+				<table id=\"mailinglistTable_manage\" class=\"tali_personnel_roster_table\">
+					<col width=\"70%\">
+					<col width=\"15%\">
+					<col width=\"15%\">
+					
+					<tr>
+						<th>List Name</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
 ";
 
 $SQL = "SELECT * FROM tali_mailing_list";
@@ -59,28 +61,28 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 	$name = $db_field['name'];
 			
 	echo "
-			<tr>
-				<td style=\"text-align:left;\">$name</td>
-				<td style=\"text-align:center;\">
-					<a href=\"mailinglist.php?sub=manage&action=Edit&id=$mailinglist_id\">
-						<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
-					</a>
-				</td>
-				<td style=\"text-align:center;\">
-					<a href=\"mailinglist.php?sub=manage&action=Delete&id=$mailinglist_id\" onclick=\"return confirm('Are you sure you want to delete this custom mailing list?');\">
-						<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
-					</a>
-				</td>
-			</tr>
+					<tr>
+						<td style=\"text-align:left;\">$name</td>
+						<td style=\"text-align:center;\">
+							<a href=\"mailinglist.php?sub=manage&action=Edit&id=$mailinglist_id\">
+								<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+							</a>
+						</td>
+						<td style=\"text-align:center;\">
+							<a href=\"mailinglist.php?sub=manage&action=Delete&id=$mailinglist_id\" onclick=\"return confirm('Are you sure you want to delete this custom mailing list?');\">
+								<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+							</a>
+						</td>
+					</tr>
 	";
 };
 
 echo "
-		</table>
-	</div>
-	
-	<div class=\"content PageFrame\">
-		<h1><strong>$action Custom Mailing Lists</strong></h1>
+				</table>
+			</div>
+			
+			<div class=\"tali-page-frame\">
+				<h1>$action Custom Mailing Lists</h1>
 ";
 
 //Default action is Add, so variables empty
@@ -99,15 +101,17 @@ if ($action == "Edit") {
 }
 
 echo "
-		<p>Mailing List Name:</p>
-		<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"name\" form=\"form_mailinglist\" value=\"$name\">
-		
-		<p>Mailing List Addresses (separated by comma \",\"):</p>
-		<p><textarea rows=\"6\" cols=\"75\" name=\"list\" form=\"form_mailinglist\">$list</textarea></p>
-		
-		<form method=\"POST\" id=\"form_mailinglist\" action=\"mailinglist.php?sub=manage&action=$action&id=$id\">
-			<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
-		</form>
-	</div>
+				<p>Mailing List Name:</p>
+				<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"name\" form=\"form_mailinglist\" value=\"$name\">
+				
+				<p>Mailing List Addresses (separated by comma \",\"):</p>
+				<p><textarea rows=\"6\" cols=\"75\" name=\"list\" form=\"form_mailinglist\">$list</textarea></p>
+				
+				<form method=\"POST\" id=\"form_mailinglist\" action=\"mailinglist.php?sub=manage&action=$action&id=$id\">
+					<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
+				</form>
+			</div>
+		</div>
+	</main>
 ";
 ?>

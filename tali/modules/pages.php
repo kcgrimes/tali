@@ -1,15 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<?php require '../includes/global/head.php';?>
-	</head>
+<?php
+require "../includes/global/head.php";
 
-	<?php
+/* Body - Directory points to Main content to be displayed with standardized header and footer */
+TALI_bodyContent_Module ("".basename(__FILE__, ".php")."/".basename(__FILE__, ".php")."-main.php");
 
-	/*Body - Directory points to Body content to be displayed with standardized header and footer*/
-	$bodyContentDir = 'pages/pages-main.php';
-	TALI_bodyContent_Module ($bodyContentDir);
-
-	?>
-
+?>
 </html>

@@ -285,37 +285,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 POSTErrored:
 
 echo "
-<div class=\"content PageFrame\">
-	<h1><strong>Manage Admin Accounts</strong></h1>
+	<main>
+		<div class=\"tali-container\">
+			<div class=\"tali-page-frame\">
+				<h1>Manage Admin Accounts</h1>
 ";
 
 if ($errorMessage != "") {
 	echo "
-		<p><font color=\"red\">$errorMessage</font></p>
+				<p><font color=\"red\">$errorMessage</font></p>
 	";
 };
 
 if ($successMessage != "") {
 	echo "
-		<p><font color=\"green\">$successMessage</font></p>
+				<p><font color=\"green\">$successMessage</font></p>
 	";
 };
 
 echo "
-	<form method=\"POST\" id=\"tali_adminaccounts_update_form\" action=\"adminaccounts.php\"></form>
-	<table style=\"width:94%\" class=\"adminaccountstb\">
-	<col width=\"5%\">
-	<col width=\"5%\">
-	<col width=\"40%\">
-	<col width=\"40%\">
-	<col width=\"10%\">
-	<tr>
-		<th>ID</th>
-		<th>Lvl</th>
-		<th>Username</th>
-		<th>E-Mail</th>
-		<th>Pers. ID</th>
-	</tr>
+				<form method=\"POST\" id=\"tali_adminaccounts_update_form\" action=\"adminaccounts.php\"></form>
+				<table style=\"width:94%\" class=\"adminaccountstb\">
+				<col width=\"5%\">
+				<col width=\"5%\">
+				<col width=\"40%\">
+				<col width=\"40%\">
+				<col width=\"10%\">
+				<tr>
+					<th>ID</th>
+					<th>Lvl</th>
+					<th>Username</th>
+					<th>E-Mail</th>
+					<th>Pers. ID</th>
+				</tr>
 ";
 
 $SQL = "SELECT * FROM tali_admin_accounts ORDER BY level ASC, username ASC";
@@ -333,13 +335,13 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 		$personnel_id = "";
 	}
 	echo "
-		<tr>
-			<td>$id</td>
-			<td>$level</td>
-			<td>$username</td>
-			<td>$email</td>
-			<td>$personnel_id</td>
-		</tr>
+				<tr>
+					<td>$id</td>
+					<td>$level</td>
+					<td>$username</td>
+					<td>$email</td>
+					<td>$personnel_id</td>
+				</tr>
 	";
 }
 $id = "";
@@ -348,80 +350,82 @@ $username = "";
 $email = "";
 $personnel_id = "";
 echo "
-		<tr>
-			<td>Select ID</td>
-			<td>Select Lvl</td>
-			<td>Enter new username:</td>
-			<td>Enter new e-mail:</td>
-			<td>Pers. ID:</td>
-		</tr>
-		<tr>
-			<td><input type=\"integer\" class=\"bo\" name=\"id\" form=\"tali_adminaccounts_update_form\" maxlength=\"4\" value=\"$id\"></td>
-			<td><input type=\"integer\" class=\"bo\" name=\"level\" form=\"tali_adminaccounts_update_form\" maxlength=\"2\" value=\"$level\"></td>
-			<td><input type=\"text\" class=\"fo\" name=\"username\" form=\"tali_adminaccounts_update_form\" value=\"$username\"></td>
-			<td><input type=\"text\" class=\"fo\"  name=\"email\" form=\"tali_adminaccounts_update_form\" value=\"$email\"></td>
-			<td><input type=\"integer\" class=\"bo\" name=\"personnel_id\" form=\"tali_adminaccounts_update_form\" maxlength=\"4\" value=\"$personnel_id\"></td>
-		</tr>
+				<tr>
+					<td>Select ID</td>
+					<td>Select Lvl</td>
+					<td>Enter new username:</td>
+					<td>Enter new e-mail:</td>
+					<td>Pers. ID:</td>
+				</tr>
+				<tr>
+					<td><input type=\"integer\" class=\"bo\" name=\"id\" form=\"tali_adminaccounts_update_form\" maxlength=\"4\" value=\"$id\"></td>
+					<td><input type=\"integer\" class=\"bo\" name=\"level\" form=\"tali_adminaccounts_update_form\" maxlength=\"2\" value=\"$level\"></td>
+					<td><input type=\"text\" class=\"fo\" name=\"username\" form=\"tali_adminaccounts_update_form\" value=\"$username\"></td>
+					<td><input type=\"text\" class=\"fo\"  name=\"email\" form=\"tali_adminaccounts_update_form\" value=\"$email\"></td>
+					<td><input type=\"integer\" class=\"bo\" name=\"personnel_id\" form=\"tali_adminaccounts_update_form\" maxlength=\"4\" value=\"$personnel_id\"></td>
+				</tr>
 ";
 
 echo "
-		</table>
-		<table style=\"width:94%\" class=\"adminaccountstbbut\">
-			<tr>
-				<td><input type=\"submit\" class=\"bu\" Name=\"tali_adminaccounts_updateaccount\" form=\"tali_adminaccounts_update_form\" value=\"Update Account\"></td>
-				<td style=\"text-align:right\">
-					<form method=\"POST\" id=\"tali_adminaccounts_form_del\" action=\"adminaccounts.php\">
-						Enter the ID of an account above to delete it:
-						<input type=\"integer\" class=\"tb\" maxlength=\"4\" name=\"delid\" value=\"$delid\">
-						<input type=\"Submit\" class=\"but\" Name=\"tali_adminaccounts_delaccount\" value=\"Delete Account\">
-					</form>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<div class=\"content PageFrame\">
-		<h1><strong>Add New Admin Accounts</strong></h1>
-		<form method=\"POST\" id=\"tali_adminaccounts_form\" action=\"adminaccounts.php\"></form>
-		<table style=\"width:94%\" class=\"adminaccountstb\">
-		<col width=\"5%\">
-		<col width=\"5%\">
-		<col width=\"40%\">
-		<col width=\"40%\">
-		<col width=\"10%\">
-		<tr>
-			<th>ID</th>
-			<th>Lvl</th>
-			<th>Username</th>
-			<th>E-Mail</th>
-			<th>Pers. ID</th>
-		</tr>
-		<tr>
-			<td>ID Auto-Defined</td>
-			<td>Enter admin level:</td>
-			<td>Enter a username:</td>
-			<td>Enter an e-mail:</td>
-			<td>Associated Personnel ID:</td>
-		</tr>
-		<tr>
-			<td>
-				
-			</td>
-			<td>
-				<input type=\"integer\" class=\"bo\" name=\"newlevel\" form=\"tali_adminaccounts_form\" maxlength=\"4\" value=\"\">
-			</td>
-			<td>
-				<input type=\"text\" class=\"fo\" name=\"newusername\" form=\"tali_adminaccounts_form\" value=\"\">
-			</td>
-			<td>
-				<input type=\"text\" class=\"fo\"  name=\"newemail\" form=\"tali_adminaccounts_form\" value=\"\">
-			</td>
-			<td>
-				<input type=\"integer\" class=\"bo\" name=\"newpersonnel_id\" form=\"tali_adminaccounts_form\" maxlength=\"4\" value=\"\">
-			</td>
-		</tr>
-		</table>
-		<td><input type=\"Submit\" class=\"bu\" Name=\"tali_adminaccounts_addaccount\" form=\"tali_adminaccounts_form\" value=\"Add New Account\"></td>
-		<br/>
-	</div>
+				</table>
+				<table style=\"width:94%\" class=\"adminaccountstbbut\">
+					<tr>
+						<td><input type=\"submit\" class=\"bu\" Name=\"tali_adminaccounts_updateaccount\" form=\"tali_adminaccounts_update_form\" value=\"Update Account\"></td>
+						<td style=\"text-align:right\">
+							<form method=\"POST\" id=\"tali_adminaccounts_form_del\" action=\"adminaccounts.php\">
+								Enter the ID of an account above to delete it:
+								<input type=\"integer\" class=\"tb\" maxlength=\"4\" name=\"delid\" value=\"$delid\">
+								<input type=\"Submit\" class=\"but\" Name=\"tali_adminaccounts_delaccount\" value=\"Delete Account\">
+							</form>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class=\"tali-page-frame\">
+				<h1>Add New Admin Accounts</h1>
+				<form method=\"POST\" id=\"tali_adminaccounts_form\" action=\"adminaccounts.php\"></form>
+				<table style=\"width:94%\" class=\"adminaccountstb\">
+				<col width=\"5%\">
+				<col width=\"5%\">
+				<col width=\"40%\">
+				<col width=\"40%\">
+				<col width=\"10%\">
+				<tr>
+					<th>ID</th>
+					<th>Lvl</th>
+					<th>Username</th>
+					<th>E-Mail</th>
+					<th>Pers. ID</th>
+				</tr>
+				<tr>
+					<td>ID Auto-Defined</td>
+					<td>Enter admin level:</td>
+					<td>Enter a username:</td>
+					<td>Enter an e-mail:</td>
+					<td>Associated Personnel ID:</td>
+				</tr>
+				<tr>
+					<td>
+						
+					</td>
+					<td>
+						<input type=\"integer\" class=\"bo\" name=\"newlevel\" form=\"tali_adminaccounts_form\" maxlength=\"4\" value=\"\">
+					</td>
+					<td>
+						<input type=\"text\" class=\"fo\" name=\"newusername\" form=\"tali_adminaccounts_form\" value=\"\">
+					</td>
+					<td>
+						<input type=\"text\" class=\"fo\"  name=\"newemail\" form=\"tali_adminaccounts_form\" value=\"\">
+					</td>
+					<td>
+						<input type=\"integer\" class=\"bo\" name=\"newpersonnel_id\" form=\"tali_adminaccounts_form\" maxlength=\"4\" value=\"\">
+					</td>
+				</tr>
+				</table>
+				<td><input type=\"Submit\" class=\"bu\" Name=\"tali_adminaccounts_addaccount\" form=\"tali_adminaccounts_form\" value=\"Add New Account\"></td>
+				<br/>
+			</div>
+		</div>
+	</main>
 ";
 ?>

@@ -78,10 +78,12 @@ if (isset($_GET['action'])) {
 			$record = $db_field['record'];
 			
 			echo "
-				<div class=\"content PageFrame\">
-					<h1><strong>Manage Personnel Service Record</strong></h1>
-					<p>This page allows you to manage the service record of a specific individual.</p>
-				</div>
+				<main>
+					<div class=\"tali-container\">
+						<div class=\"tali-page-frame\">
+							<h1>Manage Personnel Service Record</h1>
+							<p>This page allows you to manage the service record of a specific individual.</p>
+						</div>
 			";
 			
 			$SQL = "SELECT * FROM tali_personnel_roster JOIN tali_personnel_ranks ON tali_personnel_roster.rank_id=tali_personnel_ranks.rank_id WHERE personnel_id=$personnel_id";
@@ -89,22 +91,25 @@ if (isset($_GET['action'])) {
 			$db_field = mysqli_fetch_assoc($result);
 
 			echo "
-				<div class=\"content PageFrame\">
-					<h1><strong>Manage Personnel Service Record for ".$db_field['abbreviation']." ".$db_field['firstname']." ".$db_field['lastname']."</strong></h1>
+						<div class=\"tali-page-frame\">
+							<h1>Manage Personnel Service Record for ".$db_field['abbreviation']." ".$db_field['firstname']." ".$db_field['lastname']."</h1>
 			";
 			
 			echo "
-					<p>Date of record (MM/DD/YYYY):</p>
-					<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date\" form=\"add_record\" maxlength=\"10\" value=\"$date\">
+							<p>Date of record (MM/DD/YYYY):</p>
+							<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date\" form=\"add_record\" maxlength=\"10\" value=\"$date\">
 			";
 			
 			echo "
-					<p>Record:</p>
-					<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_record\" value=\"$record\">
-					
-					<form method=\"POST\" id=\"add_record\" action=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&action=addrecord&servicerecord_id=$servicerecord_id\">
-						<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Edit Service Record\"/>
-					</form>
+							<p>Record:</p>
+							<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_record\" value=\"$record\">
+							
+							<form method=\"POST\" id=\"add_record\" action=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&action=addrecord&servicerecord_id=$servicerecord_id\">
+								<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Edit Service Record\"/>
+							</form>
+						</div>
+					</div>
+				</main>
 			";
 
 		break;
@@ -129,10 +134,12 @@ else
 	$personnel_id = $_GET['id'];
 	
 	echo "
-		<div class=\"content PageFrame\">
-			<h1><strong>Manage Personnel Service Record</strong></h1>
-			<p>This page allows you to manage the service record of a specific individual.</p>
-		</div>
+		<main>
+			<div class=\"tali-container\">
+				<div class=\"tali-page-frame\">
+					<h1>Manage Personnel Service Record</h1>
+					<p>This page allows you to manage the service record of a specific individual.</p>
+				</div>
 	";
 	
 	$SQL = "SELECT * FROM tali_personnel_roster JOIN tali_personnel_ranks ON tali_personnel_roster.rank_id=tali_personnel_ranks.rank_id WHERE personnel_id=$personnel_id";
@@ -140,38 +147,38 @@ else
 	$db_field = mysqli_fetch_assoc($result);
 
 	echo "
-		<div class=\"content PageFrame\">
-			<h1><strong>Manage Personnel Service Record for ".$db_field['abbreviation']." ".$db_field['firstname']." ".$db_field['lastname']."</strong></h1>
+				<div class=\"tali-page-frame\">
+					<h1>Manage Personnel Service Record for ".$db_field['abbreviation']." ".$db_field['firstname']." ".$db_field['lastname']."</h1>
 	";
 	
 	echo "
-			<p>Date of record (MM/DD/YYYY):</p>
-			<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date\" form=\"add_record\" maxlength=\"10\" value=\"$date\">
+					<p>Date of record (MM/DD/YYYY):</p>
+					<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date\" form=\"add_record\" maxlength=\"10\" value=\"$date\">
 	";
 	
 	echo "
-			<p>Record:</p>
-			<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_record\" value=\"$record\">
-			
-			<form method=\"POST\" id=\"add_record\" action=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&action=addrecord\">
-				<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Add Service Record\"/>
-			</form>
+					<p>Record:</p>
+					<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_record\" value=\"$record\">
+					
+					<form method=\"POST\" id=\"add_record\" action=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&action=addrecord\">
+						<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Add Service Record\"/>
+					</form>
 	";
 	
 	echo "			
-			<p>Click to edit or delete previously documented records:</p>
-			<table id=\"recordclassTable\" class=\"tali_personnel_roster_table\">
-				<col width=\"20%\">
-				<col width=\"60%\">
-				<col width=\"10%\">
-				<col width=\"10%\">
-				
-				<tr>
-					<th>Date Awarded</th>
-					<th>Record</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
+					<p>Click to edit or delete previously documented records:</p>
+					<table id=\"recordclassTable\" class=\"tali_personnel_roster_table\">
+						<col width=\"20%\">
+						<col width=\"60%\">
+						<col width=\"10%\">
+						<col width=\"10%\">
+						
+						<tr>
+							<th>Date Awarded</th>
+							<th>Record</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
 	";
 	
 	$SQL = "SELECT * FROM tali_personnel_service_record WHERE personnel_id=$personnel_id ORDER BY date DESC";
@@ -183,29 +190,31 @@ else
 		$record = $db_field['record'];
 				
 		echo "
-				<tr>
-					<td style=\"text-align:center;\">$date</td>
-					<td style=\"text-align:center;\">$record</td>
-					<td style=\"text-align:center;\">
-						<a href=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&servicerecord_id=$servicerecord_id&action=editrecord\">
-							<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
-						</a>
-					</td>
-					<td style=\"text-align:center;\">
-						<a href=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&servicerecord_id=$servicerecord_id&action=deleterecord\" onclick=\"return confirm('Are you sure you want to delete this service record?');\">
-							<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
-						</a>
-					</td>
-				</tr>
+						<tr>
+							<td style=\"text-align:center;\">$date</td>
+							<td style=\"text-align:center;\">$record</td>
+							<td style=\"text-align:center;\">
+								<a href=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&servicerecord_id=$servicerecord_id&action=editrecord\">
+									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+								</a>
+							</td>
+							<td style=\"text-align:center;\">
+								<a href=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&servicerecord_id=$servicerecord_id&action=deleterecord\" onclick=\"return confirm('Are you sure you want to delete this service record?');\">
+									<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+								</a>
+							</td>
+						</tr>
 		";
 	};
 	
 	echo "
-			</table>
+					</table>
 	";
 	
 	echo "
-		</div>
+				</div>
+			</div>
+		</main>
 	";
 }
 ?>

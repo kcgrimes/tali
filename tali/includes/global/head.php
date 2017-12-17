@@ -3,43 +3,44 @@ session_start();
 
 //bug - What is this doing? Can it be accomplished by just executing tali_init.php up here?
 define('TALI_ROOT_URL', substr($_SERVER['PHP_SELF'], 0, - (strlen($_SERVER['SCRIPT_FILENAME']) - strlen(realpath(__DIR__ . '/../..')))));
+define('TALI_ROOT_DIR', realpath(__DIR__ . '/../..'));
 
-echo '
-	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>'.$_SESSION['TALI_Organization_Name'].' - Admin</title>
-	<link href="'.TALI_ROOT_URL.'/includes/global/talistyles.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" href="'.TALI_ROOT_URL.'/images/display/favicon.ico"/>
-	<link rel="icon" href="'.TALI_ROOT_URL.'/images/display/favicon.ico"/>
-';
+echo "
+	<head>
+		<title>TALI Website Admin</title>
+		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
+		<link rel=\"stylesheet\" href=\"".TALI_ROOT_URL."/includes/global/talistyles.css?v=".filemtime("".TALI_ROOT_DIR."/includes/global/talistyles.css")."\" type=\"text/css\" />
+		<link rel=\"shortcut icon\" href=\"".TALI_ROOT_URL."/images/display/favicon.ico\"/>
+		<link rel=\"icon\" href=\"".TALI_ROOT_URL."/images/display/favicon.ico\"/>
+	</head>
+";
 
+//Uniform way of making each page - header, main, footer
 function TALI_bodyContent ($bodyContentDir) {
+	//Body Start
 	echo "	<body>";
-				require 'includes/global/header.php';
-		
-	echo "		<div class=\"container\">
-		
-					<!--THIS FILE IS EDITED FOR UNIQUE PAGE-->";
-					require $bodyContentDir;
-					
-	echo "		</div>";
-						
-				require 'includes/global/footer.php';
+	//Header
+	require "includes/global/header.php";
+	//Main - $bodyContentDir is directory to unique file for page's Main
+	require $bodyContentDir;
+	//Footer
+	require "includes/global/footer.php";
+	//Body End
 	echo "	</body>";
 }
 
+//Uniform way of making each page - header, main, footer
 function TALI_bodyContent_Module ($bodyContentDir) {
+	//Body Start
 	echo "	<body>";
-				require '../includes/global/header.php';
-		
-	echo "		<div class=\"container\">
-		
-					<!--THIS FILE IS EDITED FOR UNIQUE PAGE-->";
-					require $bodyContentDir;
-					
-	echo "		</div>";
-
-				require '../includes/global/footer.php';
+	//Header
+	require "../includes/global/header.php";
+	//Main - $bodyContentDir is directory to unique file for page's Main
+	require $bodyContentDir;
+	//Footer
+	require "../includes/global/footer.php";
+	//Body End
 	echo "	</body>";
 }
 

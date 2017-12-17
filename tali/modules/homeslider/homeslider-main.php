@@ -100,29 +100,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Manage Home Slider</strong></h1>
-		<p>On this page you can manage the images that appear in the image carrousel on the home page.</p>
-	</div>
+	<main>
+		<div class=\"tali-container\">
+			<div class=\"tali-page-frame\">
+				<h1>Manage Home Slider</h1>
+				<p>On this page you can manage the images that appear in the image carrousel on the home page.</p>
+			</div>
 	
 ";
 
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Available Images</strong></h1>
-		<p>Listed below are all images uploaded to display with this module.</p>
-		<table class=\"tali_personnel_homeslider\">
-			<col width=\"25%\">
-			<col width=\"25%\">
-			<col width=\"25%\">
-			<col width=\"25%\">
-			
-			<tr>
-				<th>Image</th>
-				<th>File Name</th>
-				<th>Slider Text</th>
-				<th>Weight</th>
-			</tr>
+			<div class=\"tali-page-frame\">
+				<h1>Available Images</h1>
+				<p>Listed below are all images uploaded to display with this module.</p>
+				<table class=\"tali_personnel_homeslider\">
+					<col width=\"25%\">
+					<col width=\"25%\">
+					<col width=\"25%\">
+					<col width=\"25%\">
+					
+					<tr>
+						<th>Image</th>
+						<th>File Name</th>
+						<th>Slider Text</th>
+						<th>Weight</th>
+					</tr>
 ";
 
 $SQL = "SELECT * FROM tali_homeslider ORDER BY weight DESC";
@@ -134,48 +136,48 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 	$text = $db_field['text'];
 	$weight = $db_field['weight'];
 	echo "
-			<tr>
-				<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_HomeSlider_Images_Directory']."$imagename\" style=\"width:60%;height:auto;\" alt=\"$imagename\" name=\"$imagename\"/></td>
-				<td>$imagename</td>
-				<td>$text</td>
-				<td>$weight</td>
-			</tr>
+					<tr>
+						<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_HomeSlider_Images_Directory']."$imagename\" style=\"width:60%;height:auto;\" alt=\"$imagename\" name=\"$imagename\"/></td>
+						<td>$imagename</td>
+						<td>$text</td>
+						<td>$weight</td>
+					</tr>
 	";
 }
 	
 echo "
-		</table>
-	</div>
+				</table>
+			</div>
 ";
 
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Upload Images</strong></h1>
-		<form action=\"homeslider.php\" method=\"post\" enctype=\"multipart/form-data\">
-			<p>
-			<input type=\"file\" name=\"file\" id=\"file\"/>
-			<br/>
-			<font color=\"red\">$displayUploadMessage</font>
-			</p>
-			<p>Slider Text:</p>
-			<input type=\"text\" class=\"tali_personnel_homeslider_textinput\" name=\"text\" value=\"\">
-			<p>Weight:</p>
-			<input type=\"integer\" class=\"tali_personnel_homeslider_textinput\" name=\"weight\" value=\"\">
-			<br/>
-			<p>
-			<input type=\"submit\" name=\"submit\" value=\"Upload Image\"/>
-			</p>
-		</form>
-	</div>
-	
-	<div class=\"content PageFrame\">
-		<h1><strong>Delete Images</strong></h1>
-		<p>Select an image from the dropdown and click Delete Image to remove the image from the website.</p>
-		<form method=\"POST\" id=\"tali_homeslider_delete_form\" class=\"homesliderdelete\" action=\"homeslider.php\">
-			<homesliderdeletedropdown>
-			<p>
-			<select name=\"selectimage\">
-				<option value=\"empty\">Select an Image</option>
+			<div class=\"tali-page-frame\">
+				<h1>Upload Images</h1>
+				<form action=\"homeslider.php\" method=\"post\" enctype=\"multipart/form-data\">
+					<p>
+					<input type=\"file\" name=\"file\" id=\"file\"/>
+					<br/>
+					<font color=\"red\">$displayUploadMessage</font>
+					</p>
+					<p>Slider Text:</p>
+					<input type=\"text\" class=\"tali_personnel_homeslider_textinput\" name=\"text\" value=\"\">
+					<p>Weight:</p>
+					<input type=\"integer\" class=\"tali_personnel_homeslider_textinput\" name=\"weight\" value=\"\">
+					<br/>
+					<p>
+					<input type=\"submit\" name=\"submit\" value=\"Upload Image\"/>
+					</p>
+				</form>
+			</div>
+			
+			<div class=\"tali-page-frame\">
+				<h1>Delete Images</h1>
+				<p>Select an image from the dropdown and click Delete Image to remove the image from the website.</p>
+				<form method=\"POST\" id=\"tali_homeslider_delete_form\" class=\"homesliderdelete\" action=\"homeslider.php\">
+					<homesliderdeletedropdown>
+					<p>
+					<select name=\"selectimage\">
+						<option value=\"empty\">Select an Image</option>
 ";
 	
 $SQL = "SELECT image FROM tali_homeslider ORDER BY weight DESC";
@@ -184,19 +186,21 @@ $result = mysqli_query($db_handle, $SQL);
 while ($db_field = mysqli_fetch_assoc($result)) {
 	$image = $db_field['image'];
 	echo "
-				<option value=\"$image\">$image</option>
+						<option value=\"$image\">$image</option>
 	";
 }
 				
 echo "
-			</select>
-			</homesliderdeletedropdown>
-			<br/>
-			<font color=\"red\">$displayDeleteMessage</font>
-			<br/>
-			<input type=\"Submit\" class=\"deletehomesliderbu\" name=\"tali_homeslider_delete_file\" value=\"Delete Image\">
-			</p>
-		</form>
-	</div>
+					</select>
+					</homesliderdeletedropdown>
+					<br/>
+					<font color=\"red\">$displayDeleteMessage</font>
+					<br/>
+					<input type=\"Submit\" class=\"deletehomesliderbu\" name=\"tali_homeslider_delete_file\" value=\"Delete Image\">
+					</p>
+				</form>
+			</div>
+		</div>
+	</main>
 ";
 ?>

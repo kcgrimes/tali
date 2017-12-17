@@ -203,6 +203,7 @@ if (isset($_GET['action'])) {
 					//Editing
 					$awardclass_id = $_GET['id'];
 					
+					//bug - why is this echo'd so early?
 					echo "
 						<input type=\"hidden\" form=\"add_awardclass\" name=\"awardclass_id\" value=\"$awardclass_id\"/>
 					";
@@ -216,24 +217,28 @@ if (isset($_GET['action'])) {
 				};
 			
 				echo "
-					<div class=\"content PageFrame\">
-						<h1><strong>Add & Edit Award Class</strong></h1>
-						<p>This page allows you to manage specific award classes.</p>
-					</div>
-					
-					<div class=\"content PageFrame\">
-						<h1><strong>Add & Edit Award Class</strong></h1>
-						
-						<p>Award Class Name:</p>
-						<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"name\" form=\"add_awardclass\" value=\"$name\">
-						
-						<p>Award Class Weight:</p>
-						<input type=\"integer\" class=\"tali_personnel_drillreports_textinput\" name=\"weight\" form=\"add_awardclass\" value=\"$weight\">
-						
-						<form method=\"POST\" id=\"add_awardclass\" action=\"personnel.php?sub=awards&action=" . $_GET['action'] . "&submit=true\">
-							<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
-						</form>
-					</div>
+					<main>
+						<div class=\"tali-container\">
+							<div class=\"tali-page-frame\">
+								<h1>Add & Edit Award Class</h1>
+								<p>This page allows you to manage specific award classes.</p>
+							</div>
+							
+							<div class=\"tali-page-frame\">
+								<h1>Add & Edit Award Class</h1>
+								
+								<p>Award Class Name:</p>
+								<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"name\" form=\"add_awardclass\" value=\"$name\">
+								
+								<p>Award Class Weight:</p>
+								<input type=\"integer\" class=\"tali_personnel_drillreports_textinput\" name=\"weight\" form=\"add_awardclass\" value=\"$weight\">
+								
+								<form method=\"POST\" id=\"add_awardclass\" action=\"personnel.php?sub=awards&action=" . $_GET['action'] . "&submit=true\">
+									<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
+								</form>
+							</div>
+						</div>
+					</main>
 				";
 			break;
 			case "addaward":
@@ -242,7 +247,7 @@ if (isset($_GET['action'])) {
 					$award_id = $_GET['id'];
 					
 					echo "
-						<input type=\"hidden\" form=\"add_award\" name=\"award_id\" value=\"$award_id\"/>
+								<input type=\"hidden\" form=\"add_award\" name=\"award_id\" value=\"$award_id\"/>
 					";
 						
 					$SQL = "SELECT * FROM tali_personnel_awards WHERE award_id=$award_id";
@@ -257,21 +262,23 @@ if (isset($_GET['action'])) {
 				};
 			
 				echo "
-					<div class=\"content PageFrame\">
-						<h1><strong>Add & Edit Awards</strong></h1>
-						<p>This page allows you to manage specific awards.</p>
-					</div>
-					
-					<div class=\"content PageFrame\">
-						<h1><strong>Add & Edit Awards</strong></h1>
-						
-						<p>Award Name:</p>
-						<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"name\" form=\"add_award\" value=\"$name\">
-						
-						<p>Award Class:</p>
-						
-						<select class=\"tali_personnel_awards_addaward_dropdown\" name=\"awardclass_id\" form=\"add_award\" value=\"$awardclass_id\">
-							<option value=\"\">Select an Award Class</option>
+					<main>
+						<div class=\"tali-container\">
+							<div class=\"tali-page-frame\">
+								<h1>Add & Edit Awards</h1>
+								<p>This page allows you to manage specific awards.</p>
+							</div>
+							
+							<div class=\"tali-page-frame\">
+								<h1>Add & Edit Awards</h1>
+								
+								<p>Award Name:</p>
+								<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"name\" form=\"add_award\" value=\"$name\">
+								
+								<p>Award Class:</p>
+								
+								<select class=\"tali_personnel_awards_addaward_dropdown\" name=\"awardclass_id\" form=\"add_award\" value=\"$awardclass_id\">
+									<option value=\"\">Select an Award Class</option>
 				";
 				
 				$SQL = "SELECT * FROM tali_personnel_awards_classes ORDER BY weight DESC";
@@ -285,44 +292,46 @@ if (isset($_GET['action'])) {
 						$selected = '';
 					}
 					echo "
-							<option value=\"{$db_field['awardclass_id']}\"".$selected.">{$db_field['name']}</option>
+									<option value=\"{$db_field['awardclass_id']}\"".$selected.">{$db_field['name']}</option>
 					";
 				}
 				
 				echo "
-						</select>
+								</select>
 				";
 										
 				echo "
 						
-						<p>Award Image Name:</p>
+								<p>Award Image Name:</p>
 						
 				";
 
 				if (($_GET['action']) == "editaward") {
 					echo "
-						<p>$image</p>
+								<p>$image</p>
 					";
 				}
 				else
 				{
 					echo "
-						<p><input type=\"file\" name=\"award_file\" id=\"award_file\" form=\"add_award\"/></p>
+								<p><input type=\"file\" name=\"award_file\" id=\"award_file\" form=\"add_award\"/></p>
 					";
 				}
 				
 				echo "
 														
-						<p>Award Description:</p>
-						<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"description\" form=\"add_award\" value=\"$description\">
-						
-						<p>Award Weight:</p>
-						<input type=\"integer\" class=\"tali_personnel_drillreports_textinput\" name=\"weight\" form=\"add_award\" value=\"$weight\">
-						
-						<form method=\"POST\" enctype=\"multipart/form-data\" id=\"add_award\" action=\"personnel.php?sub=awards&action=" . $_GET['action'] . "&submit=true\">
-							<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
-						</form>
-					</div>
+								<p>Award Description:</p>
+								<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"description\" form=\"add_award\" value=\"$description\">
+								
+								<p>Award Weight:</p>
+								<input type=\"integer\" class=\"tali_personnel_drillreports_textinput\" name=\"weight\" form=\"add_award\" value=\"$weight\">
+								
+								<form method=\"POST\" enctype=\"multipart/form-data\" id=\"add_award\" action=\"personnel.php?sub=awards&action=" . $_GET['action'] . "&submit=true\">
+									<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
+								</form>
+							</div>
+						</div>
+					</main>
 				";
 			break;
 			case "deleteclass":
@@ -365,34 +374,36 @@ else
 {
 	//Fresh page
 	echo "
-		<div class=\"content PageFrame\">
-			<h1><strong>Manage Awards</strong></h1>
-			<p>This page allows you to manage awards and award classes.</p>
-		</div>
+		<main>
+			<div class=\"tali-container\">
+				<div class=\"tali-page-frame\">
+					<h1>Manage Awards</h1>
+					<p>This page allows you to manage awards and award classes.</p>
+				</div>
 	";
 	
 	echo "
-		<div class=\"content PageFrame\">
-			<h1><strong>Manage Awards</strong></h1>
-			<a href=\"personnel.php?sub=awards&action=addclass\"><p>Add Award Class</p></a>
-			<a href=\"personnel.php?sub=awards&action=addaward\"><p>Add Award</p></a>
+				<div class=\"tali-page-frame\">
+					<h1>Manage Awards</h1>
+					<a href=\"personnel.php?sub=awards&action=addclass\"><p>Add Award Class</p></a>
+					<a href=\"personnel.php?sub=awards&action=addaward\"><p>Add Award</p></a>
 	";
 	echo "
-			<br/>
-			<br/>
+					<br/>
+					<br/>
 	";
 	
 	echo "						
-			<table id=\"awardclassTable\" class=\"tali_personnel_roster_table\">
-				<col width=\"70%\">
-				<col width=\"15%\">
-				<col width=\"15%\">
-				
-				<tr>
-					<th>Award Class</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
+					<table id=\"awardclassTable\" class=\"tali_personnel_roster_table\">
+						<col width=\"70%\">
+						<col width=\"15%\">
+						<col width=\"15%\">
+						
+						<tr>
+							<th>Award Class</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
 	";
 	
 	$SQL = "SELECT * FROM tali_personnel_awards_classes ORDER BY weight DESC";
@@ -402,47 +413,47 @@ else
 		$name = $db_field['name'];
 				
 		echo "
-				<tr>
-					<td style=\"text-align:center;\">$name</td>
-					<td style=\"text-align:center;\">
-						<a href=\"personnel.php?sub=awards&action=editclass&id=$awardclass_id\">
-							<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
-						</a>
-					</td>
-					<td style=\"text-align:center;\">
-						<a href=\"personnel.php?sub=awards&action=deleteclass&id=$awardclass_id\" onclick=\"return confirm('Are you sure you want to delete this award class?');\">
-							<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
-						</a>
-					</td>
-				</tr>
+						<tr>
+							<td style=\"text-align:center;\">$name</td>
+							<td style=\"text-align:center;\">
+								<a href=\"personnel.php?sub=awards&action=editclass&id=$awardclass_id\">
+									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+								</a>
+							</td>
+							<td style=\"text-align:center;\">
+								<a href=\"personnel.php?sub=awards&action=deleteclass&id=$awardclass_id\" onclick=\"return confirm('Are you sure you want to delete this award class?');\">
+									<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+								</a>
+							</td>
+						</tr>
 		";
 	};
 	
 	echo "
-			</table>
-			<br/>
-			<br/>
+					</table>
+					<br/>
+					<br/>
 	";
 	
 	echo "						
-			<table id=\"awardsTable\" class=\"tali_personnel_roster_table\">
-				<col width=\"19%\">
-				<col width=\"19%\">
-				<col width=\"19%\">
-				<col width=\"19%\">
-				<col width=\"4%\">
-				<col width=\"5%\">
-				<col width=\"5%\">
-				
-				<tr>
-					<th>Award</th>
-					<th>Image</th>
-					<th>Class</th>
-					<th>Description</th>
-					<th>Weight</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
+					<table id=\"awardsTable\" class=\"tali_personnel_roster_table\">
+						<col width=\"19%\">
+						<col width=\"19%\">
+						<col width=\"19%\">
+						<col width=\"19%\">
+						<col width=\"4%\">
+						<col width=\"5%\">
+						<col width=\"5%\">
+						
+						<tr>
+							<th>Award</th>
+							<th>Image</th>
+							<th>Class</th>
+							<th>Description</th>
+							<th>Weight</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
 	";
 	
 	$SQL = "SELECT * FROM tali_personnel_awards ORDER BY awardclass_id ASC, weight DESC";
@@ -460,32 +471,34 @@ else
 		$weight = $db_field['weight'];
 				
 		echo "
-				<tr>
-					<td style=\"text-align:center;\">$name</td>
-					<td style=\"text-align:center;\"><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_Awards_Images_Directory']."$image\" alt=\"Award\"></img><br/>$image</td>
-					<td style=\"text-align:center;\">$awardclass_name</td>
-					<td style=\"text-align:center;\">$description</td>
-					<td style=\"text-align:center;\">$weight</td>
-					<td style=\"text-align:center;\">
-						<a href=\"personnel.php?sub=awards&action=editaward&id=$award_id\">
-							<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
-						</a>
-					</td>
-					<td style=\"text-align:center;\">
-						<a href=\"personnel.php?sub=awards&action=deleteaward&id=$award_id\" onclick=\"return confirm('Are you sure you want to delete this award?');\">
-							<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
-						</a>
-					</td>
-				</tr>
+						<tr>
+							<td style=\"text-align:center;\">$name</td>
+							<td style=\"text-align:center;\"><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_Awards_Images_Directory']."$image\" alt=\"Award\"></img><br/>$image</td>
+							<td style=\"text-align:center;\">$awardclass_name</td>
+							<td style=\"text-align:center;\">$description</td>
+							<td style=\"text-align:center;\">$weight</td>
+							<td style=\"text-align:center;\">
+								<a href=\"personnel.php?sub=awards&action=editaward&id=$award_id\">
+									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+								</a>
+							</td>
+							<td style=\"text-align:center;\">
+								<a href=\"personnel.php?sub=awards&action=deleteaward&id=$award_id\" onclick=\"return confirm('Are you sure you want to delete this award?');\">
+									<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+								</a>
+							</td>
+						</tr>
 		";
 	};
 	
 	echo "
-			</table>
+					</table>
 	";
 		
 	echo "
-		</div>
+				</div>
+			</div>
+		</main>
 	";
 }
 ?>

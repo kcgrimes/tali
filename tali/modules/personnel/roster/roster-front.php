@@ -23,12 +23,12 @@ switch ($action) {
 	break;
 	case "active":
 		echo "
-			<div class=\"content PageFrame\">
-				<div class = \"PageFrameTitle\">
-					<h1><strong>Active Duty Roster</strong></h1>
+			<div class=\"tali-personnel-roster-front-page-frame\">
+				<div class = \"tali-personnel-roster-front-page-frame-title\">
+					<h1>Active Duty Roster</h1>
 				</div>
 				<br/>
-				<table class=\"tali_personnel_roster_front_links\">
+				<table class=\"tali-personnel-roster-front-links\">
 					<col width=\"25%\">
 					<col width=\"25%\">
 					<col width=\"25%\">
@@ -106,7 +106,7 @@ switch ($action) {
 		}
 		
 		echo "
-				<table class=\"tali_personnel_roster_front_designation\">
+				<table class=\"tali-personnel-roster-front-designation\">
 					<col width=\"10%\">
 					<col width=\"45%\">
 					<col width=\"15%\">
@@ -151,12 +151,12 @@ switch ($action) {
 	break;
 	case "past":
 		echo "
-			<div class=\"content PageFrame\">
-				<div class = \"PageFrameTitle\">
-					<h1><strong>Past Member Roster</strong></h1>
+			<div class=\"tali-personnel-roster-front-page-frame\">
+				<div class = \"tali-personnel-roster-front-page-frame-title\">
+					<h1>Past Member Roster</h1>
 				</div>
 				<br/>
-				<table class=\"tali_personnel_roster_front_links\">
+				<table class=\"tali-personnel-roster-front-links\">
 					<col width=\"25%\">
 					<col width=\"25%\">
 					<col width=\"25%\">
@@ -191,7 +191,7 @@ switch ($action) {
 		}
 		
 		echo "
-				<table class=\"tali_personnel_roster_front_designation\">
+				<table class=\"tali-personnel-roster-front-designation\">
 					<col width=\"10%\">
 					<col width=\"45%\">
 					<col width=\"15%\">

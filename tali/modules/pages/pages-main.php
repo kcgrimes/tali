@@ -69,30 +69,32 @@ if (!isset($_POST['tali_page_edit'])) {
 		}
 	
 		echo "
-			<div class=\"content PageFrame\">
-				<h1><strong>Manage Pages</strong></h1>
-				<p>This page allows you to create, edit, and delete pages.</p>
-			</div>
-			
-			<div class=\"content PageFrame\">
-				<h1><strong>Create Page</strong></h1>
-				<p>To create a new page, enter the desired page title below and click Create New Page.</p>
-				<form method=\"POST\" id=\"tali_newpage_form\" class=\"newpagetitleform\" action=\"pages.php\">
-					<input type=\"text\" class=\"newpagetitle\" name=\"newentrytitle\"  value=\"$newtitle\">
-					<br/>
-					<font color=\"red\">$newdisplayMessage</font>
-					<br/>
-					<input type=\"Submit\" class=\"newpagetitlebu\" name=\"tali_pages_newpagetitle\" value=\"Create New Page\">
-				</form>
-			</div>
-			
-			<div class=\"content PageFrame\">
-				<h1><strong>Edit/Delete Page</strong></h1>
-				<p>Select the desired page from the dropdown menu below and click Edit to update it or Delete to remove it from the database.</p>
-				<form method=\"POST\" id=\"tali_editpage_form\" class=\"editpage\" action=\"pages.php\">
-					<editpagedropdown>
-					<select name=\"selectitle\">
-						<option value=\"empty\"></option>
+			<main>
+				<div class=\"tali-container\">
+					<div class=\"tali-page-frame\">
+						<h1>Manage Pages</h1>
+						<p>This page allows you to create, edit, and delete pages.</p>
+					</div>
+					
+					<div class=\"tali-page-frame\">
+						<h1>Create Page</h1>
+						<p>To create a new page, enter the desired page title below and click Create New Page.</p>
+						<form method=\"POST\" id=\"tali_newpage_form\" class=\"newpagetitleform\" action=\"pages.php\">
+							<input type=\"text\" class=\"newpagetitle\" name=\"newentrytitle\"  value=\"$newtitle\">
+							<br/>
+							<font color=\"red\">$newdisplayMessage</font>
+							<br/>
+							<input type=\"Submit\" class=\"newpagetitlebu\" name=\"tali_pages_newpagetitle\" value=\"Create New Page\">
+						</form>
+					</div>
+					
+					<div class=\"tali-page-frame\">
+						<h1>Edit/Delete Page</h1>
+						<p>Select the desired page from the dropdown menu below and click Edit to update it or Delete to remove it from the database.</p>
+						<form method=\"POST\" id=\"tali_editpage_form\" class=\"editpage\" action=\"pages.php\">
+							<editpagedropdown>
+							<select name=\"selectitle\">
+								<option value=\"empty\"></option>
 		";
 		
 		$SQL = "SELECT * FROM tali_pages ORDER BY title ASC";
@@ -101,20 +103,22 @@ if (!isset($_POST['tali_page_edit'])) {
 			$id=$db_field['id'];
 			$title=$db_field['title'];
 			echo "
-						<option value=\"$id\">$title</option>
+								<option value=\"$id\">$title</option>
 			";
 		}
 						
 		echo "
-					</select>
-					</editpagedropdown>
-					<br/>
-					<font color=\"red\">$editdeldisplayMessage</font>
-					<br/>
-					<input type=\"Submit\" class=\"editpagetitlebu\" name=\"tali_pages_editpage\" value=\"Edit Page\">
-					<input type=\"Submit\" class=\"delpagetitlebu\" name=\"tali_pages_delpage\" onclick=\"return confirm('Are you sure you want to delete the selected page?');\" value=\"Delete Page\">
-				</form>
-			</div>
+							</select>
+							</editpagedropdown>
+							<br/>
+							<font color=\"red\">$editdeldisplayMessage</font>
+							<br/>
+							<input type=\"Submit\" class=\"editpagetitlebu\" name=\"tali_pages_editpage\" value=\"Edit Page\">
+							<input type=\"Submit\" class=\"delpagetitlebu\" name=\"tali_pages_delpage\" onclick=\"return confirm('Are you sure you want to delete the selected page?');\" value=\"Delete Page\">
+						</form>
+					</div>
+				</div>
+			</main>
 		";
 	}
 	else
@@ -122,33 +126,35 @@ if (!isset($_POST['tali_page_edit'])) {
 		$id = $_GET["id"];
 		$editSQL = "SELECT * FROM tali_pages WHERE id = $id";
 		$result = mysqli_query($db_handle, $editSQL);
-			if (is_bool($result)) {
-				header ("Location: pages.php");
-				exit();
-			}
+		if (is_bool($result)) {
+			header ("Location: pages.php");
+			exit();
+		}
 		$db_field = mysqli_fetch_assoc($result);
 		$time=$db_field['time'];
 		$title=$db_field['title'];
 		$body=$db_field['body'];
 		echo "
-			<div class=\"content PageFrame\">
-				<h1><strong>Editing Page: $title</strong></h1>
-				<form method=\"POST\" id=\"tali_editpage_form\" class=\"editpageinput\" action=\"pages.php\">
-					<input type=\"hidden\" name=\"editpageid\" value=\"$id\">
-					<strong>Title</strong>
-					<br/>
-					<input type=\"text\" class=\"edittitle\" name=\"editpagetitle\"  value=\"$title\">
-					<br/>
-					<strong>Body</strong>
-					<br/>
-					<textarea class=\"editbody\" id=\"html\" name=\"editpagebody\">$body</textarea>
-					<br/>
-					<font color=\"red\">$displayMessage</font>
-					<br/>
-					<input type=\"Submit\" class=\"talipageeditbu\" name=\"tali_page_edit\" value=\"Submit\">
-					<input type=\"submit\" name=\"btnCancel\" value=\"Cancel\"/>
-				</form>
-			</div>
+			<main>
+				<div class=\"tali-container\">
+					<div class=\"tali-page-frame\">
+						<h1>Editing Page: $title</h1>
+						<form method=\"POST\" id=\"tali_editpage_form\" class=\"editpageinput\" action=\"pages.php\">
+							<input type=\"hidden\" name=\"editpageid\" value=\"$id\">
+							<strong>Title</strong>
+							<br/>
+							<input type=\"text\" class=\"edittitle\" name=\"editpagetitle\"  value=\"$title\">
+							<br/>
+							<strong>Body</strong>
+							<br/>
+							<textarea class=\"editbody\" id=\"html\" name=\"editpagebody\">$body</textarea>
+							<br/>
+							<font color=\"red\">$displayMessage</font>
+							<br/>
+							<input type=\"Submit\" class=\"talipageeditbu\" name=\"tali_page_edit\" value=\"Submit\">
+							<input type=\"submit\" name=\"btnCancel\" value=\"Cancel\"/>
+						</form>
+					</div>
 		";
 		
 		//Display History Report
@@ -160,10 +166,12 @@ if (!isset($_POST['tali_page_edit'])) {
 		$history=$db_field['history'];
 		
 		echo "
-		<div class=\"newsentry PageFrame\">
-			<h1><strong>History Report</strong></h1>
-			<p>$history</p>
-		</div>
+					<div class=\"newsentry tali-page-frame\">
+						<h1>History Report</h1>
+						<p>$history</p>
+					</div>
+				</div>
+			</main>
 		";
 	}
 }

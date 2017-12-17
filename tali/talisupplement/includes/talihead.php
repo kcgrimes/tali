@@ -3,20 +3,18 @@
 //that execute tali_init.php in their <head>.
 
 echo "
-	<link href=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/includes/talistyles_front.css\" rel=\"stylesheet\" type=\"text/css\" />
+	<link rel=\"stylesheet\" href=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/includes/talistyles_front.css?v=".filemtime("".$_SESSION['TALISupplement_ROOT_DIR']."/includes/talistyles_front.css")."\" type=\"text/css\"/>
 	<script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
 "; 
 
-
 //markitup functions
+//Note - Require jquery
 //function BBCode2Html($text) - Parses BB Code to HTML via "markitup"
 require "".$_SESSION['TALI_ROOT_DIR']."/modules/markitup/markitup.bbcode-parser.php";
 
 //Function to execute "markitup" editing
 function markItUp_editing () {
 	echo '
-		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
 		<script type="text/javascript" src="markitup/sets/bbcode/set.js"></script>
 		<link rel="stylesheet" type="text/css" href="markitup/skins/markitup/style.css" />
@@ -58,6 +56,42 @@ function TALI_fetchDBPage ($pageTitle) {
 	$body=htmlspecialchars_decode($body);
 	//Output body text, changing markup from BBCode to HTML via markitup
 	echo BBCode2Html($body);
+}
+
+/*
+Function - TALI_Module_HomeSlider
+Used to display HomeSlider images queried from the database.
+Select 1 - Number of images to display
+*/
+function TALI_Module_HomeSlider ($imageNumber) {
+	require "".$_SESSION['TALI_ROOT_DIR']."/modules/homeslider/homeslider-front.php";
+}
+
+/*
+Function - TALI_Module_News_Recent
+Used to display recent news entries queried from the database.
+Select 1 - Number of entries to display
+*/
+function TALI_Module_News_Recent ($articleNumber) {
+	require "".$_SESSION['TALI_ROOT_DIR']."/modules/news/news-recent-front.php";
+}
+
+/*
+Function - TALI_Module_News
+Used to display news entries and an archive of these entries queried from the database.
+Select 1 - Number of entries to display
+*/
+function TALI_Module_News ($articleNumber) {
+	require "".$_SESSION['TALI_ROOT_DIR']."/modules/news/news-front.php";
+}
+
+/*
+Function - TALI_Module_Roster
+Used to display roster data queried from the database.
+Select 1 - Empty
+*/
+function TALI_Module_Roster () {
+	require "".$_SESSION['TALI_ROOT_DIR']."/modules/personnel/roster/roster-front.php";
 }
 
 /*

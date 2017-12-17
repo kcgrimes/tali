@@ -4,12 +4,16 @@ $db_handle = TALI_dbConnect();
 if (is_bool($db_handle)) {
 	exit("Error Loading Page: Database connection failed.");
 }
+
+if (!($articleNumber > 0)) {
+	$articleNumber = 1;
+}
 	
 if (!isset($_GET["archive"])) {
 	echo "
-		<div class=\"content PageFrame\">
-			<div class = \"PageFrameTitle\">
-				<h1><strong>Views News Archive</strong></h1>
+		<div class=\"tali-news-front-page-frame\">
+			<div class = \"tali-news-front-page-frame-title\">
+				<h1>Views News Archive</h1>
 			</div>
 			<br/>
 			<br/>
@@ -21,7 +25,7 @@ if (!isset($_GET["archive"])) {
 	$result = mysqli_query($db_handle, $SQL);
 	$num_rows = mysqli_num_rows($result);
 	$cnt=0;
-	while (($db_field = mysqli_fetch_assoc($result)) && ($cnt<5)) {
+	while (($db_field = mysqli_fetch_assoc($result)) && ($cnt<$articleNumber)) {
 		$id=$db_field['id'];
 		$time=$db_field['time'];
 		$author=$db_field['author'];
@@ -32,22 +36,16 @@ if (!isset($_GET["archive"])) {
 		$time=strtotime($time);
 		$time=date('l\, F jS\, Y \a\t H:i', $time);
 		echo "
-		<div class=\"frontnewsentry PageFrame\">
-			<div class=\"PageFrameTitle\">
-				<table style=\"width:100%\" class=\"frontnewstb\">
-					<col width=\"50%\">
-					<col width=\"50%\">
-					<tr>
-						<td class=\"frontnewstitle\"><strong>$title</strong></td>
-						<td class=\"frontnewsauthor\">Author: $author</td>
-					</tr>
-				</table>
+		<div class=\"tali-news-front-page-frame\">
+			<div class=\"tali-news-front-page-frame-title\">
+				<h1 class=\"tali-news-front-title\">$title</h1>
+				<div class=\"tali-news-front-author\">Author: $author</div>
 			</div>
 			<p>";
 		echo $body;
 		echo "
 			</p>
-			<p style=\"text-align:right;padding-right:5px;margin-bottom:0;\">Posted: $time</p>
+			<p style=\"text-align:right;padding-right:5px;\">Posted: $time</p>
 		</div>
 		";
 		$cnt++;
@@ -58,11 +56,11 @@ else
 	if (!isset($_GET["id"])) {
 		//Archive listing
 		echo "
-			<div class=\"frontnewsentry PageFrame\">
-				<div class = \"PageFrameTitle\">
-					<h1><strong>News Archive</strong></h1>
+			<div class=\"tali-news-front-page-frame\">
+				<div class = \"tali-news-front-page-frame-title\">
+					<h1>News Archive</h1>
 				</div>
-				<table class=\"frontnewsarchivetb\">
+				<table class=\"tali-news-front-archive-table\">
 					<col width=\"33%\">
 					<col width=\"33%\">
 					<col width=\"33%\">
@@ -111,22 +109,24 @@ else
 		$time=strtotime($time);
 		$time=date('l\, F jS\, Y \a\t H:i', $time);
 		echo "
-		<div class=\"frontnewsentry PageFrame\">
-			<div class=\"PageFrameTitle\">
-				<table style=\"width:100%\" class=\"frontnewstb\">
-					<col width=\"50%\">
-					<col width=\"50%\">
-					<tr>
-						<td class=\"frontnewstitle\"><strong>$title</strong></td>
-						<td class=\"frontnewsauthor\">Author: $author</td>
-					</tr>
-				</table>
+		<div class=\"tali-news-front-page-frame\">
+			<div class=\"tali-news-front-page-frame-title\">
+				<h1 class=\"tali-news-front-title\">$title</h1>
+				<div class=\"tali-news-front-author\">Author: $author</div>
 			</div>
+		";
+		//bug - 3rd ID - These 2 line breaks are here to allow space
+		//for the center logo, unsure how to cleanly do this as custom
+		echo "
+			<br/>
+			<br/>
+		";
+		echo "
 			<p>";
 		echo $body;
 		echo "
 			</p>
-			<p style=\"text-align:right;padding-right:5px;margin-bottom:0;\">Posted: $time</p>
+			<p style=\"text-align:right;padding-right:5px;\">Posted: $time</p>
 		</div>
 		";
 	}

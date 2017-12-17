@@ -519,19 +519,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ErrorTriggered:
 
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Configuration</strong></h1>
-		<p>On this page you can set a variety of settings in order to customize the TALI Personnel module to best suit your team's needs.</p>
+	<main>
+		<div class=\"tali-container\">
+			<div class=\"tali-page-frame\">
+				<h1>Configuration</h1>
+				<p>On this page you can set a variety of settings in order to customize the TALI Personnel module to best suit your team's needs.</p>
 ";
 	
 if ($errorMessage != "") {
 	echo "
-		<p><font color=\"red\">$errorMessage</font></p>
+				<p><font color=\"red\">$errorMessage</font></p>
 	";
 };
 	
 echo "
-	</div>
+			</div>
 ";
 
 //bug - ever ganna do this?
@@ -540,8 +542,8 @@ echo "
 //bug - finish this?
 /* Commented out because not done
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Configure Visibility</strong></h1>
+	<div class=\"tali-page-frame\">
+		<h1>Configure Visibility</h1>
 		<p></p>
 	</div>
 ";
@@ -551,24 +553,24 @@ echo "
 
 echo "
 	
-	<div class=\"content PageFrame\">
-		<h1><strong>Configure Ranks</strong></h1>
-		
-		<table class=\"ranksconfigtb\">
-		<col width=\"20%\">
-		<col width=\"5%\">
-		<col width=\"10%\">
-		<col width=\"5%\">
-		<col width=\"3%\">
-		<col width=\"3%\">
-		<tr>
-			<th>Name</th>
-			<th>Abbreviation</th>
-			<th>Image</th>
-			<th>Weight</th>
-			<th></th>
-			<th></th>
-		</tr>
+			<div class=\"tali-page-frame\">
+				<h1>Configure Ranks</h1>
+				
+				<table class=\"ranksconfigtb\">
+				<col width=\"20%\">
+				<col width=\"5%\">
+				<col width=\"10%\">
+				<col width=\"5%\">
+				<col width=\"3%\">
+				<col width=\"3%\">
+				<tr>
+					<th>Name</th>
+					<th>Abbreviation</th>
+					<th>Image</th>
+					<th>Weight</th>
+					<th></th>
+					<th></th>
+				</tr>
 ";
 
 $rankSQL = "SELECT * FROM tali_personnel_ranks ORDER BY weight DESC";
@@ -581,27 +583,27 @@ while ($db_field = mysqli_fetch_assoc($rankresult)) {
 	$image=$db_field['image'];
 	$weight=$db_field['weight'];
 	echo "
-		<tr>
-			<td style=\"text-align:center;\">$name</td>
-			<td style=\"text-align:center;\">$abbreviation</td>
-			<td style=\"text-align:center;\"><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_Ranks_Images_Directory']."$image\" alt=\"Rank\"></img><br/>$image</td>
-			<td style=\"text-align:center;\">$weight</td>
-			<td style=\"text-align:center;\">
-				<a href=\"personnel.php?sub=configuration&id=$rank_id&button=rank_edit\">
-					<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
-				</a>
-			</td>
-			<td style=\"text-align:center;\">
-				<a href=\"personnel.php?sub=configuration&id=$rank_id&button=rank_delete\">
-					<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
-				</a>
-			</td>
-		</tr>
+				<tr>
+					<td style=\"text-align:center;\">$name</td>
+					<td style=\"text-align:center;\">$abbreviation</td>
+					<td style=\"text-align:center;\"><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_Ranks_Images_Directory']."$image\" alt=\"Rank\"></img><br/>$image</td>
+					<td style=\"text-align:center;\">$weight</td>
+					<td style=\"text-align:center;\">
+						<a href=\"personnel.php?sub=configuration&id=$rank_id&button=rank_edit\">
+							<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+						</a>
+					</td>
+					<td style=\"text-align:center;\">
+						<a href=\"personnel.php?sub=configuration&id=$rank_id&button=rank_delete\">
+							<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+						</a>
+					</td>
+				</tr>
 	";
 }
 
 echo "
-	</table>
+			</table>
 ";
 
 //Check if initial Edit/Delete button clicked
@@ -634,46 +636,46 @@ if ((isset($_GET['id'])) && (isset($_GET['button']))) {
 }
 	
 echo "
-		<table class=\"ranksconfigtb\">
-			<col width=\"20%\">
-			<col width=\"5%\">
-			<col width=\"10%\">
-			<col width=\"5%\">
-			<tr>
-				<th>Name</th>
-				<th>Abbreviation</th>
-				<th>Image</th>
-				<th>Weight</th>
-			</tr>
-			<tr>
-				<td>
-					<input type=\"text\" class=\"bo\" name=\"tali_modules_personnel_ranks_add_addname\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addname\">
-				</td>
-				<td>
-					<input type=\"text\" class=\"bo\" name=\"tali_modules_personnel_ranks_add_addabbreviation\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addabbreviation\">
-				</td>
-				<td>
+				<table class=\"ranksconfigtb\">
+					<col width=\"20%\">
+					<col width=\"5%\">
+					<col width=\"10%\">
+					<col width=\"5%\">
+					<tr>
+						<th>Name</th>
+						<th>Abbreviation</th>
+						<th>Image</th>
+						<th>Weight</th>
+					</tr>
+					<tr>
+						<td>
+							<input type=\"text\" class=\"bo\" name=\"tali_modules_personnel_ranks_add_addname\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addname\">
+						</td>
+						<td>
+							<input type=\"text\" class=\"bo\" name=\"tali_modules_personnel_ranks_add_addabbreviation\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addabbreviation\">
+						</td>
+						<td>
 ";
 
 if ((isset($_GET['button'])) && ((($_GET['button']) == "rank_edit") || (($_GET['button']) == "rank_delete"))) {
 	echo "
-					$rank_addimage
+							$rank_addimage
 	";
 }
 else
 {
 	echo "
-					<input type=\"file\" name=\"rank_file\" id=\"rank_file\" form=\"tali_modules_personnel_ranks_add_form\"/>
+							<input type=\"file\" name=\"rank_file\" id=\"rank_file\" form=\"tali_modules_personnel_ranks_add_form\"/>
 	";
 }
 
 echo "
-				</td>
-				<td>
-					<input type=\"text\" class=\"bo\" name=\"tali_modules_personnel_ranks_add_addweight\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addweight\">
-				</td>
-			</tr>
-		</table>
+						</td>
+						<td>
+							<input type=\"text\" class=\"bo\" name=\"tali_modules_personnel_ranks_add_addweight\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addweight\">
+						</td>
+					</tr>
+				</table>
 ";
 
 //Check what button should be displayed
@@ -701,30 +703,30 @@ else
 }
 
 echo "
-		<form method=\"POST\" enctype=\"multipart/form-data\" id=\"tali_modules_personnel_ranks_add_form\" action=$rank_form_action>
-			<input type=\"submit\" name=\"ranks_bu\" class=\"bu\" value='$rank_form_value'/>
-		</form>
-	</div>
+				<form method=\"POST\" enctype=\"multipart/form-data\" id=\"tali_modules_personnel_ranks_add_form\" action=$rank_form_action>
+					<input type=\"submit\" name=\"ranks_bu\" class=\"bu\" value='$rank_form_value'/>
+				</form>
+			</div>
 ";
 
 //Configure Statuses
 
 echo "
 	
-	<div class=\"content PageFrame\">
-		<h1><strong>Configure Statuses</strong></h1>
-		
-		<table class=\"ranksconfigtb\">
-		<col width=\"20%\">
-		<col width=\"5%\">
-		<col width=\"3%\">
-		<col width=\"3%\">
-		<tr>
-			<th>Name</th>
-			<th>Weight</th>
-			<th></th>
-			<th></th>
-		</tr>
+			<div class=\"tali-page-frame\">
+				<h1>Configure Statuses</h1>
+				
+				<table class=\"ranksconfigtb\">
+				<col width=\"20%\">
+				<col width=\"5%\">
+				<col width=\"3%\">
+				<col width=\"3%\">
+				<tr>
+					<th>Name</th>
+					<th>Weight</th>
+					<th></th>
+					<th></th>
+				</tr>
 ";
 
 $SQL = "SELECT * FROM tali_personnel_statuses ORDER BY weight DESC";
@@ -735,25 +737,25 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 	$name=$db_field['name'];
 	$weight=$db_field['weight'];
 	echo "
-		<tr>
-			<td style=\"text-align:center;\">$name</td>
-			<td style=\"text-align:center;\">$weight</td>
-			<td style=\"text-align:center;\">
-				<a href=\"personnel.php?sub=configuration&id=$status_id&button=status_edit\">
-					<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
-				</a>
-			</td>
-			<td style=\"text-align:center;\">
-				<a href=\"personnel.php?sub=configuration&id=$status_id&button=status_delete\">
-					<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
-				</a>
-			</td>
-		</tr>
+				<tr>
+					<td style=\"text-align:center;\">$name</td>
+					<td style=\"text-align:center;\">$weight</td>
+					<td style=\"text-align:center;\">
+						<a href=\"personnel.php?sub=configuration&id=$status_id&button=status_edit\">
+							<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+						</a>
+					</td>
+					<td style=\"text-align:center;\">
+						<a href=\"personnel.php?sub=configuration&id=$status_id&button=status_delete\">
+							<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+						</a>
+					</td>
+				</tr>
 	";
 }
 
 echo "
-	</table>
+			</table>
 ";
 
 //Check if initial Edit/Delete button clicked
@@ -782,22 +784,22 @@ if ((isset($_GET['id'])) && (isset($_GET['button']))) {
 }
 	
 echo "
-		<table class=\"ranksconfigtb\">
-			<col width=\"20%\">
-			<col width=\"5%\">
-			<tr>
-				<th>Name</th>
-				<th>Weight</th>
-			</tr>
-			<tr>
-				<td>
-					<input type=\"text\" class=\"bo\" name=\"status_add_name\" form=\"tali_modules_personnel_status_add_form\" value=\"$status_addname\">
-				</td>
-				<td>
-					<input type=\"text\" class=\"bo\" name=\"status_add_weight\" form=\"tali_modules_personnel_status_add_form\" value=\"$status_addweight\">
-				</td>
-			</tr>
-		</table>
+				<table class=\"ranksconfigtb\">
+					<col width=\"20%\">
+					<col width=\"5%\">
+					<tr>
+						<th>Name</th>
+						<th>Weight</th>
+					</tr>
+					<tr>
+						<td>
+							<input type=\"text\" class=\"bo\" name=\"status_add_name\" form=\"tali_modules_personnel_status_add_form\" value=\"$status_addname\">
+						</td>
+						<td>
+							<input type=\"text\" class=\"bo\" name=\"status_add_weight\" form=\"tali_modules_personnel_status_add_form\" value=\"$status_addweight\">
+						</td>
+					</tr>
+				</table>
 ";
 
 //Check what button should be displayed
@@ -825,30 +827,30 @@ else
 }
 
 echo "
-		<form method=\"POST\" id=\"tali_modules_personnel_status_add_form\" action=$status_form_action>
-			<input type=\"submit\" name=\"statuses_bu\" class=\"bu\" value='$status_form_value'/>
-		</form>
-	</div>
+				<form method=\"POST\" id=\"tali_modules_personnel_status_add_form\" action=$status_form_action>
+					<input type=\"submit\" name=\"statuses_bu\" class=\"bu\" value='$status_form_value'/>
+				</form>
+			</div>
 ";
 
 //Configure Roles
 
 echo "
 	
-	<div class=\"content PageFrame\">
-		<h1><strong>Configure Roles</strong></h1>
-		
-		<table class=\"ranksconfigtb\">
-		<col width=\"20%\">
-		<col width=\"5%\">
-		<col width=\"3%\">
-		<col width=\"3%\">
-		<tr>
-			<th>Role Name</th>
-			<th>Weight</th>
-			<th></th>
-			<th></th>
-		</tr>
+			<div class=\"tali-page-frame\">
+				<h1>Configure Roles</h1>
+				
+				<table class=\"ranksconfigtb\">
+				<col width=\"20%\">
+				<col width=\"5%\">
+				<col width=\"3%\">
+				<col width=\"3%\">
+				<tr>
+					<th>Role Name</th>
+					<th>Weight</th>
+					<th></th>
+					<th></th>
+				</tr>
 ";
 
 $SQL = "SELECT * FROM tali_personnel_roles ORDER BY weight DESC";
@@ -859,25 +861,25 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 	$name=$db_field['name'];
 	$weight=$db_field['weight'];
 	echo "
-		<tr>
-			<td style=\"text-align:center;\">$name</td>
-			<td style=\"text-align:center;\">$weight</td>
-			<td style=\"text-align:center;\">
-				<a href=\"personnel.php?sub=configuration&id=$role_id&button=role_edit\">
-					<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
-				</a>
-			</td>
-			<td style=\"text-align:center;\">
-				<a href=\"personnel.php?sub=configuration&id=$role_id&button=role_delete\">
-					<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
-				</a>
-			</td>
-		</tr>
+				<tr>
+					<td style=\"text-align:center;\">$name</td>
+					<td style=\"text-align:center;\">$weight</td>
+					<td style=\"text-align:center;\">
+						<a href=\"personnel.php?sub=configuration&id=$role_id&button=role_edit\">
+							<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+						</a>
+					</td>
+					<td style=\"text-align:center;\">
+						<a href=\"personnel.php?sub=configuration&id=$role_id&button=role_delete\">
+							<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+						</a>
+					</td>
+				</tr>
 	";
 }
 
 echo "
-	</table>
+			</table>
 ";
 
 //Check if initial Edit/Delete button clicked
@@ -906,22 +908,22 @@ if ((isset($_GET['id'])) && (isset($_GET['button']))) {
 }
 	
 echo "
-		<table class=\"ranksconfigtb\">
-			<col width=\"20%\">
-			<col width=\"5%\">
-			<tr>
-				<th>Role Name</th>
-				<th>Weight</th>
-			</tr>
-			<tr>
-				<td>
-					<input type=\"text\" class=\"bo\" name=\"role_add_name\" form=\"tali_modules_personnel_role_add_form\" value=\"$role_addname\">
-				</td>
-				<td>
-					<input type=\"text\" class=\"bo\" name=\"role_add_weight\" form=\"tali_modules_personnel_role_add_form\" value=\"$role_addweight\">
-				</td>
-			</tr>
-		</table>
+				<table class=\"ranksconfigtb\">
+					<col width=\"20%\">
+					<col width=\"5%\">
+					<tr>
+						<th>Role Name</th>
+						<th>Weight</th>
+					</tr>
+					<tr>
+						<td>
+							<input type=\"text\" class=\"bo\" name=\"role_add_name\" form=\"tali_modules_personnel_role_add_form\" value=\"$role_addname\">
+						</td>
+						<td>
+							<input type=\"text\" class=\"bo\" name=\"role_add_weight\" form=\"tali_modules_personnel_role_add_form\" value=\"$role_addweight\">
+						</td>
+					</tr>
+				</table>
 ";
 
 //Check what button should be displayed
@@ -949,17 +951,17 @@ else
 }
 
 echo "
-		<form method=\"POST\" id=\"tali_modules_personnel_role_add_form\" action=$role_form_action>
-			<input type=\"submit\" name=\"roles_bu\" class=\"bu\" value='$role_form_value'/>
-		</form>
-	</div>
+				<form method=\"POST\" id=\"tali_modules_personnel_role_add_form\" action=$role_form_action>
+					<input type=\"submit\" name=\"roles_bu\" class=\"bu\" value='$role_form_value'/>
+				</form>
+			</div>
 ";
 
 //Configure Designations
 		
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Configure Designations</strong></h1>
+			<div class=\"tali-page-frame\">
+				<h1>Configure Designations</h1>
 ";
 
 //Check if designation Edit/Delete button clicked
@@ -990,84 +992,82 @@ if ((isset($_GET['id'])) && (isset($_GET['button']))) {
 }
 
 echo "
-		<p>Designation details:</p>
-		<table class=\"ranksconfigtb\">
-			<col width=\"20%\">
-			<col width=\"20%\">
-			<col width=\"5%\">
-			<tr>
-				<th>Designation</th>
-				<th>Leader</th>
-				<th>Weight</th>
-			</tr>
-			<tr>
-				<td>
-					<input type=\"text\" class=\"bo\" name='desig_add_name' form='tali_modules_personnel_designation_add_form' value=\"$desig_addname\">
-				</td>
-				";
-				
-				echo "
-				<td>
-					<select class=\"tali_personnel_configuration_designations_dropdown\" name=\"desig_add_leader\" form=\"tali_modules_personnel_designation_add_form\" value=\"$desig_addleader\">
-						<option value=\"\">Select a Leader</option>
-				";
-				
-				$SQL = "SELECT * FROM tali_personnel_roster JOIN tali_personnel_ranks ON tali_personnel_roster.rank_id=tali_personnel_ranks.rank_id WHERE discharged=0 ORDER BY tali_personnel_ranks.weight DESC, tali_personnel_roster.date_promoted ASC, tali_personnel_roster.date_enlisted ASC";
-				$result = mysqli_query($db_handle, $SQL);
-				while ($db_field = mysqli_fetch_assoc($result)) {
-					$personnel_id=$db_field['personnel_id'];
-					$rank_id=$db_field['rank_id'];
-					$rankSQL = "SELECT * FROM tali_personnel_ranks WHERE rank_id=$rank_id";
-					$rankresult = mysqli_query($db_handle, $rankSQL);
-					$rank_db_field = mysqli_fetch_assoc($rankresult);
-					$rank_abr=$rank_db_field['abbreviation'];
-					$firstname=$db_field['firstname'];
-					$lastname=$db_field['lastname'];
-					$compiled = $rank_abr . " " . $firstname . " " . $lastname;
-					
-					if ($desig_addleader == $personnel_id) {
-					$selected = 'selected="selected"';
-					}
-					else
-					{
-						$selected = '';
-					}
-					
-					echo "
-						<option value=\"$personnel_id\" ".$selected.">$compiled</option>
-					";
-				}
-				echo "
-					</select>
-				
-				</td>
-				
-				<td>
-					<input type=\"text\" class=\"bo\" name='desig_add_weight' form='tali_modules_personnel_designation_add_form' value=\"$desig_addweight\">
-				</td>
-			</tr>
-		</table>
+				<p>Designation details:</p>
+				<table class=\"ranksconfigtb\">
+					<col width=\"20%\">
+					<col width=\"20%\">
+					<col width=\"5%\">
+					<tr>
+						<th>Designation</th>
+						<th>Leader</th>
+						<th>Weight</th>
+					</tr>
+					<tr>
+						<td>
+							<input type=\"text\" class=\"bo\" name='desig_add_name' form='tali_modules_personnel_designation_add_form' value=\"$desig_addname\">
+						</td>
+";
+
+echo "
+						<td>
+							<select class=\"tali_personnel_configuration_designations_dropdown\" name=\"desig_add_leader\" form=\"tali_modules_personnel_designation_add_form\" value=\"$desig_addleader\">
+								<option value=\"\">Select a Leader</option>
+";
+
+$SQL = "SELECT * FROM tali_personnel_roster JOIN tali_personnel_ranks ON tali_personnel_roster.rank_id=tali_personnel_ranks.rank_id WHERE discharged=0 ORDER BY tali_personnel_ranks.weight DESC, tali_personnel_roster.date_promoted ASC, tali_personnel_roster.date_enlisted ASC";
+$result = mysqli_query($db_handle, $SQL);
+while ($db_field = mysqli_fetch_assoc($result)) {
+	$personnel_id=$db_field['personnel_id'];
+	$rank_id=$db_field['rank_id'];
+	$rankSQL = "SELECT * FROM tali_personnel_ranks WHERE rank_id=$rank_id";
+	$rankresult = mysqli_query($db_handle, $rankSQL);
+	$rank_db_field = mysqli_fetch_assoc($rankresult);
+	$rank_abr=$rank_db_field['abbreviation'];
+	$firstname=$db_field['firstname'];
+	$lastname=$db_field['lastname'];
+	$compiled = $rank_abr . " " . $firstname . " " . $lastname;
+	
+	if ($desig_addleader == $personnel_id) {
+	$selected = 'selected="selected"';
+	}
+	else
+	{
+		$selected = '';
+	}
+	
+	echo "
+								<option value=\"$personnel_id\" ".$selected.">$compiled</option>
+		";
+	}
+	echo "
+							</select>
+						</td>
+						<td>
+							<input type=\"text\" class=\"bo\" name='desig_add_weight' form='tali_modules_personnel_designation_add_form' value=\"$desig_addweight\">
+						</td>
+					</tr>
+				</table>
 ";
 
 //Prepare a table of designations for selection/action
 echo "
-		<p>Select a designation to report to:</p>
-						
-		<table class=\"ranksconfigtb\">
-		<col width=\"3%\">
-		<col width=\"20%\">
-		<col width=\"17%\">
-		<col width=\"5%\">
-		<col width=\"3%\">
-		<col width=\"3%\">
-		<tr>
-			<th></th>
-			<th>Designation</th>
-			<th>Leader</th>
-			<th>Weight</th>
-			<th></th>
-			<th></th>
-		</tr>
+				<p>Select a designation to report to:</p>
+								
+				<table class=\"ranksconfigtb\">
+					<col width=\"3%\">
+					<col width=\"20%\">
+					<col width=\"17%\">
+					<col width=\"5%\">
+					<col width=\"3%\">
+					<col width=\"3%\">
+					<tr>
+						<th></th>
+						<th>Designation</th>
+						<th>Leader</th>
+						<th>Weight</th>
+						<th></th>
+						<th></th>
+					</tr>
 ";
 
 //Select all designations
@@ -1150,24 +1150,24 @@ function designationRow ($db_handle, $arrayDesignation_selected) {
 	}
 	
 	echo "
-		<tr>
-			<td style=\"text-align:center;\">
-				<input type=\"Radio\" form=\"tali_modules_personnel_designation_add_form\" name=\"designation_radio\" value=\"$designation_id\" ".$desig_radio_checked.">
-			</td>
-			<td style=\"text-align:center;\">$full_desig_name</td>
-			<td style=\"text-align:center;\">$leader</td>
-			<td style=\"text-align:center;\">$weight</td>
-			<td style=\"text-align:center;\">
-				<a href=\"personnel.php?sub=configuration&action=designation&id=$designation_id&button=desig_edit\">
-					<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
-				</a>
-			</td>
-			<td style=\"text-align:center;\">
-				<a href=\"personnel.php?sub=configuration&action=designation&id=$designation_id&button=desig_delete\">
-					<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
-				</a>
-			</td>
-		</tr>
+					<tr>
+						<td style=\"text-align:center;\">
+							<input type=\"Radio\" form=\"tali_modules_personnel_designation_add_form\" name=\"designation_radio\" value=\"$designation_id\" ".$desig_radio_checked.">
+						</td>
+						<td style=\"text-align:center;\">$full_desig_name</td>
+						<td style=\"text-align:center;\">$leader</td>
+						<td style=\"text-align:center;\">$weight</td>
+						<td style=\"text-align:center;\">
+							<a href=\"personnel.php?sub=configuration&action=designation&id=$designation_id&button=desig_edit\">
+								<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+							</a>
+						</td>
+						<td style=\"text-align:center;\">
+							<a href=\"personnel.php?sub=configuration&action=designation&id=$designation_id&button=desig_delete\">
+								<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+							</a>
+						</td>
+					</tr>
 	";
 }
 
@@ -1192,7 +1192,7 @@ foreach ($arrayDesignation as $designation) {
 }
 
 echo "
-		</table>
+				</table>
 ";
 
 //Check what button should be displayed
@@ -1220,24 +1220,24 @@ else
 }
 				
 	echo "
-			<form method=\"POST\" id='tali_modules_personnel_designation_add_form' action=$desig_form_action>
-				<input type=\"submit\" name='desig_bu' class=\"bu\" value='$desig_form_value'/>
-			</form>
+				<form method=\"POST\" id='tali_modules_personnel_designation_add_form' action=$desig_form_action>
+					<input type=\"submit\" name='desig_bu' class=\"bu\" value='$desig_form_value'/>
+				</form>
 	";
 	
 	if ((isset($_GET['id'])) && (isset($_GET['button'])) && ($_GET['button'] == "desig_edit")) {
 		echo "
-			<form method=\"POST\" id='tali_modules_personnel_designation_add_form' action=$desig_form_action>
-				<input type=\"submit\" name='desig_button_deactivate' class=\"bu\" value='Deactivate Designation'/>
-			</form>
+				<form method=\"POST\" id='tali_modules_personnel_designation_add_form' action=$desig_form_action>
+					<input type=\"submit\" name='desig_button_deactivate' class=\"bu\" value='Deactivate Designation'/>
+				</form>
 		";
 	}
 	
 	//Reactivation section
 	echo "
-			<p>Select an inactive designation to reactivate:</p>
-			<select form=\"tali_modules_personnel_designation_reactivate_form\" class=\"desigSelect_report\" name=\"reactivate_designation\">
-				<option value=\"\" selected>Select a Designation</option>
+				<p>Select an inactive designation to reactivate:</p>
+				<select form=\"tali_modules_personnel_designation_reactivate_form\" class=\"desigSelect_report\" name=\"reactivate_designation\">
+					<option value=\"\" selected>Select a Designation</option>
 	";
 	
 	//Select all designations
@@ -1247,16 +1247,18 @@ else
 		$designation_id = $db_field['designation_id'];
 		$designation_name = $db_field['name'];
 		echo "
-				<option value=\"$designation_id\">$designation_name</option>
+					<option value=\"$designation_id\">$designation_name</option>
 		";
 	}
 	echo "
-			</select>
-			<form method=\"POST\" id='tali_modules_personnel_designation_reactivate_form' action=$desig_form_action>
-				<input type=\"submit\" name='desig_button_reactivate' class=\"bu\" value='Reactivate Designation'/>
-			</form>
+				</select>
+				<form method=\"POST\" id='tali_modules_personnel_designation_reactivate_form' action=$desig_form_action>
+					<input type=\"submit\" name='desig_button_reactivate' class=\"bu\" value='Reactivate Designation'/>
+				</form>
 	";
 echo "
-	</div>
+			</div>
+		</div>
+	</main>
 ";
 ?>

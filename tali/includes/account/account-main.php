@@ -31,24 +31,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 else
 {
 	echo "
-		<div class=\"content PageFrame\">
-			<h1><strong>Account Management</strong></h1>
-			<p>On this page you can manage your personal account settings.</p>
-		</div>
-		
-		<div class=\"selectcontent PageFrame\">
-			<h1><strong>Change Password</strong></h1>
-			<p>Your Account Name: ".$_SESSION['username']."</p>
-			<p>New Password: <input type=\"password\" class=\"tali_account_passwordinput\"  name=\"newpassword\" form=\"tali_account_form\" value=\"\"></p>
-			<form method=\"POST\" id=\"tali_account_form\" action=\"account.php\">
-				<p><input type=\"Submit\" Name=\"btnPassword\" value=\"Submit New Password\"></p>
-			</form>
+		<main>
+			<div class=\"tali-container\">
+				<div class=\"tali-page-frame\">
+					<h1>Account Management</h1>
+					<p>On this page you can manage your personal account settings.</p>
+				</div>
+				
+				<div class=\"tali-page-frame\">
+					<h1>Change Password</h1>
+					<p>Your Account Name: ".$_SESSION['username']."</p>
+					<p>New Password: <input type=\"password\" class=\"tali_account_passwordinput\"  name=\"newpassword\" form=\"tali_account_form\" value=\"\"></p>
+					<form method=\"POST\" id=\"tali_account_form\" action=\"account.php\">
+						<p><input type=\"Submit\" Name=\"btnPassword\" value=\"Submit New Password\"></p>
+					</form>
 	";
 			
 	
 	echo "
+					</div>
+				</div>
 			</div>
-		</div>
+		</main>
 	";
 }
 ?>

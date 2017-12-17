@@ -154,28 +154,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 //Primary form for New and Update
 echo "
-<div class=\"newsentry PageFrame\">
-	<h1><strong>$headingTitle</strong></h1>
-	<form method=\"POST\" id=\"tali_newsentry_form\" class=\"newsentryinput\" action=\"$action\">
-		<input type=\"hidden\" name=\"newentryid\" value=\"$newid\">
-		<strong>Author</strong>
-		<br/>
-		<input type=\"text\" class=\"newsauthor\" name=\"newentryauthor\"  value=\"$newauthor\">
-		<br/>
-		<strong>Title</strong>
-		<br/>
-		<input type=\"text\" class=\"newstitle\" name=\"newentrytitle\"  value=\"$newtitle\">
-		<br/>
-		<strong>Body</strong>
-		<br/>
-		<textarea cols=\"80\" rows=\"20\" class=\"newsbodyc\" id=\"html\" name=\"newentrybody\">$newbody</textarea>
-		<br/>
-		<font color=\"red\">$displayMessage</font>
-		<br/>
-		<input type=\"Submit\" class=\"bu\" name=\"tali_news_newentry\" value=\"$headingTitle\">
-		$updateSpecButton
-	</form>
-</div>
+	<main>
+		<div class=\"tali-container\">
+			<div class=\"newsentry tali-page-frame\">
+				<h1>$headingTitle</h1>
+				<form method=\"POST\" id=\"tali_newsentry_form\" class=\"newsentryinput\" action=\"$action\">
+					<input type=\"hidden\" name=\"newentryid\" value=\"$newid\">
+					<strong>Author</strong>
+					<br/>
+					<input type=\"text\" class=\"newsauthor\" name=\"newentryauthor\"  value=\"$newauthor\">
+					<br/>
+					<strong>Title</strong>
+					<br/>
+					<input type=\"text\" class=\"newstitle\" name=\"newentrytitle\"  value=\"$newtitle\">
+					<br/>
+					<strong>Body</strong>
+					<br/>
+					<textarea cols=\"80\" rows=\"20\" class=\"newsbodyc\" id=\"html\" name=\"newentrybody\">$newbody</textarea>
+					<br/>
+					<font color=\"red\">$displayMessage</font>
+					<br/>
+					<input type=\"Submit\" class=\"bu\" name=\"tali_news_newentry\" value=\"$headingTitle\">
+					$updateSpecButton
+				</form>
+			</div>
 ";
 //
 		
@@ -190,18 +192,18 @@ if ((isset($_GET['action'])) && (($_GET['action']) == "edit")) {
 	$history=$db_field['history'];
 	
 	echo "
-	<div class=\"newsentry PageFrame\">
-		<h1><strong>History Report</strong></h1>
-		<p>$history</p>
-	</div>
+			<div class=\"newsentry tali-page-frame\">
+				<h1>History Report</h1>
+				<p>$history</p>
+			</div>
 	";
 }
 else
 //news.php - Displays all entries
 {
 	echo "
-	<div class=\"newslist PageFrame\">
-		<h1><strong>Manage News Entries</strong></h1>
+			<div class=\"newslist tali-page-frame\">
+				<h1>Manage News Entries</h1>
 	";
 
 	$SQL = "SELECT * FROM tali_news ORDER BY time DESC";
@@ -214,37 +216,39 @@ else
 		$title=$db_field['title'];
 		$body=$db_field['body'];
 		echo "
-			<form method=\"POST\" id=\"tali_newslist_form\" class=\"newsentryinput\" action=\"news.php?action=edit&id=$id\">
-				<table style=\"width:95%\" class=\"newsentrytb\">
-					<col width=\"6%\">
-					<col width=\"47%\">
-					<col width=\"47%\">
-					<tr>
-						<th>ID</th>
-						<th>Date/Time</th>
-						<th>Author</th>
-					</tr>
-					<tr>
-						<td><input type=\"text\" class=\"newsid\" name=\"newsid\"  value=\"$id\" readonly=\"readonly\"></td>
-						<td><input type=\"text\" class=\"newstime\" name=\"newstime\"  value=\"$time\" readonly=\"readonly\"></td>
-						<td><input type=\"text\" class=\"newsauthor\" name=\"newsauthor\"  value=\"$author\" readonly=\"readonly\"></td>
-					<tr>
-				</table>
-				<strong>Title</strong>
+				<form method=\"POST\" id=\"tali_newslist_form\" class=\"newsentryinput\" action=\"news.php?action=edit&id=$id\">
+					<table style=\"width:95%\" class=\"newsentrytb\">
+						<col width=\"6%\">
+						<col width=\"47%\">
+						<col width=\"47%\">
+						<tr>
+							<th>ID</th>
+							<th>Date/Time</th>
+							<th>Author</th>
+						</tr>
+						<tr>
+							<td><input type=\"text\" class=\"newsid\" name=\"newsid\"  value=\"$id\" readonly=\"readonly\"></td>
+							<td><input type=\"text\" class=\"newstime\" name=\"newstime\"  value=\"$time\" readonly=\"readonly\"></td>
+							<td><input type=\"text\" class=\"newsauthor\" name=\"newsauthor\"  value=\"$author\" readonly=\"readonly\"></td>
+						<tr>
+					</table>
+					<strong>Title</strong>
+					<br/>
+					<input type=\"text\" class=\"newstitle\" name=\"newstitle\" value=\"$title\" readonly=\"readonly\">
+					<br/>
+					<strong>Body</strong>
+					<br/>
+					<textarea readonly class=\"newsbodyc\" name=\"newsbody\" id=\"newsbodyid\">$body</textarea>
+					<br/>
+					<input type=\"Submit\" class=\"bu\" Name=\"tali_news_editentry\" value=\"Edit Entry\">
+				</form>
 				<br/>
-				<input type=\"text\" class=\"newstitle\" name=\"newstitle\" value=\"$title\" readonly=\"readonly\">
-				<br/>
-				<strong>Body</strong>
-				<br/>
-				<textarea readonly class=\"newsbodyc\" name=\"newsbody\" id=\"newsbodyid\">$body</textarea>
-				<br/>
-				<input type=\"Submit\" class=\"bu\" Name=\"tali_news_editentry\" value=\"Edit Entry\">
-			</form>
-			<br/>
 		";
 	}
 	echo "
+			</div>
 		</div>
+	</main>
 	";
 }
 ?>

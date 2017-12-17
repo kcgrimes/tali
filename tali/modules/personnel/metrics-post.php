@@ -13,8 +13,8 @@ TALI_sessionCheck($module, $db_handle);
 //Determine which "submit" button was pressed
 
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Analysis Results</strong></h1>
+	<div class=\"tali-page-frame\">
+		<h1>Analysis Results</h1>
 ";
 
 //bug - SQL date ranges aren't being inclusive (repro by running with blank
@@ -347,4 +347,7 @@ if (isset($_POST['desig_subbutton'])) {
 		";
 	}
 }
+echo "
+	</div>
+";
 ?>

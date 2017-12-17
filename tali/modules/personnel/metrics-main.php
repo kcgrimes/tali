@@ -11,10 +11,12 @@ if (is_bool($db_handle)) {
 TALI_sessionCheck($module, $db_handle);
 
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Personnel Metrics</strong></h1>
-		<p>This page allows for analysis of attendance records per individual or unit.</p>
-	</div>
+	<main>
+		<div class=\"tali-container\">
+			<div class=\"tali-page-frame\">
+				<h1>Personnel Metrics</h1>
+				<p>This page allows for analysis of attendance records per individual or unit.</p>
+			</div>
 ";	
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -26,9 +28,9 @@ else
 	//Not POST
 	//Individual Analysis
 	echo "
-		<div class=\"content PageFrame\">
-			<h1><strong>Individual Analysis</strong></h1>
-			<p>Select an individual from the dropdown:</p>
+			<div class=\"tali-page-frame\">
+				<h1>Individual Analysis</h1>
+				<p>Select an individual from the dropdown:</p>
 	";
 	
 	//bug - how to incorporate past members?
@@ -48,50 +50,50 @@ else
 	};
 
 	echo "
-			<p><select name=\"selectindiv\" form=\"indiv_analysis\">
-				<option value=\"empty\">Select an Individual</option>
+				<p><select name=\"selectindiv\" form=\"indiv_analysis\">
+					<option value=\"empty\">Select an Individual</option>
 	";
 	
 	foreach ($arrayPersonnel_json as $i) {
 		echo "
-				<option value=\"".$i['personnel_id']."\">".$i['rank_abr']." ".$i['firstname']." ".$i['lastname']."</option>
+					<option value=\"".$i['personnel_id']."\">".$i['rank_abr']." ".$i['firstname']." ".$i['lastname']."</option>
 		";
 	};
 
 	echo "
-			</select>
-			<br/>
-			<br/>
-			Enter a date to analyze from (MM/DD/YYYY):
-			<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"indiv_analysis_end\" form=\"indiv_analysis\" maxlength=\"10\" value=\"\">
-			<br/>
-			Enter a date to analyze up to (MM/DD/YYYY):
-			<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"indiv_analysis_start\" form=\"indiv_analysis\" maxlength=\"10\" value=\"\">
-			<br/>
-			Select analysis techniques:
-			<form method=\"POST\" id=\"indiv_analysis\" action=\"personnel.php?sub=metrics&action=post\">
-				<p>
-				<input type=\"checkbox\" name=\"indiv_technique_array[]\" checked=\"checked\" value=\"attendanceanalysis\"/>
-				Attendance Analysis
+				</select>
 				<br/>
 				<br/>
-				<input type=\"submit\" name=\"indiv_subbutton\" class=\"tali_personnel_metrics_subbutton\" value=\"Conduct Analysis\"/>
-				</p>
-			</form>
-		</div>
+				Enter a date to analyze from (MM/DD/YYYY):
+				<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"indiv_analysis_end\" form=\"indiv_analysis\" maxlength=\"10\" value=\"\">
+				<br/>
+				Enter a date to analyze up to (MM/DD/YYYY):
+				<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"indiv_analysis_start\" form=\"indiv_analysis\" maxlength=\"10\" value=\"\">
+				<br/>
+				Select analysis techniques:
+				<form method=\"POST\" id=\"indiv_analysis\" action=\"personnel.php?sub=metrics&action=post\">
+					<p>
+					<input type=\"checkbox\" name=\"indiv_technique_array[]\" checked=\"checked\" value=\"attendanceanalysis\"/>
+					Attendance Analysis
+					<br/>
+					<br/>
+					<input type=\"submit\" name=\"indiv_subbutton\" class=\"tali_personnel_metrics_subbutton\" value=\"Conduct Analysis\"/>
+					</p>
+				</form>
+			</div>
 	"; 
 	
 	//Designation Analysis
 	echo "
-		<div class=\"content PageFrame\">
-			<h1><strong>Designation Analysis</strong></h1>
-			<p>Select a designation from the dropdown:</p>
+			<div class=\"tali-page-frame\">
+				<h1>Designation Analysis</h1>
+				<p>Select a designation from the dropdown:</p>
 	";
 	
 	//Prepare a dropdown of designations for selection/action
 	echo "					
-			<p><select form=\"desig_analysis\" class=\"desigSelect_report\" id=\"designation_select\" name=\"designation_select\">
-				<option value=\"\" selected>Select a Designation</option>
+				<p><select form=\"desig_analysis\" class=\"desigSelect_report\" id=\"designation_select\" name=\"designation_select\">
+					<option value=\"\" selected>Select a Designation</option>
 	";
 	
 	//Select all designations, including those that are inactive
@@ -141,7 +143,7 @@ else
 		
 		//List designations as options
 		echo "
-				<option value=\"$designation_id\">$full_desig_name</option>
+					<option value=\"$designation_id\">$full_desig_name</option>
 		";
 	}
 	
@@ -166,35 +168,35 @@ else
 	}
 	
 	echo "
-			</select>
+				</select>
 	";
 		
 	//End designation stuff
 	
 	echo "
-			<br/>
-			<br/>
-			Enter a date to analyze from (MM/DD/YYYY):
-			<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"desig_analysis_end\" form=\"desig_analysis\" maxlength=\"10\" value=\"\">
-			<br/>
-			Enter a date to analyze up to (MM/DD/YYYY):
-			<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"desig_analysis_start\" form=\"desig_analysis\" maxlength=\"10\" value=\"\">
-			<br/>
-			Select analysis techniques:
-			<form method=\"POST\" id=\"desig_analysis\" action=\"personnel.php?sub=metrics&action=post\">
-				<p>
-				<input type=\"checkbox\" name=\"desig_technique_array[]\" checked=\"checked\" value=\"attendanceanalysis\"/>
-				Attendance Analysis
 				<br/>
 				<br/>
-				<input type=\"submit\" name=\"desig_subbutton\" class=\"tali_personnel_metrics_subbutton\" value=\"Conduct Analysis\"/>
-				</p>
-			</form>
-		</div>
+				Enter a date to analyze from (MM/DD/YYYY):
+				<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"desig_analysis_end\" form=\"desig_analysis\" maxlength=\"10\" value=\"\">
+				<br/>
+				Enter a date to analyze up to (MM/DD/YYYY):
+				<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"desig_analysis_start\" form=\"desig_analysis\" maxlength=\"10\" value=\"\">
+				<br/>
+				Select analysis techniques:
+				<form method=\"POST\" id=\"desig_analysis\" action=\"personnel.php?sub=metrics&action=post\">
+					<p>
+					<input type=\"checkbox\" name=\"desig_technique_array[]\" checked=\"checked\" value=\"attendanceanalysis\"/>
+					Attendance Analysis
+					<br/>
+					<br/>
+					<input type=\"submit\" name=\"desig_subbutton\" class=\"tali_personnel_metrics_subbutton\" value=\"Conduct Analysis\"/>
+					</p>
+				</form>
+			</div>
 		
-		<div class=\"content PageFrame\">
-			<h1><strong>Miscellaneous Personnel Metrics</strong></h1>
-			<p>
+			<div class=\"tali-page-frame\">
+				<h1>Miscellaneous Personnel Metrics</h1>
+				<p>
 	";
 		
 	//Median Rank
@@ -211,8 +213,8 @@ else
 	$result = mysqli_query($db_handle, $SQL);
 	$db_field = mysqli_fetch_assoc($result);
 	echo "
-			Active Duty Median Rank: ".$db_field['name']."
-			<br/>
+				Active Duty Median Rank: ".$db_field['name']."
+				<br/>
 	";
 	//Average Time in Grade
 	$SQL = "SELECT date_promoted, date_discharged FROM tali_personnel_roster";
@@ -239,8 +241,8 @@ else
 	$avg_time_in_grade = round($avg_time_in_grade / 60 / 60 / 24 / 365, 2);
 	
 	echo "
-			Average Time in Grade: $avg_time_in_grade years
-			<br/>
+				Average Time in Grade: $avg_time_in_grade years
+				<br/>
 	";
 	//Median Time in Grade
 	sort($times_array);
@@ -250,8 +252,8 @@ else
 	$med_time_in_grade = round($med_time_in_grade / 60 / 60 / 24 / 365, 2);
 	
 	echo "
-			Median Time in Grade: $med_time_in_grade years
-			<br/>
+				Median Time in Grade: $med_time_in_grade years
+				<br/>
 	";
 	
 	//Average Time in Service
@@ -279,8 +281,8 @@ else
 	$avg_time_in_service = round($avg_time_in_service / 60 / 60 / 24 / 365, 2);
 	
 	echo "
-			Average Time in Service: $avg_time_in_service years
-			<br/>
+				Average Time in Service: $avg_time_in_service years
+				<br/>
 	";
 	//Median Time in Service
 	sort($times_array);
@@ -290,13 +292,17 @@ else
 	$med_time_in_service = round($med_time_in_service / 60 / 60 / 24 / 365, 2);
 	
 	echo "
-			Median Time in Service: $med_time_in_service years
-			<br/>
+				Median Time in Service: $med_time_in_service years
+				<br/>
 	";
 
 	echo "
-			</p>
-		</div>
+				</p>
+			</div>
 	";
 }
+echo "
+		</div>
+	</main>
+";
 ?>

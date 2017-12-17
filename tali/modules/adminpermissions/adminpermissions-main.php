@@ -107,25 +107,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 echo "
-	<div class=\"content PageFrame\">
-		<h1><strong>Manage Admin Access</strong></h1>
-		<p>On this page you can manage the number of access levels there are in addition to customize the access available to each level, along with adjusting the visibility of modules.</p>
-	</div>
-	
-	<div class=\"content PageFrame\">
-		<h1><strong>Manage Access Level Amount</strong></h1>
-		<p>Define the number of levels of admin access:</p>
-		<form method=\"POST\" id=\"i_tali_admin_permissions_levelsform\" class=\"c_tali_admin_permissions_levelsform\" action=\"adminpermissions.php\">
-			<input type=\"integer\" maxlength=\"4\" class=\"c_tali_admin_permissions_levelsfield\" name=\"levelsfield\" value=\"$levels\">
-			<input type=\"Submit\" class=\"c_tali_admin_permissions_levelsbu\" name=\"levelspost\" value=\"Set Level Amount\">
-		</form>
-		<br/>
-		<p><font color=\"red\">$newdisplayMessage</font></p>
-	</div>
-	
-	<div class=\"content PageFrame\">
-		<h1><strong>Manage Admin Access Settings</strong></h1>
-		<p>One level at a time, check the boxes for which modules you want to allow that individual level access to, then click Submit to save changes.</p>
+	<main>
+		<div class=\"tali-container\">
+			<div class=\"tali-page-frame\">
+				<h1>Manage Admin Access</h1>
+				<p>On this page you can manage the number of access levels there are in addition to customize the access available to each level, along with adjusting the visibility of modules.</p>
+			</div>
+			
+			<div class=\"tali-page-frame\">
+				<h1>Manage Access Level Amount</h1>
+				<p>Define the number of levels of admin access:</p>
+				<form method=\"POST\" id=\"i_tali_admin_permissions_levelsform\" class=\"c_tali_admin_permissions_levelsform\" action=\"adminpermissions.php\">
+					<input type=\"integer\" maxlength=\"4\" class=\"c_tali_admin_permissions_levelsfield\" name=\"levelsfield\" value=\"$levels\">
+					<input type=\"Submit\" class=\"c_tali_admin_permissions_levelsbu\" name=\"levelspost\" value=\"Set Level Amount\">
+				</form>
+				<br/>
+				<p><font color=\"red\">$newdisplayMessage</font></p>
+			</div>
+			
+			<div class=\"tali-page-frame\">
+				<h1>Manage Admin Access Settings</h1>
+				<p>One level at a time, check the boxes for which modules you want to allow that individual level access to, then click Submit to save changes.</p>
 ";
 
 //Create array of an array of each module and its permitted access levels
@@ -147,9 +149,9 @@ while ($level_cnt < $levels) {
 	//$level_cnt is the current level being cycled
 	$level_cnt++;
 	echo "
-		<form action=\"adminpermissions.php\" class=\"c_tali_admin_permissions_form\"method=\"post\">
-		Level $level_cnt:
-		<br/>
+				<form action=\"adminpermissions.php\" class=\"c_tali_admin_permissions_form\"method=\"post\">
+				Level $level_cnt:
+				<br/>
 	";
 	
 	//Loop for each module
@@ -160,29 +162,31 @@ while ($level_cnt < $levels) {
 		if (in_array($level_cnt,$permitted_levels)) {
 			//Permitted
 			echo "
-			<input type=\"checkbox\" name=\"accesscheckbox[]\" checked=\"checked\" value=\"$module\"/>
-			$module
-			<br/>
+					<input type=\"checkbox\" name=\"accesscheckbox[]\" checked=\"checked\" value=\"$module\"/>
+					$module
+					<br/>
 			";
 		}
 		else
 		{
 			//Not permitted
 			echo "
-			<input type=\"checkbox\" name=\"accesscheckbox[]\" value=\"$module\"/>
-			$module
-			<br/>
+					<input type=\"checkbox\" name=\"accesscheckbox[]\" value=\"$module\"/>
+					$module
+					<br/>
 			";
 		}
 	}
 	echo "
-			<input type=\"hidden\" name=\"accesslevel\" value=\"$level_cnt\"/>
-			<input type=\"submit\" name=\"accesslevelbu\" value=\"Submit\"/>
-		</form>
-		<br/>
+					<input type=\"hidden\" name=\"accesslevel\" value=\"$level_cnt\"/>
+					<input type=\"submit\" name=\"accesslevelbu\" value=\"Submit\"/>
+				</form>
+				<br/>
 	";
 }
 echo "
-	</div>
+			</div>
+		</div>
+	</main>
 ";
 ?>

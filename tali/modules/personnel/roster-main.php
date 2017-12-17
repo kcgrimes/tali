@@ -45,6 +45,12 @@ if (isset($_POST['btnCancel'])) {
 	exit();
 }
 
+//bug - A better way to do this?
+echo "
+	<main>
+		<div class=\"tali-container\">
+";
+
 //Return - Delete button clicked
 //bug - What about the associated admin account, if any?
 if ((isset($_POST['btnDelete'])) && (isset($_GET['id']))) {
@@ -224,8 +230,8 @@ if (isset($_GET['action'])) {
 				}
 			}
 			echo "
-				<div class=\"content PageFrame\">
-					<h1><strong>Manage Personnel File</strong></h1>
+				<div class=\"tali-page-frame\">
+					<h1>Manage Personnel File</h1>
 					<p>This page allows for management of an individual's personnel file.</p>
 					<p>Note: To Add/Save a Personnel File, a minimum of Rank, First Name, Last Name, Designation, Role, Status, and Date Enlisted must be provided.</p>
 			";
@@ -242,8 +248,8 @@ if (isset($_GET['action'])) {
 			";
 			
 			echo "
-				<div class=\"content PageFrame\">
-					<h1><strong>
+				<div class=\"tali-page-frame\">
+					<h1>
 			";
 			
 			//Display section title depending on action
@@ -263,7 +269,7 @@ if (isset($_GET['action'])) {
 			}
 			
 			echo "	
-					</strong></h1>
+					</h1>
 					
 					<table class=\"tali_personnel_roster_add_table\">
 					<col width=\"50%\">
@@ -900,15 +906,15 @@ else
 		//bug - make this more simple, more functional, less duplicate!
 		//Past Roster
 		echo "
-			<div class=\"content PageFrame\">
-				<h1><strong>Manage Roster</strong></h1>
+			<div class=\"tali-page-frame\">
+				<h1>Manage Roster</h1>
 				<p>This page allows for management of the personnel roster and all associated personnel data.</p>
 			</div>
 		";
 		
 		echo "
-			<div class=\"content PageFrame\">
-				<h1><strong>Past Members Roster</strong></h1>
+			<div class=\"tali-page-frame\">
+				<h1>Past Members Roster</h1>
 				<br/>
 				<table class=\"tali_personnel_roster_links\">
 					<col width=\"50%\">
@@ -1002,15 +1008,15 @@ else
 	{
 		//Active Roster
 		echo "
-			<div class=\"content PageFrame\">
-				<h1><strong>Manage Roster</strong></h1>
+			<div class=\"tali-page-frame\">
+				<h1>Manage Roster</h1>
 				<p>This page allows for management of the personnel roster and all associated personnel data.</p>
 			</div>
 		";
 		
 		echo "
-			<div class=\"content PageFrame\">
-				<h1><strong>Active Members Roster</strong></h1>
+			<div class=\"tali-page-frame\">
+				<h1>Active Members Roster</h1>
 				<br/>
 				<table class=\"tali_personnel_roster_links\">
 					<col width=\"50%\">
@@ -1102,4 +1108,10 @@ else
 		";
 	}
 }
+
+//bug - A better way to do this?
+echo "
+		</div>
+	</main>
+";
 ?>

@@ -20,27 +20,31 @@ markItUp_editing ();
 if (!isset($_GET['location'])) {
 	//Fresh page - Drill Reports launch pad to Create or View
 	echo "
-		<div class=\"content PageFrame\">
-			<h1><strong>Manage Drill Reports</strong></h1>
-			<p>This page allows for the management of the unit's drill reports.</p>
-		</div>
-
-		<div class=\"content PageFrame\">
-			<div class=\"row\">
-				<div class=\"col\">
-					<a href=\"personnel.php?sub=drillreports&location=create\" class=\"thumbnail\">
-						<img src=\"../images/display/icons/DrillReports-New.png\" alt=\"Create New Drill Report Icon\" name=\"Create New Drill Report Icon\">
-						<p>Create New Drill Report</p>
-					</a>
+		<main>
+			<div class=\"tali-container\">
+				<div class=\"tali-page-frame\">
+					<h1>Manage Drill Reports</h1>
+					<p>This page allows for the management of the unit's drill reports.</p>
 				</div>
-				<div class=\"col\">
-					<a href=\"personnel.php?sub=drillreports&location=view\" class=\"thumbnail\">
-						<img src=\"../images/display/icons/DrillReports-View.png\" alt=\"View/Edit Past Drill Reports Icon\" name=\"View Past Drill Reports Icon\">
-						<p>View/Edit Past Drill Reports</p>
-					</a>
+
+				<div class=\"tali-page-frame\">
+					<div class=\"row\">
+						<div class=\"col\">
+							<a href=\"personnel.php?sub=drillreports&location=create\" class=\"thumbnail\">
+								<img src=\"../images/display/icons/DrillReports-New.png\" alt=\"Create New Drill Report Icon\" name=\"Create New Drill Report Icon\">
+								<p>Create New Drill Report</p>
+							</a>
+						</div>
+						<div class=\"col\">
+							<a href=\"personnel.php?sub=drillreports&location=view\" class=\"thumbnail\">
+								<img src=\"../images/display/icons/DrillReports-View.png\" alt=\"View/Edit Past Drill Reports Icon\" name=\"View Past Drill Reports Icon\">
+								<p>View/Edit Past Drill Reports</p>
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
+		</main>
 	";
 }
 else
@@ -51,23 +55,25 @@ else
 			//Viewing archived Drill Reports
 			//bug - this needs pagination
 			echo "
-				<div class=\"content PageFrame\">
-					<h1><strong>View Drill Reports</strong></h1>
-					<p>This page allows you to view all previous Drill Reports and individually edit a selected report.</p>
-				</div>
-				
-				<div class=\"content PageFrame\">
-					<h1><strong>View Drill Reports</strong></h1>
+				<main>
+					<div class=\"tali-container\">
+						<div class=\"tali-page-frame\">
+							<h1>View Drill Reports</h1>
+							<p>This page allows you to view all previous Drill Reports and individually edit a selected report.</p>
+						</div>
+						
+						<div class=\"tali-page-frame\">
+							<h1>View Drill Reports</h1>
 			";
 			
 			//Select Designation
 				
 			//Prepare a dropdown of designations for selection/action
 			echo "
-					<p>Select the desired designation to display past drill reports:</p>
-					
-					<select form=\"create_drillreport\" class=\"desigSelect_report\" id=\"designation_select\" name=\"designation_select\">
-						<option value=\"\" selected>Select a Designation</option>
+							<p>Select the desired designation to display past drill reports:</p>
+							
+							<select form=\"create_drillreport\" class=\"desigSelect_report\" id=\"designation_select\" name=\"designation_select\">
+								<option value=\"\" selected>Select a Designation</option>
 			";
 			
 			//Select all designations, including those that are inactive
@@ -117,7 +123,7 @@ else
 				
 				//List designations as options
 				echo "
-						<option value=\"$designation_id\">$full_desig_name</option>
+								<option value=\"$designation_id\">$full_desig_name</option>
 				";
 			}
 			
@@ -142,33 +148,33 @@ else
 			}
 			
 			echo "
-					</select>
+							</select>
 			";
 				
 			//End designation stuff
 			
 			echo "
-					<br/>
-					<br/>
+							<br/>
+							<br/>
 			";
 			
 			echo "						
-					<table id=\"drillreportsTable\" class=\"tali_personnel_roster_table\">
-					<col width=\"50%\">
-					<col width=\"40%\">
-					<col width=\"10%\">
+							<table id=\"drillreportsTable\" class=\"tali_personnel_roster_table\">
+								<col width=\"50%\">
+								<col width=\"40%\">
+								<col width=\"10%\">
 
-					<tr>
-						<th>Designation</th>
-						<th>Drill Date</th>
-						<th>Edit</th>
-					</tr>
-					
-					<tr>
-						<td style=\"text-align:center;\">No Designation Selected</td>
-						<td style=\"text-align:center;\">No Designation Selected</td>
-						<td style=\"text-align:center;\">No Designation Selected</td>
-					</tr>
+								<tr>
+									<th>Designation</th>
+									<th>Drill Date</th>
+									<th>Edit</th>
+								</tr>
+								
+								<tr>
+									<td style=\"text-align:center;\">No Designation Selected</td>
+									<td style=\"text-align:center;\">No Designation Selected</td>
+									<td style=\"text-align:center;\">No Designation Selected</td>
+								</tr>
 			";
 			
 			//Create drill reports array in JSON format
@@ -211,8 +217,10 @@ else
 			<?php
 			
 			echo "
-					</table>
-				</div>
+							</table>
+						</div>
+					</div>
+				</main>
 			";
 		break;
 		case "create":
@@ -638,21 +646,23 @@ Completed on ".date("m/d/Y")."";
 				
 				//BUG - 3rd - non-dyanmic link to 3rd ID forums included here
 				echo "
-						<div class=\"content PageFrame\">
-							<h1><strong>$headingStatus Drill Report</strong></h1>
-							<p>$paraText</p>
-							<p><a target=\"_blank\" href=\"http://www.3rd-infantry-division.org/forums/index.php?board=44.0\">Link to Excuses Board</a></p>
-						</div>
-						
-						<div class=\"content PageFrame\">
-							<h1><strong>$headingStatus Drill Report</strong></h1>
+					<main>
+						<div class=\"tali-container\">
+							<div class=\"tali-page-frame\">
+								<h1>$headingStatus Drill Report</h1>
+								<p>$paraText</p>
+								<p><a target=\"_blank\" href=\"http://www.3rd-infantry-division.org/forums/index.php?board=44.0\">Link to Excuses Board</a></p>
+							</div>
+							
+							<div class=\"tali-page-frame\">
+								<h1>$headingStatus Drill Report</h1>
 				";
 				
 				//Date of Drill
 				
 				echo "
-					<p>Date of drill (MM/DD/YYYY):</p>
-					<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"dateofdrill\" form=\"create_drillreport\" maxlength=\"10\" value=\"$form_dateofdrill\">
+								<p>Date of drill (MM/DD/YYYY):</p>
+								<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"dateofdrill\" form=\"create_drillreport\" maxlength=\"10\" value=\"$form_dateofdrill\">
 				";
 				
 				//Date of Report (greyed out box)
@@ -661,8 +671,8 @@ Completed on ".date("m/d/Y")."";
 					$form_dateofreport = date("m/d/Y");
 				}
 				echo "
-					<p>Date of report:</p>
-					<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"dateofreport\" form=\"create_drillreport\" maxlength=\"10\" readonly value=\"$form_dateofreport\">
+								<p>Date of report:</p>
+								<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"dateofreport\" form=\"create_drillreport\" maxlength=\"10\" readonly value=\"$form_dateofreport\">
 				";
 				
 				if (!isset($_GET['id'])) {
@@ -671,10 +681,10 @@ Completed on ".date("m/d/Y")."";
 					
 					//Prepare a dropdown of designations for selection/action
 					echo "
-						<p>Select the desired designation to display its roster:</p>
-						
-						<select form=\"create_drillreport\" class=\"desigSelect_report\" id=\"designation_select\" name=\"designation_select\">
-							<option value=\"\" selected>Select a Designation</option>
+								<p>Select the desired designation to display its roster:</p>
+								
+								<select form=\"create_drillreport\" class=\"desigSelect_report\" id=\"designation_select\" name=\"designation_select\">
+									<option value=\"\" selected>Select a Designation</option>
 					";
 					
 					//Select all designations
@@ -724,7 +734,7 @@ Completed on ".date("m/d/Y")."";
 						
 						//List designations as options
 						echo "
-							<option value=\"$designation_id\">$full_desig_name</option>
+									<option value=\"$designation_id\">$full_desig_name</option>
 						";
 					}
 					
@@ -749,7 +759,7 @@ Completed on ".date("m/d/Y")."";
 					}
 					
 					echo "
-						</select>
+								</select>
 					";
 										
 					//End designation stuff
@@ -758,10 +768,10 @@ Completed on ".date("m/d/Y")."";
 				//Attended
 				
 				echo "
-						<br/>
-						<br/>
-						<p>Place a checkmark for all who attended:</p>
-						<p id=\"attendedFiller\">No designation selected, or designation has no members.</p>
+								<br/>
+								<br/>
+								<p>Place a checkmark for all who attended:</p>
+								<p id=\"attendedFiller\">No designation selected, or designation has no members.</p>
 				";
 									
 				//Need an array of all personnel with rank, firstname, lastname, and designation, sorted by rank_id weight. 
@@ -876,9 +886,9 @@ Completed on ".date("m/d/Y")."";
 							}
 							
 							echo "
-							<input type=\"checkbox\" ".$checked." class=\"attendedCheckbox_class\" form=\"create_drillreport\" name=\"attendedcheckbox[]\" id=\"attended_" . $i['personnel_id'] . "\" value=\"" . $i['personnel_id'] . "\"/> " . $i['rank_abr'] . " " . $i['firstname'] . " " . $i['lastname'] . "
-							<input type=\"hidden\" form=\"create_drillreport\" name=\"designationmembers[]\" value=\"" . $i['personnel_id'] . "\"/>
-							<br/>
+								<input type=\"checkbox\" ".$checked." class=\"attendedCheckbox_class\" form=\"create_drillreport\" name=\"attendedcheckbox[]\" id=\"attended_" . $i['personnel_id'] . "\" value=\"" . $i['personnel_id'] . "\"/> " . $i['rank_abr'] . " " . $i['firstname'] . " " . $i['lastname'] . "
+								<input type=\"hidden\" form=\"create_drillreport\" name=\"designationmembers[]\" value=\"" . $i['personnel_id'] . "\"/>
+								<br/>
 							";
 						};
 					};
@@ -889,9 +899,9 @@ Completed on ".date("m/d/Y")."";
 				//bug - I feel like this whole setup is very sloppy and slow. But it works. 
 										
 				echo "
-						<br/>
-						<p>Place a checkmark for all who were not present but were excused:</p>
-						<p id=\"excusedFiller\">All designation members present, or designation has no members.</p>
+								<br/>
+								<p>Place a checkmark for all who were not present but were excused:</p>
+								<p id=\"excusedFiller\">All designation members present, or designation has no members.</p>
 				";
 				
 				if (!isset($_GET['id'])) {
@@ -1024,9 +1034,9 @@ Completed on ".date("m/d/Y")."";
 				//Comments
 				
 				echo "
-						<br/>
-						<p>Provide any comments below:</p>
-						<textarea class=\"tali_personnel_drillreports_textarea\" name=\"report_comments\" form=\"create_drillreport\" value=\"\">$form_report_comments</textarea>
+								<br/>
+								<p>Provide any comments below:</p>
+								<textarea class=\"tali_personnel_drillreports_textarea\" name=\"report_comments\" form=\"create_drillreport\" value=\"\">$form_report_comments</textarea>
 				";
 				
 				if (isset($_GET['id'])) {
@@ -1042,13 +1052,15 @@ Completed on ".date("m/d/Y")."";
 				
 				//bug - hide/condition me if designation not selected
 				echo "
-						<form method=\"POST\" id=\"create_drillreport\" action=\"personnel.php?sub=drillreports&location=create&action=submit".$form_postURL_id."\">
-							<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"$form_postbutton Drill Report\"/>
-						</form>
+								<form method=\"POST\" id=\"create_drillreport\" action=\"personnel.php?sub=drillreports&location=create&action=submit".$form_postURL_id."\">
+									<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"$form_postbutton Drill Report\"/>
+								</form>
 				"; 
 				
 				echo "
-					</div>
+							</div>
+						</div>
+					</main>
 				";
 			}
 		break;

@@ -13,16 +13,20 @@ TALI_sessionCheck($module, $db_handle);
 if (!isset($_GET['sub'])) {
 	//Fresh page
 	echo "
-		<div class=\"content PageFrame\">
-			<h1><strong>Manage Mailing List</strong></h1>
-			<p>On this page you can manage the various mailing lists and send mail.</p>
-			<a href=\"mailinglist.php?sub=manage\"><p>Manage Custom Mailing Lists</p></a>
-		</div>
-		
-		<div class=\"content PageFrame\">
-			<h1><strong>Send Mail</strong></h1>
-			<p>TBD</p>
-		</div>
+		<main>
+			<div class=\"tali-container\">
+				<div class=\"tali-page-frame\">
+					<h1>Manage Mailing List</h1>
+					<p>On this page you can manage the various mailing lists and send mail.</p>
+					<a href=\"mailinglist.php?sub=manage\"><p>Manage Custom Mailing Lists</p></a>
+				</div>
+				
+				<div class=\"tali-page-frame\">
+					<h1>Send Mail</h1>
+					<p>TBD</p>
+				</div>
+			</div>
+		</main>
 	";
 }
 else

@@ -14,12 +14,12 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 }
 
 echo "
-	<div class=\"PageFrame\">
-		<div class = \"PageFrameTitle\">
-			<h1><strong>Ranks</strong></h1>
+	<div class=\"tali-personnel-roster-front-page-frame\">
+		<div class = \"tali-personnel-roster-front-page-frame-title\">
+			<h1>Ranks</h1>
 		</div>
 		<br/>
-		<table class=\"tali_personnel_roster_front_links\">
+		<table class=\"tali-personnel-roster-front-links\">
 			<col width=\"25%\">
 			<col width=\"25%\">
 			<col width=\"25%\">
@@ -34,7 +34,7 @@ echo "
 ";
 
 echo "
-		<table class=\"tali_personnel_roster_front_designation\">
+		<table class=\"tali-personnel-roster-front-designation\">
 			<col width=\"40%\">
 			<col width=\"40%\">
 			<col width=\"20%\">

@@ -11,21 +11,25 @@ if (is_bool($db_handle)) {
 TALI_sessionCheck($module, $db_handle);
 
 echo "
-<div class=\"content PageFrame\">
-	<h1><strong>Website Software Versions</strong></h1>
-	<p>
-	TALI: ". $_SESSION['TALI_Version'] . "
-	<br/>
+	<main>
+		<div class=\"tali-container\">
+			<div class=\"tali-page-frame\">
+				<h1>Website Software Versions</h1>
+				<p>
+				TALI: ".$_SESSION['TALI_Version']."
+				<br/>
 ";
 
-echo 'PHP: ' . phpversion();
+echo "PHP: ".phpversion();
 echo "
-	<br/>
+				<br/>
 ";
 printf("MySQL: %s\n", mysqli_get_server_info($db_handle));
 
 echo "
-	</p>
-	</div>
+				</p>
+			</div>
+		</div>
+	</main>
 ";
 ?>

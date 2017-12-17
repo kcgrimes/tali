@@ -83,10 +83,12 @@ if (isset($_GET['action'])) {
 			$record = $db_field['record'];
 			
 			echo "
-				<div class=\"content PageFrame\">
-					<h1><strong>Manage Personnel Awards</strong></h1>
-					<p>This page allows you to manage awards for a specific individual.</p>
-				</div>
+				<main>
+					<div class=\"tali-container\">
+						<div class=\"tali-page-frame\">
+							<h1>Manage Personnel Awards</h1>
+							<p>This page allows you to manage awards for a specific individual.</p>
+						</div>
 			";
 			
 			$SQL = "SELECT * FROM tali_personnel_roster JOIN tali_personnel_ranks ON tali_personnel_roster.rank_id=tali_personnel_ranks.rank_id WHERE personnel_id=$personnel_id";
@@ -94,14 +96,14 @@ if (isset($_GET['action'])) {
 			$db_field = mysqli_fetch_assoc($result);
 
 			echo "
-				<div class=\"content PageFrame\">
-					<h1><strong>Manage Personnel Awards for ".$db_field['abbreviation']." ".$db_field['firstname']." ".$db_field['lastname']."</strong></h1>
+						<div class=\"tali-page-frame\">
+							<h1>Manage Personnel Awards for ".$db_field['abbreviation']." ".$db_field['firstname']." ".$db_field['lastname']."</h1>
 			";
 			
 			echo "
-					<p>Select an award from the dropdown below to add:</p>
-					<select class=\"tali_personnel_awards_addaward_dropdown\" name=\"award_id\" form=\"add_award\" value=\"\">
-						<option value=\"\">Select an Award</option>
+							<p>Select an award from the dropdown below to add:</p>
+							<select class=\"tali_personnel_awards_addaward_dropdown\" name=\"award_id\" form=\"add_award\" value=\"\">
+								<option value=\"\">Select an Award</option>
 			";
 			
 			//bug - make this sort by awardclass_id then award_class id weight then award_id weight
@@ -116,26 +118,29 @@ if (isset($_GET['action'])) {
 					$selected = '';
 				}
 				echo "
-						<option value=\"{$db_field['award_id']}\"".$selected.">{$db_field['name']}</option>
+								<option value=\"{$db_field['award_id']}\"".$selected.">{$db_field['name']}</option>
 				";
 			}
 			
 			echo "
-					</select>
+							</select>
 			";
 			
 			echo "
-					<p>Date awarded (MM/DD/YYYY):</p>
-					<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date_awarded\" form=\"add_award\" maxlength=\"10\" value=\"$date_awarded\">
+							<p>Date awarded (MM/DD/YYYY):</p>
+							<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date_awarded\" form=\"add_award\" maxlength=\"10\" value=\"$date_awarded\">
 			";
 			
 			echo "
-					<p>Award Record:</p>
-					<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_award\" value=\"$record\">
-					
-					<form method=\"POST\" id=\"add_award\" action=\"personnel.php?sub=roster_awards&id=$personnel_id&action=addaward&awardrecord_id=$awardrecord_id\">
-						<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Edit Award\"/>
-					</form>
+							<p>Award Record:</p>
+							<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_award\" value=\"$record\">
+							
+							<form method=\"POST\" id=\"add_award\" action=\"personnel.php?sub=roster_awards&id=$personnel_id&action=addaward&awardrecord_id=$awardrecord_id\">
+								<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Edit Award\"/>
+							</form>
+						</div>
+					</div>
+				</main>
 			";
 
 		break;
@@ -162,10 +167,12 @@ else
 	$personnel_id = $_GET['id'];
 	
 	echo "
-		<div class=\"content PageFrame\">
-			<h1><strong>Manage Personnel Awards</strong></h1>
-			<p>This page allows you to manage awards for a specific individual.</p>
-		</div>
+		<main>
+			<div class=\"tali-container\">
+				<div class=\"tali-page-frame\">
+					<h1>Manage Personnel Awards</h1>
+					<p>This page allows you to manage awards for a specific individual.</p>
+				</div>
 	";
 	
 	$SQL = "SELECT * FROM tali_personnel_roster JOIN tali_personnel_ranks ON tali_personnel_roster.rank_id=tali_personnel_ranks.rank_id WHERE personnel_id=$personnel_id";
@@ -173,14 +180,14 @@ else
 	$db_field = mysqli_fetch_assoc($result);
 
 	echo "
-		<div class=\"content PageFrame\">
-			<h1><strong>Manage Personnel Awards for ".$db_field['abbreviation']." ".$db_field['firstname']." ".$db_field['lastname']."</strong></h1>
+				<div class=\"tali-page-frame\">
+					<h1>Manage Personnel Awards for ".$db_field['abbreviation']." ".$db_field['firstname']." ".$db_field['lastname']."</h1>
 	";
 	
 	echo "
-			<p>Select an award from the dropdown below to add:</p>
-			<select class=\"tali_personnel_awards_addaward_dropdown\" name=\"award_id\" form=\"add_award\" value=\"\">
-				<option value=\"\">Select an Award</option>
+					<p>Select an award from the dropdown below to add:</p>
+					<select class=\"tali_personnel_awards_addaward_dropdown\" name=\"award_id\" form=\"add_award\" value=\"\">
+						<option value=\"\">Select an Award</option>
 	";
 	
 	//bug - make this sort by awardclass_id then award_class id weight then award_id weight
@@ -188,44 +195,44 @@ else
 	$result = mysqli_query($db_handle, $SQL);
 	while ($db_field = mysqli_fetch_assoc($result)) {
 		echo "
-				<option value=\"{$db_field['award_id']}\">{$db_field['name']}</option>
+						<option value=\"{$db_field['award_id']}\">{$db_field['name']}</option>
 		";
 	}
 	
 	echo "
-			</select>
+					</select>
 	";
 	
 	echo "
-			<p>Date awarded (MM/DD/YYYY):</p>
-			<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date_awarded\" form=\"add_award\" maxlength=\"10\" value=\"$date_awarded\">
+					<p>Date awarded (MM/DD/YYYY):</p>
+					<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date_awarded\" form=\"add_award\" maxlength=\"10\" value=\"$date_awarded\">
 	";
 	
 	echo "
-			<p>Award Record:</p>
-			<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_award\" value=\"$record\">
-			
-			<form method=\"POST\" id=\"add_award\" action=\"personnel.php?sub=roster_awards&id=$personnel_id&action=addaward\">
-				<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Add Award\"/>
-			</form>
+					<p>Award Record:</p>
+					<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_award\" value=\"$record\">
+					
+					<form method=\"POST\" id=\"add_award\" action=\"personnel.php?sub=roster_awards&id=$personnel_id&action=addaward\">
+						<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Add Award\"/>
+					</form>
 	";
 	
 	echo "			
-			<p>Click to edit or delete previously earned awards:</p>
-			<table id=\"awardclassTable\" class=\"tali_personnel_roster_table\">
-				<col width=\"30%\">
-				<col width=\"20%\">
-				<col width=\"30%\">
-				<col width=\"10%\">
-				<col width=\"10%\">
-				
-				<tr>
-					<th>Award</th>
-					<th>Date Awarded</th>
-					<th>Record</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
+					<p>Click to edit or delete previously earned awards:</p>
+					<table id=\"awardclassTable\" class=\"tali_personnel_roster_table\">
+						<col width=\"30%\">
+						<col width=\"20%\">
+						<col width=\"30%\">
+						<col width=\"10%\">
+						<col width=\"10%\">
+						
+						<tr>
+							<th>Award</th>
+							<th>Date Awarded</th>
+							<th>Record</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
 	";
 	
 	$SQL = "SELECT * FROM tali_personnel_awards_record WHERE personnel_id=$personnel_id ORDER BY date_awarded DESC";
@@ -242,30 +249,32 @@ else
 		$record = $db_field['record'];
 				
 		echo "
-				<tr>
-					<td style=\"text-align:center;\">$award_name</td>
-					<td style=\"text-align:center;\">$date_awarded</td>
-					<td style=\"text-align:center;\">$record</td>
-					<td style=\"text-align:center;\">
-						<a href=\"personnel.php?sub=roster_awards&id=$personnel_id&awardrecord_id=$awardrecord_id&action=editaward\">
-							<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
-						</a>
-					</td>
-					<td style=\"text-align:center;\">
-						<a href=\"personnel.php?sub=roster_awards&id=$personnel_id&awardrecord_id=$awardrecord_id&action=deleteaward\" onclick=\"return confirm('Are you sure you want to delete this award?');\">
-							<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
-						</a>
-					</td>
-				</tr>
+						<tr>
+							<td style=\"text-align:center;\">$award_name</td>
+							<td style=\"text-align:center;\">$date_awarded</td>
+							<td style=\"text-align:center;\">$record</td>
+							<td style=\"text-align:center;\">
+								<a href=\"personnel.php?sub=roster_awards&id=$personnel_id&awardrecord_id=$awardrecord_id&action=editaward\">
+									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+								</a>
+							</td>
+							<td style=\"text-align:center;\">
+								<a href=\"personnel.php?sub=roster_awards&id=$personnel_id&awardrecord_id=$awardrecord_id&action=deleteaward\" onclick=\"return confirm('Are you sure you want to delete this award?');\">
+									<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+								</a>
+							</td>
+						</tr>
 		";
 	};
 	
 	echo "
-			</table>
+					</table>
 	";
 	
 	echo "
-		</div>
+				</div>
+			</div>
+		</main>
 	";
 }
 ?>
