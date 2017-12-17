@@ -617,7 +617,7 @@ a.tali-responsive-icon {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	line-height: 1.42857143;
-	background-color: #aaa;
+	background-color: transparent;
 	border: 1px solid transparent;
 	border-radius: 6px;
 	transition: border .2s ease-in-out;
