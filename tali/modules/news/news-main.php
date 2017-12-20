@@ -152,30 +152,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 }
 
+//bug - look into formatting/styling of the markitup, and use of width vs cols/rows, etc.
 //Primary form for New and Update
 echo "
 	<main>
 		<div class=\"tali-container\">
-			<div class=\"newsentry tali-page-frame\">
+			<div class=\"tali-page-frame\">
 				<h1>$headingTitle</h1>
-				<form method=\"POST\" id=\"tali_newsentry_form\" class=\"newsentryinput\" action=\"$action\">
+				<form method=\"POST\" id=\"tali_newsentry_form\" action=\"$action\">
+					<p>
 					<input type=\"hidden\" name=\"newentryid\" value=\"$newid\">
 					<strong>Author</strong>
 					<br/>
-					<input type=\"text\" class=\"newsauthor\" name=\"newentryauthor\"  value=\"$newauthor\">
+					<input type=\"text\" name=\"newentryauthor\"  value=\"$newauthor\">
 					<br/>
 					<strong>Title</strong>
 					<br/>
-					<input type=\"text\" class=\"newstitle\" name=\"newentrytitle\"  value=\"$newtitle\">
+					<input type=\"text\" class=\"tali-news-entry_list-input-title\" name=\"newentrytitle\"  value=\"$newtitle\">
 					<br/>
 					<strong>Body</strong>
 					<br/>
-					<textarea cols=\"80\" rows=\"20\" class=\"newsbodyc\" id=\"html\" name=\"newentrybody\">$newbody</textarea>
+					<textarea cols=\"80\" rows=\"20\" class=\"tali-news-entry_list-input-body\" id=\"html\" name=\"newentrybody\">$newbody</textarea>
 					<br/>
 					<font color=\"red\">$displayMessage</font>
 					<br/>
 					<input type=\"Submit\" class=\"tali-submit_button\" name=\"tali_news_newentry\" value=\"$headingTitle\">
 					$updateSpecButton
+					</p>
 				</form>
 			</div>
 ";
@@ -192,7 +195,7 @@ if ((isset($_GET['action'])) && (($_GET['action']) == "edit")) {
 	$history=$db_field['history'];
 	
 	echo "
-			<div class=\"newsentry tali-page-frame\">
+			<div class=\"tali-page-frame\">
 				<h1>History Report</h1>
 				<p>$history</p>
 			</div>
@@ -202,7 +205,7 @@ else
 //news.php - Displays all entries
 {
 	echo "
-			<div class=\"newslist tali-page-frame\">
+			<div class=\"tali-page-frame\">
 				<h1>Manage News Entries</h1>
 	";
 
@@ -216,8 +219,8 @@ else
 		$title=$db_field['title'];
 		$body=$db_field['body'];
 		echo "
-				<form method=\"POST\" id=\"tali_newslist_form\" class=\"newsentryinput\" action=\"news.php?action=edit&id=$id\">
-					<table style=\"width:95%\" class=\"newsentrytb\">
+				<form method=\"POST\" id=\"tali_newslist_form\" action=\"news.php?action=edit&id=$id\">
+					<table class=\"tali-news-entry_list-table\">
 						<col width=\"6%\">
 						<col width=\"47%\">
 						<col width=\"47%\">
@@ -227,20 +230,23 @@ else
 							<th>Author</th>
 						</tr>
 						<tr>
-							<td><input type=\"text\" class=\"newsid\" name=\"newsid\"  value=\"$id\" readonly=\"readonly\"></td>
-							<td><input type=\"text\" class=\"newstime\" name=\"newstime\"  value=\"$time\" readonly=\"readonly\"></td>
-							<td><input type=\"text\" class=\"newsauthor\" name=\"newsauthor\"  value=\"$author\" readonly=\"readonly\"></td>
+							<td><input type=\"text\" class=\"tali-news-entry_list-table-id\" name=\"newsid\"  value=\"$id\" readonly=\"readonly\"></td>
+							<td><input type=\"text\" class=\"tali-news-entry_list-table-time\" name=\"newstime\"  value=\"$time\" readonly=\"readonly\"></td>
+							<td><input type=\"text\" class=\"tali-news-entry_list-table-author\" name=\"newsauthor\"  value=\"$author\" readonly=\"readonly\"></td>
 						<tr>
 					</table>
+					<p>
 					<strong>Title</strong>
 					<br/>
-					<input type=\"text\" class=\"newstitle\" name=\"newstitle\" value=\"$title\" readonly=\"readonly\">
-					<br/>
+					<input type=\"text\" class=\"tali-news-entry_list-input-title\" name=\"newstitle\" value=\"$title\" readonly=\"readonly\">
+					</p>
+					<p>
 					<strong>Body</strong>
 					<br/>
-					<textarea readonly class=\"newsbodyc\" name=\"newsbody\" id=\"newsbodyid\">$body</textarea>
+					<textarea readonly class=\"tali-news-entry_list-input-body\" name=\"newsbody\">$body</textarea>
 					<br/>
 					<input type=\"Submit\" class=\"tali-submit_button\" Name=\"tali_news_editentry\" value=\"Edit Entry\">
+					</p>
 				</form>
 				<br/>
 		";

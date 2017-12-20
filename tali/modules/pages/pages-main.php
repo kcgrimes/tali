@@ -166,7 +166,7 @@ if (!isset($_POST['tali_page_edit'])) {
 		$history=$db_field['history'];
 		
 		echo "
-					<div class=\"newsentry tali-page-frame\">
+					<div class=\"tali-page-frame\">
 						<h1>History Report</h1>
 						<p>$history</p>
 					</div>

@@ -716,40 +716,27 @@ footer {
 /* */
 
 /* TALI Module - News */
-.newsentry {
-	width: 100%;
-	position: relative;
-	margin-top: 10px;
-	margin-bottom: 10px;
+/* Basically adds <p> properties to table */
+.tali-news-entry_list-table {
+	text-align:left;
+	padding-left:15px;
+	margin-bottom:10px;
+	width:95%
 }
 
-.newslist {
-	width: 100%;
-	position: relative;
-	clear: both;
-	float: left; 
-	margin-bottom: 10px;
-}
-
-.newsentryinput {
-	margin-left: 4%;
-	margin-right: auto;
-	margin-bottom: 10px;  
-}
-
-.newsid {
+.tali-news-entry_list-table-id {
 	width: 30px;	
 }
 
-.newstime, .newsauthor {
+.tali-news-entry_list-table-time, .tali-news-entry_list-table-author {
 	width: 330px;	
 }
 
-.newstitle {
+.tali-news-entry_list-input-title {
 	width: 680px;
 }
 
-.newsbodyc {
+.tali-news-entry_list-input-body {
 	width: 680px;
 	height: 400px;
 }
@@ -757,7 +744,6 @@ footer {
 /* */
 
 /*TALI Module - Pages*/
-
 .newpagetitleform {
 	margin-left: 15px;
 }
