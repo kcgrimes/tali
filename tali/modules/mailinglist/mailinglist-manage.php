@@ -108,7 +108,9 @@ echo "
 				<p><textarea rows=\"6\" cols=\"75\" name=\"list\" form=\"form_mailinglist\">$list</textarea></p>
 				
 				<form method=\"POST\" id=\"form_mailinglist\" action=\"mailinglist.php?sub=manage&action=$action&id=$id\">
-					<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
+					<p>
+					<input type=\"submit\" name=\"btnSubmit\" value=\"Submit\"/>
+					</p>
 				</form>
 			</div>
 		</div>

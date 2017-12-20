@@ -105,7 +105,9 @@ if (isset($_GET['action'])) {
 							<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_record\" value=\"$record\">
 							
 							<form method=\"POST\" id=\"add_record\" action=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&action=addrecord&servicerecord_id=$servicerecord_id\">
-								<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Edit Service Record\"/>
+								<p>
+								<input type=\"submit\" name=\"btnSubmit\" value=\"Edit Service Record\"/>
+								</p>
 							</form>
 						</div>
 					</div>
@@ -161,7 +163,9 @@ else
 					<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_record\" value=\"$record\">
 					
 					<form method=\"POST\" id=\"add_record\" action=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&action=addrecord\">
-						<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Add Service Record\"/>
+						<p>
+						<input type=\"submit\" name=\"btnSubmit\" value=\"Add Service Record\"/>
+						</p>
 					</form>
 	";
 	

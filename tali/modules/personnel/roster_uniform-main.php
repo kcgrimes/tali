@@ -147,7 +147,9 @@ echo "
 				</p>
 				
 				<form method=\"POST\" enctype=\"multipart/form-data\" id=\"add_uniform\" action=\"personnel.php?sub=roster_uniform&id=$personnel_id\">
-					<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
+					<p>
+					<input type=\"submit\" name=\"btnSubmit\" value=\"Submit\"/>
+					</p>
 				</form>
 			</div>
 		</div>

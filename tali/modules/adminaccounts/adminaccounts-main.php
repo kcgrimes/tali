@@ -366,11 +366,17 @@ echo "
 					</tr>
 ";
 
+//bug - try to get rid of this bottom table and use normal text
 echo "
 				</table>
 				<table class=\"tali-adminaccounts-table-input\">
 					<tr>
-						<td><input type=\"submit\" class=\"tali-submit_button\" Name=\"tali_adminaccounts_updateaccount\" form=\"tali_adminaccounts_update_form\" value=\"Update Account\"></td>
+						<td>
+							<p>
+							<br/>
+							<input type=\"submit\" name=\"tali_adminaccounts_updateaccount\" form=\"tali_adminaccounts_update_form\" value=\"Update Account\">
+							</p>
+						</td>
 						<td style=\"text-align:right\">
 							<form method=\"POST\" id=\"tali_adminaccounts_form_del\" action=\"adminaccounts.php\">
 								Enter the ID of an account above to delete it:
@@ -422,8 +428,10 @@ echo "
 						</td>
 					</tr>
 				</table>
-				<td><input type=\"Submit\" class=\"tali-submit_button\" Name=\"tali_adminaccounts_addaccount\" form=\"tali_adminaccounts_form\" value=\"Add New Account\"></td>
+				<p>
 				<br/>
+				<input type=\"Submit\" name=\"tali_adminaccounts_addaccount\" form=\"tali_adminaccounts_form\" value=\"Add New Account\">
+				</p>
 			</div>
 		</div>
 	</main>

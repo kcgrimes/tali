@@ -173,10 +173,12 @@ echo "
 					<strong>Body</strong>
 					<br/>
 					<textarea cols=\"80\" rows=\"20\" class=\"tali-news-entry_list-input-body\" id=\"html\" name=\"newentrybody\">$newbody</textarea>
-					<br/>
+					</p>
+					<p>
 					<font color=\"red\">$displayMessage</font>
-					<br/>
-					<input type=\"Submit\" class=\"tali-submit_button\" name=\"tali_news_newentry\" value=\"$headingTitle\">
+					</p>
+					<p>
+					<input type=\"Submit\" name=\"tali_news_newentry\" value=\"$headingTitle\">
 					$updateSpecButton
 					</p>
 				</form>
@@ -244,8 +246,9 @@ else
 					<strong>Body</strong>
 					<br/>
 					<textarea readonly class=\"tali-news-entry_list-input-body\" name=\"newsbody\">$body</textarea>
-					<br/>
-					<input type=\"Submit\" class=\"tali-submit_button\" Name=\"tali_news_editentry\" value=\"Edit Entry\">
+					</p>
+					<p>
+					<input type=\"Submit\" Name=\"tali_news_editentry\" value=\"Edit Entry\">
 					</p>
 				</form>
 				<br/>

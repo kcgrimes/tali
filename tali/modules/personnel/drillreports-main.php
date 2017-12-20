@@ -1046,10 +1046,12 @@ Completed on ".date("m/d/Y")."";
 					$form_postbutton = "Create";
 				}
 				
-				//bug - hide/condition me if designation not selected
+				//bug - hide/condition this if designation not selected
 				echo "
 								<form method=\"POST\" id=\"create_drillreport\" action=\"personnel.php?sub=drillreports&location=create&action=submit".$form_postURL_id."\">
-									<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"$form_postbutton Drill Report\"/>
+									<p>
+									<input type=\"submit\" name=\"btnSubmit\" value=\"$form_postbutton Drill Report\"/>
+									</p>
 								</form>
 				"; 
 				

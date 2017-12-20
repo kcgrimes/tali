@@ -234,7 +234,9 @@ if (isset($_GET['action'])) {
 								<input type=\"integer\" class=\"tali_personnel_drillreports_textinput\" name=\"weight\" form=\"add_awardclass\" value=\"$weight\">
 								
 								<form method=\"POST\" id=\"add_awardclass\" action=\"personnel.php?sub=awards&action=" . $_GET['action'] . "&submit=true\">
-									<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
+									<p>
+									<input type=\"submit\" name=\"btnSubmit\" value=\"Submit\"/>
+									</p>
 								</form>
 							</div>
 						</div>
@@ -327,7 +329,9 @@ if (isset($_GET['action'])) {
 								<input type=\"integer\" class=\"tali_personnel_drillreports_textinput\" name=\"weight\" form=\"add_award\" value=\"$weight\">
 								
 								<form method=\"POST\" enctype=\"multipart/form-data\" id=\"add_award\" action=\"personnel.php?sub=awards&action=" . $_GET['action'] . "&submit=true\">
-									<input type=\"submit\" name=\"btnSubmit\" class=\"editpagetitlebu\" value=\"Submit\"/>
+									<p>
+									<input type=\"submit\" name=\"btnSubmit\" value=\"Submit\"/>
+									</p>
 								</form>
 							</div>
 						</div>

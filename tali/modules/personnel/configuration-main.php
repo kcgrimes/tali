@@ -704,7 +704,9 @@ else
 
 echo "
 				<form method=\"POST\" enctype=\"multipart/form-data\" id=\"tali_modules_personnel_ranks_add_form\" action=$rank_form_action>
-					<input type=\"submit\" name=\"ranks_bu\" class=\"tali-submit_button\" value='$rank_form_value'/>
+					<p>
+					<input type=\"submit\" name=\"ranks_bu\" value='$rank_form_value'/>
+					</p>
 				</form>
 			</div>
 ";
@@ -828,7 +830,9 @@ else
 
 echo "
 				<form method=\"POST\" id=\"tali_modules_personnel_status_add_form\" action=$status_form_action>
-					<input type=\"submit\" name=\"statuses_bu\" class=\"tali-submit_button\" value='$status_form_value'/>
+					<p>
+					<input type=\"submit\" name=\"statuses_bu\" value='$status_form_value'/>
+					</p>
 				</form>
 			</div>
 ";
@@ -952,7 +956,9 @@ else
 
 echo "
 				<form method=\"POST\" id=\"tali_modules_personnel_role_add_form\" action=$role_form_action>
-					<input type=\"submit\" name=\"roles_bu\" class=\"tali-submit_button\" value='$role_form_value'/>
+					<p>
+					<input type=\"submit\" name=\"roles_bu\" value='$role_form_value'/>
+					</p>
 				</form>
 			</div>
 ";
@@ -1221,14 +1227,18 @@ else
 				
 	echo "
 				<form method=\"POST\" id='tali_modules_personnel_designation_add_form' action=$desig_form_action>
-					<input type=\"submit\" name='desig_bu' class=\"tali-submit_button\" value='$desig_form_value'/>
+					<p>
+					<input type=\"submit\" name='desig_bu' value='$desig_form_value'/>
+					</p>
 				</form>
 	";
 	
 	if ((isset($_GET['id'])) && (isset($_GET['button'])) && ($_GET['button'] == "desig_edit")) {
 		echo "
 				<form method=\"POST\" id='tali_modules_personnel_designation_add_form' action=$desig_form_action>
-					<input type=\"submit\" name='desig_button_deactivate' class=\"tali-submit_button\" value='Deactivate Designation'/>
+					<p>
+					<input type=\"submit\" name='desig_button_deactivate' value='Deactivate Designation'/>
+					</p>
 				</form>
 		";
 	}
@@ -1236,6 +1246,7 @@ else
 	//Reactivation section
 	echo "
 				<p>Select an inactive designation to reactivate:</p>
+				<p>
 				<select form=\"tali_modules_personnel_designation_reactivate_form\" class=\"desigSelect_report\" name=\"reactivate_designation\">
 					<option value=\"\" selected>Select a Designation</option>
 	";
@@ -1252,8 +1263,11 @@ else
 	}
 	echo "
 				</select>
+				</p>
 				<form method=\"POST\" id='tali_modules_personnel_designation_reactivate_form' action=$desig_form_action>
-					<input type=\"submit\" name='desig_button_reactivate' class=\"tali-submit_button\" value='Reactivate Designation'/>
+					<p>
+					<input type=\"submit\" name='desig_button_reactivate' value='Reactivate Designation'/>
+					</p>
 				</form>
 	";
 echo "

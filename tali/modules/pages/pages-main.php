@@ -79,12 +79,14 @@ if (!isset($_POST['tali_page_edit'])) {
 					<div class=\"tali-page-frame\">
 						<h1>Create Page</h1>
 						<p>To create a new page, enter the desired page title below and click Create New Page.</p>
-						<form method=\"POST\" id=\"tali_newpage_form\" class=\"newpagetitleform\" action=\"pages.php\">
-							<input type=\"text\" class=\"newpagetitle\" name=\"newentrytitle\"  value=\"$newtitle\">
-							<br/>
+						<form method=\"POST\" id=\"tali_newpage_form\" action=\"pages.php\">
+							<p>
+							<input type=\"text\" name=\"newentrytitle\" value=\"$newtitle\">
 							<font color=\"red\">$newdisplayMessage</font>
 							<br/>
-							<input type=\"Submit\" class=\"newpagetitlebu\" name=\"tali_pages_newpagetitle\" value=\"Create New Page\">
+							<br/>
+							<input type=\"Submit\" name=\"tali_pages_newpagetitle\" value=\"Create New Page\">
+							</p>
 						</form>
 					</div>
 					
@@ -92,7 +94,7 @@ if (!isset($_POST['tali_page_edit'])) {
 						<h1>Edit/Delete Page</h1>
 						<p>Select the desired page from the dropdown menu below and click Edit to update it or Delete to remove it from the database.</p>
 						<form method=\"POST\" id=\"tali_editpage_form\" class=\"editpage\" action=\"pages.php\">
-							<editpagedropdown>
+							<p>
 							<select name=\"selectitle\">
 								<option value=\"empty\"></option>
 		";
@@ -109,12 +111,12 @@ if (!isset($_POST['tali_page_edit'])) {
 						
 		echo "
 							</select>
-							</editpagedropdown>
 							<br/>
 							<font color=\"red\">$editdeldisplayMessage</font>
 							<br/>
-							<input type=\"Submit\" class=\"editpagetitlebu\" name=\"tali_pages_editpage\" value=\"Edit Page\">
-							<input type=\"Submit\" class=\"delpagetitlebu\" name=\"tali_pages_delpage\" onclick=\"return confirm('Are you sure you want to delete the selected page?');\" value=\"Delete Page\">
+							<input type=\"Submit\" name=\"tali_pages_editpage\" value=\"Edit Page\">
+							<input type=\"Submit\" name=\"tali_pages_delpage\" onclick=\"return confirm('Are you sure you want to delete the selected page?');\" value=\"Delete Page\">
+							</p>
 						</form>
 					</div>
 				</div>
@@ -134,25 +136,31 @@ if (!isset($_POST['tali_page_edit'])) {
 		$time=$db_field['time'];
 		$title=$db_field['title'];
 		$body=$db_field['body'];
+		//bug - look into formatting/css of markitup textarea box
 		echo "
 			<main>
 				<div class=\"tali-container\">
 					<div class=\"tali-page-frame\">
 						<h1>Editing Page: $title</h1>
-						<form method=\"POST\" id=\"tali_editpage_form\" class=\"editpageinput\" action=\"pages.php\">
+						<form method=\"POST\" id=\"tali_editpage_form\" action=\"pages.php\">
+							<p>
 							<input type=\"hidden\" name=\"editpageid\" value=\"$id\">
 							<strong>Title</strong>
 							<br/>
-							<input type=\"text\" class=\"edittitle\" name=\"editpagetitle\"  value=\"$title\">
-							<br/>
+							<input type=\"text\" name=\"editpagetitle\"  value=\"$title\">
+							</p>
+							<p>
 							<strong>Body</strong>
 							<br/>
-							<textarea class=\"editbody\" id=\"html\" name=\"editpagebody\">$body</textarea>
-							<br/>
+							<textarea class=\"tali-pages-input-body\" id=\"html\" name=\"editpagebody\">$body</textarea>
+							</p>
+							<p>
 							<font color=\"red\">$displayMessage</font>
-							<br/>
-							<input type=\"Submit\" class=\"talipageeditbu\" name=\"tali_page_edit\" value=\"Submit\">
+							</p>
+							<p>
+							<input type=\"Submit\" name=\"tali_page_edit\" value=\"Submit\">
 							<input type=\"submit\" name=\"btnCancel\" value=\"Cancel\"/>
+							</p>
 						</form>
 					</div>
 		";

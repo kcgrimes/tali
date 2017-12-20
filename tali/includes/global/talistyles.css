@@ -665,12 +665,6 @@ footer {
 
 /* TALI Modules*/ 
 
-.tali-submit_button {
-	margin-top: 10px;
-	margin-left: 4%;
-	margin-bottom: 10px;
-}
-
 /* TALI Login */
 
 #tali-login-username, #tali-login-password {
@@ -744,48 +738,9 @@ footer {
 /* */
 
 /*TALI Module - Pages*/
-.newpagetitleform {
-	margin-left: 15px;
-}
-
-.newpagetitle {
-	width: 200px; 
-}
-
-.newpagetitlebu {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-editpagedropdown {
-	margin-left: 15px;
-}
-
-.editpagetitlebu {
-	margin-top: 10px;
-	margin-left: 15px;
-	margin-bottom: 10px;
-}
-
-.delpagetitlebu {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.editpageinput {
-	margin-left: 15px;
-	margin-bottom: 10px;  
-}
-
-.editbody {
+.tali-pages-input-body {
 	width: 680px;
 	height: 400px;
-}
-
-.talipageeditbu {
-	margin-top: 10px;
-	margin-left: 15px;
-	margin-bottom: 10px;
 }
 
 /* */

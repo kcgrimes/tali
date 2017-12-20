@@ -999,7 +999,9 @@ else
 				</table>
 			
 				<form method=\"POST\" id=\"\" action=\"personnel.php?sub=roster&action=add\">
-					<input type=\"submit\" name=\"add_bu\" class=\"tali-submit_button\" value=\"Add Personnel File\"/>
+					<p>
+					<input type=\"submit\" name=\"add_bu\" value=\"Add Personnel File\"/>
+					</p>
 				</form>
 			</div>
 		";
@@ -1102,7 +1104,9 @@ else
 				</table>
 			
 				<form method=\"POST\" id=\"\" action=\"personnel.php?sub=roster&action=add\">
-					<input type=\"submit\" name=\"add_bu\" class=\"tali-submit_button\" value=\"Add Personnel File\"/>
+					<p>
+					<input type=\"submit\" name=\"add_bu\" value=\"Add Personnel File\"/>
+					</p>
 				</form>
 			</div>
 		";
