@@ -113,7 +113,7 @@ echo "
 			<div class=\"tali-page-frame\">
 				<h1>Available Images</h1>
 				<p>Listed below are all images uploaded to display with this module.</p>
-				<table class=\"tali_personnel_homeslider\">
+				<table class=\"tali-homeslider-table\">
 					<col width=\"25%\">
 					<col width=\"25%\">
 					<col width=\"25%\">
@@ -156,14 +156,18 @@ echo "
 				<form action=\"homeslider.php\" method=\"post\" enctype=\"multipart/form-data\">
 					<p>
 					<input type=\"file\" name=\"file\" id=\"file\"/>
-					<br/>
+					</p>
+					<p>
 					<font color=\"red\">$displayUploadMessage</font>
 					</p>
-					<p>Slider Text:</p>
-					<input type=\"text\" class=\"tali_personnel_homeslider_textinput\" name=\"text\" value=\"\">
-					<p>Weight:</p>
-					<input type=\"integer\" class=\"tali_personnel_homeslider_textinput\" name=\"weight\" value=\"\">
-					<br/>
+					<p>
+					Slider Text:
+					<input type=\"text\" name=\"text\" value=\"\">
+					</p>
+					<p>
+					Weight:
+					<input type=\"integer\" class=\"tali-homeslider-input-weight\" name=\"weight\" value=\"\">
+					</p>
 					<p>
 					<input type=\"submit\" name=\"submit\" value=\"Upload Image\"/>
 					</p>
@@ -173,8 +177,7 @@ echo "
 			<div class=\"tali-page-frame\">
 				<h1>Delete Images</h1>
 				<p>Select an image from the dropdown and click Delete Image to remove the image from the website.</p>
-				<form method=\"POST\" id=\"tali_homeslider_delete_form\" class=\"homesliderdelete\" action=\"homeslider.php\">
-					<homesliderdeletedropdown>
+				<form method=\"POST\" id=\"tali_homeslider_delete_form\" action=\"homeslider.php\">
 					<p>
 					<select name=\"selectimage\">
 						<option value=\"empty\">Select an Image</option>
@@ -192,11 +195,12 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 				
 echo "
 					</select>
-					</homesliderdeletedropdown>
-					<br/>
+					</p>
+					<p>
 					<font color=\"red\">$displayDeleteMessage</font>
-					<br/>
-					<input type=\"Submit\" class=\"deletehomesliderbu\" name=\"tali_homeslider_delete_file\" value=\"Delete Image\">
+					</p>
+					<p>
+					<input type=\"Submit\" name=\"tali_homeslider_delete_file\" value=\"Delete Image\">
 					</p>
 				</form>
 			</div>

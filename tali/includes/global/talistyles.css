@@ -792,9 +792,7 @@ footer {
 /* */
 
 /* TALI HomeSlider */
-/* bug - why does this stuff have "personnel" in the name?*/
-
-.tali_personnel_homeslider {
+.tali-homeslider-table {
 	text-align: center;
 	width: 90%;
 	margin-left: auto;
@@ -804,18 +802,16 @@ footer {
 	border-collapse: collapse;
 }
 
-.tali_personnel_homeslider img {
+.tali-homeslider-table img {
 	padding: 5px;
 }
 
-.tali_personnel_homeslider tr, .tali_personnel_homeslider th, .tali_personnel_homeslider td {
+.tali-homeslider-table tr, .tali-homeslider-table th, .tali-homeslider-table td {
 	border: 1px solid black;
 }
 
-.tali_personnel_homeslider_textinput {
-	margin-left: 15px;
-	width: 80px;
-	margin-bottom: 10px;
+.tali-homeslider-input-weight {
+	width: 40px;
 }
 
 /* */
