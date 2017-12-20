@@ -14,7 +14,7 @@ TALI_sessionCheck($module, $db_handle);
 echo "
 	<main>
 		<div class=\"tali-container\">
-			<div class=\"managehistory tali-page-frame\">
+			<div class=\"tali-page-frame\">
 				<h1>Master History Report</h1>
 ";
 
@@ -51,9 +51,10 @@ $rowsresult = mysqli_query($db_handle, $rowsSQL);
 	}
 	</script>
 <?php
-		
+
+//bug - try to get this out of a table
 echo "
-				<table style=\"width:94%\" class=\"masterhistorytoptb\">
+				<table class=\"tali-master_history-top_table\">
 				<tr>
 					<td>
 ";
@@ -100,10 +101,10 @@ else
 
 echo "
 					</td>
-					<td width=\"1px\" align=\"right\">
+					<td style=\"text-align:right\">
 						<form action=\"masterhistory.php\" method=\"post\" id=\"rowperpage\" name=\"rowperpage\">					
 							View: 
-							<select class=\"tali_masterhistory_rowperpage_dropdown\" name=\"rowperpage_id\" form=\"rowperpage\" value=\"$rowperpage_id\" onchange=\"change()\">
+							<select class=\"tali-master_history-rows_per_page_dropdown\" name=\"rowperpage_id\" form=\"rowperpage\" value=\"$rowperpage_id\" onchange=\"change()\">
 ";
 
 $rowsperpage_array = ["100", "250", "500"];
@@ -129,7 +130,7 @@ echo "
 "; 
 
 echo "
-				<table style=\"width:94%\" class=\"masterhistorytb\">
+				<table class=\"tali-master_history-table\">
 					<col width=\"5%\">
 					<col width=\"10%\">
 					<col width=\"5%\">
@@ -155,12 +156,12 @@ while ($db_field = mysqli_fetch_assoc($rowsresult)) {
 	$event=$db_field['event'];
 	echo "
 					<tr>
-						<td style=\"text-align:center;\">$id</td>
-						<td style=\"text-align:center;\">$time</td>
-						<td style=\"text-align:center;\">$username_id</td>
-						<td style=\"text-align:center;\">$module</td>
-						<td style=\"text-align:center;\">$item_id</td>
-						<td>$event</td>
+						<td>$id</td>
+						<td>$time</td>
+						<td>$username_id</td>
+						<td>$module</td>
+						<td>$item_id</td>
+						<td style=\"text-align:left;\">$event</td>
 					</tr>
 	";
 }

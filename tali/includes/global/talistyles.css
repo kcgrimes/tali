@@ -746,45 +746,39 @@ footer {
 /* */
 
 /*TALI Module - Master History Report*/
-.managehistory {
-	position: relative;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	padding-bottom: 10px;
-}
-
-.masterhistorytb {
-	font-size: 10px;
+.tali-master_history-table {
+	width: 94%;
+	font-size: 62.5%;
 	margin-left: auto;
 	margin-right: auto;
 	border: 1px solid black;
 	border-collapse: collapse;
+	margin-bottom: 15px;
 }
 
-.masterhistorytb tr {
+.tali-master_history-table tr, 
+.tali-master_history-table th, 
+.tali-master_history-table td {
 	border: 1px solid black;
 }
 
-.masterhistorytb th {
-	border: 1px solid black;
+.tali-master_history-table td {
+	text-align: center;
 }
 
-.masterhistorytb td {
-	border: 1px solid black;
-}
-
-.masterhistorytoptb {
+.tali-master_history-top_table {
+	width: 94%;
 	margin-left: auto;
 	margin-right: auto;
 	border-collapse: collapse;
 }
 
-.masterhistorytoptb td + td {
+.tali-master_history-top_table td + td {
     white-space: nowrap;
 }
 
-.tali_masterhistory_rowperpage_dropdown {
-	width: 45px;
+.tali-master_history-rows_per_page_dropdown {
+	width: 50px;
 }
 
 /* */
