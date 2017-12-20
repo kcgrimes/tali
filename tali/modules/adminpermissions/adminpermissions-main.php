@@ -117,12 +117,15 @@ echo "
 			<div class=\"tali-page-frame\">
 				<h1>Manage Access Level Amount</h1>
 				<p>Define the number of levels of admin access:</p>
-				<form method=\"POST\" id=\"i_tali_admin_permissions_levelsform\" class=\"c_tali_admin_permissions_levelsform\" action=\"adminpermissions.php\">
-					<input type=\"integer\" maxlength=\"4\" class=\"c_tali_admin_permissions_levelsfield\" name=\"levelsfield\" value=\"$levels\">
-					<input type=\"Submit\" class=\"c_tali_admin_permissions_levelsbu\" name=\"levelspost\" value=\"Set Level Amount\">
+				<form method=\"POST\" id=\"i_tali_admin_permissions_levelsform\" action=\"adminpermissions.php\">
+					<p>
+					<input type=\"integer\" maxlength=\"4\" class=\"tali-admin_permissions-input-levels\" name=\"levelsfield\" value=\"$levels\">
+					<input type=\"Submit\" name=\"levelspost\" value=\"Set Level Amount\">
+					</p>
 				</form>
-				<br/>
-				<p><font color=\"red\">$newdisplayMessage</font></p>
+				<p>
+				<font color=\"red\">$newdisplayMessage</font>
+				</p>
 			</div>
 			
 			<div class=\"tali-page-frame\">
@@ -149,9 +152,10 @@ while ($level_cnt < $levels) {
 	//$level_cnt is the current level being cycled
 	$level_cnt++;
 	echo "
-				<form action=\"adminpermissions.php\" class=\"c_tali_admin_permissions_form\"method=\"post\">
-				Level $level_cnt:
-				<br/>
+				<form action=\"adminpermissions.php\" method=\"post\">
+					<p>
+					Level $level_cnt:
+					<br/>
 	";
 	
 	//Loop for each module
@@ -178,8 +182,11 @@ while ($level_cnt < $levels) {
 		}
 	}
 	echo "
+					</p>
+					<p>
 					<input type=\"hidden\" name=\"accesslevel\" value=\"$level_cnt\"/>
 					<input type=\"submit\" name=\"accesslevelbu\" value=\"Submit\"/>
+					</p>
 				</form>
 				<br/>
 	";

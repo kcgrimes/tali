@@ -785,17 +785,8 @@ footer {
 
 /*TALI Module - Admin Permissions*/
 
-.c_tali_admin_permissions_levelsfield {
-	margin-left: 15px;
+.tali-admin_permissions-input-levels {
 	width: 40px;
-}
-
-.c_tali_admin_permissions_form {
-	margin-left: 15px;
-}
-
-.c_tali_manage_modules_enabled_form {
-	margin-left: 15px;
 }
 
 /* */
