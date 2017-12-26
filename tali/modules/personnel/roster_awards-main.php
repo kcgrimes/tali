@@ -102,7 +102,7 @@ if (isset($_GET['action'])) {
 			
 			echo "
 							<p>Select an award from the dropdown below to add:</p>
-							<select class=\"tali_personnel_awards_addaward_dropdown\" name=\"award_id\" form=\"add_award\" value=\"\">
+							<select class=\"tali-personnel-awards-addaward-dropdown\" name=\"award_id\" form=\"add_award\" value=\"\">
 								<option value=\"\">Select an Award</option>
 			";
 			
@@ -128,12 +128,12 @@ if (isset($_GET['action'])) {
 			
 			echo "
 							<p>Date awarded (MM/DD/YYYY):</p>
-							<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date_awarded\" form=\"add_award\" maxlength=\"10\" value=\"$date_awarded\">
+							<input type=\"text\" class=\"tali-personnel-drillreports-textinput\" name=\"date_awarded\" form=\"add_award\" maxlength=\"10\" value=\"$date_awarded\">
 			";
 			
 			echo "
 							<p>Award Record:</p>
-							<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_award\" value=\"$record\">
+							<input type=\"text\" class=\"tali-personnel-awards-textinput\" name=\"record\" form=\"add_award\" value=\"$record\">
 							
 							<form method=\"POST\" id=\"add_award\" action=\"personnel.php?sub=roster_awards&id=$personnel_id&action=addaward&awardrecord_id=$awardrecord_id\">
 								<p>
@@ -188,7 +188,7 @@ else
 	
 	echo "
 					<p>Select an award from the dropdown below to add:</p>
-					<select class=\"tali_personnel_awards_addaward_dropdown\" name=\"award_id\" form=\"add_award\" value=\"\">
+					<select class=\"tali-personnel-awards-addaward-dropdown\" name=\"award_id\" form=\"add_award\" value=\"\">
 						<option value=\"\">Select an Award</option>
 	";
 	
@@ -207,12 +207,12 @@ else
 	
 	echo "
 					<p>Date awarded (MM/DD/YYYY):</p>
-					<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date_awarded\" form=\"add_award\" maxlength=\"10\" value=\"$date_awarded\">
+					<input type=\"text\" class=\"tali-personnel-drillreports-textinput\" name=\"date_awarded\" form=\"add_award\" maxlength=\"10\" value=\"$date_awarded\">
 	";
 	
 	echo "
 					<p>Award Record:</p>
-					<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_award\" value=\"$record\">
+					<input type=\"text\" class=\"tali-personnel-awards-textinput\" name=\"record\" form=\"add_award\" value=\"$record\">
 					
 					<form method=\"POST\" id=\"add_award\" action=\"personnel.php?sub=roster_awards&id=$personnel_id&action=addaward\">
 						<p>
@@ -223,7 +223,7 @@ else
 	
 	echo "			
 					<p>Click to edit or delete previously earned awards:</p>
-					<table id=\"awardclassTable\" class=\"tali_personnel_roster_table\">
+					<table id=\"awardclassTable\" class=\"tali-personnel-table\">
 						<col width=\"30%\">
 						<col width=\"20%\">
 						<col width=\"30%\">

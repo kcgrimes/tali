@@ -228,10 +228,10 @@ if (isset($_GET['action'])) {
 								<h1>Add & Edit Award Class</h1>
 								
 								<p>Award Class Name:</p>
-								<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"name\" form=\"add_awardclass\" value=\"$name\">
+								<input type=\"text\" class=\"tali-personnel-awards-textinput\" name=\"name\" form=\"add_awardclass\" value=\"$name\">
 								
 								<p>Award Class Weight:</p>
-								<input type=\"integer\" class=\"tali_personnel_drillreports_textinput\" name=\"weight\" form=\"add_awardclass\" value=\"$weight\">
+								<input type=\"integer\" class=\"tali-personnel-drillreports-textinput\" name=\"weight\" form=\"add_awardclass\" value=\"$weight\">
 								
 								<form method=\"POST\" id=\"add_awardclass\" action=\"personnel.php?sub=awards&action=" . $_GET['action'] . "&submit=true\">
 									<p>
@@ -275,11 +275,11 @@ if (isset($_GET['action'])) {
 								<h1>Add & Edit Awards</h1>
 								
 								<p>Award Name:</p>
-								<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"name\" form=\"add_award\" value=\"$name\">
+								<input type=\"text\" class=\"tali-personnel-awards-textinput\" name=\"name\" form=\"add_award\" value=\"$name\">
 								
 								<p>Award Class:</p>
 								
-								<select class=\"tali_personnel_awards_addaward_dropdown\" name=\"awardclass_id\" form=\"add_award\" value=\"$awardclass_id\">
+								<select class=\"tali-personnel-awards-addaward-dropdown\" name=\"awardclass_id\" form=\"add_award\" value=\"$awardclass_id\">
 									<option value=\"\">Select an Award Class</option>
 				";
 				
@@ -323,10 +323,10 @@ if (isset($_GET['action'])) {
 				echo "
 														
 								<p>Award Description:</p>
-								<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"description\" form=\"add_award\" value=\"$description\">
+								<input type=\"text\" class=\"tali-personnel-awards-textinput\" name=\"description\" form=\"add_award\" value=\"$description\">
 								
 								<p>Award Weight:</p>
-								<input type=\"integer\" class=\"tali_personnel_drillreports_textinput\" name=\"weight\" form=\"add_award\" value=\"$weight\">
+								<input type=\"integer\" class=\"tali-personnel-drillreports-textinput\" name=\"weight\" form=\"add_award\" value=\"$weight\">
 								
 								<form method=\"POST\" enctype=\"multipart/form-data\" id=\"add_award\" action=\"personnel.php?sub=awards&action=" . $_GET['action'] . "&submit=true\">
 									<p>
@@ -398,7 +398,7 @@ else
 	";
 	
 	echo "						
-					<table id=\"awardclassTable\" class=\"tali_personnel_roster_table\">
+					<table id=\"awardclassTable\" class=\"tali-personnel-table\">
 						<col width=\"70%\">
 						<col width=\"15%\">
 						<col width=\"15%\">
@@ -440,7 +440,7 @@ else
 	";
 	
 	echo "						
-					<table id=\"awardsTable\" class=\"tali_personnel_roster_table\">
+					<table id=\"awardsTable\" class=\"tali-personnel-table\">
 						<col width=\"19%\">
 						<col width=\"19%\">
 						<col width=\"19%\">

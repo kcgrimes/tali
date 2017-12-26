@@ -92,7 +92,7 @@ else
 	
 	//Prepare a dropdown of designations for selection/action
 	echo "					
-				<p><select form=\"desig_analysis\" class=\"desigSelect_report\" id=\"designation_select\" name=\"designation_select\">
+				<p><select form=\"desig_analysis\" id=\"designation_select\" name=\"designation_select\">
 					<option value=\"\" selected>Select a Designation</option>
 	";
 	

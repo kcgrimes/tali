@@ -97,12 +97,12 @@ if (isset($_GET['action'])) {
 			
 			echo "
 							<p>Date of record (MM/DD/YYYY):</p>
-							<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date\" form=\"add_record\" maxlength=\"10\" value=\"$date\">
+							<input type=\"text\" class=\"tali-personnel-drillreports-textinput\" name=\"date\" form=\"add_record\" maxlength=\"10\" value=\"$date\">
 			";
 			
 			echo "
 							<p>Record:</p>
-							<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_record\" value=\"$record\">
+							<input type=\"text\" class=\"tali-personnel-awards-textinput\" name=\"record\" form=\"add_record\" value=\"$record\">
 							
 							<form method=\"POST\" id=\"add_record\" action=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&action=addrecord&servicerecord_id=$servicerecord_id\">
 								<p>
@@ -155,12 +155,12 @@ else
 	
 	echo "
 					<p>Date of record (MM/DD/YYYY):</p>
-					<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"date\" form=\"add_record\" maxlength=\"10\" value=\"$date\">
+					<input type=\"text\" class=\"tali-personnel-drillreports-textinput\" name=\"date\" form=\"add_record\" maxlength=\"10\" value=\"$date\">
 	";
 	
 	echo "
 					<p>Record:</p>
-					<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"record\" form=\"add_record\" value=\"$record\">
+					<input type=\"text\" class=\"tali-personnel-awards-textinput\" name=\"record\" form=\"add_record\" value=\"$record\">
 					
 					<form method=\"POST\" id=\"add_record\" action=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&action=addrecord\">
 						<p>
@@ -171,7 +171,7 @@ else
 	
 	echo "			
 					<p>Click to edit or delete previously documented records:</p>
-					<table id=\"recordclassTable\" class=\"tali_personnel_roster_table\">
+					<table id=\"recordclassTable\" class=\"tali-personnel-table\">
 						<col width=\"20%\">
 						<col width=\"60%\">
 						<col width=\"10%\">

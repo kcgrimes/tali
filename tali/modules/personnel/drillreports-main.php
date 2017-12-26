@@ -67,7 +67,7 @@ else
 			//Prepare a dropdown of designations for selection/action
 			echo "
 							<p>Select the desired designation to display past drill reports:</p>
-							
+							<p>
 							<select form=\"create_drillreport\" class=\"desigSelect_report\" id=\"designation_select\" name=\"designation_select\">
 								<option value=\"\" selected>Select a Designation</option>
 			";
@@ -145,17 +145,17 @@ else
 			
 			echo "
 							</select>
+							</p>
 			";
 				
 			//End designation stuff
 			
 			echo "
 							<br/>
-							<br/>
 			";
 			
 			echo "						
-							<table id=\"drillreportsTable\" class=\"tali_personnel_roster_table\">
+							<table id=\"drillreportsTable\" class=\"tali-personnel-table\">
 								<col width=\"50%\">
 								<col width=\"40%\">
 								<col width=\"10%\">
@@ -658,7 +658,9 @@ Completed on ".date("m/d/Y")."";
 				
 				echo "
 								<p>Date of drill (MM/DD/YYYY):</p>
-								<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"dateofdrill\" form=\"create_drillreport\" maxlength=\"10\" value=\"$form_dateofdrill\">
+								<p>
+								<input type=\"text\" class=\"tali-personnel-drillreports-textinput\" name=\"dateofdrill\" form=\"create_drillreport\" maxlength=\"10\" value=\"$form_dateofdrill\">
+								</p>
 				";
 				
 				//Date of Report (greyed out box)
@@ -668,7 +670,9 @@ Completed on ".date("m/d/Y")."";
 				}
 				echo "
 								<p>Date of report:</p>
-								<input type=\"text\" class=\"tali_personnel_drillreports_textinput\" name=\"dateofreport\" form=\"create_drillreport\" maxlength=\"10\" readonly value=\"$form_dateofreport\">
+								<p>
+								<input type=\"text\" class=\"tali-personnel-drillreports-textinput\" name=\"dateofreport\" form=\"create_drillreport\" maxlength=\"10\" readonly value=\"$form_dateofreport\">
+								</p>
 				";
 				
 				if (!isset($_GET['id'])) {
@@ -678,7 +682,7 @@ Completed on ".date("m/d/Y")."";
 					//Prepare a dropdown of designations for selection/action
 					echo "
 								<p>Select the desired designation to display its roster:</p>
-								
+								<p>
 								<select form=\"create_drillreport\" class=\"desigSelect_report\" id=\"designation_select\" name=\"designation_select\">
 									<option value=\"\" selected>Select a Designation</option>
 					";
@@ -756,6 +760,7 @@ Completed on ".date("m/d/Y")."";
 					
 					echo "
 								</select>
+								</p>
 					";
 										
 					//End designation stuff
@@ -764,10 +769,7 @@ Completed on ".date("m/d/Y")."";
 				//Attended
 				
 				echo "
-								<br/>
-								<br/>
 								<p>Place a checkmark for all who attended:</p>
-								<p id=\"attendedFiller\">No designation selected, or designation has no members.</p>
 				";
 									
 				//Need an array of all personnel with rank, firstname, lastname, and designation, sorted by rank_id weight. 
@@ -789,6 +791,10 @@ Completed on ".date("m/d/Y")."";
 				
 				if (!isset($_GET['id'])) {
 					//New Drill Report, so must pull personnel based on designation
+					
+					echo "
+								<p id=\"attendedFiller\">No designation selected, or designation has no members.</p>
+					";
 				
 					//BUG - the two below arrays are dirty, and surely could be accomplished in a single array
 					//Need an array of designations and the designations they report to
@@ -895,6 +901,7 @@ Completed on ".date("m/d/Y")."";
 				//bug - I feel like this whole setup is very sloppy and slow. But it works. 
 										
 				echo "
+								<br/>
 								<br/>
 								<p>Place a checkmark for all who were not present but were excused:</p>
 								<p id=\"excusedFiller\">All designation members present, or designation has no members.</p>
@@ -1032,7 +1039,9 @@ Completed on ".date("m/d/Y")."";
 				echo "
 								<br/>
 								<p>Provide any comments below:</p>
-								<textarea class=\"tali_personnel_drillreports_textarea\" name=\"report_comments\" form=\"create_drillreport\" value=\"\">$form_report_comments</textarea>
+								<p>
+								<textarea class=\"tali-personnel-drillreports-textarea\" name=\"report_comments\" form=\"create_drillreport\" value=\"\">$form_report_comments</textarea>
+								</p>
 				";
 				
 				if (isset($_GET['id'])) {

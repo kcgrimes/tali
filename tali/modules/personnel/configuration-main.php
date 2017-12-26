@@ -556,7 +556,7 @@ echo "
 			<div class=\"tali-page-frame\">
 				<h1>Configure Ranks</h1>
 				
-				<table class=\"ranksconfigtb\">
+				<table class=\"tali-personnel-configuration-table\">
 				<col width=\"20%\">
 				<col width=\"5%\">
 				<col width=\"10%\">
@@ -636,7 +636,7 @@ if ((isset($_GET['id'])) && (isset($_GET['button']))) {
 }
 	
 echo "
-				<table class=\"ranksconfigtb\">
+				<table class=\"tali-personnel-configuration-table\">
 					<col width=\"20%\">
 					<col width=\"5%\">
 					<col width=\"10%\">
@@ -649,10 +649,10 @@ echo "
 					</tr>
 					<tr>
 						<td>
-							<input type=\"text\" class=\"bo\" name=\"tali_modules_personnel_ranks_add_addname\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addname\">
+							<input type=\"text\" class=\"tali-personnel-configuration-inline_input\" name=\"tali_modules_personnel_ranks_add_addname\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addname\">
 						</td>
 						<td>
-							<input type=\"text\" class=\"bo\" name=\"tali_modules_personnel_ranks_add_addabbreviation\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addabbreviation\">
+							<input type=\"text\" class=\"tali-personnel-configuration-inline_input\" name=\"tali_modules_personnel_ranks_add_addabbreviation\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addabbreviation\">
 						</td>
 						<td>
 ";
@@ -672,7 +672,7 @@ else
 echo "
 						</td>
 						<td>
-							<input type=\"text\" class=\"bo\" name=\"tali_modules_personnel_ranks_add_addweight\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addweight\">
+							<input type=\"text\" class=\"tali-personnel-configuration-inline_input\" name=\"tali_modules_personnel_ranks_add_addweight\" form=\"tali_modules_personnel_ranks_add_form\" value=\"$rank_addweight\">
 						</td>
 					</tr>
 				</table>
@@ -718,7 +718,7 @@ echo "
 			<div class=\"tali-page-frame\">
 				<h1>Configure Statuses</h1>
 				
-				<table class=\"ranksconfigtb\">
+				<table class=\"tali-personnel-configuration-table\">
 				<col width=\"20%\">
 				<col width=\"5%\">
 				<col width=\"3%\">
@@ -786,7 +786,7 @@ if ((isset($_GET['id'])) && (isset($_GET['button']))) {
 }
 	
 echo "
-				<table class=\"ranksconfigtb\">
+				<table class=\"tali-personnel-configuration-table\">
 					<col width=\"20%\">
 					<col width=\"5%\">
 					<tr>
@@ -795,10 +795,10 @@ echo "
 					</tr>
 					<tr>
 						<td>
-							<input type=\"text\" class=\"bo\" name=\"status_add_name\" form=\"tali_modules_personnel_status_add_form\" value=\"$status_addname\">
+							<input type=\"text\" class=\"tali-personnel-configuration-inline_input\" name=\"status_add_name\" form=\"tali_modules_personnel_status_add_form\" value=\"$status_addname\">
 						</td>
 						<td>
-							<input type=\"text\" class=\"bo\" name=\"status_add_weight\" form=\"tali_modules_personnel_status_add_form\" value=\"$status_addweight\">
+							<input type=\"text\" class=\"tali-personnel-configuration-inline_input\" name=\"status_add_weight\" form=\"tali_modules_personnel_status_add_form\" value=\"$status_addweight\">
 						</td>
 					</tr>
 				</table>
@@ -844,7 +844,7 @@ echo "
 			<div class=\"tali-page-frame\">
 				<h1>Configure Roles</h1>
 				
-				<table class=\"ranksconfigtb\">
+				<table class=\"tali-personnel-configuration-table\">
 				<col width=\"20%\">
 				<col width=\"5%\">
 				<col width=\"3%\">
@@ -912,7 +912,7 @@ if ((isset($_GET['id'])) && (isset($_GET['button']))) {
 }
 	
 echo "
-				<table class=\"ranksconfigtb\">
+				<table class=\"tali-personnel-configuration-table\">
 					<col width=\"20%\">
 					<col width=\"5%\">
 					<tr>
@@ -921,10 +921,10 @@ echo "
 					</tr>
 					<tr>
 						<td>
-							<input type=\"text\" class=\"bo\" name=\"role_add_name\" form=\"tali_modules_personnel_role_add_form\" value=\"$role_addname\">
+							<input type=\"text\" class=\"tali-personnel-configuration-inline_input\" name=\"role_add_name\" form=\"tali_modules_personnel_role_add_form\" value=\"$role_addname\">
 						</td>
 						<td>
-							<input type=\"text\" class=\"bo\" name=\"role_add_weight\" form=\"tali_modules_personnel_role_add_form\" value=\"$role_addweight\">
+							<input type=\"text\" class=\"tali-personnel-configuration-inline_input\" name=\"role_add_weight\" form=\"tali_modules_personnel_role_add_form\" value=\"$role_addweight\">
 						</td>
 					</tr>
 				</table>
@@ -999,7 +999,7 @@ if ((isset($_GET['id'])) && (isset($_GET['button']))) {
 
 echo "
 				<p>Designation details:</p>
-				<table class=\"ranksconfigtb\">
+				<table class=\"tali-personnel-configuration-table\">
 					<col width=\"20%\">
 					<col width=\"20%\">
 					<col width=\"5%\">
@@ -1010,13 +1010,13 @@ echo "
 					</tr>
 					<tr>
 						<td>
-							<input type=\"text\" class=\"bo\" name='desig_add_name' form='tali_modules_personnel_designation_add_form' value=\"$desig_addname\">
+							<input type=\"text\" class=\"tali-personnel-configuration-inline_input\" name='desig_add_name' form='tali_modules_personnel_designation_add_form' value=\"$desig_addname\">
 						</td>
 ";
 
 echo "
 						<td>
-							<select class=\"tali_personnel_configuration_designations_dropdown\" name=\"desig_add_leader\" form=\"tali_modules_personnel_designation_add_form\" value=\"$desig_addleader\">
+							<select class=\"tali-personnel-configuration-inline_input\" name=\"desig_add_leader\" form=\"tali_modules_personnel_designation_add_form\" value=\"$desig_addleader\">
 								<option value=\"\">Select a Leader</option>
 ";
 
@@ -1049,7 +1049,7 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 							</select>
 						</td>
 						<td>
-							<input type=\"text\" class=\"bo\" name='desig_add_weight' form='tali_modules_personnel_designation_add_form' value=\"$desig_addweight\">
+							<input type=\"text\" class=\"tali-personnel-configuration-inline_input\" name='desig_add_weight' form='tali_modules_personnel_designation_add_form' value=\"$desig_addweight\">
 						</td>
 					</tr>
 				</table>
@@ -1059,7 +1059,7 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 echo "
 				<p>Select a designation to report to:</p>
 								
-				<table class=\"ranksconfigtb\">
+				<table class=\"tali-personnel-configuration-table\">
 					<col width=\"3%\">
 					<col width=\"20%\">
 					<col width=\"17%\">
@@ -1247,7 +1247,7 @@ else
 	echo "
 				<p>Select an inactive designation to reactivate:</p>
 				<p>
-				<select form=\"tali_modules_personnel_designation_reactivate_form\" class=\"desigSelect_report\" name=\"reactivate_designation\">
+				<select form=\"tali_modules_personnel_designation_reactivate_form\" name=\"reactivate_designation\">
 					<option value=\"\" selected>Select a Designation</option>
 	";
 	

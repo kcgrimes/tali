@@ -816,14 +816,30 @@ footer {
 
 /* */
 
-/*TALI Module - Personnel - Configuration*/
+/*TALI Module - Personnel*/
 
-/* bug - make this unique or global*/
-.bo {
-	width: 90%; /* see .tali-adminacounts-inline_input, which is width:100%*/
+.tali-personnel-table {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+	border: 1px solid black;
+	border-collapse: collapse;
 }
 
-.ranksconfigtb {
+.tali-personnel-table tr, 
+.tali-personnel-table th, 
+.tali-personnel-table td {
+	border: 1px solid black;
+}
+
+/*TALI Module - Personnel - Configuration*/
+
+.tali-personnel-configuration-inline_input {
+	width: 100%; 
+}
+
+.tali-personnel-configuration-table {
 	width: 50%;
 	margin-left: 15px;
 	margin-right: auto;
@@ -832,26 +848,16 @@ footer {
 	border-collapse: collapse;
 }
 
-.ranksconfigtb tr {
+.tali-personnel-configuration-table tr, 
+.tali-personnel-configuration-table th, 
+.tali-personnel-configuration-table td  {
 	border: 1px solid black;
-}
-
-.ranksconfigtb th {
-	border: 1px solid black;
-}
-
-.ranksconfigtb td { 
-	border: 1px solid black;
-}
-
-.tali_personnel_configuration_designations_dropdown {
-	width: 90%;
 }
 
 /* */
 
 /*TALI Module - Personnel - Roster*/
-.tali_personnel_roster_links {
+.tali-personnel-roster-links {
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
@@ -859,75 +865,49 @@ footer {
 	text-align: center;
 }
 
-.tali_personnel_roster_table {
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 15px;
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-
-.tali_personnel_roster_table tr, .tali_personnel_roster_table th, .tali_personnel_roster_table td {
-	border: 1px solid black;
-}
-
-.tali_personnel_roster_add_table {
+.tali-personnel-roster-addpersonnel-table {
 	width: 100%;
 }
 
-.tali_personnel_roster_add_textbox {
+.tali-personnel-roster-addpersonnel-inline_input {
 	width: 30%;
 }
 
-.tali_personnel_roster_add_textarea {
+.tali-personnel-roster-addpersonnel-textarea {
 	width: 30%;
 	height: 100px;
 }
 
-.tali_personnel_roster_add_dropdown {
-	width: 30%;
-}
-
-.tali_personnel_roster_add_btn {
+.tali-personnel-roster-addpersonnel-button {
+	display: block;
 	margin-top: 10px;
-	margin-left: 40%;
+	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 10px;
 }
 
-/*For Designations Dropdown*/
-.secondary {
-	display:none;
-}
-
-/* */
-
 /* TALI Module - Personnel - Points */
-.tali_personnel_points_update {
+.tali-personnel-points-inline_input {
 	width: 30px;
 }
 
 /* */
 
 /* TALI Module - Personnel - Drill Reports */
-.desigSelect_report {
-	margin-left: 15px;
-}
 
-.tali_personnel_drillreports_textarea {
+.tali-personnel-drillreports-textarea {
 	margin-left: 15px;
 	margin-bottom: 15px;
 	height: 200px;
 	width: 50%;
 }
 
-.tali_personnel_drillreports_textinput {
-	margin-left: 15px;
-	width: 80px;
-	margin-bottom: 10px;
+.tali-personnel-drillreports-textinput {
+	width: 90px;
 }
 
+/* bug - give me a tali name! */
+/* bug - look into desigSelect_report while you're at it */
 .attendedCheckbox_class {
 	margin-left: 15px;
 }
@@ -935,12 +915,14 @@ footer {
 /* */
 
 /* TALI Module - Personnel - Awards */
-.tali_personnel_awards_addaward_dropdown {
+/* bug - this has global usage */
+.tali-personnel-awards-addaward-dropdown {
 	margin-left: 15px;
 	margin-bottom: 10px;
 }
 
-.tali_personnel_awards_textinput {
+/* bug - this has global usage */
+.tali-personnel-awards-textinput {
 	width: 50%;
 	margin-left: 15px;
 	margin-bottom: 10px;

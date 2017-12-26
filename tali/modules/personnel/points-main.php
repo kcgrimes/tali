@@ -61,7 +61,7 @@ echo "
 			<div class=\"tali-page-frame\">
 				<h1>Points</h1>
 				
-				<table class=\"tali_personnel_roster_table\">
+				<table class=\"tali-personnel-table\">
 					<col width=\"10%\">
 					<col width=\"50%\">
 					<col width=\"20%\">
@@ -95,7 +95,7 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 					<tr>
 						<td style=\"text-align:center;\">$rank_abr</td>
 						<td style=\"text-align:center;\">$firstname $lastname</td>
-						<td style=\"text-align:center;\"><input type=\"text\" class=\"tali_personnel_points_update\" name=\"points_value_".$personnel_id."\" form=\"update_points\" maxlength=\"3\"value=\"$points\"></td>
+						<td style=\"text-align:center;\"><input type=\"text\" class=\"tali-personnel-points-inline_input\" name=\"points_value_".$personnel_id."\" form=\"update_points\" maxlength=\"3\"value=\"$points\"></td>
 						<td style=\"text-align:center;\">100</td>
 					</tr>
 	";

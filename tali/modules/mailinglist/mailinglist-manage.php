@@ -42,7 +42,7 @@ echo "
 		<div class=\"tali-container\">
 			<div class=\"tali-page-frame\">
 				<h1>Manage Custom Mailing Lists</h1>
-				<table id=\"mailinglistTable_manage\" class=\"tali_personnel_roster_table\">
+				<table id=\"mailinglistTable_manage\" class=\"tali-personnel-table\">
 					<col width=\"70%\">
 					<col width=\"15%\">
 					<col width=\"15%\">
@@ -102,7 +102,7 @@ if ($action == "Edit") {
 
 echo "
 				<p>Mailing List Name:</p>
-				<input type=\"text\" class=\"tali_personnel_awards_textinput\" name=\"name\" form=\"form_mailinglist\" value=\"$name\">
+				<input type=\"text\" class=\"tali-personnel-awards-textinput\" name=\"name\" form=\"form_mailinglist\" value=\"$name\">
 				
 				<p>Mailing List Addresses (separated by comma \",\"):</p>
 				<p><textarea rows=\"6\" cols=\"75\" name=\"list\" form=\"form_mailinglist\">$list</textarea></p>

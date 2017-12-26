@@ -171,10 +171,10 @@ if (isset($_GET['action'])) {
 				//TRUE add
 				$displayButtons = "
 					<form method=\"POST\" id=\"add_file\" action=\"personnel.php?sub=roster&action=added\">
-						<input type=\"submit\" name=\"added_bu\" class=\"tali_personnel_roster_add_btn\" value=\"Submit Personnel File\"/>
+						<input type=\"submit\" name=\"added_bu\" class=\"tali-personnel-roster-addpersonnel-button\" value=\"Submit Personnel File\"/>
 					</form>
 					<form method=\"POST\" id=\"add_file\" action=\"personnel.php?sub=roster\">
-						<input type=\"submit\" name=\"btnCancel\" class=\"tali_personnel_roster_add_btn\" value=\"Cancel\"/>
+						<input type=\"submit\" name=\"btnCancel\" class=\"tali-personnel-roster-addpersonnel-button\" value=\"Cancel\"/>
 					</form>
 				";
 			}
@@ -184,10 +184,10 @@ if (isset($_GET['action'])) {
 				
 				$displayButtons = "
 					<form method=\"POST\" id=\"add_file\" action=\"personnel.php?sub=roster&action=added\">
-						<input type=\"submit\" name=\"added_bu\" class=\"tali_personnel_roster_add_btn\" value=\"Submit Personnel File\"/>
+						<input type=\"submit\" name=\"added_bu\" class=\"tali-personnel-roster-addpersonnel-button\" value=\"Submit Personnel File\"/>
 					</form>
 					<form method=\"POST\" id=\"add_file\" action=\"personnel.php?sub=roster\">
-						<input type=\"submit\" name=\"btnCancel\" class=\"tali_personnel_roster_add_btn\" value=\"Cancel\"/>
+						<input type=\"submit\" name=\"btnCancel\" class=\"tali-personnel-roster-addpersonnel-button\" value=\"Cancel\"/>
 					</form>
 				";
 				
@@ -208,22 +208,22 @@ if (isset($_GET['action'])) {
 					//Determine which discharge-related button to display
 					if ($discharged == 0) {
 						//Active duty, so offer to discharge
-						$discharged_button = "<input type=\"submit\" name=\"btnDischarge\" class=\"tali_personnel_roster_add_btn\" onclick=\"return confirm('Are you sure you want to discharge this personnel file, removing it from Active Duty?');\" value=\"Discharge File\"/>";
+						$discharged_button = "<input type=\"submit\" name=\"btnDischarge\" class=\"tali-personnel-roster-addpersonnel-button\" onclick=\"return confirm('Are you sure you want to discharge this personnel file, removing it from Active Duty?');\" value=\"Discharge File\"/>";
 					}
 					else
 					{
 						//Already discharged, so offer to un-discharge
-						$discharged_button = "<input type=\"submit\" name=\"btnUnDischarge\" class=\"tali_personnel_roster_add_btn\" onclick=\"return confirm('Are you sure you want to un-discharge this personnel file, placing it on Active Duty?');\" value=\"Un-Discharge File\"/>";
+						$discharged_button = "<input type=\"submit\" name=\"btnUnDischarge\" class=\"tali-personnel-roster-addpersonnel-button\" onclick=\"return confirm('Are you sure you want to un-discharge this personnel file, placing it on Active Duty?');\" value=\"Un-Discharge File\"/>";
 					}
 					
 					//Display remaining buttons for Update
 					$displayButtons = "
 						<form method=\"POST\" id=\"add_file\" action=\"personnel.php?sub=roster&action=added&id=$personnel_id\">
-							<input type=\"submit\" name=\"added_bu\" class=\"tali_personnel_roster_add_btn\" value=\"Update Personnel File\"/>
+							<input type=\"submit\" name=\"added_bu\" class=\"tali-personnel-roster-addpersonnel-button\" value=\"Update Personnel File\"/>
 						</form>
 						<form method=\"POST\" id=\"add_file\" action=\"personnel.php?sub=roster&id=$personnel_id\">
-							<input type=\"submit\" name=\"btnCancel\" class=\"tali_personnel_roster_add_btn\" value=\"Cancel Update\"/>
-							<input type=\"submit\" name=\"btnDelete\" class=\"tali_personnel_roster_add_btn\" onclick=\"return confirm('Are you sure you want to DELETE this personnel file (NOT discharge)?');\" value=\"Delete File\"/>
+							<input type=\"submit\" name=\"btnCancel\" class=\"tali-personnel-roster-addpersonnel-button\" value=\"Cancel Update\"/>
+							<input type=\"submit\" name=\"btnDelete\" class=\"tali-personnel-roster-addpersonnel-button\" onclick=\"return confirm('Are you sure you want to DELETE this personnel file (NOT discharge)?');\" value=\"Delete File\"/>
 							$discharged_button
 						</form>
 					";
@@ -271,14 +271,14 @@ if (isset($_GET['action'])) {
 			echo "	
 					</h1>
 					
-					<table class=\"tali_personnel_roster_add_table\">
+					<table class=\"tali-personnel-roster-addpersonnel-table\">
 					<col width=\"50%\">
 					<col width=\"50%\">
 					
 					<tr>
 						<td style=\"text-align:right;\"><strong>Rank:</strong></td>
 						<td style=\"text-align:left;\">
-							<select class=\"tali_personnel_roster_add_dropdown\" name=\"add_rank_id\" form=\"add_file\" value=\"$add_rank_id\">
+							<select class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_rank_id\" form=\"add_file\" value=\"$add_rank_id\">
 								<option value=\"\">Select a Rank</option>
 			";
 			$SQL = "SELECT * FROM tali_personnel_ranks ORDER BY weight DESC";
@@ -302,15 +302,15 @@ if (isset($_GET['action'])) {
 					</tr>
 					<tr>
 						<td style=\"text-align:right;\"><strong>First Name:</strong></td>
-						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali_personnel_roster_add_textbox\" name=\"add_firstname\" form=\"add_file\" value=\"$add_firstname\"></td>
+						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_firstname\" form=\"add_file\" value=\"$add_firstname\"></td>
 					</tr>
 					<tr>
 						<td style=\"text-align:right;\"><strong>Last Name:</strong></td>
-						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali_personnel_roster_add_textbox\" name=\"add_lastname\" form=\"add_file\" value=\"$add_lastname\"></td>
+						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_lastname\" form=\"add_file\" value=\"$add_lastname\"></td>
 					</tr>
 					<tr>
 						<td style=\"text-align:right;\">Nickname:</td>
-						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali_personnel_roster_add_textbox\" name=\"add_nickname\" form=\"add_file\" value=\"$add_nickname\"></td>
+						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_nickname\" form=\"add_file\" value=\"$add_nickname\"></td>
 					</tr>
 					<tr>
 						<td style=\"text-align:right;\"><strong>Designation:</strong></td>
@@ -322,7 +322,7 @@ if (isset($_GET['action'])) {
 			
 			//Prepare a dropdown of designations for selection/action
 			echo "						
-				<select form=\"add_file\" class=\"desigSelect_report\" id=\"designation_select\" name=\"designation_select\">
+				<select form=\"add_file\" id=\"designation_select\" name=\"designation_select\">
 					<option value=\"\">Select a Designation</option>
 			";
 			
@@ -415,7 +415,7 @@ if (isset($_GET['action'])) {
 					<tr>
 						<td style=\"text-align:right;\"><strong>Role:</strong></td>
 						<td style=\"text-align:left;\">
-							<select class=\"tali_personnel_roster_add_dropdown\" name=\"add_role_id\" form=\"add_file\" value=\"$add_role_id\">
+							<select class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_role_id\" form=\"add_file\" value=\"$add_role_id\">
 								<option value=\"\">Select a Role</option>
 			";
 			$SQL = "SELECT * FROM tali_personnel_roles ORDER BY weight DESC";
@@ -441,7 +441,7 @@ if (isset($_GET['action'])) {
 					<tr>
 						<td style=\"text-align:right;\"><strong>Status:</strong></td>
 						<td style=\"text-align:left;\">
-							<select class=\"tali_personnel_roster_add_dropdown\" name=\"add_status_id\" form=\"add_file\" value=\"$add_status_id\">
+							<select class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_status_id\" form=\"add_file\" value=\"$add_status_id\">
 								<option value=\"\">Select a Status</option>
 			";
 			$SQL = "SELECT * FROM tali_personnel_statuses ORDER BY weight DESC";
@@ -467,41 +467,41 @@ if (isset($_GET['action'])) {
 					<tr><td><br/></td></tr>
 					<tr>
 						<td style=\"text-align:right;\">E-Mail:</td>
-						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali_personnel_roster_add_textbox\" name=\"add_email\" form=\"add_file\" value=\"$add_email\"></td>
+						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_email\" form=\"add_file\" value=\"$add_email\"></td>
 					</tr>
 					<tr>
 						<td style=\"text-align:right;\">Other Contact:</td>
-						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali_personnel_roster_add_textbox\" name=\"add_othercontact\" form=\"add_file\" value=\"$add_othercontact\"></td>
+						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_othercontact\" form=\"add_file\" value=\"$add_othercontact\"></td>
 					</tr>
 					<tr>
 						<td style=\"text-align:right;\">Location:</td>
-						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali_personnel_roster_add_textbox\" name=\"add_location\" form=\"add_file\" value=\"$add_location\"></td>
+						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_location\" form=\"add_file\" value=\"$add_location\"></td>
 					</tr>
 					<tr>
 						<td style=\"text-align:right;\">Date of Birth (MM/DD/YYYY):</td>
-						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali_personnel_roster_add_textbox\" name=\"add_dateofbirth\" form=\"add_file\" maxlength=\"10\" value=\"$add_dateofbirth\"></td>
+						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_dateofbirth\" form=\"add_file\" maxlength=\"10\" value=\"$add_dateofbirth\"></td>
 					</tr>
 					<tr>
 						<td style=\"text-align:right;\">Biography:</td>
-						<td style=\"text-align:left;\"><textarea class=\"tali_personnel_roster_add_textarea\" name=\"add_biography\" form=\"add_file\" value=\"$add_biography\">$add_biography</textarea>
+						<td style=\"text-align:left;\"><textarea class=\"tali-personnel-roster-addpersonnel-textarea\" name=\"add_biography\" form=\"add_file\" value=\"$add_biography\">$add_biography</textarea>
 					</tr>
 					<tr><td><br/></td></tr>
 					<tr>
 						<td style=\"text-align:right;\"><strong>Date Enlisted (MM/DD/YYYY):</strong></td>
-						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali_personnel_roster_add_textbox\" name=\"add_dateenlisted\" form=\"add_file\" maxlength=\"10\" value=\"$add_dateenlisted\"></td>
+						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_dateenlisted\" form=\"add_file\" maxlength=\"10\" value=\"$add_dateenlisted\"></td>
 					</tr>
 					<tr>
 						<td style=\"text-align:right;\">Date Last Promoted (MM/DD/YYYY):</td>
-						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali_personnel_roster_add_textbox\" name=\"add_datepromoted\" form=\"add_file\" maxlength=\"10\" value=\"$add_datepromoted\"></td>
+						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_datepromoted\" form=\"add_file\" maxlength=\"10\" value=\"$add_datepromoted\"></td>
 					</tr>
 					<tr>
 						<td style=\"text-align:right;\">Date Discharged (MM/DD/YYYY):</td>
-						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali_personnel_roster_add_textbox\" name=\"add_datedischarged\" form=\"add_file\" maxlength=\"10\" value=\"$add_datedischarged\"></td>
+						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_datedischarged\" form=\"add_file\" maxlength=\"10\" value=\"$add_datedischarged\"></td>
 					</tr>
 					<tr><td><br/></td></tr>							
 					<tr>
 						<td style=\"text-align:right;\">Admin Account Username:</td>
-						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali_personnel_roster_add_textbox\" name=\"add_adminusername\" form=\"add_file\" value=\"$add_adminusername\"></td>
+						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_adminusername\" form=\"add_file\" value=\"$add_adminusername\"></td>
 					</tr>
 					<tr><td><br/></td></tr>
 					<!--points stuff-->
@@ -916,7 +916,7 @@ else
 			<div class=\"tali-page-frame\">
 				<h1>Past Members Roster</h1>
 				<br/>
-				<table class=\"tali_personnel_roster_links\">
+				<table class=\"tali-personnel-roster-links\">
 					<col width=\"50%\">
 					<col width=\"50%\">
 					<tr>
@@ -925,7 +925,7 @@ else
 					</tr>
 				</table>
 				
-				<table class=\"tali_personnel_roster_table\">
+				<table class=\"tali-personnel-table\">
 					<col width=\"10%\">
 					<col width=\"30%\">
 					<col width=\"20%\">
@@ -1020,7 +1020,7 @@ else
 			<div class=\"tali-page-frame\">
 				<h1>Active Members Roster</h1>
 				<br/>
-				<table class=\"tali_personnel_roster_links\">
+				<table class=\"tali-personnel-roster-links\">
 					<col width=\"50%\">
 					<col width=\"50%\">
 					<tr>
@@ -1029,7 +1029,7 @@ else
 					</tr>
 				</table>
 				
-				<table class=\"tali_personnel_roster_table\">
+				<table class=\"tali-personnel-table\">
 					<col width=\"10%\">
 					<col width=\"30%\">
 					<col width=\"20%\">
