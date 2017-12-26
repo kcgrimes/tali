@@ -93,7 +93,7 @@ if (!isset($_POST['tali_page_edit'])) {
 					<div class=\"tali-page-frame\">
 						<h1>Edit/Delete Page</h1>
 						<p>Select the desired page from the dropdown menu below and click Edit to update it or Delete to remove it from the database.</p>
-						<form method=\"POST\" id=\"tali_editpage_form\" class=\"editpage\" action=\"pages.php\">
+						<form method=\"POST\" id=\"tali_editpage_form\" action=\"pages.php\">
 							<p>
 							<select name=\"selectitle\">
 								<option value=\"empty\"></option>

@@ -65,19 +65,22 @@ else
 				<br/>
 				<br/>
 				Enter a date to analyze from (MM/DD/YYYY):
-				<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"indiv_analysis_end\" form=\"indiv_analysis\" maxlength=\"10\" value=\"\">
+				<input type=\"text\" class=\"tali-personnel-metrics-textinput\" name=\"indiv_analysis_end\" form=\"indiv_analysis\" maxlength=\"10\" value=\"\">
 				<br/>
 				Enter a date to analyze up to (MM/DD/YYYY):
-				<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"indiv_analysis_start\" form=\"indiv_analysis\" maxlength=\"10\" value=\"\">
+				<input type=\"text\" class=\"tali-personnel-metrics-textinput\" name=\"indiv_analysis_start\" form=\"indiv_analysis\" maxlength=\"10\" value=\"\">
 				<br/>
+				</p>
+				<p>
 				Select analysis techniques:
+				</p>
 				<form method=\"POST\" id=\"indiv_analysis\" action=\"personnel.php?sub=metrics&action=post\">
 					<p>
 					<input type=\"checkbox\" name=\"indiv_technique_array[]\" checked=\"checked\" value=\"attendanceanalysis\"/>
 					Attendance Analysis
 					<br/>
 					<br/>
-					<input type=\"submit\" name=\"indiv_subbutton\" class=\"tali_personnel_metrics_subbutton\" value=\"Conduct Analysis\"/>
+					<input type=\"submit\" name=\"indiv_subbutton\" value=\"Conduct Analysis\"/>
 					</p>
 				</form>
 			</div>
@@ -177,19 +180,22 @@ else
 				<br/>
 				<br/>
 				Enter a date to analyze from (MM/DD/YYYY):
-				<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"desig_analysis_end\" form=\"desig_analysis\" maxlength=\"10\" value=\"\">
+				<input type=\"text\" class=\"tali-personnel-metrics-textinput\" name=\"desig_analysis_end\" form=\"desig_analysis\" maxlength=\"10\" value=\"\">
 				<br/>
 				Enter a date to analyze up to (MM/DD/YYYY):
-				<input type=\"text\" class=\"tali_personnel_metrics_textbox\" name=\"desig_analysis_start\" form=\"desig_analysis\" maxlength=\"10\" value=\"\">
+				<input type=\"text\" class=\"tali-personnel-metrics-textinput\" name=\"desig_analysis_start\" form=\"desig_analysis\" maxlength=\"10\" value=\"\">
 				<br/>
+				</p>
+				<p>
 				Select analysis techniques:
+				</p>
 				<form method=\"POST\" id=\"desig_analysis\" action=\"personnel.php?sub=metrics&action=post\">
 					<p>
 					<input type=\"checkbox\" name=\"desig_technique_array[]\" checked=\"checked\" value=\"attendanceanalysis\"/>
 					Attendance Analysis
 					<br/>
 					<br/>
-					<input type=\"submit\" name=\"desig_subbutton\" class=\"tali_personnel_metrics_subbutton\" value=\"Conduct Analysis\"/>
+					<input type=\"submit\" name=\"desig_subbutton\" value=\"Conduct Analysis\"/>
 					</p>
 				</form>
 			</div>
