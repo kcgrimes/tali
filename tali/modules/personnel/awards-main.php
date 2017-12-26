@@ -261,6 +261,7 @@ if (isset($_GET['action'])) {
 					$image = $db_field['image'];
 					$description = $db_field['description'];
 					$weight = $db_field['weight'];
+					$image_url = $image;
 				};
 			
 				echo "
@@ -304,12 +305,13 @@ if (isset($_GET['action'])) {
 										
 				echo "
 						
-								<p>Award Image Name:</p>
+								<p>Award Image:</p>
 						
 				";
 
 				if (($_GET['action']) == "editaward") {
 					echo "
+								<p><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_Awards_Images_Directory']."$image_url\" alt=\"$image\"></img></p>
 								<p>$image</p>
 					";
 				}
@@ -326,8 +328,9 @@ if (isset($_GET['action'])) {
 								<input type=\"text\" class=\"tali-personnel-awards-textinput\" name=\"description\" form=\"add_award\" value=\"$description\">
 								
 								<p>Award Weight:</p>
+								<p>
 								<input type=\"integer\" class=\"tali-personnel-drillreports-textinput\" name=\"weight\" form=\"add_award\" value=\"$weight\">
-								
+								</p>
 								<form method=\"POST\" enctype=\"multipart/form-data\" id=\"add_award\" action=\"personnel.php?sub=awards&action=" . $_GET['action'] . "&submit=true\">
 									<p>
 									<input type=\"submit\" name=\"btnSubmit\" value=\"Submit\"/>
