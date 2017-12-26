@@ -103,6 +103,20 @@ function TALI_Module_Roster () {
 }
 
 /*
+Function - TALI_EMail
+Used to send an EMail using configured settings.
+Select 1 - String - Intended email target
+Select 2 - String - Display name of intended email target
+Select 3 - String - Subject line of email
+Select 4 - String - Body text of email
+*/
+//bug - How does this work with multiple "to" addresses?
+//bug - What other variables can be made more available for expanded use?
+function TALI_EMail ($toEmail, $toName, $subject, $msgBody) {
+	require "includes/global/email/email.php";
+}
+
+/*
 Function - TALI_quote_smart
 Used to remove "magic slashes" that used to be automatically added for SQL protection
 in older PHP versions (poor practice), and to correctly escape strings as appropriate.

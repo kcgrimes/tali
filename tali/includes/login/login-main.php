@@ -119,14 +119,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$result = mysqli_query($db_handle, $SQL);
 			
 			//E-mail the token
-			$toEmail = $email;
-			$toName = $username;
 			$subject = "".$_SESSION['TALI_Organization_Name']." TALI Password Reset";
 			$msgBody = "In order to reset your ".$_SESSION['TALI_Organization_Name']." TALI password, please click the following link. This link can only be used once and should not be shared.
 			
 			$reset_url
 			";
-			require "includes/global/email/email.php";
+			TALI_EMail ($email, $username, $subject, $msgBody);
 		}
 		
 		//Display confirmation message, whether or not e-mail was actually sent
