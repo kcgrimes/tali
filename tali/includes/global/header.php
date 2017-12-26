@@ -3,7 +3,7 @@ echo "
 	<header>
 		<div class=\"tali-container\">
 			<a href=\"".$_SESSION["TALI_Domain_URL"]."".$_SESSION["TALI_ROOT_URL"]."/index.php\">
-				<img class=\"tali-header-banner_img\" src=\"".$_SESSION["TALI_Domain_URL"]."".$_SESSION["TALI_ROOT_URL"]."/images/display/TALIBanner.png\" alt=\"TALI Banner\" name=\"Team Administration/Logistics Interface\"/>
+				<img class=\"tali-header-banner_img\" src=\"".$_SESSION["TALI_Domain_URL"]."".$_SESSION["TALI_ROOT_URL"]."/images/TALIBanner.png\" alt=\"TALI Banner\" name=\"Team Administration/Logistics Interface\"/>
 			</a>
 ";
 

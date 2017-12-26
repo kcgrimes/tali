@@ -972,22 +972,22 @@ else
 							<td style=\"text-align:center;\">$status</td>
 							<td style=\"text-align:center;\">
 								<a href=\"personnel.php?sub=roster_awards&id=$personnel_id\">
-									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+									<img src=\"../images/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 								</a>
 							</td>
 							<td style=\"text-align:center;\">
 								<a href=\"personnel.php?sub=roster_servicerecord&id=$personnel_id\">
-									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+									<img src=\"../images/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 								</a>
 							</td>
 							<td style=\"text-align:center;\">
 								<a href=\"personnel.php?sub=roster_uniform&id=$personnel_id\">
-									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+									<img src=\"../images/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 								</a>
 							</td>
 							<td style=\"text-align:center;\">
 								<a href=\"personnel.php?sub=roster&action=edit&id=$personnel_id\">
-									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+									<img src=\"../images/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 								</a>
 							<td style=\"text-align:center;\">$personnel_id</td>
 						</tr>
@@ -1076,22 +1076,22 @@ else
 							<td style=\"text-align:center;\">$status</td>
 							<td style=\"text-align:center;\">
 								<a href=\"personnel.php?sub=roster_awards&id=$personnel_id\">
-									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+									<img src=\"../images/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 								</a>
 							</td>
 							<td style=\"text-align:center;\">
 								<a href=\"personnel.php?sub=roster_servicerecord&id=$personnel_id\">
-									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+									<img src=\"../images/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 								</a>
 							</td>
 							<td style=\"text-align:center;\">
 								<a href=\"personnel.php?sub=roster_uniform&id=$personnel_id\">
-									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+									<img src=\"../images/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 								</a>
 							</td>
 							<td style=\"text-align:center;\">
 								<a href=\"personnel.php?sub=roster&action=edit&id=$personnel_id\">
-									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+									<img src=\"../images/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 								</a>
 							</td>
 							<td style=\"text-align:center;\">$personnel_id</td>

@@ -30,11 +30,11 @@ if (!isset($_GET['location'])) {
 				<div class=\"tali-page-frame\">
 					<div class=\"tali-responsive-row\">
 						<a href=\"personnel.php?sub=drillreports&location=create\" class=\"tali-responsive-icon\">
-							<img src=\"../images/display/icons/DrillReports-New.png\" alt=\"Create New Drill Report Icon\" name=\"Create New Drill Report Icon\">
+							<img src=\"../images/icons/DrillReports-New.png\" alt=\"Create New Drill Report Icon\" name=\"Create New Drill Report Icon\">
 							<p>Create New Drill Report</p>
 						</a>
 						<a href=\"personnel.php?sub=drillreports&location=view\" class=\"tali-responsive-icon\">
-							<img src=\"../images/display/icons/DrillReports-View.png\" alt=\"View/Edit Past Drill Reports Icon\" name=\"View Past Drill Reports Icon\">
+							<img src=\"../images/icons/DrillReports-View.png\" alt=\"View/Edit Past Drill Reports Icon\" name=\"View Past Drill Reports Icon\">
 							<p>View/Edit Past Drill Reports</p>
 						</a>
 					</div>
@@ -203,7 +203,7 @@ else
 							for (i = 0; i < arrayDrillReports_json.length; i++) {
 								if (arrayDrillReports_json[i].designation_id == chosenDesignation_id) {
 									drillreportsTable_jq.append(
-										'<tr><td style="text-align:center;">' + arrayDrillReports_json[i].name + '</td><td style="text-align:center;">' + arrayDrillReports_json[i].date_drill + '</td><td style="text-align:center;"><a href="personnel.php?sub=drillreports&location=create&id=' + arrayDrillReports_json[i].drillreport_id + '"><img src="../images/display/icons/edit.png" alt="Edit Icon" name="Edit Icon"></a></td></tr>'
+										'<tr><td style="text-align:center;">' + arrayDrillReports_json[i].name + '</td><td style="text-align:center;">' + arrayDrillReports_json[i].date_drill + '</td><td style="text-align:center;"><a href="personnel.php?sub=drillreports&location=create&id=' + arrayDrillReports_json[i].drillreport_id + '"><img src="../images/icons/edit.png" alt="Edit Icon" name="Edit Icon"></a></td></tr>'
 									);
 								};
 							};

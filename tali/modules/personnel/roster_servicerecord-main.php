@@ -199,12 +199,12 @@ else
 							<td style=\"text-align:center;\">$record</td>
 							<td style=\"text-align:center;\">
 								<a href=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&servicerecord_id=$servicerecord_id&action=editrecord\">
-									<img src=\"../images/display/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
+									<img src=\"../images/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
 								</a>
 							</td>
 							<td style=\"text-align:center;\">
 								<a href=\"personnel.php?sub=roster_servicerecord&id=$personnel_id&servicerecord_id=$servicerecord_id&action=deleterecord\" onclick=\"return confirm('Are you sure you want to delete this service record?');\">
-									<img src=\"../images/display/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
+									<img src=\"../images/icons/delete.png\" alt=\"Delete Icon\" name=\"Delete Icon\">
 								</a>
 							</td>
 						</tr>
