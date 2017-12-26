@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			
 			$reset_url
 			";
-			require "includes/global/EMail/email.php";
+			require "includes/global/email/email.php";
 		}
 		
 		//Display confirmation message, whether or not e-mail was actually sent
