@@ -556,15 +556,16 @@ header {
 	width: 100%;
 }
 
-/* Space for back, account, logout, etc. text */
-.tali-header-text_table {
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	z-index: 1000;
-	background-color: #eee;
-	color: #000;
-	padding: 0;
+/* Header text for back, account, logout, etc. */
+.tali-header-goback {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+.tali-header-account { 
+	float: right;
+	text-align: right;
+	margin-bottom: 5px;
 }
 
 /* INDEX.PHP */
