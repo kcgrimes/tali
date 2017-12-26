@@ -624,12 +624,12 @@ a.tali-responsive-icon {
 
 .tali-responsive-icon {
 	display: block;
-	min-height: 120px;
+	min-height: 150px;
 	margin-left: 1%;
 	margin-right: 1%;
 	padding: 4px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	line-height: 1.42857143;
 	background-color: transparent;
 	border: 1px solid transparent;
