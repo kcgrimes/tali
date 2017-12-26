@@ -1,6 +1,9 @@
 <?php	
 session_start();
 
+//Loaded in head of all back-end (TALI admin) files
+//that execute tali_init.php in their <head>.
+
 //bug - What is this doing? Can it be accomplished by just executing tali_init.php up here?
 define('TALI_ROOT_URL', substr($_SERVER['PHP_SELF'], 0, - (strlen($_SERVER['SCRIPT_FILENAME']) - strlen(realpath(__DIR__ . '/../..')))));
 define('TALI_ROOT_DIR', realpath(__DIR__ . '/../..'));

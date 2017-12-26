@@ -7,12 +7,20 @@ echo "
 	<script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
 "; 
 
-//markitup functions
-//Note - Require jquery
-//function BBCode2Html($text) - Parses BB Code to HTML via "markitup"
+/* Function - markitup - BBCode2Html
+Source: http://markitup.jaysalvat.com/home/
+Note - Requires jquery
+Parses BB Code to HTML via "markitup" parser
+Select 1 - String - Text marked up with BB Code to be converted to HTML
+*/ 
 require "".$_SESSION['TALI_ROOT_DIR']."/modules/markitup/markitup.bbcode-parser.php";
 
-//Function to execute "markitup" editing
+/* Function - markitup
+Source: http://markitup.jaysalvat.com/home/
+Note - Requires jquery
+Execution of "markitup" editing which provides a textarea with BB Code toolbar
+Select 1 - Empty
+*/ 
 function markItUp_editing () {
 	echo '
 		<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
