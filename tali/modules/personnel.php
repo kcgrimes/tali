@@ -4,7 +4,7 @@
 require "../includes/global/head.php";
 
 /* Body - Directory points to Main content to be displayed with standardized header and footer */
-TALI_bodyContent_Module ("".basename(__FILE__, ".php")."/".basename(__FILE__, ".php")."-main.php");
+TALI_bodyContent ("".basename(__FILE__, ".php")."/".basename(__FILE__, ".php")."-main.php");
 
 ?>
 </html>

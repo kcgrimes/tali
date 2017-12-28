@@ -1,9 +1,9 @@
 <?php
-//Loaded in head of all back-end (TALI admin) and front-end (TALI output) files
-//that execute tali_init.php in their <head>.
+//Loaded in or right after head of all back-end (TALI admin) and front-end (TALI output)
+//files that execute tali_init.php in their <head>.
 
 echo "
-	<link rel=\"stylesheet\" href=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/includes/talistyles_front.css?v=".filemtime("".$_SESSION['TALISupplement_ROOT_DIR']."/includes/talistyles_front.css")."\" type=\"text/css\"/>
+	<link rel=\"stylesheet\" href=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/includes/talistyles_front.css?v=".filemtime("".$_SESSION['TALI_TALISupplement_ABS_PATH']."/includes/talistyles_front.css")."\" type=\"text/css\"/>
 	<script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
 "; 
 
@@ -13,7 +13,7 @@ Note - Requires jquery
 Parses BB Code to HTML via "markitup" parser
 Select 1 - String - Text marked up with BB Code to be converted to HTML
 */ 
-require "".$_SESSION['TALI_ROOT_DIR']."/modules/markitup/markitup.bbcode-parser.php";
+require "".$_SESSION['TALI_ABS_PATH']."/modules/markitup/markitup.bbcode-parser.php";
 
 /* Function - markitup
 Source: http://markitup.jaysalvat.com/home/
@@ -72,7 +72,7 @@ Used to display HomeSlider images queried from the database.
 Select 1 - Number of images to display
 */
 function TALI_Module_HomeSlider ($imageNumber) {
-	require "".$_SESSION['TALI_ROOT_DIR']."/modules/homeslider/homeslider-front.php";
+	require "".$_SESSION['TALI_ABS_PATH']."/modules/homeslider/homeslider-front.php";
 }
 
 /*
@@ -81,7 +81,7 @@ Used to display recent news entries queried from the database.
 Select 1 - Number of entries to display
 */
 function TALI_Module_News_Recent ($articleNumber) {
-	require "".$_SESSION['TALI_ROOT_DIR']."/modules/news/news-recent-front.php";
+	require "".$_SESSION['TALI_ABS_PATH']."/modules/news/news-recent-front.php";
 }
 
 /*
@@ -90,7 +90,7 @@ Used to display news entries and an archive of these entries queried from the da
 Select 1 - Number of entries to display
 */
 function TALI_Module_News ($articleNumber) {
-	require "".$_SESSION['TALI_ROOT_DIR']."/modules/news/news-front.php";
+	require "".$_SESSION['TALI_ABS_PATH']."/modules/news/news-front.php";
 }
 
 /*
@@ -99,7 +99,7 @@ Used to display roster data queried from the database.
 Select 1 - Empty
 */
 function TALI_Module_Roster () {
-	require "".$_SESSION['TALI_ROOT_DIR']."/modules/personnel/roster/roster-front.php";
+	require "".$_SESSION['TALI_ABS_PATH']."/modules/personnel/roster/roster-front.php";
 }
 
 /*
@@ -258,11 +258,11 @@ function TALI_FTP_Upload($file_input, $upload_directory) {
 			//Note - Can't "upload" to WAMP
 		//bug - Default to dev instead of Live for wamp?
 		if ($_SESSION['TALI_Platform'] == "dev") {
-			ftp_chdir($conn_id, ''.$_SESSION['TALI_FTP_Dev_Root'].''.$upload_directory.'');
+			ftp_chdir($conn_id, ''.$_SESSION['TALI_Dev_FTP_Root'].''.$upload_directory.'');
 		}
 		else
 		{
-			ftp_chdir($conn_id, ''.$_SESSION['TALI_FTP_Live_Root'].''.$upload_directory.'');
+			ftp_chdir($conn_id, ''.$_SESSION['TALI_Live_FTP_Root'].''.$upload_directory.'');
 		}
 		$destination_file_name = $_FILES[$file_input]['name'];
 		$upload = ftp_put($conn_id, $destination_file_name, $_FILES[$file_input]['tmp_name'], FTP_BINARY); 
@@ -309,11 +309,11 @@ function TALI_FTP_Delete($source_file, $delete_directory) {
 			//Note - Can't "upload" to WAMP
 		//bug - Default to dev instead of Live for wamp?
 		if ($_SESSION['TALI_Platform'] == "dev") {
-			ftp_chdir($conn_id, ''.$_SESSION['TALI_FTP_Dev_Root'].''.$delete_directory.'');
+			ftp_chdir($conn_id, ''.$_SESSION['TALI_Dev_FTP_Root'].''.$delete_directory.'');
 		}
 		else
 		{
-			ftp_chdir($conn_id, ''.$_SESSION['TALI_FTP_Live_Root'].''.$delete_directory.'');
+			ftp_chdir($conn_id, ''.$_SESSION['TALI_Live_FTP_Root'].''.$delete_directory.'');
 		}
 		$delete = ftp_delete($conn_id, $source_file); 
 

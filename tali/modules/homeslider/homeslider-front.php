@@ -18,9 +18,9 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 	$arrayHomeSlider[] = [$db_field['image'], $db_field['text']];
 }
 		
-$firstImage = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/homeslider/".$arrayHomeSlider[0][0]."";
-$secondImage = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/homeslider/".$arrayHomeSlider[1][0]."";
-$thirdImage = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/homeslider/".$arrayHomeSlider[2][0]."";
+$firstImage = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/homeslider/".$arrayHomeSlider[0][0]."";
+$secondImage = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/homeslider/".$arrayHomeSlider[1][0]."";
+$thirdImage = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/homeslider/".$arrayHomeSlider[2][0]."";
 $firstText = $arrayHomeSlider[0][1];
 $secondText = $arrayHomeSlider[1][1];
 $thirdText = $arrayHomeSlider[2][1];

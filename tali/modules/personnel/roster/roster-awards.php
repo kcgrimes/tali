@@ -66,7 +66,7 @@ foreach ($arrayAwardsClasses as $awardClass) {
 			$description = $award['description'];
 			echo "
 			<tr>
-				<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALISupplement_ROOT_URL']."/personnel/awards/$image\" alt=\"$name\"></img></td>
+				<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/personnel/awards/$image\" alt=\"$name\"></img></td>
 				<td>$name</td>
 				<td>$description</td>
 			</tr>

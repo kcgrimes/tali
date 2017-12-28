@@ -2,47 +2,40 @@
 session_start();
 
 //Loaded in head of all back-end (TALI admin) files
-//that execute tali_init.php in their <head>.
 
-//bug - What is this doing? Can it be accomplished by just executing tali_init.php up here?
-define('TALI_ROOT_URL', substr($_SERVER['PHP_SELF'], 0, - (strlen($_SERVER['SCRIPT_FILENAME']) - strlen(realpath(__DIR__ . '/../..')))));
-define('TALI_ROOT_DIR', realpath(__DIR__ . '/../..'));
+//If TALI Session already exists, no need to redefine everything here
+if (!isset($_SESSION['TALI_Version'])) {
+	//Execute initialization definitions to prepare to enter TALI
+	//Return TALI folder URI by taking path to current file, starting from position 0, and subtracting (length of active file's path - length of TALI path) from the end
+		//bug - Use of inHead allows for multi-project presence (where the web root isn't really the website root)
+	$_SESSION['TALI_URI_inHead'] = substr($_SERVER['PHP_SELF'], 0, - (strlen($_SERVER['SCRIPT_FILENAME']) - strlen(realpath(__DIR__ . '/../..'))));
+}
 
 echo "
 	<head>
 		<title>TALI Website Admin</title>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
-		<link rel=\"stylesheet\" href=\"".TALI_ROOT_URL."/includes/global/talistyles.css?v=".filemtime("".TALI_ROOT_DIR."/includes/global/talistyles.css")."\" type=\"text/css\" />
-		<link rel=\"shortcut icon\" href=\"".TALI_ROOT_URL."/images/favicon.ico\"/>
-		<link rel=\"icon\" href=\"".TALI_ROOT_URL."/images/favicon.ico\"/>
+		<link rel=\"stylesheet\" href=\"".$_SESSION['TALI_URI_inHead']."/includes/global/talistyles.css?v=".filemtime("".realpath(__DIR__)."/talistyles.css")."\" type=\"text/css\" />
+		<link rel=\"shortcut icon\" href=\"".$_SESSION['TALI_URI_inHead']."/images/favicon.ico\"/>
+		<link rel=\"icon\" href=\"".$_SESSION['TALI_URI_inHead']."/images/favicon.ico\"/>
 	</head>
 ";
 
-//Uniform way of making each page - header, main, footer
-function TALI_bodyContent ($bodyContentDir) {
+/*
+Function - TALI_bodyContent
+Uniform way of making each page - header, main, footer
+Select 1 - Directory to body content of page
+*/
+function TALI_bodyContent($bodyContentDir) {
 	//Body Start
 	echo "	<body>";
 	//Header
-	require "includes/global/header.php";
+	require realpath(__DIR__)."/header.php";
 	//Main - $bodyContentDir is directory to unique file for page's Main
 	require $bodyContentDir;
 	//Footer
-	require "includes/global/footer.php";
-	//Body End
-	echo "	</body>";
-}
-
-//Uniform way of making each page - header, main, footer
-function TALI_bodyContent_Module ($bodyContentDir) {
-	//Body Start
-	echo "	<body>";
-	//Header
-	require "../includes/global/header.php";
-	//Main - $bodyContentDir is directory to unique file for page's Main
-	require $bodyContentDir;
-	//Footer
-	require "../includes/global/footer.php";
+	require realpath(__DIR__)."/footer.php";
 	//Body End
 	echo "	</body>";
 }
@@ -58,7 +51,7 @@ function TALI_sessionCheck($module, $db_handle) {
 	//Check if the user is logged in
 	if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 		//Not logged in, so redirect to login.php
-		header ("Location: ".TALI_ROOT_URL."/login.php");
+		header ("Location: ".$_SESSION['TALI_URI_inHead']."/login.php");
 		exit();
 	}
 	
@@ -79,7 +72,7 @@ function TALI_sessionCheck($module, $db_handle) {
 			}
 			else
 			{
-				header ("Location: ".TALI_ROOT_URL."/index.php?denied=$module");
+				header ("Location: ".$_SESSION['TALI_URI_inHead']."/index.php?denied=$module");
 				exit();
 			}
 		}
@@ -121,14 +114,37 @@ function TALI_Create_History_Report($action_str, $module, $db_handle, $db_Table,
 }
 
 //Initialize Team Administration/Logistics Interface (TALI)
-//bug - make this dynamic some day
-if (file_exists("../tali_init.php")) {
-	//Accessing from Index
-	require "../tali_init.php";
+//bug - A bit inefficient, but I don't see another way to do this so automatically
+if (!(isset($_SESSION['TALI_init_ABS_PATH']))) {
+	//First initialization
+	$cnt = 0;
+	//Initially, have dir backed out to includes, so first loop will be in tali root
+	$upwardStr = "/../";
+	//Loop upward, starting at the tali root, to find tali_init.php
+	//20 loops is just an arbitrary max
+	//Once the file is found, the loop will break out
+	while ((empty($initArray)) && ($cnt < 20)) {
+		//Go up a directory
+		$upwardStr = $upwardStr . "../";
+		//Search directory for tali_init.php
+		$initArray = (glob("".realpath(__DIR__ . $upwardStr)."/tali_init.php"));
+		//bug - Also, search folders within this directory, and folders within those folders, etc.
+		$cnt++;
+	}
+	if (!empty($initArray)) {
+		//Define the path of tali_init for future use, then execute
+		$_SESSION['TALI_init_ABS_PATH'] = $initArray[0];
+		require $_SESSION['TALI_init_ABS_PATH'];
+	}
+	else
+	{
+		//File could not be located after max loops
+		exit("Error Loading Page: tali_init.php not found.");
+	}
 }
 else
 {
-	//Accessing from modules
-	require "../../tali_init.php";
+	//Subsequent initialization
+	require $_SESSION['TALI_init_ABS_PATH'];
 }
 ?>

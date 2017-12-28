@@ -150,8 +150,9 @@ else
 	}
 	else
 	{
-		session_destroy();
-		session_unset();
+		$_SESSION['login'] = FALSE;
+		//Unset login-specific variables
+		unset($_SESSION['username'], $_SESSION['username_id'], $_SESSION['level']);
 		$displayMessage = "You have been logged out of TALI.";
 	}
 }
