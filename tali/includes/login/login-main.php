@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 			
 			//Create URL for password reset
-			$reset_url = $_SESSION['TALI_Domain_URL'] . $_SESSION['TALI_ROOT_URL'] . "/login.php?token=$token";
+			$reset_url = $_SESSION['TALI_Domain_URL'] . $_SESSION['TALI_URI'] . "/login.php?token=$token";
 			
 			//Add password reset token to admin account
 			$token_sql = htmlspecialchars($token);
