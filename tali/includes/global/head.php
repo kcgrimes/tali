@@ -120,15 +120,34 @@ if (!(isset($_SESSION['TALI_init_ABS_PATH']))) {
 	$cnt = 0;
 	//Initially, have dir backed out to includes, so first loop will be in tali root
 	$upwardStr = "/../";
+	//Define function for recursive searching of directories
+	function TALI_globForInit($upwardStr, $pattern, $flags = 0) {
+		$dirs = glob($pattern, $flags);
+		foreach ($dirs as $dir) {
+			$initArray = (glob("".$dir."/tali_init.php"));
+			if (empty($initArray)) {
+				if (!empty(glob("".$dir."/*", GLOB_ONLYDIR))) {
+					$initArray = (TALI_globForInit($upwardStr, "".$dir."/*", GLOB_ONLYDIR));
+				}
+			}
+			if (!empty($initArray)) {
+				break;
+			}
+		}
+		return $initArray;
+	}
 	//Loop upward, starting at the tali root, to find tali_init.php
-	//20 loops is just an arbitrary max
+	//10 loops is just an arbitrary max
 	//Once the file is found, the loop will break out
-	while ((empty($initArray)) && ($cnt < 20)) {
+	while ((empty($initArray)) && ($cnt < 10)) {
 		//Go up a directory
 		$upwardStr = $upwardStr . "../";
 		//Search directory for tali_init.php
 		$initArray = (glob("".realpath(__DIR__ . $upwardStr)."/tali_init.php"));
-		//bug - Also, search folders within this directory, and folders within those folders, etc.
+		//If not found, search directories recursively for it
+		if (empty($initArray)) {
+			$initArray = (TALI_globForInit($upwardStr, "".realpath(__DIR__ . $upwardStr)."/*", GLOB_ONLYDIR));
+		}
 		$cnt++;
 	}
 	if (!empty($initArray)) {
