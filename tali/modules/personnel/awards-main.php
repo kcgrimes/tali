@@ -101,7 +101,7 @@ if (isset($_GET['action'])) {
 					//Are we ready?
 					if (!$awardfile_failed) {
 						//Upload single file to FTP
-						$ftpUpload_Return = TALI_FTP_Upload('award_file', $_SESSION['TALI_Awards_Images_Directory']);
+						$ftpUpload_Return = TALI_FTP_Upload('award_file', TALI_AWARDS_IMAGES_DIRECTORY);
 						$errorMessage = $ftpUpload_Return[1]; 
 						$upload_success = $ftpUpload_Return[2];
 						if ($upload_success) {
@@ -311,7 +311,7 @@ if (isset($_GET['action'])) {
 
 				if (($_GET['action']) == "editaward") {
 					echo "
-								<p><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_Awards_Images_Directory']."$image_url\" alt=\"$image\"></img></p>
+								<p><img src=\"".TALI_DOMAIN_URL."".TALI_AWARDS_IMAGES_DIRECTORY."$image_url\" alt=\"$image\"></img></p>
 								<p>$image</p>
 					";
 				}
@@ -360,7 +360,7 @@ if (isset($_GET['action'])) {
 				$getimage_db_field = mysqli_fetch_assoc($getimageresult);
 				$award_image=$getimage_db_field['image'];	
 			
-				$ftpDelete_Return = TALI_FTP_Delete($award_image, $_SESSION['TALI_Awards_Images_Directory']);
+				$ftpDelete_Return = TALI_FTP_Delete($award_image, TALI_AWARDS_IMAGES_DIRECTORY);
 				$errorMessage = $ftpDelete_Return[1]; 
 				$delete_success = $ftpDelete_Return[2];
 				if ($delete_success) {
@@ -480,7 +480,7 @@ else
 		echo "
 						<tr>
 							<td style=\"text-align:center;\">$name</td>
-							<td style=\"text-align:center;\"><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_Awards_Images_Directory']."$image\" alt=\"Award\"></img><br/>$image</td>
+							<td style=\"text-align:center;\"><img src=\"".TALI_DOMAIN_URL."".TALI_AWARDS_IMAGES_DIRECTORY."$image\" alt=\"Award\"></img><br/>$image</td>
 							<td style=\"text-align:center;\">$awardclass_name</td>
 							<td style=\"text-align:center;\">$description</td>
 							<td style=\"text-align:center;\">$weight</td>

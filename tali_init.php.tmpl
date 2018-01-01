@@ -14,16 +14,8 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 
-//If TALI Session already exists, no need to redefine everything here
-if (isset($_SESSION['TALI_Version'])) {
-	//Skip initialization definitions and enter TALI
-		//If working between multiple TALI-included projects, 
-		//comment out the below goto to "reset" the session varaibles
-	goto EnterTALI;
-}
-
 //Declare TALI version
-$_SESSION['TALI_Version'] = "0.9";
+define('TALI_VERSION', "0.9");
 	
 /* FEEL FREE TO EDIT RESPONSIBILY BELOW */
 
@@ -31,7 +23,7 @@ $_SESSION['TALI_Version'] = "0.9";
 //"wamp" - WAMP development
 //"dev" - online development
 //"live" - published website
-$_SESSION['TALI_Platform'] = "wamp";
+define('TALI_PLATFORM', "wamp");
 //
 
 //Domain URL for absolute URL paths
@@ -49,7 +41,7 @@ $TALI_Live_Domain_URL = "https://domain.com/"; //"https://domain.com/"
 
 //Define the name of the website or associated organization, as this will be
 //displayed in a few places involved with TALI
-$_SESSION['TALI_Organization_Name'] = "Website"; //Default - Website
+define('TALI_ORGANIZATION_NAME', "Website"); //Default - Website
 
 //Below are the definitions of various critical paths; incorrect inputs will result
 //in critical and obvious failure upon execution of any TALI components
@@ -57,7 +49,7 @@ $_SESSION['TALI_Organization_Name'] = "Website"; //Default - Website
 //Is "tali_init.php" in the "web root" directory (www, public_html, etc.)?
 //If not, you MUST define the absolute directory of the web root below,
 //replacing the command and string with a string as directed
-$_SESSION['TALI_WEBROOT_ABS_PATH'] = "".realpath(__DIR__)."/"; //Default = realpath(__DIR__)
+define('TALI_WEBROOT_ABS_PATH', "".realpath(__DIR__)."/"); //Default = realpath(__DIR__)
 //If tali_init.php is not in the web root, you must re-define this as a string of the absolute root
 //Ex: "/home/username/public_html/cms" (no slash (/) on the right end)
 //To find out the root directory, uncomment the below code and reload the page:
@@ -68,7 +60,7 @@ $_SESSION['TALI_WEBROOT_ABS_PATH'] = "".realpath(__DIR__)."/"; //Default = realp
 //
 
 //"tali" folder location relative to the web root
-$_SESSION['TALI_URI'] = "tali"; //Default = "tali", indicating it is in the web root
+define('TALI_URI', "tali"); //Default = "tali", indicating it is in the web root
 //If folder is not in web root, add pathing to last part of string, ex: "cms/tali"
 
 //Location of file containing sensitive information
@@ -76,7 +68,7 @@ $_SESSION['TALI_URI'] = "tali"; //Default = "tali", indicating it is in the web 
 //If not in use, add // to comment out (avoid leaving sensitive information in plain text in web files)
 	//First checking what platform is in use, then will parse (translate & read) the indicated
 	//file, returning the data as an array to be referenced later
-if ($_SESSION['TALI_Platform'] == "wamp") {
+if (TALI_PLATFORM == "wamp") {
 	//If using wamp, config.ini is in "web root"
 	$config = parse_ini_file("config.ini");
 }
@@ -140,85 +132,85 @@ $TALI_Live_FTP_Password = $config['TALI_Live_FTP_Password'];
 //E-Mail SMTP Login Information
 //Uses PHPMailer (https://github.com/PHPMailer/PHPMailer) to send e-mails
 //through local or remote SMTP server as defined
-$_SESSION['TALI_SMTP_hostname'] = "mail.domain.com";
-$_SESSION['TALI_SMTP_port'] = 465;
-$_SESSION['TALI_SMTP_secure'] = "ssl"; //"ssl" or "tls"
-$_SESSION['TALI_SMTP_username'] = $config['TALI_SMTP_username'];
-$_SESSION['TALI_SMTP_password'] = $config['TALI_SMTP_password'];
-$_SESSION['TALI_SMTP_fromAddress'] = "email@domain.com";
-$_SESSION['TALI_SMTP_fromName'] = "From Me";
+define('TALI_SMTP_HOSTNAME', "mail.domain.com");
+define('TALI_SMTP_PORT', 465);
+define('TALI_SMTP_SECURE', "ssl"); //"ssl" or "tls"
+define('TALI_SMTP_USERNAME', $config['TALI_SMTP_username']);
+define('TALI_SMTP_PASSWORD', $config['TALI_SMTP_password']);
+define('TALI_SMTP_FROMADDRESS', "email@domain.com");
+define('TALI_SMTP_FROMNAME', "From Me");
 
 //TALI HomeSlider images folder location from web root
-$_SESSION['TALI_HomeSlider_Images_Directory'] = "/tali/talisupplement/homeslider/";
+define('TALI_HOMESLIDER_IMAGES_DIRECTORY', "/tali/talisupplement/homeslider/");
 
 //TALI Awards images folder location from web root
-$_SESSION['TALI_Awards_Images_Directory'] = "/tali/talisupplement/personnel/awards/";
+define('TALI_AWARDS_IMAGES_DIRECTORY', "/tali/talisupplement/personnel/awards/");
 
 //TALI Ranks images folder location from web root
-$_SESSION['TALI_Ranks_Images_Directory'] = "/tali/talisupplement/personnel/ranks/";
+define('TALI_RANKS_IMAGES_DIRECTORY', "/tali/talisupplement/personnel/ranks/tiny/");
 
 //Web URL to cPanel
-$_SESSION['TALI_Index_cPanel_Link'] = "https://cpanel.hostname.com/";
+define('TALI_INDEX_CPANEL_LINK', "https://cpanel.hostname.com/");
 
 /* DO NOT EDIT THE BELOW SECTION */
 
 //Defining Domain URL based on selected platform
 //Defining database connection information based on selected platform
 //Define FTP access information based on selected platform
-switch ($_SESSION['TALI_Platform']) {
+switch (TALI_PLATFORM) {
 	case "wamp":
-		$_SESSION['TALI_Domain_URL'] = $TALI_WAMP_Domain_URL;
-		$_SESSION['TALI_DB_Username'] = $TALI_WAMP_DB_Username;
-		$_SESSION['TALI_DB_Password'] = $TALI_WAMP_DB_Password;
-		$_SESSION['TALI_DB_dbName'] = $TALI_WAMP_DB_dbName;
-		$_SESSION['TALI_DB_Server'] = $TALI_WAMP_DB_Server;
-		$_SESSION['TALI_FTP_Root'] = $TALI_WAMP_FTP_Root;
-		$_SESSION['TALI_FTP_URL'] = $TALI_WAMP_FTP_URL;
-		$_SESSION['TALI_FTP_Username'] = $TALI_WAMP_FTP_Username;
-		$_SESSION['TALI_FTP_Password'] = $TALI_WAMP_FTP_Password;
+		define('TALI_DOMAIN_URL', $TALI_WAMP_Domain_URL);
+		define('TALI_DB_USERNAME', $TALI_WAMP_DB_Username);
+		define('TALI_DB_PASSWORD', $TALI_WAMP_DB_Password);
+		define('TALI_DB_DBNAME', $TALI_WAMP_DB_dbName);
+		define('TALI_DB_SERVER', $TALI_WAMP_DB_Server);
+		define('TALI_FTP_ROOT', $TALI_WAMP_FTP_Root);
+		define('TALI_FTP_URL', $TALI_WAMP_FTP_URL);
+		define('TALI_FTP_USERNAME', $TALI_WAMP_FTP_Username);
+		define('TALI_FTP_PASSWORD', $TALI_WAMP_FTP_Password);
 	break;
 	case "dev":
-		$_SESSION['TALI_Domain_URL'] = $TALI_Dev_Domain_URL;
-		$_SESSION['TALI_DB_Username'] = $TALI_Dev_DB_Username;
-		$_SESSION['TALI_DB_Password'] = $TALI_Dev_DB_Password;
-		$_SESSION['TALI_DB_dbName'] = $TALI_Dev_DB_dbName;
-		$_SESSION['TALI_DB_Server'] = $TALI_Dev_DB_Server;
-		$_SESSION['TALI_FTP_Root'] = $TALI_Live_FTP_Root;
-		$_SESSION['TALI_FTP_URL'] = $TALI_Dev_FTP_URL;
-		$_SESSION['TALI_FTP_Username'] = $TALI_Dev_FTP_Username;
-		$_SESSION['TALI_FTP_Password'] = $TALI_Dev_FTP_Password;
+		define('TALI_DOMAIN_URL', $TALI_Dev_Domain_URL);
+		define('TALI_DB_USERNAME', $TALI_Dev_DB_Username);
+		define('TALI_DB_PASSWORD', $TALI_Dev_DB_Password);
+		define('TALI_DB_DBNAME', $TALI_Dev_DB_dbName);
+		define('TALI_DB_SERVER', $TALI_Dev_DB_Server);
+		define('TALI_FTP_ROOT', $TALI_Live_FTP_Root);
+		define('TALI_FTP_URL', $TALI_Dev_FTP_URL);
+		define('TALI_FTP_USERNAME', $TALI_Dev_FTP_Username);
+		define('TALI_FTP_PASSWORD', $TALI_Dev_FTP_Password);
 	break;
 	case "live":
-		$_SESSION['TALI_Domain_URL'] = $TALI_Live_Domain_URL;
-		$_SESSION['TALI_DB_Username'] = $TALI_Live_DB_Username;
-		$_SESSION['TALI_DB_Password'] = $TALI_Live_DB_Password;
-		$_SESSION['TALI_DB_dbName'] = $TALI_Live_DB_dbName;
-		$_SESSION['TALI_DB_Server'] = $TALI_Live_DB_Server;
-		$_SESSION['TALI_FTP_Root'] = $TALI_Live_FTP_Root;
-		$_SESSION['TALI_FTP_URL'] = $TALI_Live_FTP_URL;
-		$_SESSION['TALI_FTP_Username'] = $TALI_Live_FTP_Username;
-		$_SESSION['TALI_FTP_Password'] = $TALI_Live_FTP_Password;
+		define('TALI_DOMAIN_URL', $TALI_Live_Domain_URL);
+		define('TALI_DB_USERNAME', $TALI_Live_DB_Username);
+		define('TALI_DB_PASSWORD', $TALI_Live_DB_Password);
+		define('TALI_DB_DBNAME', $TALI_Live_DB_dbName);
+		define('TALI_DB_SERVER', $TALI_Live_DB_Server);
+		define('TALI_FTP_ROOT', $TALI_Live_FTP_Root);
+		define('TALI_FTP_URL', $TALI_Live_FTP_URL);
+		define('TALI_FTP_USERNAME', $TALI_Live_FTP_Username);
+		define('TALI_FTP_PASSWORD', $TALI_Live_FTP_Password);
 	break;
 }
 
 //Defines TALI directory by combining the absolute root of the website defined above with the URI of the TALI folder defined above
-$_SESSION['TALI_ABS_PATH'] = "".$_SESSION['TALI_WEBROOT_ABS_PATH']."".$_SESSION['TALI_URI'].""; 
+define('TALI_ABS_PATH', "".TALI_WEBROOT_ABS_PATH."".TALI_URI.""); 
 	
 //Make sure TALI directory properly defined, and if it doesn't, announce failure
-if (!file_exists($_SESSION['TALI_ABS_PATH'])) {
+if (!file_exists(TALI_ABS_PATH)) {
     exit("Error Loading Page: tali folder not found.");
 }
 	
 //Defines TALISupplement directory using the location of the TALI folder
-$_SESSION['TALI_TALISupplement_ABS_PATH'] = "".$_SESSION['TALI_ABS_PATH']."/talisupplement"; 
-$_SESSION['TALI_TALISupplement_URI'] = "".$_SESSION['TALI_URI']."/talisupplement";
+define('TALI_TALISUPPLEMENT_ABS_PATH', "".TALI_ABS_PATH."/talisupplement"); 
+define('TALI_TALISUPPLEMENT_URI', "".TALI_URI."/talisupplement");
 
 //Defines tali_init.php path directly
-$_SESSION['TALI_init_ABS_PATH'] = realpath(__FILE__); 
+define('TALI_INIT_ABS_PATH', realpath(__FILE__)); 
 
 //Enter TALI
 EnterTALI:
-require "".$_SESSION['TALI_TALISupplement_ABS_PATH']."/includes/talihead.php";
+require "".TALI_TALISUPPLEMENT_ABS_PATH."/includes/talihead.php";
 
 /* */
 ?>

@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 			
 			//Create URL for password reset
-			$reset_url = $_SESSION['TALI_Domain_URL'] . $_SESSION['TALI_URI'] . "/login.php?token=$token";
+			$reset_url = TALI_DOMAIN_URL . TALI_URI . "/login.php?token=$token";
 			
 			//Add password reset token to admin account
 			$token_sql = htmlspecialchars($token);
@@ -119,8 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$result = mysqli_query($db_handle, $SQL);
 			
 			//E-mail the token
-			$subject = "".$_SESSION['TALI_Organization_Name']." TALI Password Reset";
-			$msgBody = "In order to reset your ".$_SESSION['TALI_Organization_Name']." TALI password, please click the following link. This link can only be used once and should not be shared.
+			$subject = "".TALI_ORGANIZATION_NAME." TALI Password Reset";
+			$msgBody = "In order to reset your ".TALI_ORGANIZATION_NAME." TALI password, please click the following link. This link can only be used once and should not be shared.
 			
 			$reset_url
 			";

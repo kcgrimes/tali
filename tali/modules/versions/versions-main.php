@@ -16,7 +16,7 @@ echo "
 			<div class=\"tali-page-frame\">
 				<h1>Website Software Versions</h1>
 				<p>
-				TALI: ".$_SESSION['TALI_Version']."
+				TALI: ".TALI_VERSION."
 				<br/>
 ";
 

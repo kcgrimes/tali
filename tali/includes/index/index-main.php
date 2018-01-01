@@ -67,11 +67,11 @@ if (in_array('TALI_Admin_Permissions',$module_array,true)) {
 }
 
 echo "
-					<a target=\"_blank\" href=\"".$_SESSION['TALI_Index_cPanel_Link']."\" class=\"tali-responsive-icon\">
+					<a target=\"_blank\" href=\"".TALI_INDEX_CPANEL_LINK."\" class=\"tali-responsive-icon\">
 						<img src=\"images/icons/Index-AccesscPanel.png\" alt=\"Access cPanel Icon\" name=\"Access cPanel Icon\">
 						<p>Access cPanel</p>
 					</a>
-					<a href=\"".$_SESSION['TALI_Domain_URL']."\" class=\"tali-responsive-icon\">
+					<a href=\"".TALI_DOMAIN_URL."\" class=\"tali-responsive-icon\">
 						<img src=\"images/icons/Index-Home.png\" alt=\"Return to Homepage Icon\" name=\"Return to Homepage Icon\">
 						<p>Return To Homepage</p>
 					</a>

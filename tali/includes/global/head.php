@@ -3,22 +3,18 @@ session_start();
 
 //Loaded in head of all back-end (TALI admin) files
 
-//If TALI Session already exists, no need to redefine everything here
-if (!isset($_SESSION['TALI_Version'])) {
-	//Execute initialization definitions to prepare to enter TALI
-	//Return TALI folder URI by taking path to current file, starting from position 0, and subtracting (length of active file's path - length of TALI path) from the end
-		//bug - Use of inHead allows for multi-project presence (where the web root isn't really the website root)
-	$_SESSION['TALI_URI_inHead'] = substr($_SERVER['PHP_SELF'], 0, - (strlen($_SERVER['SCRIPT_FILENAME']) - strlen(realpath(__DIR__ . '/../..'))));
-}
+//Return TALI folder URI by taking path to current file, starting from position 0, and subtracting (length of active file's path - length of TALI path) from the end
+	//bug - Use of inHead allows for multi-project presence (where the web root isn't really the website root)
+define('TALI_URI_INHEAD', substr($_SERVER['PHP_SELF'], 0, - (strlen($_SERVER['SCRIPT_FILENAME']) - strlen(realpath(__DIR__ . '/../..')))));
 
 echo "
 	<head>
 		<title>TALI Website Admin</title>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
-		<link rel=\"stylesheet\" href=\"".$_SESSION['TALI_URI_inHead']."/includes/global/talistyles.css?v=".filemtime("".realpath(__DIR__)."/talistyles.css")."\" type=\"text/css\" />
-		<link rel=\"shortcut icon\" href=\"".$_SESSION['TALI_URI_inHead']."/images/favicon.ico\"/>
-		<link rel=\"icon\" href=\"".$_SESSION['TALI_URI_inHead']."/images/favicon.ico\"/>
+		<link rel=\"stylesheet\" href=\"".TALI_URI_INHEAD."/includes/global/talistyles.css?v=".filemtime("".realpath(__DIR__)."/talistyles.css")."\" type=\"text/css\" />
+		<link rel=\"shortcut icon\" href=\"".TALI_URI_INHEAD."/images/favicon.ico\"/>
+		<link rel=\"icon\" href=\"".TALI_URI_INHEAD."/images/favicon.ico\"/>
 	</head>
 ";
 
@@ -51,7 +47,7 @@ function TALI_sessionCheck($module, $db_handle) {
 	//Check if the user is logged in
 	if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 		//Not logged in, so redirect to login.php
-		header ("Location: ".$_SESSION['TALI_URI_inHead']."/login.php");
+		header ("Location: ".TALI_URI_INHEAD."/login.php");
 		exit();
 	}
 	
@@ -72,7 +68,7 @@ function TALI_sessionCheck($module, $db_handle) {
 			}
 			else
 			{
-				header ("Location: ".$_SESSION['TALI_URI_inHead']."/index.php?denied=$module");
+				header ("Location: ".TALI_URI_INHEAD."/index.php?denied=$module");
 				exit();
 			}
 		}
@@ -115,55 +111,46 @@ function TALI_Create_History_Report($action_str, $module, $db_handle, $db_Table,
 
 //Initialize Team Administration/Logistics Interface (TALI)
 //bug - A bit inefficient, but I don't see another way to do this so automatically
-if (!(isset($_SESSION['TALI_init_ABS_PATH']))) {
-	//First initialization
-	$cnt = 0;
-	//Initially, have dir backed out to includes, so first loop will be in tali root
-	$upwardStr = "/../";
-	//Define function for recursive searching of directories
-	function TALI_globForInit($upwardStr, $pattern, $flags = 0) {
-		$dirs = glob($pattern, $flags);
-		foreach ($dirs as $dir) {
-			$initArray = (glob("".$dir."/tali_init.php"));
-			if (empty($initArray)) {
-				if (!empty(glob("".$dir."/*", GLOB_ONLYDIR))) {
-					$initArray = (TALI_globForInit($upwardStr, "".$dir."/*", GLOB_ONLYDIR));
-				}
-			}
-			if (!empty($initArray)) {
-				break;
-			}
-		}
-		return $initArray;
-	}
-	//Loop upward, starting at the tali root, to find tali_init.php
-	//10 loops is just an arbitrary max
-	//Once the file is found, the loop will break out
-	while ((empty($initArray)) && ($cnt < 10)) {
-		//Go up a directory
-		$upwardStr = $upwardStr . "../";
-		//Search directory for tali_init.php
-		$initArray = (glob("".realpath(__DIR__ . $upwardStr)."/tali_init.php"));
-		//If not found, search directories recursively for it
+$cnt = 0;
+//Initially, have dir backed out to includes, so first loop will be in tali root
+$upwardStr = "/../";
+//Define function for recursive searching of directories
+function TALI_globForInit($upwardStr, $pattern, $flags = 0) {
+	$dirs = glob($pattern, $flags);
+	foreach ($dirs as $dir) {
+		$initArray = (glob("".$dir."/tali_init.php"));
 		if (empty($initArray)) {
-			$initArray = (TALI_globForInit($upwardStr, "".realpath(__DIR__ . $upwardStr)."/*", GLOB_ONLYDIR));
+			if (!empty(glob("".$dir."/*", GLOB_ONLYDIR))) {
+				$initArray = (TALI_globForInit($upwardStr, "".$dir."/*", GLOB_ONLYDIR));
+			}
 		}
-		$cnt++;
+		if (!empty($initArray)) {
+			break;
+		}
 	}
-	if (!empty($initArray)) {
-		//Define the path of tali_init for future use, then execute
-		$_SESSION['TALI_init_ABS_PATH'] = $initArray[0];
-		require $_SESSION['TALI_init_ABS_PATH'];
+	return $initArray;
+}
+//Loop upward, starting at the tali root, to find tali_init.php
+//10 loops is just an arbitrary max
+//Once the file is found, the loop will break out
+while ((empty($initArray)) && ($cnt < 10)) {
+	//Go up a directory
+	$upwardStr = $upwardStr . "../";
+	//Search directory for tali_init.php
+	$initArray = (glob("".realpath(__DIR__ . $upwardStr)."/tali_init.php"));
+	//If not found, search directories recursively for it
+	if (empty($initArray)) {
+		$initArray = (TALI_globForInit($upwardStr, "".realpath(__DIR__ . $upwardStr)."/*", GLOB_ONLYDIR));
 	}
-	else
-	{
-		//File could not be located after max loops
-		exit("Error Loading Page: tali_init.php not found.");
-	}
+	$cnt++;
+}
+if (!empty($initArray)) {
+	//Execute (simpler path is actually defined later)
+	require $initArray[0];
 }
 else
 {
-	//Subsequent initialization
-	require $_SESSION['TALI_init_ABS_PATH'];
+	//File could not be located after max loops
+	exit("Error Loading Page: tali_init.php not found.");
 }
 ?>

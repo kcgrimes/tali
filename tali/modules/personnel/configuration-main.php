@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							$getimage_db_field = mysqli_fetch_assoc($getimageresult);
 							$rank_image=$getimage_db_field['image'];	
 						
-							$ftpDelete_Return = TALI_FTP_Delete($rank_image, $_SESSION['TALI_Ranks_Images_Directory']);
+							$ftpDelete_Return = TALI_FTP_Delete($rank_image, TALI_AWARDS_IMAGES_DIRECTORY);
 							$errorMessage = $ftpDelete_Return[1]; 
 							$delete_success = $ftpDelete_Return[2];
 							if ($delete_success) {
@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						//Are we ready?
 						if (!$rankfile_failed) {
 							//Upload single file to FTP
-							$ftpUpload_Return = TALI_FTP_Upload('rank_file', $_SESSION['TALI_Ranks_Images_Directory']);
+							$ftpUpload_Return = TALI_FTP_Upload('rank_file', TALI_AWARDS_IMAGES_DIRECTORY);
 							$errorMessage = $ftpUpload_Return[1]; 
 							$upload_success = $ftpUpload_Return[2];
 							if ($upload_success) {
@@ -586,7 +586,7 @@ while ($db_field = mysqli_fetch_assoc($rankresult)) {
 				<tr>
 					<td style=\"text-align:center;\">$name</td>
 					<td style=\"text-align:center;\">$abbreviation</td>
-					<td style=\"text-align:center;\"><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_Ranks_Images_Directory']."$image\" alt=\"Rank\"></img><br/>$image</td>
+					<td style=\"text-align:center;\"><img src=\"".TALI_DOMAIN_URL."".TALI_AWARDS_IMAGES_DIRECTORY."$image\" alt=\"Rank\"></img><br/>$image</td>
 					<td style=\"text-align:center;\">$weight</td>
 					<td style=\"text-align:center;\">
 						<a href=\"personnel.php?sub=configuration&id=$rank_id&button=rank_edit\">

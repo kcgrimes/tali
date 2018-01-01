@@ -3,7 +3,7 @@
 //files that execute tali_init.php in their <head>.
 
 echo "
-	<link rel=\"stylesheet\" href=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/includes/talistyles_front.css?v=".filemtime("".$_SESSION['TALI_TALISupplement_ABS_PATH']."/includes/talistyles_front.css")."\" type=\"text/css\"/>
+	<link rel=\"stylesheet\" href=\"".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/includes/talistyles_front.css?v=".filemtime("".TALI_TALISUPPLEMENT_ABS_PATH."/includes/talistyles_front.css")."\" type=\"text/css\"/>
 	<script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
 "; 
 
@@ -13,7 +13,7 @@ Note - Requires jquery
 Parses BB Code to HTML via "markitup" parser
 Select 1 - String - Text marked up with BB Code to be converted to HTML
 */ 
-require "".$_SESSION['TALI_ABS_PATH']."/modules/markitup/markitup.bbcode-parser.php";
+require "".TALI_ABS_PATH."/modules/markitup/markitup.bbcode-parser.php";
 
 /* Function - markitup
 Source: http://markitup.jaysalvat.com/home/
@@ -72,7 +72,7 @@ Used to display HomeSlider images queried from the database.
 Select 1 - Number of images to display
 */
 function TALI_Module_HomeSlider($imageNumber) {
-	require "".$_SESSION['TALI_ABS_PATH']."/modules/homeslider/homeslider-front.php";
+	require "".TALI_ABS_PATH."/modules/homeslider/homeslider-front.php";
 }
 
 /*
@@ -81,7 +81,7 @@ Used to display recent news entries queried from the database.
 Select 1 - Number of entries to display
 */
 function TALI_Module_News_Recent($articleNumber) {
-	require "".$_SESSION['TALI_ABS_PATH']."/modules/news/news-recent-front.php";
+	require "".TALI_ABS_PATH."/modules/news/news-recent-front.php";
 }
 
 /*
@@ -90,7 +90,7 @@ Used to display news entries and an archive of these entries queried from the da
 Select 1 - Number of entries to display
 */
 function TALI_Module_News($articleNumber) {
-	require "".$_SESSION['TALI_ABS_PATH']."/modules/news/news-front.php";
+	require "".TALI_ABS_PATH."/modules/news/news-front.php";
 }
 
 /*
@@ -99,7 +99,7 @@ Used to display roster data queried from the database.
 Select 1 - Empty
 */
 function TALI_Module_Roster() {
-	require "".$_SESSION['TALI_ABS_PATH']."/modules/personnel/roster/roster-front.php";
+	require "".TALI_ABS_PATH."/modules/personnel/roster/roster-front.php";
 }
 
 /*
@@ -141,8 +141,8 @@ Return Select 1 - Connection handle
 Return Select 2 - Boolean - Connection status
 */
 function TALI_dbConnect() {
-	$db_handle = mysqli_connect($_SESSION['TALI_DB_Server'], $_SESSION['TALI_DB_Username'], $_SESSION['TALI_DB_Password']);
-	$db_found = mysqli_select_db($db_handle, $_SESSION['TALI_DB_dbName']);
+	$db_handle = mysqli_connect(TALI_DB_SERVER, TALI_DB_USERNAME, TALI_DB_PASSWORD);
+	$db_found = mysqli_select_db($db_handle, TALI_DB_DBNAME);
 	if ($db_found) {
 		//Database connection successful
 		return $db_handle;
@@ -166,10 +166,10 @@ function TALI_FTP_Connect() {
 	$connection_success = FALSE;
 			
 	//Attempt to connect to FTP
-	$conn_id = ftp_connect($_SESSION['TALI_FTP_URL']);
+	$conn_id = ftp_connect(TALI_FTP_ROOT);
 	ftp_pasv($conn_id, true); 
 	//Attempt to login to FTP
-	$login_result = ftp_login($conn_id, $_SESSION['TALI_FTP_Username'], $_SESSION['TALI_FTP_Password']); 
+	$login_result = ftp_login($conn_id, TALI_FTP_USERNAME, TALI_FTP_PASSWORD); 
 
 	//Check FTP connection (Did you connect? Did you login?)
 	//bug - check connection and login independently?
@@ -207,7 +207,7 @@ function TALI_FTP_Upload($file_input, $upload_directory) {
 	
 	if ($connection_success) {
 		//Initiate upload
-		ftp_chdir($conn_id, ''.$_SESSION['TALI_FTP_Root'].''.$upload_directory.'');
+		ftp_chdir($conn_id, ''.TALI_FTP_ROOT.''.$upload_directory.'');
 		$destination_file_name = $_FILES[$file_input]['name'];
 		$upload = ftp_put($conn_id, $destination_file_name, $_FILES[$file_input]['tmp_name'], FTP_BINARY); 
 		
@@ -249,7 +249,7 @@ function TALI_FTP_Delete($source_file, $delete_directory) {
 	
 	if ($connection_success) {
 		//Initiate delete
-		ftp_chdir($conn_id, ''.$_SESSION['TALI_Live_FTP_Root'].''.$delete_directory.'');
+		ftp_chdir($conn_id, ''.TALI_FTP_ROOT.''.$delete_directory.'');
 		$delete = ftp_delete($conn_id, $source_file); 
 
 		//Check delete status

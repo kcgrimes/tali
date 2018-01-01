@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//Are we ready?
 		if (!$uniformfile_failed) {
 			//Upload single file to FTP
-			$ftpUpload_Return = TALI_FTP_Upload('uniform_file_png', "/".$_SESSION['TALI_TALISupplement_URI']."/personnel/uniforms/active/");
+			$ftpUpload_Return = TALI_FTP_Upload('uniform_file_png', "/".TALI_TALISUPPLEMENT_URI."/personnel/uniforms/active/");
 			$errorMessage = $errorMessage."<br/>".$ftpUpload_Return[1].""; 
 			$upload_success = $ftpUpload_Return[2];
 			if ($upload_success) {
@@ -99,7 +99,7 @@ $db_field = mysqli_fetch_assoc($result);
 $firstname = $db_field['firstname'];
 $lastname = $db_field['lastname'];
 
-$uniform_dir = "".$_SESSION['TALI_TALISupplement_ABS_PATH']."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png";
+$uniform_dir = "".TALI_TALISUPPLEMENT_ABS_PATH."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png";
 $uniformExists = 0;
 
 if (!file_exists($uniform_dir)) {
@@ -107,20 +107,20 @@ if (!file_exists($uniform_dir)) {
 	$arrayUniDirs = ["1_DoD-CoD", "2_CoD2", "3_CoD2-CoD4", "4_CoD4-BF3", "5_PS2"];
 	$arrayUniDirs = array_reverse($arrayUniDirs);
 	foreach ($arrayUniDirs as $path) {
-		$uniform_dir = "".$_SESSION['TALI_TALISupplement_ABS_PATH']."/personnel/uniforms/past/".$path."/".$firstname[0]."".$lastname.".png";
+		$uniform_dir = "".TALI_TALISUPPLEMENT_ABS_PATH."/personnel/uniforms/past/".$path."/".$firstname[0]."".$lastname.".png";
 		if (file_exists($uniform_dir)) {
 			$uniformExists = 1;
-			$uniform_dir = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/personnel/uniforms/past/".$path."/".$firstname[0]."".$lastname.".png";
+			$uniform_dir = "".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/personnel/uniforms/past/".$path."/".$firstname[0]."".$lastname.".png";
 			break;
 		}
 	}
 	if ($uniformExists == 0) {
-		$uniform_dir = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/personnel/uniforms/notfound.png";
+		$uniform_dir = "".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/personnel/uniforms/notfound.png";
 	}
 }
 else
 {
-	$uniform_dir = "".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png";
+	$uniform_dir = "".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png";
 }
 
 //bug - 3rd - make the Logistics_Storage part dynammic?
@@ -130,9 +130,9 @@ echo "
 								
 				<p><img src=\"$uniform_dir\" class=\"tali-personnel-roster-front-profile-uniform\" alt=\"Uniform\"></p>
 				
-				<a download=\"".$firstname[0]."".$lastname.".psd\" href=\"".$_SESSION['TALI_Domain_URL']."/Logistics_Storage/Uniform PSDs/Active Uniform PSDs/".$firstname[0]."".$lastname.".psd\"><p>Download .PSD</p></a>
+				<a download=\"".$firstname[0]."".$lastname.".psd\" href=\"".TALI_DOMAIN_URL."/Logistics_Storage/Uniform PSDs/Active Uniform PSDs/".$firstname[0]."".$lastname.".psd\"><p>Download .PSD</p></a>
 				
-				<a download=\"".$firstname[0]."".$lastname.".png\" href=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png\"><p>Download .PNG</p></a>
+				<a download=\"".$firstname[0]."".$lastname.".png\" href=\"".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png\"><p>Download .PNG</p></a>
 
 				<p>
 				Upload .PSD:

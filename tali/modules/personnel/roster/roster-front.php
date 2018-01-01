@@ -13,13 +13,13 @@ if (isset($_GET['action'])) {
 	
 switch ($action) {
 	case "profile":
-		require "".$_SESSION['TALI_ABS_PATH']."/modules/personnel/roster/roster-profile.php";
+		require "".TALI_ABS_PATH."/modules/personnel/roster/roster-profile.php";
 	break;
 	case "awards":
-		require "".$_SESSION['TALI_ABS_PATH']."/modules/personnel/roster/roster-awards.php";
+		require "".TALI_ABS_PATH."/modules/personnel/roster/roster-awards.php";
 	break;
 	case "ranks":
-		require "".$_SESSION['TALI_ABS_PATH']."/modules/personnel/roster/roster-ranks.php";
+		require "".TALI_ABS_PATH."/modules/personnel/roster/roster-ranks.php";
 	break;
 	case "active":
 		echo "
@@ -78,7 +78,7 @@ switch ($action) {
 					//BUG - WOAH this iamge file is not dynamic!
 					echo "
 					<tr>
-						<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/personnel/ranks/tiny/$image\" alt=\"Rank\"></img></td>
+						<td><img src=\"".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/personnel/ranks/tiny/$image\" alt=\"Rank\"></img></td>
 						<td><a href=\"roster.php?action=profile&personnel_id=".$personnel['personnel_id']."\">" . $personnel['rank'] . " " . $personnel['firstname'] . " " . $personnel['lastname'] . "</a></td>
 						<td>" . $personnel['role'] . "</td>
 						<td>" . $personnel['nickname'] . "</td>
@@ -124,7 +124,7 @@ switch ($action) {
 		//Show organization name (ie, "top" designation) first
 		echo "
 					<tr>
-						<th colspan=\"5\">".$_SESSION['TALI_Organization_Name']."</th>
+						<th colspan=\"5\">".TALI_ORGANIZATION_NAME."</th>
 					</tr>
 		";
 		
@@ -211,7 +211,7 @@ switch ($action) {
 				$image = $personnel['image'];
 				echo "
 					<tr>
-						<td><img src=\"".$_SESSION['TALI_Domain_URL']."".$_SESSION['TALI_TALISupplement_URI']."/personnel/ranks/tiny/$image\" alt=\"Rank\"></img></td>
+						<td><img src=\"".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/personnel/ranks/tiny/$image\" alt=\"Rank\"></img></td>
 						<td><a href=\"roster.php?action=profile&personnel_id=".$personnel['personnel_id']."\">" . $personnel['rank'] . " " . $personnel['firstname'] . " " . $personnel['lastname'] . "</a></td>
 						<td>" . $personnel['role'] . "</td>
 						<td>" . $personnel['nickname'] . "</td>

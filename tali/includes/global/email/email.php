@@ -16,18 +16,18 @@
 	//Ask for HTML-friendly debug output
 	$mail->Debugoutput = 'html';
 	//Set the hostname of the mail server
-	$mail->Host = $_SESSION['TALI_SMTP_hostname'];
+	$mail->Host = TALI_SMTP_HOSTNAME;
 	//Set the SMTP port number - likely to be 25, 465 or 587
-	$mail->Port = $_SESSION['TALI_SMTP_port'];
+	$mail->Port = TALI_SMTP_PORT;
 	//Whether to use SMTP authentication
 	$mail->SMTPAuth = true;
-	$mail->SMTPSecure = $_SESSION['TALI_SMTP_secure'];
+	$mail->SMTPSecure = TALI_SMTP_SECURE;
 	//Username to use for SMTP authentication
-	$mail->Username = $_SESSION['TALI_SMTP_username'];
+	$mail->Username = TALI_SMTP_USERNAME;
 	//Password to use for SMTP authentication
-	$mail->Password = $_SESSION['TALI_SMTP_password'];
+	$mail->Password = TALI_SMTP_PASSWORD;
 	//Set who the message is to be sent from
-	$mail->setFrom($_SESSION['TALI_SMTP_fromAddress'], $_SESSION['TALI_SMTP_fromName']);
+	$mail->setFrom(TALI_SMTP_FROMADDRESS, TALI_SMTP_FROMNAME);
 	//Set an alternative reply-to address
 	//$mail->addReplyTo('replyto@example.com', 'First Last');
 	//Set who the message is to be sent to

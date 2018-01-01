@@ -386,7 +386,7 @@ else
 				
 				//bug - 3rd ID SMF create topic
 				//Only perform in published environment (no forums in dev)
-				if ($_SESSION['TALI_Platform'] == "live") {
+				if (TALI_PLATFORM == "live") {
 					//Define variables
 					$SQL = "SELECT name FROM tali_personnel_designations WHERE designation_id=$designation_id";
 					$result = mysqli_query($db_handle, $SQL);
