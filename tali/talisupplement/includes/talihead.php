@@ -63,7 +63,7 @@ Note - Requires jquery
 Parses BB Code to HTML via "markitup" parser
 Select 1 - String - Text marked up with BB Code to be converted to HTML
 */ 
-require "".TALI_ABS_PATH."/modules/markitup/markitup.bbcode-parser.php";
+require "".TALI_ABS_PATH."/includes/global/markitup/markitup.bbcode-parser.php";
 
 /* Function - markitup
 Source: http://markitup.jaysalvat.com/home/
@@ -73,10 +73,10 @@ Select 1 - Empty
 */ 
 function markItUp_editing() {
 	echo '
-		<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
-		<script type="text/javascript" src="markitup/sets/bbcode/set.js"></script>
-		<link rel="stylesheet" type="text/css" href="markitup/skins/markitup/style.css" />
-		<link rel="stylesheet" type="text/css" href="markitup/sets/bbcode/style.css" />
+		<script type="text/javascript" src="'.TALI_DOMAIN_URL.''.TALI_URI.'/includes/global/markitup/jquery.markitup.js"></script>
+		<script type="text/javascript" src="'.TALI_DOMAIN_URL.''.TALI_URI.'/includes/global/markitup/sets/bbcode/set.js"></script>
+		<link rel="stylesheet" type="text/css" href="'.TALI_DOMAIN_URL.''.TALI_URI.'/includes/global/markitup/skins/markitup/style.css" />
+		<link rel="stylesheet" type="text/css" href="'.TALI_DOMAIN_URL.''.TALI_URI.'/includes/global/markitup/sets/bbcode/style.css" />
 		<script type="text/javascript" >
 			$(document).ready(function() {
 				$("textarea").markItUp(mySettings);
