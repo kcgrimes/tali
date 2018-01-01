@@ -45,14 +45,15 @@ Select 2 - Active database reference handle
 */
 function TALI_sessionCheck($module, $db_handle) {
 	//Check if the user is logged in
-	if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+	if ((!isset($_SESSION['login']) || ($_SESSION['login'] != TRUE))) {
 		//Not logged in, so redirect to login.php
 		header ("Location: ".TALI_URI_INHEAD."/login.php");
 		exit();
 	}
 	
 	//Verify if user has permission to access this particular module, unless it is TALI Index
-	if ((isset($_SESSION['level'])) && ($module != 'TALI_Index')) {
+	if ((isset($_SESSION['level'])) && ($module != 'TALI_Index')) {		
+		//Obtain permission level for specific module
 		$SQL = "SELECT permission FROM tali_modules WHERE module = '$module'";
 		$result = mysqli_query($db_handle, $SQL);
 		$db_field = mysqli_fetch_assoc($result);

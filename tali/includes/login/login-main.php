@@ -10,11 +10,14 @@ if (is_bool($db_handle)) {
 	exit("Error Loading Page: Database connection failed.");
 }
 
-//Password reset link clicked
+//E-mailed password reset link was clicked
 if (isset($_GET['token'])) {
+	//Get token from URL
 	$token = $_GET['token'];
+	//Clean up token for searching database
 	$token_sql = htmlspecialchars($token);
 	$token_sql = TALI_quote_smart($token_sql, $db_handle);
+	//Find entry with matching token
 	$SQL = "SELECT * FROM tali_admin_accounts WHERE password_reset_token=$token_sql";
 	$result = mysqli_query($db_handle, $SQL);
 	$num_rows = mysqli_num_rows($result);
@@ -38,7 +41,7 @@ if (isset($_GET['token'])) {
 		exit();
 	}
 	//Token wasn't valid
-	$displayMessage = "That token is not valid!";
+	$displayMessage = "That password reset token is not valid!";
 }
 
 //A button was clicked
