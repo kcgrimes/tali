@@ -63,6 +63,7 @@ Note - Requires jquery
 Parses BB Code to HTML via "markitup" parser
 Select 1 - String - Text marked up with BB Code to be converted to HTML
 */ 
+//function BBCode2Html() {
 require "".TALI_ABS_PATH."/includes/global/markitup/markitup.bbcode-parser.php";
 
 /* Function - markitup
