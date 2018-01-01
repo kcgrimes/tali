@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$newpassword_sql = htmlspecialchars($newpassword);
 		$newpassword_sql = TALI_quote_smart($newpassword_sql, $db_handle);
 		
-		$username = $_SESSION['username'];
+		$username = $_SESSION['TALI_Username'];
 		$username_sql = htmlspecialchars($username);
 		$username_sql = TALI_quote_smart($username_sql, $db_handle);
 		
@@ -40,7 +40,7 @@ else
 				
 				<div class=\"tali-page-frame\">
 					<h1>Change Password</h1>
-					<p>Your Account Name: ".$_SESSION['username']."</p>
+					<p>Your Account Name: ".$_SESSION['TALI_Username']."</p>
 					<p>New Password: <input type=\"password\" class=\"tali_account_passwordinput\"  name=\"newpassword\" form=\"tali_account_form\" value=\"\"></p>
 					<form method=\"POST\" id=\"tali_account_form\" action=\"account.php\">
 						<p><input type=\"Submit\" Name=\"btnPassword\" value=\"Submit New Password\"></p>

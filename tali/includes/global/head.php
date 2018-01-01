@@ -45,14 +45,14 @@ Select 2 - Active database reference handle
 */
 function TALI_sessionCheck($module, $db_handle) {
 	//Check if the user is logged in
-	if ((!isset($_SESSION['login']) || ($_SESSION['login'] != TRUE))) {
+	if (!isset($_SESSION['TALI_Login']) || ($_SESSION['TALI_Login'] != TRUE)) {
 		//Not logged in, so redirect to login.php
 		header ("Location: ".TALI_URI_INHEAD."/login.php");
 		exit();
 	}
 	
 	//Verify if user has permission to access this particular module, unless it is TALI Index
-	if ((isset($_SESSION['level'])) && ($module != 'TALI_Index')) {		
+	if ((isset($_SESSION['TALI_User_Level'])) && ($module != 'TALI_Index')) {		
 		//Obtain permission level for specific module
 		$SQL = "SELECT permission FROM tali_modules WHERE module = '$module'";
 		$result = mysqli_query($db_handle, $SQL);
@@ -60,7 +60,7 @@ function TALI_sessionCheck($module, $db_handle) {
 		
 		//Check if level is permitted in module (permitted levels are stored as an array-as-string)
 		//Note - Checking for false
-		if (!in_array($_SESSION['level'],explode(",", $db_field['permission']))) {
+		if (!in_array($_SESSION['TALI_User_Level'],explode(",", $db_field['permission']))) {
 			//User does not have permission, so redirect to landing page
 			//bug - for 3rd ID to allow all access to Drill Reports
 				//Make dyanmic by having setting in tali_init?
@@ -98,8 +98,8 @@ function TALI_Create_History_Report($action_str, $module, $db_handle, $db_Table,
 	$time = date('Y-m-d H:i:s');
 	
 	$item_name = $db_field[$db_item_col];
-	$username = $_SESSION['username'];
-	$username_id = $_SESSION['username_id'];
+	$username = $_SESSION['TALI_Username'];
+	$username_id = $_SESSION['TALI_Username_ID'];
 	
 	$insertHistory = "$time - $id_type_str $item_id, $item_name, $action_str by $username";
 	$insertHistory_sql = TALI_quote_smart($insertHistory, $db_handle);

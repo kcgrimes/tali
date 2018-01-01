@@ -10,6 +10,11 @@ if (is_bool($db_handle)) {
 	exit("Error Loading Page: Database connection failed.");
 }
 
+//Ensure login status is defined
+if (!isset($_SESSION['TALI_Login']) || ($_SESSION['TALI_Login'] != TRUE)) {
+	$_SESSION['TALI_Login'] = FALSE;
+}
+
 //E-mailed password reset link was clicked
 if (isset($_GET['token'])) {
 	//Get token from URL
@@ -24,13 +29,13 @@ if (isset($_GET['token'])) {
 	if ($num_rows > 0) {
 		//Token is valid
 		//Simulate login and find account
-		$_SESSION['login'] = TRUE;
+		$_SESSION['TALI_Login'] = TRUE;
 		$db_field = mysqli_fetch_assoc($result);
 		$safe_uname = $db_field['username'];	
 		$safe_uname = htmlspecialchars($safe_uname);
-		$_SESSION['username'] = $safe_uname;
-		$_SESSION['username_id'] = $db_field['id'];	
-		$_SESSION['level'] = $db_field['level'];
+		$_SESSION['TALI_Username'] = $safe_uname;
+		$_SESSION['TALI_Username_ID'] = $db_field['id'];	
+		$_SESSION['TALI_User_Level'] = $db_field['level'];
 		
 		//Remove the token
 		$SQL = "UPDATE tali_admin_accounts SET password_reset_token = '' WHERE password_reset_token = $token_sql";
@@ -62,13 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		if ($num_rows > 0) {
 			//Login successful
-			$_SESSION['login'] = TRUE;
+			$_SESSION['TALI_Login'] = TRUE;
 			$db_field = mysqli_fetch_assoc($result);
 			$safe_uname = $db_field['username'];	
 			$safe_uname = htmlspecialchars($safe_uname);
-			$_SESSION['username'] = $safe_uname;
-			$_SESSION['username_id'] = $db_field['id'];	
-			$_SESSION['level'] = $db_field['level'];
+			$_SESSION['TALI_Username'] = $safe_uname;
+			$_SESSION['TALI_Username_ID'] = $db_field['id'];	
+			$_SESSION['TALI_User_Level'] = $db_field['level'];
 			//Redirect to index.php, where access will now be granted
 			header ("Location: index.php");
 			exit();
@@ -76,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		else 
 		{
 			//Login failed
-			$_SESSION['login'] = FALSE;
+			$_SESSION['TALI_Login'] = FALSE;
 			$displayMessage = "Invalid username and/or password.
 			<br/>
 			<br/>
@@ -131,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		
 		//Display confirmation message, whether or not e-mail was actually sent
-		$_SESSION['login'] = FALSE;
+		$_SESSION['TALI_Login'] = FALSE;
 		$displayMessage = "An e-mail has been sent to the address associated with the entered username.
 		<br/>
 		<br/>
@@ -143,7 +148,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 else
 {
-	if (!((isset($_SESSION['login'])) && ($_SESSION['login']))) {
+	if (!isset($_SESSION['TALI_Login']) || ($_SESSION['TALI_Login'] != TRUE)) {
+		//Was kicked back
 		$displayMessage .= "
 		You must login to your privileged account to access TALI.
 		<br/>
@@ -153,9 +159,10 @@ else
 	}
 	else
 	{
-		$_SESSION['login'] = FALSE;
+		//Logout
+		$_SESSION['TALI_Login'] = FALSE;
 		//Unset login-specific variables
-		unset($_SESSION['username'], $_SESSION['username_id'], $_SESSION['level']);
+		unset($_SESSION['TALI_Username'], $_SESSION['TALI_Username_ID'], $_SESSION['TALI_User_Level']);
 		$displayMessage = "You have been logged out of TALI.";
 	}
 }

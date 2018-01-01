@@ -486,7 +486,7 @@ Completed on ".date("m/d/Y")."";
 						
 						//posterOptions
 						//Use name of TALI Account to find SMF ID (because account names are same for 3rd ID)
-						$tali_username = $_SESSION['username'];
+						$tali_username = $_SESSION['TALI_Username'];
 						$tali_username = TALI_quote_smart($tali_username, $db_handle);
 						$SQL = "SELECT id_member FROM smf_members WHERE member_name=$tali_username";
 						$result = mysqli_query($db_handle, $SQL);
@@ -550,7 +550,7 @@ Completed on ".date("m/d/Y")."";
 						
 						//posterOptions
 						//Use name of TALI Account to find SMF ID (because account names are same for 3rd ID)
-						$tali_username = $_SESSION['username'];
+						$tali_username = $_SESSION['TALI_Username'];
 						
 						//SMF Post function
 						require_once('../../forums/SSI.php');

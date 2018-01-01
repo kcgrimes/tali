@@ -35,7 +35,7 @@ $result = mysqli_query($db_handle, $SQL);
 $module_array = [];
 while ($db_field = mysqli_fetch_assoc($result)) {
 	//Check if level is permitted in module (permitted levels are stored as an array-as-string)
-	if (in_array($_SESSION['level'],explode(",", $db_field['permission']))) {
+	if (in_array($_SESSION['TALI_User_Level'],explode(",", $db_field['permission']))) {
 		//Permission granted
 		$module_array[] = $db_field['module'];
 	}
