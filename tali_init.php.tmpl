@@ -39,13 +39,13 @@ $_SESSION['TALI_Platform'] = "wamp";
 //Do not include www., but do include any pertinent directory (such as m. or dev.)
 //A slash (/) must be at the end
 //WAMP Domain
-$WAMP_Domain_URL = "https://localhost/home/"; //"https://localhost/home/"
+$TALI_WAMP_Domain_URL = "https://localhost/home/"; //"https://localhost/home/"
 
 //Dev Domain
-$Dev_Domain_URL = "https://dev.domain.com/"; //"https://dev.domain.com/"
+$TALI_Dev_Domain_URL = "https://dev.domain.com/"; //"https://dev.domain.com/"
 
 //Live Domain
-$Live_Domain_URL = "https://domain.com/"; //"https://domain.com/"
+$TALI_Live_Domain_URL = "https://domain.com/"; //"https://domain.com/"
 
 //Define the name of the website or associated organization, as this will be
 //displayed in a few places involved with TALI
@@ -86,52 +86,56 @@ else
 	$config = parse_ini_file("/home/config.ini");
 }
 
-//FTP Directory of Live site
-$_SESSION['TALI_Live_FTP_Root'] = "/www"; //Default = "/www", maybe need "/public_html" instead
+//FTP Directory of WAMP site
+$TALI_WAMP_FTP_Root = "/www"; //Alternative FTP directory; If not using WAMP site, ignore
+//Note - You cannot "upload" to the local WAMP project, so consider using a dev site
 
 //FTP Directory of Dev site
-$_SESSION['TALI_Dev_FTP_Root'] = "/dev"; //Alternative FTP directory; If not using dev site, ignore
+$TALI_Dev_FTP_Root = "/dev"; //Alternative FTP directory; If not using dev site, ignore
+
+//FTP Directory of Live site
+$TALI_Live_FTP_Root = "/www"; //Default = "/www", maybe need "/public_html" instead
 
 //MySQL Database Login Information
 //Note - If using a different localhost than WAMP, still leave WAMP in the variable name
 //If not using Wamp (or any other locally hosted database for testing) or a Dev
 //site, just leave them blank and use Live for the published website.
 //WAMP Database Login
-$_SESSION['TALI_WAMP_DB_Username'] = $config['TALI_WAMP_DB_Username'];
-$_SESSION['TALI_WAMP_DB_Password'] = $config['TALI_WAMP_DB_Password'];
-$_SESSION['TALI_WAMP_DB_dbName'] = "dbName";
-$_SESSION['TALI_WAMP_DB_Server'] = "localhost";
+$TALI_WAMP_DB_Username = $config['TALI_WAMP_DB_Username'];
+$TALI_WAMP_DB_Password = $config['TALI_WAMP_DB_Password'];
+$TALI_WAMP_DB_dbName = "dbName";
+$TALI_WAMP_DB_Server = "localhost";
 
 //Dev Database Login
-$_SESSION['TALI_Dev_DB_Username'] = $config['TALI_Dev_DB_Username'];
-$_SESSION['TALI_Dev_DB_Password'] = $config['TALI_Dev_DB_Password'];
-$_SESSION['TALI_Dev_DB_dbName'] = "dbName";
-$_SESSION['TALI_Dev_DB_Server'] = "localhost";
+$TALI_Dev_DB_Username = $config['TALI_Dev_DB_Username'];
+$TALI_Dev_DB_Password = $config['TALI_Dev_DB_Password'];
+$TALI_Dev_DB_dbName = "dbName";
+$TALI_Dev_DB_Server = "localhost";
 
 //Live Database Login
-$_SESSION['TALI_Live_DB_Username'] = $config['TALI_Live_DB_Username'];
-$_SESSION['TALI_Live_DB_Password'] = $config['TALI_Live_DB_Password'];
-$_SESSION['TALI_Live_DB_dbName'] = "dbName";
-$_SESSION['TALI_Live_DB_Server'] = "localhost";
+$TALI_Live_DB_Username = $config['TALI_Live_DB_Username'];
+$TALI_Live_DB_Password = $config['TALI_Live_DB_Password'];
+$TALI_Live_DB_dbName = "dbName";
+$TALI_Live_DB_Server = "localhost";
 
 //FTP Login Information
 //Note - If using a different localhost than WAMP, still leave WAMP in the variable name
 //If not using Wamp (or any other local host for testing) or a Dev
 //site, just leave them blank and use Live for the published website.
 //WAMP FTP Login
-$_SESSION['TALI_WAMP_FTP_URL'] = "ftp.domain.com";
-$_SESSION['TALI_WAMP_FTP_Username'] = $config['TALI_WAMP_FTP_Username'];
-$_SESSION['TALI_WAMP_FTP_Password'] = $config['TALI_WAMP_FTP_Password'];
+$TALI_WAMP_FTP_URL = "ftp.domain.com";
+$TALI_WAMP_FTP_Username = $config['TALI_WAMP_FTP_Username'];
+$TALI_WAMP_FTP_Password = $config['TALI_WAMP_FTP_Password'];
 
 //Dev FTP Login
-$_SESSION['TALI_Dev_FTP_URL'] = "ftp.domain.com";
-$_SESSION['TALI_Dev_FTP_Username'] = $config['TALI_Dev_FTP_Username'];
-$_SESSION['TALI_Dev_FTP_Password'] = $config['TALI_Dev_FTP_Password'];
+$TALI_Dev_FTP_URL = "ftp.domain.com";
+$TALI_Dev_FTP_Username = $config['TALI_Dev_FTP_Username'];
+$TALI_Dev_FTP_Password = $config['TALI_Dev_FTP_Password'];
 
 //Live FTP Login
-$_SESSION['TALI_Live_FTP_URL'] = "ftp.domain.com";
-$_SESSION['TALI_Live_FTP_Username'] = $config['TALI_Live_FTP_Username'];
-$_SESSION['TALI_Live_FTP_Password'] = $config['TALI_Live_FTP_Password'];
+$TALI_Live_FTP_URL = "ftp.domain.com";
+$TALI_Live_FTP_Username = $config['TALI_Live_FTP_Username'];
+$TALI_Live_FTP_Password = $config['TALI_Live_FTP_Password'];
 
 //E-Mail SMTP Login Information
 //Uses PHPMailer (https://github.com/PHPMailer/PHPMailer) to send e-mails
@@ -159,15 +163,41 @@ $_SESSION['TALI_Index_cPanel_Link'] = "https://cpanel.hostname.com/";
 /* DO NOT EDIT THE BELOW SECTION */
 
 //Defining Domain URL based on selected platform
+//Defining database connection information based on selected platform
+//Define FTP access information based on selected platform
 switch ($_SESSION['TALI_Platform']) {
 	case "wamp":
-		$_SESSION['TALI_Domain_URL'] = $WAMP_Domain_URL;
+		$_SESSION['TALI_Domain_URL'] = $TALI_WAMP_Domain_URL;
+		$_SESSION['TALI_DB_Username'] = $TALI_WAMP_DB_Username;
+		$_SESSION['TALI_DB_Password'] = $TALI_WAMP_DB_Password;
+		$_SESSION['TALI_DB_dbName'] = $TALI_WAMP_DB_dbName;
+		$_SESSION['TALI_DB_Server'] = $TALI_WAMP_DB_Server;
+		$_SESSION['TALI_FTP_Root'] = $TALI_WAMP_FTP_Root;
+		$_SESSION['TALI_FTP_URL'] = $TALI_WAMP_FTP_URL;
+		$_SESSION['TALI_FTP_Username'] = $TALI_WAMP_FTP_Username;
+		$_SESSION['TALI_FTP_Password'] = $TALI_WAMP_FTP_Password;
 	break;
 	case "dev":
-		$_SESSION['TALI_Domain_URL'] = $Dev_Domain_URL;
+		$_SESSION['TALI_Domain_URL'] = $TALI_Dev_Domain_URL;
+		$_SESSION['TALI_DB_Username'] = $TALI_Dev_DB_Username;
+		$_SESSION['TALI_DB_Password'] = $TALI_Dev_DB_Password;
+		$_SESSION['TALI_DB_dbName'] = $TALI_Dev_DB_dbName;
+		$_SESSION['TALI_DB_Server'] = $TALI_Dev_DB_Server;
+		$_SESSION['TALI_FTP_Root'] = $TALI_Live_FTP_Root;
+		$_SESSION['TALI_FTP_URL'] = $TALI_Dev_FTP_URL;
+		$_SESSION['TALI_FTP_Username'] = $TALI_Dev_FTP_Username;
+		$_SESSION['TALI_FTP_Password'] = $TALI_Dev_FTP_Password;
 	break;
 	case "live":
-		$_SESSION['TALI_Domain_URL'] = $Live_Domain_URL;
+		$_SESSION['TALI_Domain_URL'] = $TALI_Live_Domain_URL;
+		$_SESSION['TALI_DB_Username'] = $TALI_Live_DB_Username;
+		$_SESSION['TALI_DB_Password'] = $TALI_Live_DB_Password;
+		$_SESSION['TALI_DB_dbName'] = $TALI_Live_DB_dbName;
+		$_SESSION['TALI_DB_Server'] = $TALI_Live_DB_Server;
+		$_SESSION['TALI_FTP_Root'] = $TALI_Live_FTP_Root;
+		$_SESSION['TALI_FTP_URL'] = $TALI_Live_FTP_URL;
+		$_SESSION['TALI_FTP_Username'] = $TALI_Live_FTP_Username;
+		$_SESSION['TALI_FTP_Password'] = $TALI_Live_FTP_Password;
 	break;
 }
 

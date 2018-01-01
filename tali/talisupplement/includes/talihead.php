@@ -21,7 +21,7 @@ Note - Requires jquery
 Execution of "markitup" editing which provides a textarea with BB Code toolbar
 Select 1 - Empty
 */ 
-function markItUp_editing () {
+function markItUp_editing() {
 	echo '
 		<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
 		<script type="text/javascript" src="markitup/sets/bbcode/set.js"></script>
@@ -40,7 +40,7 @@ Function - TALI_fetchDBPage
 Used to query the database for the content associated with a specific page.
 Select 1 - String - Name of page for identification in the database
 */
-function TALI_fetchDBPage ($pageTitle) {
+function TALI_fetchDBPage($pageTitle) {
 	//Connect to database
 	$db_handle = TALI_dbConnect(); 
 	if (is_bool($db_handle)) {
@@ -71,7 +71,7 @@ Function - TALI_Module_HomeSlider
 Used to display HomeSlider images queried from the database.
 Select 1 - Number of images to display
 */
-function TALI_Module_HomeSlider ($imageNumber) {
+function TALI_Module_HomeSlider($imageNumber) {
 	require "".$_SESSION['TALI_ABS_PATH']."/modules/homeslider/homeslider-front.php";
 }
 
@@ -80,7 +80,7 @@ Function - TALI_Module_News_Recent
 Used to display recent news entries queried from the database.
 Select 1 - Number of entries to display
 */
-function TALI_Module_News_Recent ($articleNumber) {
+function TALI_Module_News_Recent($articleNumber) {
 	require "".$_SESSION['TALI_ABS_PATH']."/modules/news/news-recent-front.php";
 }
 
@@ -89,7 +89,7 @@ Function - TALI_Module_News
 Used to display news entries and an archive of these entries queried from the database.
 Select 1 - Number of entries to display
 */
-function TALI_Module_News ($articleNumber) {
+function TALI_Module_News($articleNumber) {
 	require "".$_SESSION['TALI_ABS_PATH']."/modules/news/news-front.php";
 }
 
@@ -98,7 +98,7 @@ Function - TALI_Module_Roster
 Used to display roster data queried from the database.
 Select 1 - Empty
 */
-function TALI_Module_Roster () {
+function TALI_Module_Roster() {
 	require "".$_SESSION['TALI_ABS_PATH']."/modules/personnel/roster/roster-front.php";
 }
 
@@ -123,7 +123,7 @@ in older PHP versions (poor practice), and to correctly escape strings as approp
 Select 1 - String - Value needing to be made safe for SQL
 Select 2 - String - Returned value, safe for SQL
 */
-function TALI_quote_smart ($value, $handle) {
+function TALI_quote_smart($value, $handle) {
    if (get_magic_quotes_gpc()) {
 	   $value = stripslashes($value);
    }
@@ -140,32 +140,9 @@ Connect to appropriate database using information defined in tali_init.php
 Return Select 1 - Connection handle
 Return Select 2 - Boolean - Connection status
 */
-function TALI_dbConnect () {
-	switch ($_SESSION['TALI_Platform']) {
-		case "wamp":
-			//FOR DEV USE WITH WAMP
-			$DB_Username = $_SESSION['TALI_WAMP_DB_Username'];
-			$DB_Password = $_SESSION['TALI_WAMP_DB_Password'];
-			$DB_dbName = $_SESSION['TALI_WAMP_DB_dbName'];
-			$DB_Server = $_SESSION['TALI_WAMP_DB_Server'];
-			break;
-		case "dev":
-			//FOR DEV USE ON SERVER
-			$DB_Username = $_SESSION['TALI_Dev_DB_Username'];
-			$DB_Password = $_SESSION['TALI_Dev_DB_Password'];
-			$DB_dbName = $_SESSION['TALI_Dev_DB_dbName'];
-			$DB_Server = $_SESSION['TALI_Dev_DB_Server'];
-			break;
-		case "live":
-			//FOR REAL PUBLISH USE
-			$DB_Username = $_SESSION['TALI_Live_DB_Username'];
-			$DB_Password = $_SESSION['TALI_Live_DB_Password'];
-			$DB_dbName = $_SESSION['TALI_Live_DB_dbName'];
-			$DB_Server = $_SESSION['TALI_Live_DB_Server'];
-			break;
-	}
-	$db_handle = mysqli_connect($DB_Server, $DB_Username, $DB_Password);
-	$db_found = mysqli_select_db($db_handle, $DB_dbName);
+function TALI_dbConnect() {
+	$db_handle = mysqli_connect($_SESSION['TALI_DB_Server'], $_SESSION['TALI_DB_Username'], $_SESSION['TALI_DB_Password']);
+	$db_found = mysqli_select_db($db_handle, $_SESSION['TALI_DB_dbName']);
 	if ($db_found) {
 		//Database connection successful
 		return $db_handle;
@@ -187,36 +164,12 @@ Select 2 - String - Post-root upload directory with leading and
 function TALI_FTP_Connect() {
 	//Baseline connection = false
 	$connection_success = FALSE;
-	//Collect FTP login data
-
-	//Check platform status in order to select appropriate FTP data
-	//Puts login data into array
-	switch ($_SESSION['TALI_Platform']) {
-		case "wamp":
-			//FOR DEV USE WITH WAMP
-			$ftp_server = $_SESSION['TALI_WAMP_FTP_URL'];
-			$ftp_user_name = $_SESSION['TALI_WAMP_FTP_Username'];
-			$ftp_user_pass = $_SESSION['TALI_WAMP_FTP_Password'];
-			break;
-		case "dev":
-			//FOR DEV USE ON SERVER
-			$ftp_server = $_SESSION['TALI_Dev_FTP_URL'];
-			$ftp_user_name = $_SESSION['TALI_Dev_FTP_Username'];
-			$ftp_user_pass = $_SESSION['TALI_Dev_FTP_Password'];
-			break;
-		case "live":
-			//FOR REAL PUBLISH USE
-			$ftp_server = $_SESSION['TALI_Live_FTP_URL'];
-			$ftp_user_name = $_SESSION['TALI_Live_FTP_Username'];
-			$ftp_user_pass = $_SESSION['TALI_Live_FTP_Password'];
-			break;
-	}
 			
 	//Attempt to connect to FTP
-	$conn_id = ftp_connect($ftp_server);
+	$conn_id = ftp_connect($_SESSION['TALI_FTP_URL']);
 	ftp_pasv($conn_id, true); 
 	//Attempt to login to FTP
-	$login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass); 
+	$login_result = ftp_login($conn_id, $_SESSION['TALI_FTP_Username'], $_SESSION['TALI_FTP_Password']); 
 
 	//Check FTP connection (Did you connect? Did you login?)
 	//bug - check connection and login independently?
@@ -254,16 +207,7 @@ function TALI_FTP_Upload($file_input, $upload_directory) {
 	
 	if ($connection_success) {
 		//Initiate upload
-		//Check platform status in order to select appropriate root
-			//Note - Can't "upload" to WAMP
-		//bug - Default to dev instead of Live for wamp?
-		if ($_SESSION['TALI_Platform'] == "dev") {
-			ftp_chdir($conn_id, ''.$_SESSION['TALI_Dev_FTP_Root'].''.$upload_directory.'');
-		}
-		else
-		{
-			ftp_chdir($conn_id, ''.$_SESSION['TALI_Live_FTP_Root'].''.$upload_directory.'');
-		}
+		ftp_chdir($conn_id, ''.$_SESSION['TALI_FTP_Root'].''.$upload_directory.'');
 		$destination_file_name = $_FILES[$file_input]['name'];
 		$upload = ftp_put($conn_id, $destination_file_name, $_FILES[$file_input]['tmp_name'], FTP_BINARY); 
 		
@@ -305,16 +249,7 @@ function TALI_FTP_Delete($source_file, $delete_directory) {
 	
 	if ($connection_success) {
 		//Initiate delete
-		//Check platform status in order to select appropriate root
-			//Note - Can't "upload" to WAMP
-		//bug - Default to dev instead of Live for wamp?
-		if ($_SESSION['TALI_Platform'] == "dev") {
-			ftp_chdir($conn_id, ''.$_SESSION['TALI_Dev_FTP_Root'].''.$delete_directory.'');
-		}
-		else
-		{
-			ftp_chdir($conn_id, ''.$_SESSION['TALI_Live_FTP_Root'].''.$delete_directory.'');
-		}
+		ftp_chdir($conn_id, ''.$_SESSION['TALI_Live_FTP_Root'].''.$delete_directory.'');
 		$delete = ftp_delete($conn_id, $source_file); 
 
 		//Check delete status
