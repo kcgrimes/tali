@@ -79,14 +79,14 @@ else
 }
 
 //FTP Directory of WAMP site
-$TALI_WAMP_FTP_Root = "/www"; //Alternative FTP directory; If not using WAMP site, ignore
+$TALI_WAMP_FTP_Root = "/www/"; //Alternative FTP directory; If not using WAMP site, ignore
 //Note - You cannot "upload" to the local WAMP project, so consider using a dev site
 
 //FTP Directory of Dev site
-$TALI_Dev_FTP_Root = "/dev"; //Alternative FTP directory; If not using dev site, ignore
+$TALI_Dev_FTP_Root = "/dev/"; //Alternative FTP directory; If not using dev site, ignore
 
 //FTP Directory of Live site
-$TALI_Live_FTP_Root = "/www"; //Default = "/www", maybe need "/public_html" instead
+$TALI_Live_FTP_Root = "/www/"; //Default = "/www/", maybe need "/public_html" instead
 
 //MySQL Database Login Information
 //Note - If using a different localhost than WAMP, still leave WAMP in the variable name
@@ -140,58 +140,10 @@ define('TALI_SMTP_PASSWORD', $config['TALI_SMTP_password']);
 define('TALI_SMTP_FROMADDRESS', "email@domain.com");
 define('TALI_SMTP_FROMNAME', "From Me");
 
-//TALI HomeSlider images folder location from web root
-define('TALI_HOMESLIDER_IMAGES_DIRECTORY', "/tali/talisupplement/homeslider/");
-
-//TALI Awards images folder location from web root
-define('TALI_AWARDS_IMAGES_DIRECTORY', "/tali/talisupplement/personnel/awards/");
-
-//TALI Ranks images folder location from web root
-define('TALI_RANKS_IMAGES_DIRECTORY', "/tali/talisupplement/personnel/ranks/tiny/");
-
 //Web URL to cPanel
 define('TALI_INDEX_CPANEL_LINK', "https://cpanel.hostname.com/");
 
 /* DO NOT EDIT THE BELOW SECTION */
-
-//Defining Domain URL based on selected platform
-//Defining database connection information based on selected platform
-//Define FTP access information based on selected platform
-switch (TALI_PLATFORM) {
-	case "wamp":
-		define('TALI_DOMAIN_URL', $TALI_WAMP_Domain_URL);
-		define('TALI_DB_USERNAME', $TALI_WAMP_DB_Username);
-		define('TALI_DB_PASSWORD', $TALI_WAMP_DB_Password);
-		define('TALI_DB_DBNAME', $TALI_WAMP_DB_dbName);
-		define('TALI_DB_SERVER', $TALI_WAMP_DB_Server);
-		define('TALI_FTP_ROOT', $TALI_WAMP_FTP_Root);
-		define('TALI_FTP_URL', $TALI_WAMP_FTP_URL);
-		define('TALI_FTP_USERNAME', $TALI_WAMP_FTP_Username);
-		define('TALI_FTP_PASSWORD', $TALI_WAMP_FTP_Password);
-	break;
-	case "dev":
-		define('TALI_DOMAIN_URL', $TALI_Dev_Domain_URL);
-		define('TALI_DB_USERNAME', $TALI_Dev_DB_Username);
-		define('TALI_DB_PASSWORD', $TALI_Dev_DB_Password);
-		define('TALI_DB_DBNAME', $TALI_Dev_DB_dbName);
-		define('TALI_DB_SERVER', $TALI_Dev_DB_Server);
-		define('TALI_FTP_ROOT', $TALI_Live_FTP_Root);
-		define('TALI_FTP_URL', $TALI_Dev_FTP_URL);
-		define('TALI_FTP_USERNAME', $TALI_Dev_FTP_Username);
-		define('TALI_FTP_PASSWORD', $TALI_Dev_FTP_Password);
-	break;
-	case "live":
-		define('TALI_DOMAIN_URL', $TALI_Live_Domain_URL);
-		define('TALI_DB_USERNAME', $TALI_Live_DB_Username);
-		define('TALI_DB_PASSWORD', $TALI_Live_DB_Password);
-		define('TALI_DB_DBNAME', $TALI_Live_DB_dbName);
-		define('TALI_DB_SERVER', $TALI_Live_DB_Server);
-		define('TALI_FTP_ROOT', $TALI_Live_FTP_Root);
-		define('TALI_FTP_URL', $TALI_Live_FTP_URL);
-		define('TALI_FTP_USERNAME', $TALI_Live_FTP_Username);
-		define('TALI_FTP_PASSWORD', $TALI_Live_FTP_Password);
-	break;
-}
 
 //Defines TALI directory by combining the absolute root of the website defined above with the URI of the TALI folder defined above
 define('TALI_ABS_PATH', "".TALI_WEBROOT_ABS_PATH."".TALI_URI.""); 

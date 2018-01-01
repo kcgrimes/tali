@@ -2,6 +2,56 @@
 //Loaded in or right after head of all back-end (TALI admin) and front-end (TALI output)
 //files that execute tali_init.php in their <head>.
 
+/* Definitions */
+//Defining Domain URL based on selected platform
+//Defining database connection information based on selected platform
+//Define FTP access information based on selected platform
+switch (TALI_PLATFORM) {
+	case "wamp":
+		define('TALI_DOMAIN_URL', $TALI_WAMP_Domain_URL);
+		define('TALI_DB_USERNAME', $TALI_WAMP_DB_Username);
+		define('TALI_DB_PASSWORD', $TALI_WAMP_DB_Password);
+		define('TALI_DB_DBNAME', $TALI_WAMP_DB_dbName);
+		define('TALI_DB_SERVER', $TALI_WAMP_DB_Server);
+		define('TALI_FTP_ROOT', $TALI_WAMP_FTP_Root);
+		define('TALI_FTP_URL', $TALI_WAMP_FTP_URL);
+		define('TALI_FTP_USERNAME', $TALI_WAMP_FTP_Username);
+		define('TALI_FTP_PASSWORD', $TALI_WAMP_FTP_Password);
+	break;
+	case "dev":
+		define('TALI_DOMAIN_URL', $TALI_Dev_Domain_URL);
+		define('TALI_DB_USERNAME', $TALI_Dev_DB_Username);
+		define('TALI_DB_PASSWORD', $TALI_Dev_DB_Password);
+		define('TALI_DB_DBNAME', $TALI_Dev_DB_dbName);
+		define('TALI_DB_SERVER', $TALI_Dev_DB_Server);
+		define('TALI_FTP_ROOT', $TALI_Live_FTP_Root);
+		define('TALI_FTP_URL', $TALI_Dev_FTP_URL);
+		define('TALI_FTP_USERNAME', $TALI_Dev_FTP_Username);
+		define('TALI_FTP_PASSWORD', $TALI_Dev_FTP_Password);
+	break;
+	case "live":
+		define('TALI_DOMAIN_URL', $TALI_Live_Domain_URL);
+		define('TALI_DB_USERNAME', $TALI_Live_DB_Username);
+		define('TALI_DB_PASSWORD', $TALI_Live_DB_Password);
+		define('TALI_DB_DBNAME', $TALI_Live_DB_dbName);
+		define('TALI_DB_SERVER', $TALI_Live_DB_Server);
+		define('TALI_FTP_ROOT', $TALI_Live_FTP_Root);
+		define('TALI_FTP_URL', $TALI_Live_FTP_URL);
+		define('TALI_FTP_USERNAME', $TALI_Live_FTP_Username);
+		define('TALI_FTP_PASSWORD', $TALI_Live_FTP_Password);
+	break;
+}
+
+//TALI HomeSlider images folder location from web root
+define('TALI_HOMESLIDER_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/homeslider/");
+
+//TALI Awards images folder location from web root
+define('TALI_AWARDS_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/awards/");
+
+//TALI Ranks images folder location from web root
+//3rdid - bug - the "tiny" directory is specific to old 3rd ID folder structure
+define('TALI_RANKS_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/ranks/tiny/");
+
 echo "
 	<link rel=\"stylesheet\" href=\"".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/includes/talistyles_front.css?v=".filemtime("".TALI_TALISUPPLEMENT_ABS_PATH."/includes/talistyles_front.css")."\" type=\"text/css\"/>
 	<script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
@@ -137,6 +187,7 @@ function TALI_quote_smart($value, $handle) {
 /*
 Function - TALI_dbConnect
 Connect to appropriate database using information defined in tali_init.php
+Select 1 - Empty
 Return Select 1 - Connection handle
 Return Select 2 - Boolean - Connection status
 */
@@ -157,16 +208,14 @@ function TALI_dbConnect() {
 /*
 Function - TALI_FTP_Connect
 Used to connect to the FTP server for file manipulation.
-Select 1 - String - Name of input used to select file (not the actual file name itself)
-Select 2 - String - Post-root upload directory with leading and 
-	trailing slash "/" (e.g. '/talisupplement/homeslider/')
+Select 1 - Empty
 */
 function TALI_FTP_Connect() {
 	//Baseline connection = false
 	$connection_success = FALSE;
 			
 	//Attempt to connect to FTP
-	$conn_id = ftp_connect(TALI_FTP_ROOT);
+	$conn_id = ftp_connect(TALI_FTP_URL);
 	ftp_pasv($conn_id, true); 
 	//Attempt to login to FTP
 	$login_result = ftp_login($conn_id, TALI_FTP_USERNAME, TALI_FTP_PASSWORD); 
