@@ -81,7 +81,7 @@ echo "
 
 				<h1>COPYRIGHT AND TRADEMARK NOTICES:</h1>
 
-				<p>All contents of the TALI Web Site, except where specified, are: Copyright © 2014-2018 by Kent \"KC\" Grimes. All rights reserved.</p>
+				<p>All contents of the TALI Web Site, except where specified, are: Copyright © 2014-2018 by Kent \"KC\" Grimes. All Rights Reserved.</p>
 
 				<h1>TRADEMARKS</h1>
 
