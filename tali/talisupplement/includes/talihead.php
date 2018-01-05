@@ -59,7 +59,8 @@ echo "
 
 /* Function - markitup - BBCode2Html
 Source: http://markitup.jaysalvat.com/home/
-Copyright © markItUp! and Jay Salvat
+Version 1.0.6
+Copyright © 2009 Jay Salvat
 Note - Requires jquery
 Parses BB Code to HTML via "markitup" parser
 Select 1 - String - Text marked up with BB Code to be converted to HTML
@@ -69,7 +70,8 @@ require "".TALI_ABS_PATH."/includes/global/markitup/markitup.bbcode-parser.php";
 
 /* Function - markitup
 Source: http://markitup.jaysalvat.com/home/
-Copyright © markItUp! and Jay Salvat
+Version 1.1.14
+Copyright © 2007-2012 Jay Salvat
 Note - Requires jquery
 Execution of "markitup" editing which provides a textarea with BB Code toolbar
 Select 1 - Empty
