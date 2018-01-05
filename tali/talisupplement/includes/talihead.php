@@ -59,6 +59,7 @@ echo "
 
 /* Function - markitup - BBCode2Html
 Source: http://markitup.jaysalvat.com/home/
+Copyright © markItUp! and Jay Salvat
 Note - Requires jquery
 Parses BB Code to HTML via "markitup" parser
 Select 1 - String - Text marked up with BB Code to be converted to HTML
@@ -68,6 +69,7 @@ require "".TALI_ABS_PATH."/includes/global/markitup/markitup.bbcode-parser.php";
 
 /* Function - markitup
 Source: http://markitup.jaysalvat.com/home/
+Copyright © markItUp! and Jay Salvat
 Note - Requires jquery
 Execution of "markitup" editing which provides a textarea with BB Code toolbar
 Select 1 - Empty
@@ -155,6 +157,8 @@ function TALI_Module_Roster() {
 
 /*
 Function - TALI_EMail
+Source: https://github.com/PHPMailer/PHPMailer Version 5.2.23 (03/15/17)
+Copyright © 2012-2017 Marcus Bointon, Copyright © 2010-2012 Jim Jagielski, Copyright © 2004-2009 Andy Prevost
 Used to send an EMail using configured settings.
 Select 1 - String - Intended email target
 Select 2 - String - Display name of intended email target
