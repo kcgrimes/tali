@@ -6,4 +6,6 @@
 !tali/**/*
 !tali_init.php.tmpl
 !config.ini.tmpl
+!tali_db_template.sql
 !LICENSE.md
+!README.md
