@@ -1,0 +1,9 @@
+# Ignore everything in this folder...
+*
+# ...Except TALI files
+!.gitignore
+!tali/
+!tali/**/*
+!tali_init.php.tmpl
+!config.ini.tmpl
+!LICENSE.md
