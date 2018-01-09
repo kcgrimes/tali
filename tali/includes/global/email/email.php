@@ -8,6 +8,7 @@ require 'class.smtp.php';
 $mail = new PHPMailer;
 
 $mail->isSMTP();
+$mail->isHTML();
 //Enable SMTP debugging
 // 0 = off (for production use)
 // 1 = client messages
