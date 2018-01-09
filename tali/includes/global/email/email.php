@@ -32,7 +32,7 @@ $mail->setFrom(TALI_SMTP_FROMADDRESS, TALI_SMTP_FROMNAME);
 //Set an alternative reply-to address
 //$mail->addReplyTo('replyto@example.com', 'First Last');
 //Set who the message is to be sent to
-if (count($toArray == 1)) {
+if (count($toArray) == 1) {
 	//Sending to one person, so make it look nice
 	$mail->addAddress($toArray[0][0], $toArray[0][1]);
 }
