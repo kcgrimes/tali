@@ -12,21 +12,77 @@ TALI_sessionCheck($module, $db_handle);
 
 //Return - Add/Edit Submit button clicked
 if (isset($_POST['btnSubmit'])) {
-	if (($_GET['action']) == "Add") {
-		//Add
+	//Retrieve variables from post
+	$name = $_POST['name'];
+	$list = $_POST['list'];
+	//Check if both fields were filled out
+	if (($name != "") && ($list != "")) {
+		//Both variables were filled in
+		//Determine if submitting Add or Edit
+		if (($_GET['action']) == "Add") {
+			//Submit Add
+			//Make the variables safe
+			$name_sql = htmlspecialchars($name);
+			$name_sql = TALI_quote_smart($name_sql, $db_handle);
+			
+			$list_sql = htmlspecialchars($list);
+			$list_sql = TALI_quote_smart($list_sql, $db_handle);
+			
+			//Insert safe values into database
+			$SQL = "INSERT INTO tali_mailing_list (name, list) VALUES ($name_sql, $list_sql)";
+			$result = mysqli_query($db_handle, $SQL);
+			
+			//Collect new id for history report
+			$SQL = "SELECT id FROM tali_mailing_list ORDER BY id DESC LIMIT 1";
+			$result = mysqli_query($db_handle, $SQL);
+			$db_field = mysqli_fetch_assoc($result);
+			$id = $db_field['id'];	
+			
+			TALI_Create_History_Report('created', $module, $db_handle, 'tali_mailing_list', 'id', $id, 'Mailing List ID#', 'name');
+			
+			$successMessage = "Mailing List $name created!";
+		}
+		else
+		{
+			//Submit Edit
+			$id = $_POST['id'];
+			//Make the variables safe
+			$name_sql = htmlspecialchars($name);
+			$name_sql = TALI_quote_smart($name_sql, $db_handle);
+			
+			$list_sql = htmlspecialchars($list);
+			$list_sql = TALI_quote_smart($list_sql, $db_handle);
+			
+			//Update databse entry
+			$SQL = "UPDATE tali_mailing_list SET name=$name_sql, list=$list_sql WHERE id=$id"; 
+			$result = mysqli_query($db_handle, $SQL);
+			
+			TALI_Create_History_Report('edited', $module, $db_handle, 'tali_mailing_list', 'id', $id, 'Mailing List ID#', 'name');		
 		
+			$successMessage = "Mailing List $name updated!";
+		}
+		//Reload for fresh page
+		header ("Location: mailinglist.php?sub=manage");
+		exit();
 	}
-	else
-	{
-		//Edit
-		
-	}
+	
+	$errorMessage = "Error: Both name and list fields must be filled out.";
 }
 
 //Return - Delete button clicked
 if ((isset($_GET['action'])) && (($_GET['action']) == "Delete")) {
-	//Delete
+	//Submit Delete
+	$id = $_GET['id'];
 	
+	TALI_Create_History_Report('deleted', $module, $db_handle, 'tali_mailing_list', 'id', $id, 'Mailing List ID#', 'name');
+	
+	//Delete entry from database
+	$delSQL = "DELETE FROM tali_mailing_list WHERE id=$id";
+	$delresult = mysqli_query($db_handle, $delSQL);
+	
+	//Reload for fresh page
+	header ("Location: mailinglist.php?sub=manage");
+	exit();
 }
 
 //Page content
@@ -58,11 +114,11 @@ $SQL = "SELECT * FROM tali_mailing_list";
 $result = mysqli_query($db_handle, $SQL);
 while ($db_field = mysqli_fetch_assoc($result)) {
 	$mailinglist_id = $db_field['id'];
-	$name = $db_field['name'];
+	$list_name = $db_field['name'];
 			
 	echo "
 					<tr>
-						<td style=\"text-align:left;\">$name</td>
+						<td style=\"text-align:left;\">$list_name</td>
 						<td style=\"text-align:center;\">
 							<a href=\"mailinglist.php?sub=manage&action=Edit&id=$mailinglist_id\">
 								<img src=\"../images/icons/edit.png\" alt=\"Edit Icon\" name=\"Edit Icon\">
@@ -85,19 +141,28 @@ echo "
 				<h1>$action Custom Mailing Lists</h1>
 ";
 
-//Default action is Add, so variables empty
-$id = "";
-$name = "";
-$list = "";
-
 //If action is Edit, define the variables so they will be displayed
 if ($action == "Edit") {
 	$id = $_GET['id'];
-	$SQL = "SELECT * FROM tali_mailing_list WHERE id=$id";
+	$SQL = "SELECT name,list FROM tali_mailing_list WHERE id=$id";
 	$result = mysqli_query($db_handle, $SQL);
 	$db_field = mysqli_fetch_assoc($result);
 	$name = $db_field['name'];
 	$list = $db_field['list'];
+}
+else
+{
+	//id not defined yet
+	$id = "";
+	if ((isset($_GET['action'])) && ($_GET['action'] == "Add")) {
+		//Failed attempt to add, so don't blank the variables
+	}
+	else
+	{
+		//Default action is Add, so variables empty
+		$name = "";
+		$list = "";
+	}
 }
 
 echo "
@@ -107,7 +172,8 @@ echo "
 				<p>Mailing List Addresses (separated by comma \",\"):</p>
 				<p><textarea rows=\"6\" cols=\"75\" name=\"list\" form=\"form_mailinglist\">$list</textarea></p>
 				
-				<form method=\"POST\" id=\"form_mailinglist\" action=\"mailinglist.php?sub=manage&action=$action&id=$id\">
+				<input type=\"hidden\" name=\"id\" form=\"form_mailinglist\" value=\"$id\">
+				<form method=\"POST\" id=\"form_mailinglist\" action=\"mailinglist.php?sub=manage&action=$action\">
 					<p>
 					<input type=\"submit\" name=\"btnSubmit\" value=\"Submit\"/>
 					</p>
