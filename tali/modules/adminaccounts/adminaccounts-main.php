@@ -53,7 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$newusername = $_POST['newusername'];
 		$newemail = $_POST['newemail'];
 		$newpersonnel_id = $_POST['newpersonnel_id'];
-		if ($newusername != "") {
+		//Make sure username and email have been filled out
+		if (($newusername != "") && ($newemail != "")){
+			//Obtain the lowest level of permission from database
 			$SQL = "SELECT level FROM tali_admin_permissions LIMIT 1";
 			$result = mysqli_query($db_handle, $SQL);
 			$db_field = mysqli_fetch_assoc($result);
@@ -91,14 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$newemail_sql = TALI_quote_smart($newemail_sql, $db_handle);
 			
 			//Check if email exists
-			if ($newemail != "") {
-				$SQL = "SELECT id FROM tali_admin_accounts WHERE email=$newemail_sql";
-				$result = mysqli_query($db_handle, $SQL);
-				$num_rows = mysqli_num_rows($result);
-				if ($num_rows > 0) {
-					$errorMessage = "ERROR: The e-mail you have entered already exists.";
-					goto POSTErrored;
-				}
+			$SQL = "SELECT id FROM tali_admin_accounts WHERE email=$newemail_sql";
+			$result = mysqli_query($db_handle, $SQL);
+			$num_rows = mysqli_num_rows($result);
+			if ($num_rows > 0) {
+				$errorMessage = "ERROR: The e-mail you have entered already exists.";
+				goto POSTErrored;
 			}
 			
 			//Manage personnel id association
@@ -135,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$SQL = "INSERT INTO tali_admin_accounts (level, username, password, email, personnel_id) VALUES ($newlevel_sql, $newusername_sql, md5($newpassword_sql), $newemail_sql, $newpersonnel_id_sql)";
 			$result = mysqli_query($db_handle, $SQL);
 			
+			//Obtain latest id from insertion for use in history report
 			$SQL = "SELECT id FROM tali_admin_accounts ORDER BY id DESC LIMIT 1";
 			$result = mysqli_query($db_handle, $SQL);
 			$db_field = mysqli_fetch_assoc($result);
@@ -150,6 +151,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$newpassword = "";
 			$newemail = "";
 			$newpersonnel_id = "";
+		}
+		else
+		{
+			$errorMessage = "ERROR: You must enter an e-mail and username in order to add an Admin Account!";
 		}
 	}
 	
@@ -252,6 +257,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$result = mysqli_query($db_handle, $SQL);
 		}
 		
+		if ((isset($_POST['personnel_id'])) && (($_POST['personnel_id'] != ""))) {
+			$SQL = "UPDATE tali_admin_accounts SET personnel_id=$newpersonnel_id_sql WHERE id=$id";
+			$result = mysqli_query($db_handle, $SQL);
+		}
+		
 		if ((isset($_POST['email'])) && (($_POST['email'] != ""))) {
 			$newemail_sql = htmlspecialchars($newemail);
 			$newemail_sql = TALI_quote_smart($newemail_sql, $db_handle);
@@ -259,12 +269,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$result = mysqli_query($db_handle, $SQL);
 			
 			//Also update new e-mail to associated personnel file, if applicable
-			$SQL = "UPDATE tali_personnel_roster SET email=$newemail_sql WHERE personnel_id=$newpersonnel_id";
+			$SQL = "SELECT personnel_id FROM tali_admin_accounts WHERE id=$id";
 			$result = mysqli_query($db_handle, $SQL);
-		}
-		
-		if ((isset($_POST['personnel_id'])) && (($_POST['personnel_id'] != ""))) {
-			$SQL = "UPDATE tali_admin_accounts SET personnel_id=$newpersonnel_id_sql WHERE id=$id";
+			$db_field = mysqli_fetch_assoc($result);
+			$unq_personnel_id = $db_field['personnel_id'];	
+			
+			$SQL = "UPDATE tali_personnel_roster SET email=$newemail_sql WHERE personnel_id=$unq_personnel_id";
 			$result = mysqli_query($db_handle, $SQL);
 		}
 			
