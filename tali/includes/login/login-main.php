@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			
 			$reset_url
 			";
-			TALI_EMail ($email, $username, $subject, $msgBody);
+			TALI_EMail ([[$email, $username]], $subject, $msgBody);
 		}
 		
 		//Display confirmation message, whether or not e-mail was actually sent

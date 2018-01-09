@@ -31,7 +31,17 @@ $mail->setFrom(TALI_SMTP_FROMADDRESS, TALI_SMTP_FROMNAME);
 //Set an alternative reply-to address
 //$mail->addReplyTo('replyto@example.com', 'First Last');
 //Set who the message is to be sent to
-$mail->addAddress($toEmail, $toName);
+if (count($toArray == 1)) {
+	//Sending to one person, so make it look nice
+	$mail->addAddress($toArray[0][0], $toArray[0][1]);
+}
+else
+{
+	//Sending to group, so hide info via bcc
+	foreach ($toArray as $toDefine) {
+		$mail->addBCC($toDefine[0], $toDefine[1]);
+	}
+}
 //Set the subject line
 $mail->Subject = $subject;
 //Read an HTML message body from an external file, convert referenced images to embedded,

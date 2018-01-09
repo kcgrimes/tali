@@ -162,14 +162,15 @@ Function - TALI_EMail
 Source: https://github.com/PHPMailer/PHPMailer Version 5.2.23 (03/15/17)
 Copyright © 2012-2017 Marcus Bointon, Copyright © 2010-2012 Jim Jagielski, Copyright © 2004-2009 Andy Prevost
 Used to send an EMail using configured settings.
-Select 1 - String - Intended email target
-Select 2 - String - Display name of intended email target
-Select 3 - String - Subject line of email
-Select 4 - String - Body text of email
+Select 1 - Array - Email address and display name of intended email target
+	[[$toEmail, $toName],[$toEmail, $toName],etc.]
+	Select 0 - String - Email address of intended email target
+	Select 1 - String - Display name of intended email target
+Select 2 - String - Subject line of email
+Select 3 - String - Body text of email
 */
-//bug - How does this work with multiple "to" addresses?
 //bug - What other variables can be made more available for expanded use?
-function TALI_EMail ($toEmail, $toName, $subject, $msgBody) {
+function TALI_EMail ($toArray, $subject, $msgBody) {
 	require "includes/global/email/email.php";
 }
 
