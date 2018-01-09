@@ -121,7 +121,8 @@ function TALI_globForInit($upwardStr, $pattern, $flags = 0) {
 	foreach ($dirs as $dir) {
 		$initArray = (glob("".$dir."/tali_init.php"));
 		if (empty($initArray)) {
-			if (!empty(glob("".$dir."/*", GLOB_ONLYDIR))) {
+			$globArray = glob("".$dir."/*", GLOB_ONLYDIR);
+			if (!empty($globArray)) {
 				$initArray = (TALI_globForInit($upwardStr, "".$dir."/*", GLOB_ONLYDIR));
 			}
 		}
