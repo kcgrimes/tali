@@ -171,7 +171,7 @@ Select 3 - String - Body text of email
 */
 //bug - What other variables can be made more available for expanded use?
 function TALI_EMail ($toArray, $subject, $msgBody) {
-	require "includes/global/email/email.php";
+	require "".TALI_ABS_PATH."/includes/global/email/email.php";
 }
 
 /*
