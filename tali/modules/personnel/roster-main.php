@@ -466,7 +466,7 @@ if (isset($_GET['action'])) {
 					</tr>
 					<tr><td><br/></td></tr>
 					<tr>
-						<td style=\"text-align:right;\">E-Mail:</td>
+						<td style=\"text-align:right;\"><strong>E-Mail:</strong></td>
 						<td style=\"text-align:left;\"><input type=\"text\" class=\"tali-personnel-roster-addpersonnel-inline_input\" name=\"add_email\" form=\"add_file\" value=\"$add_email\"></td>
 					</tr>
 					<tr>
@@ -548,6 +548,7 @@ if (isset($_GET['action'])) {
 			(isset($_POST['add_status_id'])) && (($_POST['add_status_id']) != "") &&
 			(isset($_POST['designation_select'])) && (($_POST['designation_select']) != "") &&
 			(isset($_POST['add_role_id'])) && (($_POST['add_role_id']) != "") && 
+			(isset($_POST['add_email'])) && (($_POST['add_email']) != "") &&
 			(isset($_POST['add_dateenlisted'])) && (($_POST['add_dateenlisted']) != "")
 			) {
 				//Enough input provided, submit to DB and redirect to roster
