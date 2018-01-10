@@ -75,10 +75,9 @@ switch ($action) {
 			foreach ($arrayPersonnel as $personnel) {
 				if (($personnel['designation_id'] == $designation_id) && ($personnel['discharged'] == 0)) {
 					$image = $personnel['image'];
-					//BUG - WOAH this iamge file is not dynamic!
 					echo "
 					<tr>
-						<td><img src=\"".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/personnel/ranks/tiny/$image\" alt=\"Rank\"></img></td>
+						<td><img src=\"".TALI_DOMAIN_URL."".TALI_RANKS_IMAGES_DIRECTORY."$image\" alt=\"Rank\"></img></td>
 						<td><a href=\"roster.php?action=profile&personnel_id=".$personnel['personnel_id']."\">" . $personnel['rank'] . " " . $personnel['firstname'] . " " . $personnel['lastname'] . "</a></td>
 						<td>" . $personnel['role'] . "</td>
 						<td>" . $personnel['nickname'] . "</td>
@@ -211,7 +210,7 @@ switch ($action) {
 				$image = $personnel['image'];
 				echo "
 					<tr>
-						<td><img src=\"".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/personnel/ranks/tiny/$image\" alt=\"Rank\"></img></td>
+						<td><img src=\"".TALI_RANKS_IMAGES_DIRECTORY."$image\" alt=\"Rank\"></img></td>
 						<td><a href=\"roster.php?action=profile&personnel_id=".$personnel['personnel_id']."\">" . $personnel['rank'] . " " . $personnel['firstname'] . " " . $personnel['lastname'] . "</a></td>
 						<td>" . $personnel['role'] . "</td>
 						<td>" . $personnel['nickname'] . "</td>

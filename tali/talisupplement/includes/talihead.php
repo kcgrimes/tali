@@ -49,8 +49,7 @@ define('TALI_HOMESLIDER_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/homeslid
 define('TALI_AWARDS_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/awards/");
 
 //TALI Ranks images folder location from web root
-//3rdid - bug - the "tiny" directory is specific to old 3rd ID folder structure
-define('TALI_RANKS_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/ranks/tiny/");
+define('TALI_RANKS_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/ranks/");
 
 echo "
 	<link rel=\"stylesheet\" href=\"".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/includes/talistyles_front.css?v=".filemtime("".TALI_TALISUPPLEMENT_ABS_PATH."/includes/talistyles_front.css")."\" type=\"text/css\"/>
