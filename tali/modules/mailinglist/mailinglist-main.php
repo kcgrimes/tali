@@ -249,7 +249,7 @@ else
 	};
 	
 	echo "
-					<p>To Mailing List:</p>
+					<p><strong>To Mailing List:</strong></p>
 	";
 	//Display checkbox for self
 	echo "
@@ -379,13 +379,13 @@ else
 	//End designation stuff
 	
 	echo "
-					<p>To Individual Address (separated by comma \",\"):</p>
+					<p><strong>To Individual Address (separated by comma \",\"):</strong></p>
 					<input type=\"text\" class=\"tali-personnel-awards-textinput\" name=\"to\" form=\"form_mailinglist\" value=\"$to\">
 					
-					<p>Subject:</p>
+					<p><strong>Subject:</strong></p>
 					<input type=\"text\" class=\"tali-personnel-awards-textinput\" name=\"subject\" form=\"form_mailinglist\" value=\"$subject\">
 					
-					<p>Body:</p>
+					<p><strong>Body:</strong></p>
 					<p><textarea rows=\"6\" cols=\"75\" id=\"html\" name=\"body\" form=\"form_mailinglist\">$body</textarea></p>
 					
 					<form method=\"POST\" id=\"form_mailinglist\" action=\"mailinglist.php\">
