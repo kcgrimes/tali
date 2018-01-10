@@ -658,9 +658,7 @@ Completed on ".date("m/d/Y")."";
 				
 				echo "
 								<p>Date of drill (MM/DD/YYYY):</p>
-								<p>
 								<input type=\"text\" class=\"tali-personnel-drillreports-textinput\" name=\"dateofdrill\" form=\"create_drillreport\" maxlength=\"10\" value=\"$form_dateofdrill\">
-								</p>
 				";
 				
 				//Date of Report (greyed out box)
@@ -670,9 +668,7 @@ Completed on ".date("m/d/Y")."";
 				}
 				echo "
 								<p>Date of report:</p>
-								<p>
 								<input type=\"text\" class=\"tali-personnel-drillreports-textinput\" name=\"dateofreport\" form=\"create_drillreport\" maxlength=\"10\" readonly value=\"$form_dateofreport\">
-								</p>
 				";
 				
 				if (!isset($_GET['id'])) {
