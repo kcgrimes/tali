@@ -233,7 +233,7 @@ if (isset($_GET['action'])) {
 				<div class=\"tali-page-frame\">
 					<h1>Manage Personnel File</h1>
 					<p>This page allows for management of an individual's personnel file.</p>
-					<p>Note: To Add/Save a Personnel File, a minimum of Rank, First Name, Last Name, Designation, Role, Status, and Date Enlisted must be provided.</p>
+					<p>Note: To Add/Save a Personnel File, a minimum of Rank, First Name, Last Name, Designation, Role, Status, E-Mail, and Date Enlisted must be provided.</p>
 			";
 			
 			//If defined, display errorMessage
