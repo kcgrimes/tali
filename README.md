@@ -29,8 +29,10 @@ At this time, there is no “installer” for TALI, and it is instead a series o
 	1. Also rename it to config.ini
 4. For any page that may call on TALI or in a file that is always executed (defines.php, head.php, global.php, etc.), place the following line of PHP code towards the beginning of the page’s execution. Ideally this is just after where your <head> tags occur (where <title> and <meta> are defined, shortly after session_start(), etc.)
 
-`//Initialize Team Administration/Logistics Interface (TALI)
-require "tali_init.php";`	
+```
+//Initialize Team Administration/Logistics Interface (TALI)
+require "tali_init.php";
+```
 	
 Note: If the tali_init.php file is anywhere but the root directory (or whatever level <head> is in) you will need to adjust the path above accordingly, along with make adjustments as directed in tali_init.php.
 
