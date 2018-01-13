@@ -19,31 +19,12 @@ $rank = $rank_db_field['name'];
 
 $firstname = $db_field['firstname'];
 $lastname = $db_field['lastname'];
+$uniform_display_filename = $db_field['uniform'];
 
-$uniform_dir = "".TALI_TALISUPPLEMENT_ABS_PATH."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png";
-$uniformExists = 0;
-
-if (!file_exists($uniform_dir)) {
-	//bug - this requires manual edit, tried glob
-	$arrayUniDirs = ["1_DoD-CoD", "2_CoD2", "3_CoD2-CoD4", "4_CoD4-BF3", "5_PS2"];
-	$arrayUniDirs = array_reverse($arrayUniDirs);
-	foreach ($arrayUniDirs as $path) {
-		$uniform_dir = "".TALI_TALISUPPLEMENT_ABS_PATH."/personnel/uniforms/past/".$path."/".$firstname[0]."".$lastname.".png";
-		if (file_exists($uniform_dir)) {
-			$uniformExists = 1;
-			$uniform_dir = "".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/personnel/uniforms/past/".$path."/".$firstname[0]."".$lastname.".png";
-			break;
-		}
-	}
-	if ($uniformExists == 0) {
-		//bug - make this dynamic
-		$uniform_dir = "".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/personnel/uniforms/notfound.png";
-	}
-}
-else
-{
-	$uniform_dir = "".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/personnel/uniforms/active/".$firstname[0]."".$lastname.".png";
-}
+//Find the display uniform
+$uniform_display_return = TALI_personnelUniformFinder($uniform_display_filename, TALI_UNIFORMS_IMAGES_DIRECTORY, TALI_PERSONNEL_UNIFORMS_DEFAULT_FILE);
+//url used to actually link to display file for display
+$uniform_url = $uniform_display_return[2];
 
 $nickname = $db_field['nickname'];
 $status_id = $db_field['status_id'];
@@ -136,7 +117,7 @@ echo "
 				<th>$rank $firstname $lastname</th>
 			</tr>
 			<tr class=\"tali-personnel-roster-front-profile-top_noborder\">
-				<td><img src=\"$uniform_dir\" class=\"tali-personnel-roster-front-profile-uniform\" alt=\"Uniform\"></td>
+				<td><img src=\"$uniform_url\" class=\"tali-personnel-roster-front-profile-uniform\" alt=\"Uniform\"></td>
 			</tr>
 		</table>
 		<table class=\"tali-personnel-roster-front-profile-body\">

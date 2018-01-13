@@ -51,6 +51,12 @@ define('TALI_AWARDS_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/aw
 //TALI Ranks images folder location from web root
 define('TALI_RANKS_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/ranks/");
 
+//TALI Uniform images folder location from web root
+define('TALI_UNIFORMS_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/uniforms/");
+
+//TALI Uniform-modifiable images folder location from web root
+define('TALI_UNIFORMS_MODIFIABLE_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/uniforms-modifiable/");
+
 echo "
 	<link rel=\"stylesheet\" href=\"".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/includes/talistyles_front.css?v=".filemtime("".TALI_TALISUPPLEMENT_ABS_PATH."/includes/talistyles_front.css")."\" type=\"text/css\"/>
 	<script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
@@ -154,6 +160,87 @@ Select 1 - Empty
 */
 function TALI_Module_Roster() {
 	require "".TALI_ABS_PATH."/modules/personnel/roster/roster-front.php";
+}
+
+/*
+Function - TALI_globForFile_Recursive
+Uses PHP glob() function in a recursive manner to search for a file. 
+Select 1 - String - Target file name with extension
+Select 2 - String - Starting/top-most directory to begin search
+Select 3 - glob() flag - Special flag for glob() function
+Return - Array of strings of absolute paths to found files matching the target file name
+*/
+function TALI_globForFile_Recursive($filename, $pattern, $flags = 0) {
+	$dirs = glob($pattern, $flags);
+	foreach ($dirs as $dir) {
+		$fileDirArray = (glob($dir."/".$filename));
+		if (empty($fileDirArray)) {
+			$globArray = glob($dir."/*", GLOB_ONLYDIR);
+			if (!empty($globArray)) {
+				$fileDirArray = (TALI_globForFile_Recursive($filename, $dir."/*", GLOB_ONLYDIR));
+			}
+		}
+		if (!empty($fileDirArray)) {
+			break;
+		}
+	}
+	return $fileDirArray;
+}
+
+/*
+Function - TALI_personnelUniformFinder
+Looks for a uniform file and returns either its path or the path of the default file. 
+The returned path is that of the first file located (from the top, A to Z), so if maintaining
+multiple files of the same name (such as for historical reasons), keep this order in mind. 
+Select 1 - String - Target file name with extension
+Select 2 - String - Starting/top-most directory to begin search
+Select 3 - String - Default file name with extension
+Return Select 0 - Boolean - Whether or not a uniform file is associated in the database
+Return Select 1 - String - Path to target or default file
+Return Select 2 - String - URL to target or default file
+*/
+function TALI_personnelUniformFinder($uniform_filename, $uri, $default_file) {
+	//Path to default display uniform file
+	$uniform_dir = TALI_WEBROOT_ABS_PATH.$uri.$default_file;
+	//URL to default display uniform file
+	$uniform_url = TALI_DOMAIN_URL.$uri.$default_file;
+	//Check if uniform is associated
+	if ($uniform_filename == "") {
+		//No associated uniform, use defaults
+		$uniform_file_assoc = false;
+	}
+	else
+	{
+		//Uniform is associated
+		$uniform_file_assoc = true;
+		//Stock directory for quick search
+		$uniform_dir = TALI_WEBROOT_ABS_PATH.$uri.$uniform_filename;
+		
+		//Check if file exists in stock path
+		if (!file_exists($uniform_dir)) {
+			//File doesn't exist in stock path, so need to find it		
+			$uniformDirArray = TALI_globForFile_Recursive($uniform_filename, TALI_WEBROOT_ABS_PATH.$uri."*", GLOB_ONLYDIR);
+			
+			if (!empty($uniformDirArray)) {
+				//Image was found during recursive search
+				$uniform_dir = $uniformDirArray[0];
+				//Find uniform url by removing the webroot path from the beginning of the uniform dir to get a URI,
+				//Then add the domain before the URI to obtain URL
+				$uniform_url = TALI_DOMAIN_URL . substr($uniform_dir,strlen(TALI_WEBROOT_ABS_PATH));
+			}
+			else
+			{
+				//Image not found during recursive search, revert dir to default
+				$uniform_dir = TALI_WEBROOT_ABS_PATH.$uri.$default_file;
+			}
+		}
+		else
+		{
+			//File exists in stock path, so define the url as stock too
+			$uniform_url = TALI_DOMAIN_URL.$uri.$uniform_filename;
+		}
+	}
+	return [$uniform_file_assoc, $uniform_dir, $uniform_url];
 }
 
 /*
