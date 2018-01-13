@@ -336,7 +336,7 @@ function TALI_FTP_Connect() {
 Function - TALI_FTP_Upload
 Used to connect to the FTP server and upload a single file.
 Select 1 - String - Name of input used to select file (not the actual file name itself)
-Select 2 - String - Post-root upload directory with leading and trailing slash "/" (e.g. '/talisupplement/homeslider/')
+Select 2 - String - Post-root (URI) upload directory with leading and trailing slash "/" (e.g. '/talisupplement/homeslider/')
 */
 function TALI_FTP_Upload($file_input, $upload_directory) {
 	//Attempt to connect to FTP
@@ -378,7 +378,7 @@ Function - TALI_FTP_Delete
 Used to connect to the FTP server and delete a single file.
 //Bug - what is select 1 technically?
 Select 1 - String - File name, including extension, to be deleted from the Select 2 directory
-Select 2 - String - Post-root directory with leading and trailing slash "/" from which file is to be deleted (e.g. '/talisupplement/homeslider/')
+Select 2 - String - Post-root (URI) directory with leading and trailing slash "/" from which file is to be deleted (e.g. '/talisupplement/homeslider/')
 */
 function TALI_FTP_Delete($source_file, $delete_directory) {
 	//Attempt to connect to FTP
