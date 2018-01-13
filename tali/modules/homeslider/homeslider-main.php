@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//Are we ready?
 		if (!$failed) {
 			//Upload single file to FTP
-			$ftpUpload_Return = TALI_FTP_Upload('file', TALI_HOMESLIDER_IMAGES_DIRECTORY);
+			$ftpUpload_Return = TALI_FTP_Upload('file', TALI_HOMESLIDER_IMAGES_URI);
 			$displayUploadMessage = $ftpUpload_Return[1]; 
 			$upload_success = $ftpUpload_Return[2];
 			if ($upload_success) {
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	//Delete
 	if (isset($_POST['tali_homeslider_delete_file'])) {
 		//Delete single file from FTP
-		$ftpDelete_Return = TALI_FTP_Delete($_POST['selectimage'], TALI_HOMESLIDER_IMAGES_DIRECTORY);
+		$ftpDelete_Return = TALI_FTP_Delete($_POST['selectimage'], TALI_HOMESLIDER_IMAGES_URI);
 		$displayDeleteMessage = $ftpDelete_Return[1]; 
 		$delete_success = $ftpDelete_Return[2];
 
@@ -137,7 +137,7 @@ while ($db_field = mysqli_fetch_assoc($result)) {
 	$weight = $db_field['weight'];
 	echo "
 					<tr>
-						<td><img src=\"".TALI_DOMAIN_URL."".TALI_HOMESLIDER_IMAGES_DIRECTORY."$imagename\" style=\"width:60%;height:auto;\" alt=\"$imagename\" name=\"$imagename\"/></td>
+						<td><img src=\"".TALI_DOMAIN_URL."".TALI_HOMESLIDER_IMAGES_URI."$imagename\" style=\"width:60%;height:auto;\" alt=\"$imagename\" name=\"$imagename\"/></td>
 						<td>$imagename</td>
 						<td>$text</td>
 						<td>$weight</td>

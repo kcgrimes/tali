@@ -77,7 +77,7 @@ switch ($action) {
 					$image = $personnel['image'];
 					echo "
 					<tr>
-						<td><img src=\"".TALI_DOMAIN_URL."".TALI_RANKS_IMAGES_DIRECTORY."$image\" alt=\"Rank\"></img></td>
+						<td><img src=\"".TALI_DOMAIN_URL."".TALI_RANKS_IMAGES_URI."$image\" alt=\"Rank\"></img></td>
 						<td><a href=\"roster.php?action=profile&personnel_id=".$personnel['personnel_id']."\">" . $personnel['rank'] . " " . $personnel['firstname'] . " " . $personnel['lastname'] . "</a></td>
 						<td>" . $personnel['role'] . "</td>
 						<td>" . $personnel['nickname'] . "</td>
@@ -210,7 +210,7 @@ switch ($action) {
 				$image = $personnel['image'];
 				echo "
 					<tr>
-						<td><img src=\"".TALI_RANKS_IMAGES_DIRECTORY."$image\" alt=\"Rank\"></img></td>
+						<td><img src=\"".TALI_RANKS_IMAGES_URI."$image\" alt=\"Rank\"></img></td>
 						<td><a href=\"roster.php?action=profile&personnel_id=".$personnel['personnel_id']."\">" . $personnel['rank'] . " " . $personnel['firstname'] . " " . $personnel['lastname'] . "</a></td>
 						<td>" . $personnel['role'] . "</td>
 						<td>" . $personnel['nickname'] . "</td>

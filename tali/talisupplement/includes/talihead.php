@@ -43,19 +43,19 @@ switch (TALI_PLATFORM) {
 }
 
 //TALI HomeSlider images folder location from web root
-define('TALI_HOMESLIDER_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/homeslider/");
+define('TALI_HOMESLIDER_IMAGES_URI', "".TALI_TALISUPPLEMENT_URI."/homeslider/");
 
 //TALI Awards images folder location from web root
-define('TALI_AWARDS_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/awards/");
+define('TALI_AWARDS_IMAGES_URI', "".TALI_TALISUPPLEMENT_URI."/personnel/awards/");
 
 //TALI Ranks images folder location from web root
-define('TALI_RANKS_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/ranks/");
+define('TALI_RANKS_IMAGES_URI', "".TALI_TALISUPPLEMENT_URI."/personnel/ranks/");
 
 //TALI Uniform images folder location from web root
-define('TALI_UNIFORMS_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/uniforms/");
+define('TALI_UNIFORMS_IMAGES_URI', "".TALI_TALISUPPLEMENT_URI."/personnel/uniforms/");
 
 //TALI Uniform-modifiable images folder location from web root
-define('TALI_UNIFORMS_MODIFIABLE_IMAGES_DIRECTORY', "".TALI_TALISUPPLEMENT_URI."/personnel/uniforms-modifiable/");
+define('TALI_UNIFORMS_MODIFIABLE_IMAGES_URI', "".TALI_TALISUPPLEMENT_URI."/personnel/uniforms-modifiable/");
 
 echo "
 	<link rel=\"stylesheet\" href=\"".TALI_DOMAIN_URL."".TALI_TALISUPPLEMENT_URI."/includes/talistyles_front.css?v=".filemtime("".TALI_TALISUPPLEMENT_ABS_PATH."/includes/talistyles_front.css")."\" type=\"text/css\"/>

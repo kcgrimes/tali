@@ -50,7 +50,7 @@ foreach ($arrayRanks as $rank) {
 	$abbreviation = $rank['abbreviation'];
 	echo "
 			<tr>
-				<td><img src=\"".TALI_RANKS_IMAGES_DIRECTORY."$image\" alt=\"$name\"></img></td>
+				<td><img src=\"".TALI_RANKS_IMAGES_URI."$image\" alt=\"$name\"></img></td>
 				<td>$name</td>
 				<td>$abbreviation</td>
 			</tr>

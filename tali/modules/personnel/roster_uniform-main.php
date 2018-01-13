@@ -31,7 +31,7 @@ $uniform_display_filename = $db_field['uniform'];
 $uniform_modifiable_filename = $db_field['uniform_modifiable'];
 
 //Find display uniform file
-$uniform_display_return = TALI_personnelUniformFinder($uniform_display_filename, TALI_UNIFORMS_IMAGES_DIRECTORY, TALI_PERSONNEL_UNIFORMS_DEFAULT_FILE);
+$uniform_display_return = TALI_personnelUniformFinder($uniform_display_filename, TALI_UNIFORMS_IMAGES_URI, TALI_PERSONNEL_UNIFORMS_DEFAULT_FILE);
 $uniform_display_file_assoc = $uniform_display_return[0];
 //dir used to search and navigate to display file
 $uniform_display_dir = $uniform_display_return[1];
@@ -39,7 +39,7 @@ $uniform_display_dir = $uniform_display_return[1];
 $uniform_display_url = $uniform_display_return[2];
 
 //Find modifiable uniform file
-$uniform_modifiable_return = TALI_personnelUniformFinder($uniform_modifiable_filename, TALI_UNIFORMS_MODIFIABLE_IMAGES_DIRECTORY, TALI_PERSONNEL_UNIFORMS_MODIFIABLE_DEFAULT_FILE);
+$uniform_modifiable_return = TALI_personnelUniformFinder($uniform_modifiable_filename, TALI_UNIFORMS_MODIFIABLE_IMAGES_URI, TALI_PERSONNEL_UNIFORMS_MODIFIABLE_DEFAULT_FILE);
 $uniform_modifiable_file_assoc = $uniform_modifiable_return[0];
 //dir used to search and navigate to modifiable file
 $uniform_modifiable_dir = $uniform_modifiable_return[1];
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			else
 			{
 				//First time upload
-				$uniform_modifiable_uri = "/".TALI_UNIFORMS_MODIFIABLE_IMAGES_DIRECTORY;
+				$uniform_modifiable_uri = "/".TALI_UNIFORMS_MODIFIABLE_IMAGES_URI;
 			}
 			//Upload single file to FTP
 			$ftpUpload_Return = TALI_FTP_Upload('uniform_modifiable_file', $uniform_modifiable_uri);
@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			else
 			{
 				//First time upload
-				$uniform_display_uri = "/".TALI_UNIFORMS_IMAGES_DIRECTORY;
+				$uniform_display_uri = "/".TALI_UNIFORMS_IMAGES_URI;
 			}
 			//Upload single file to FTP
 			$ftpUpload_Return = TALI_FTP_Upload('uniform_file', $uniform_display_uri);
@@ -167,7 +167,7 @@ $uniform_display_filename = $db_field['uniform'];
 $uniform_modifiable_filename = $db_field['uniform_modifiable'];
 
 //Find display uniform file
-$uniform_display_return = TALI_personnelUniformFinder($uniform_display_filename, TALI_UNIFORMS_IMAGES_DIRECTORY, TALI_PERSONNEL_UNIFORMS_DEFAULT_FILE);
+$uniform_display_return = TALI_personnelUniformFinder($uniform_display_filename, TALI_UNIFORMS_IMAGES_URI, TALI_PERSONNEL_UNIFORMS_DEFAULT_FILE);
 $uniform_display_file_assoc = $uniform_display_return[0];
 //dir used to search and navigate to display file
 $uniform_display_dir = $uniform_display_return[1];
@@ -175,7 +175,7 @@ $uniform_display_dir = $uniform_display_return[1];
 $uniform_display_url = $uniform_display_return[2];
 
 //Find modifiable uniform file
-$uniform_modifiable_return = TALI_personnelUniformFinder($uniform_modifiable_filename, TALI_UNIFORMS_MODIFIABLE_IMAGES_DIRECTORY, TALI_PERSONNEL_UNIFORMS_MODIFIABLE_DEFAULT_FILE);
+$uniform_modifiable_return = TALI_personnelUniformFinder($uniform_modifiable_filename, TALI_UNIFORMS_MODIFIABLE_IMAGES_URI, TALI_PERSONNEL_UNIFORMS_MODIFIABLE_DEFAULT_FILE);
 $uniform_modifiable_file_assoc = $uniform_modifiable_return[0];
 //dir used to search and navigate to modifiable file
 $uniform_modifiable_dir = $uniform_modifiable_return[1];

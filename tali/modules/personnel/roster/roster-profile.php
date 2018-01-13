@@ -22,7 +22,7 @@ $lastname = $db_field['lastname'];
 $uniform_display_filename = $db_field['uniform'];
 
 //Find the display uniform
-$uniform_display_return = TALI_personnelUniformFinder($uniform_display_filename, TALI_UNIFORMS_IMAGES_DIRECTORY, TALI_PERSONNEL_UNIFORMS_DEFAULT_FILE);
+$uniform_display_return = TALI_personnelUniformFinder($uniform_display_filename, TALI_UNIFORMS_IMAGES_URI, TALI_PERSONNEL_UNIFORMS_DEFAULT_FILE);
 //url used to actually link to display file for display
 $uniform_url = $uniform_display_return[2];
 
