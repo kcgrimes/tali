@@ -444,14 +444,17 @@ else
 					$paraText = "This page allows you to create a Drill Report. First select the designation you wish to file the report under, then \"check\" all attendees and follow up with any remarks before hitting Submit.";
 				}
 				
-				//BUG - 3rd - non-dyanmic link to 3rd ID forums included here
 				echo "
 					<main>
 						<div class=\"tali-container\">
 							<div class=\"tali-page-frame\">
 								<h1>$headingStatus Drill Report</h1>
 								<p>$paraText</p>
-								<p><a target=\"_blank\" href=\"http://www.3rd-infantry-division.org/forums/index.php?board=44.0\">Link to Excuses Board</a></p>
+				";
+				
+				//Custom Execution
+				TALI_Custom_Execution(TALI_CUSTEXE_DRILLREPORT_TOPFRAME);
+				echo "
 							</div>
 							
 							<div class=\"tali-page-frame\">
