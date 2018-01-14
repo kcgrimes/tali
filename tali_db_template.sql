@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2018 at 05:06 PM
+-- Generation Time: Jan 14, 2018 at 07:24 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `tali_db_template`
+-- Database: `thirdid_website_dev`
 --
 
 -- --------------------------------------------------------
@@ -35,7 +35,14 @@ CREATE TABLE IF NOT EXISTS `tali_admin_accounts` (
   `email` varchar(40) NOT NULL,
   `personnel_id` int(40) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+--
+-- Dumping data for table `tali_admin_accounts`
+--
+
+INSERT INTO `tali_admin_accounts` (`id`, `level`, `username`, `password`, `password_reset_token`, `email`, `personnel_id`) VALUES
+(1, 1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -47,6 +54,13 @@ CREATE TABLE IF NOT EXISTS `tali_admin_permissions` (
   `level` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`level`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tali_admin_permissions`
+--
+
+INSERT INTO `tali_admin_permissions` (`level`) VALUES
+(1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `tali_mailing_list` (
   `name` varchar(255) NOT NULL,
   `list` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -89,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `tali_master_history` (
   `item_id` int(11) NOT NULL,
   `event` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1694 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1719 ;
 
 -- --------------------------------------------------------
 
@@ -103,6 +117,21 @@ CREATE TABLE IF NOT EXISTS `tali_modules` (
   `permission` varchar(255) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `tali_modules`
+--
+
+INSERT INTO `tali_modules` (`id`, `module`, `permission`) VALUES
+(1, 'TALI_Admin_Accounts', '1'),
+(2, 'TALI_Admin_Permissions', '1'),
+(3, 'TALI_News', '1'),
+(4, 'TALI_Pages', '1'),
+(5, 'TALI_Versions', '1'),
+(6, 'TALI_Master_History', '1'),
+(7, 'TALI_Home_Slider', '1'),
+(8, 'TALI_Personnel', '1'),
+(9, 'TALI_Mailing_List', '1');
 
 -- --------------------------------------------------------
 
@@ -162,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `tali_personnel_awards_classes` (
   `name` varchar(255) NOT NULL,
   `weight` int(11) NOT NULL,
   PRIMARY KEY (`awardclass_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -177,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `tali_personnel_awards_record` (
   `date_awarded` date NOT NULL,
   `record` text NOT NULL,
   PRIMARY KEY (`awardrecord_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=766 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=786 ;
 
 -- --------------------------------------------------------
 
@@ -239,9 +268,9 @@ CREATE TABLE IF NOT EXISTS `tali_personnel_drillreports` (
   `excused` varchar(255) NOT NULL,
   `absent` varchar(255) NOT NULL,
   `comments` text NOT NULL,
-  `smf_ids` tinytext,
+  `special_id` tinytext NOT NULL,
   PRIMARY KEY (`drillreport_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=348 ;
 
 -- --------------------------------------------------------
 
@@ -256,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `tali_personnel_ranks` (
   `image` varchar(255) NOT NULL,
   `weight` int(11) NOT NULL,
   PRIMARY KEY (`rank_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 -- --------------------------------------------------------
 
@@ -287,6 +316,8 @@ CREATE TABLE IF NOT EXISTS `tali_personnel_roster` (
   `designation_id` tinyint(4) NOT NULL,
   `role_id` tinyint(4) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `uniform` varchar(255) NOT NULL,
+  `uniform_modifiable` varchar(255) NOT NULL,
   `othercontact` varchar(255) NOT NULL,
   `location` varchar(32) NOT NULL,
   `biography` text NOT NULL,
@@ -301,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `tali_personnel_roster` (
   `discharged` tinyint(1) NOT NULL,
   `discharged_designation` text NOT NULL,
   PRIMARY KEY (`personnel_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=283 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=286 ;
 
 -- --------------------------------------------------------
 
@@ -315,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `tali_personnel_service_record` (
   `date` date NOT NULL,
   `record` text NOT NULL,
   PRIMARY KEY (`servicerecord_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=525 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=550 ;
 
 -- --------------------------------------------------------
 
