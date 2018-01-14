@@ -15,8 +15,15 @@ if (!isset($_GET["archive"])) {
 			<div class = \"tali-news-front-page-frame-title\">
 				<h1>Views News Archive</h1>
 			</div>
-			<br/>
-			<br/>
+	";
+	
+	//Custom Execution
+	if (TALI_CUSTEXE_NEWS_FRONT_HEADER != "") {
+		//Target is defined, so require it
+		require TALI_CUSTEXE_NEWS_FRONT_HEADER;
+	}
+	
+	echo "
 			<p>To view a list containing all of our news entries, check out the <a href=\"news.php?archive=true\"><strong>News Archive</strong></a>.</p>
 		</div>
 	";
@@ -115,12 +122,13 @@ else
 				<div class=\"tali-news-front-author\">Author: $author</div>
 			</div>
 		";
-		//bug - 3rd ID - These 2 line breaks are here to allow space
-		//for the center logo, unsure how to cleanly do this as custom
-		echo "
-			<br/>
-			<br/>
-		";
+
+		//Custom Execution
+		if (TALI_CUSTEXE_NEWS_FRONT_HEADER != "") {
+			//Target is defined, so require it
+			require TALI_CUSTEXE_NEWS_FRONT_HEADER;
+		}
+
 		echo "
 			<p>";
 		echo $body;
