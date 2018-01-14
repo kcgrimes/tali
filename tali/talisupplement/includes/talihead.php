@@ -163,19 +163,6 @@ function TALI_Module_Roster() {
 }
 
 /*
-Function - TALI_Custom_Execution
-Used to properly handle and execute a specified custom execution of user code if defined.
-Select 1 - String - Absolute OR Relative path to file containing custom code
-*/
-function TALI_Custom_Execution($target_file) {
-	//Check if custom execution target is defined
-	if ($target_file != "") {
-		//Target is defined, so require it
-		require $target_file;
-	}
-}
-
-/*
 Function - TALI_globForFile_Recursive
 Uses PHP glob() function in a recursive manner to search for a file. 
 Select 1 - String - Target file name with extension

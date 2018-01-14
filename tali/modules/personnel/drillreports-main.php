@@ -259,7 +259,10 @@ else
 			$result = mysqli_query($db_handle, $SQL);
 			
 			//Custom Execution
-			TALI_Custom_Execution(TALI_CUSTEXE_DRILLREPORT_DELETE);
+			if (TALI_CUSTEXE_DRILLREPORT_DELETE != "") {
+				//Target is defined, so require it
+				require TALI_CUSTEXE_DRILLREPORT_DELETE;
+			}
 			
 			//Refresh the page
 			header ("Location: personnel.php?sub=drillreports&location=view");
@@ -431,7 +434,10 @@ else
 				}
 				
 				//Custom Execution
-				TALI_Custom_Execution(TALI_CUSTEXE_DRILLREPORT_SUBMIT);
+				if (TALI_CUSTEXE_DRILLREPORT_SUBMIT != "") {
+					//Target is defined, so require it
+					require TALI_CUSTEXE_DRILLREPORT_SUBMIT;
+				}
 				
 				//History Report
 				if (!isset($_GET['id'])) {
@@ -499,7 +505,11 @@ else
 				";
 				
 				//Custom Execution
-				TALI_Custom_Execution(TALI_CUSTEXE_DRILLREPORT_TOPFRAME);
+				if (TALI_CUSTEXE_DRILLREPORT_TOPFRAME != "") {
+					//Target is defined, so require it
+					require TALI_CUSTEXE_DRILLREPORT_TOPFRAME;
+				}
+
 				echo "
 							</div>
 							
