@@ -150,6 +150,13 @@ define('TALI_PERSONNEL_UNIFORMS_DEFAULT_FILE', "default.png");
 //Note - This default file does not exist by default, so the user should add their own if in use
 define('TALI_PERSONNEL_UNIFORMS_MODIFIABLE_DEFAULT_FILE', "default.psd");
 
+//Custom Executions - Specific opportunities in the code to include the user's own code
+//Note - If not in use (default), leave empty ""
+//Personnel > Drill Reports > /tali/modules/personnel/drillreports-main.php
+//Executes after successful submission of new or edited drill report, right before a History Report entry is generated
+//Ex. Forum post, send an e-mail, etc.
+define('TALI_CUSTEXE_DRILLREPORT_SUBMIT', "../../includes/global/forumdrillreports.php");
+
 /* DO NOT EDIT THE BELOW SECTION */
 
 //Defines TALI directory by combining the absolute root of the website defined above with the URI of the TALI folder defined above
