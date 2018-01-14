@@ -157,16 +157,19 @@ else
 			echo "						
 							<table id=\"drillreportsTable\" class=\"tali-personnel-table\">
 								<col width=\"50%\">
-								<col width=\"40%\">
+								<col width=\"30%\">
+								<col width=\"10%\">
 								<col width=\"10%\">
 
 								<tr>
 									<th>Designation</th>
 									<th>Drill Date</th>
 									<th>Edit</th>
+									<th>Delete</th>
 								</tr>
 								
 								<tr>
+									<td style=\"text-align:center;\">No Designation Selected</td>
 									<td style=\"text-align:center;\">No Designation Selected</td>
 									<td style=\"text-align:center;\">No Designation Selected</td>
 									<td style=\"text-align:center;\">No Designation Selected</td>
@@ -193,7 +196,7 @@ else
 							drillreportsTable_jq = $("#drillreportsTable");
 							drillreportsTable_jq.empty();
 							drillreportsTable_jq.append(
-								'<col width="50%"><col width="40%"><col width="10%"><tr><th>Designation</th><th>Drill Date</th><th>Edit</th></tr>'
+								'<col width="50%"><col width="30%"><col width="10%"><col width="10%"><tr><th>Designation</th><th>Drill Date</th><th>Edit</th><th>Delete</th></tr>'
 							);
 							
 							//this.id = the 'select' id, which is designation_weight_id
@@ -203,7 +206,7 @@ else
 							for (i = 0; i < arrayDrillReports_json.length; i++) {
 								if (arrayDrillReports_json[i].designation_id == chosenDesignation_id) {
 									drillreportsTable_jq.append(
-										'<tr><td style="text-align:center;">' + arrayDrillReports_json[i].name + '</td><td style="text-align:center;">' + arrayDrillReports_json[i].date_drill + '</td><td style="text-align:center;"><a href="personnel.php?sub=drillreports&location=create&id=' + arrayDrillReports_json[i].drillreport_id + '"><img src="../images/icons/edit.png" alt="Edit Icon" name="Edit Icon"></a></td></tr>'
+										'<tr><td style="text-align:center;">' + arrayDrillReports_json[i].name + '</td><td style="text-align:center;">' + arrayDrillReports_json[i].date_drill + '</td><td style="text-align:center;"><a href="personnel.php?sub=drillreports&location=create&id=' + arrayDrillReports_json[i].drillreport_id + '"><img src="../images/icons/edit.png" alt="Edit Icon" name="Edit Icon"></a></td><td style="text-align:center;"><a href="personnel.php?sub=drillreports&location=delete&id=' + arrayDrillReports_json[i].drillreport_id + '" onclick="return confirm(\'Are you sure you want to delete this drill report?\');"><img src="../images/icons/delete.png" alt="Delete Icon" name="Delete Icon" ></a></td></tr>'
 									);
 								};
 							};
@@ -218,6 +221,49 @@ else
 					</div>
 				</main>
 			";
+		break;
+		case "delete":
+			//Deleting selected drill report
+			$drillreport_id = $_GET['id'];
+						
+			//Deleting, so reset previous attendance counts
+			$SQL = "SELECT attended, excused, absent FROM tali_personnel_drillreports WHERE drillreport_id=$drillreport_id";
+			$result = mysqli_query($db_handle, $SQL);
+			$db_field = mysqli_fetch_assoc($result);
+			
+			$attended=$db_field['attended'];
+			$excused=$db_field['excused'];
+			$absent=$db_field['absent'];
+			
+			$attended = explode(",", $attended);
+			forEach ($attended as $personnel_id) {
+				$SQL = "UPDATE tali_personnel_roster SET drills_attended=drills_attended - 1 WHERE personnel_id=$personnel_id"; 
+				$result = mysqli_query($db_handle, $SQL);
+			}
+			$excused = explode(",", $excused);
+			forEach ($excused as $personnel_id) {
+				$SQL = "UPDATE tali_personnel_roster SET drills_excused=drills_excused - 1 WHERE personnel_id=$personnel_id"; 
+				$result = mysqli_query($db_handle, $SQL);
+			}
+			$absent = explode(",", $absent);
+			forEach ($absent as $personnel_id) {
+				$SQL = "UPDATE tali_personnel_roster SET drills_absent=drills_absent - 1 WHERE personnel_id=$personnel_id"; 
+				$result = mysqli_query($db_handle, $SQL);
+			}
+			
+			//History Report
+			TALI_Create_History_Report('deleted', $module, $db_handle, 'tali_personnel_drillreports', 'drillreport_id', $drillreport_id, 'Drill Report ID#', 'date_drill');
+
+			//Delete from database
+			$SQL = "DELETE FROM tali_personnel_drillreports WHERE drillreport_id=$drillreport_id";
+			$result = mysqli_query($db_handle, $SQL);
+			
+			//Custom Execution
+			TALI_Custom_Execution(TALI_CUSTEXE_DRILLREPORT_DELETE);
+			
+			//Refresh the page
+			header ("Location: personnel.php?sub=drillreports&location=view");
+			exit();
 		break;
 		case "create":
 			//Adding new, submitting new, or editing of Drill Report

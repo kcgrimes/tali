@@ -153,14 +153,19 @@ define('TALI_PERSONNEL_UNIFORMS_MODIFIABLE_DEFAULT_FILE', "default.psd");
 //Custom Executions - Specific opportunities in the code to include the user's own code
 //Note - If not in use (default), leave empty ""
 //Personnel > Drill Reports > /tali/modules/personnel/drillreports-main.php
+//Executes inside but at the bottom of the top-most frame on each Drill Reports page
+//Ex. Link to reference page
+define('TALI_CUSTEXE_DRILLREPORT_TOPFRAME', "");
+
+//Personnel > Drill Reports > /tali/modules/personnel/drillreports-main.php
 //Executes after successful submission of new or edited drill report, right before a History Report entry is generated
 //Ex. Forum post, send an e-mail, etc.
 define('TALI_CUSTEXE_DRILLREPORT_SUBMIT', "");
 
 //Personnel > Drill Reports > /tali/modules/personnel/drillreports-main.php
-//Executes inside but at the bottom of the top-most frame on each Drill Reports page
-//Ex. Link to reference page
-define('TALI_CUSTEXE_DRILLREPORT_TOPFRAME', "");
+//Executes after successful deletion of a Drill Report and before the page refreshes
+//Ex. Forum post, send an e-mail, etc.
+define('TALI_CUSTEXE_DRILLREPORT_DELETE', "");
 
 /* DO NOT EDIT THE BELOW SECTION */
 
