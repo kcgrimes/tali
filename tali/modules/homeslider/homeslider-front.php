@@ -26,7 +26,7 @@ $secondText = $arrayHomeSlider[1][1];
 $thirdText = $arrayHomeSlider[2][1];
 
 echo "
-			<a href=\"http://www.3rd-infantry-division.org/forums/index.php?board=13.0\">
+			<a href=\"".TALI_HOMESLIDER_URL."\">
 				<img id = \"tali_homeslider_img_id\" src=\"$firstImage\" alt=\"$firstText $secondText $thirdText\">
 			</a>
 		</div>
