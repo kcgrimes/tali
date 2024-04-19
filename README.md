@@ -20,7 +20,7 @@ At this time, there is no “installer” for TALI, and it is instead a series o
 	1. “tali” folder
 	1. config.ini.tmpl
 	1. tali_init.php.tmpl
-	1. MySQL database tables (.sql file)
+	1. tali_db_template.sql
 2. Place the “tali” folder and the tali_init.php.tmpl file somewhere in the root directory of the website (/public_html, /www, /dev, etc.)
 	1. It does not have to be in the top level of the root, it could be in any folder in that root. Ex: /public_html, /public_html/cms, etc.
 3. If you choose to use it, place config.ini.tmpl in your web directory, preferably outside of the root directory for security purposes
@@ -37,10 +37,14 @@ Note: If the tali_init.php file is anywhere but the root directory (or whatever 
 5. Using phpMyAdmin or similar MySQL Database GUI, import the TALI .sql file to the desired database so that the TALI tables will populate
 6. Rename tali_init.php.tmpl to tali_init.php
 7. Edit tali_init.php to tailor TALI to your website’s configuration
-8. At this time, the user should not notice any changes to their website unless there are conflicting CSS definitions. The user should however be able to access /tali/index.php (Ex. https://www.domain.com/tali/index.php) and begin utilizing the modules!
+	1. This file contains all of the various definitions, and small explanations for each one. Read carefully!
+8.	At this time, the user should not notice any changes to their website unless there are conflicting CSS definitions. 
+9.	The user should however be able to access the “admin panel” TALI GUI at /tali/index.php (Ex. https://www.domain.com/tali/index.php) and begin utilizing the modules!
 	1. The initial access login is temporary and should be changed to a permanent, unique login ASAP:
 		a. Username: admin
 		a. Password: password
+	1. Although it is possible to set a hyperlink somewhere on the user’s website to access TALI, for security reasons it is suggested to instead setup a reasonably remembered redirect, such as /admin, pointing to /tali/index.php. This is done via the .htaccess file in the website’s root directory, or through a GUI such as cPanel, if made available by the website host. 
+	1. If a user is attempting to access TALI with a defined temporary password, they will be redirected to the Account page to set their own unique password. 
 
 ## Documentation
 
