@@ -5,7 +5,17 @@ session_start();
 
 //Return TALI folder URI by taking path to current file, starting from position 0, and subtracting (length of active file's path - length of TALI path) from the end
 	//bug - Use of inHead allows for multi-project presence (where the web root isn't really the website root)
-define('TALI_URI_INHEAD', substr($_SERVER['PHP_SELF'], 0, - (strlen($_SERVER['SCRIPT_FILENAME']) - strlen(realpath(__DIR__ . '/../..')))));
+//define('TALI_URI_INHEAD', substr($_SERVER['PHP_SELF'], 0, - (strlen($_SERVER['SCRIPT_FILENAME']) - strlen(realpath(__DIR__ . '/../..')))));
+////bug, see notes
+define('TALI_URI_INHEAD', "/tali");
+/*
+echo $_SERVER['PHP_SELF']."<br/>";
+echo basename($_SERVER['PHP_SELF'])."<br/>";
+echo $_SERVER['SCRIPT_FILENAME']."<br/>";
+echo realpath(__DIR__ . '/../..')."<br/>";
+echo "here:".TALI_URI_INHEAD;
+*/
+////fin
 
 echo "
 	<head>
