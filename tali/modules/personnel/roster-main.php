@@ -720,7 +720,7 @@ if (isset($_GET['action'])) {
 								$db_field = mysqli_fetch_assoc($result);
 								$newlevel_sql = TALI_quote_smart($db_field['level'], $db_handle);
 								
-								$SQL = "INSERT INTO tali_admin_accounts (level, username, email, password, personnel_id) VALUES ($newlevel_sql, $add_adminusername_sql, $add_email_sql, md5($newpassword_sql), $personnel_id)";
+								$SQL = "INSERT INTO tali_admin_accounts (level, username, email, password, , password_reset_token, personnel_id) VALUES ($newlevel_sql, $add_adminusername_sql, $add_email_sql, md5($newpassword_sql), '', $personnel_id)";
 								$result = mysqli_query($db_handle, $SQL);
 								
 								//History Report
@@ -775,7 +775,7 @@ if (isset($_GET['action'])) {
 							$db_field = mysqli_fetch_assoc($result);
 							$newlevel_sql = TALI_quote_smart($db_field['level'], $db_handle);
 							
-							$SQL = "INSERT INTO tali_admin_accounts (level, username, email, password) VALUES ($newlevel_sql, $add_adminusername_sql, $add_email_sql, md5($newpassword_sql))";
+							$SQL = "INSERT INTO tali_admin_accounts (level, username, email, password, password_reset_token, personnel_id) VALUES ($newlevel_sql, $add_adminusername_sql, $add_email_sql, md5($newpassword_sql), '', '')";
 							$result = mysqli_query($db_handle, $SQL);
 							
 							//History Report
@@ -818,6 +818,7 @@ if (isset($_GET['action'])) {
 				else
 				{
 					//ADD
+					//bug - with move to PHP 7, this is broken (need to fill this with the entire table and no longer assume empties, then take that opportunity to test everything in personnel)
 					$SQL = "INSERT INTO tali_personnel_roster (rank_id, firstname, lastname, nickname, status_id, designation_id, role_id, email, othercontact, location, biography, dateofbirth, date_enlisted, date_promoted, date_discharged, discharged) VALUES ($add_rank_id, $add_firstname_sql, $add_lastname_sql, $add_nickname_sql, $add_status_id, '$add_designation_id', $add_role_id, $add_email_sql, $add_othercontact_sql, $add_location_sql, $add_biography_sql, $add_dateofbirth_sql, $add_dateenlisted_sql, $add_datepromoted_sql, $add_datedischarged_sql, 0)";
 					$result = mysqli_query($db_handle, $SQL);
 					
