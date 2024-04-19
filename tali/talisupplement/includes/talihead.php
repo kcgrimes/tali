@@ -268,9 +268,10 @@ Select 1 - String - Value needing to be made safe for SQL
 Select 2 - String - Returned value, safe for SQL
 */
 function TALI_quote_smart($value, $handle) {
-   if (get_magic_quotes_gpc()) {
+   //bug - magic_quuotes fncs deprecated for PHP 7, removing this fixed error, but should I address this fnc altogether if it is fixing a now non-issue? Or at least the top part is, the bottom part might still be useful. 
+   /*if (get_magic_quotes_gpc()) {
 	   $value = stripslashes($value);
-   }
+   }*/
 
    if (!is_numeric($value)) {
 	   $value = "'" . mysqli_real_escape_string($handle,$value) . "'";
