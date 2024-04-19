@@ -245,8 +245,8 @@ function TALI_personnelUniformFinder($uniform_filename, $uri, $default_file) {
 
 /*
 Function - TALI_EMail
-Source: https://github.com/PHPMailer/PHPMailer Version 5.2.23 (03/15/17)
-Copyright © 2012-2017 Marcus Bointon, Copyright © 2010-2012 Jim Jagielski, Copyright © 2004-2009 Andy Prevost
+Source: https://github.com/PHPMailer/PHPMailer Version 6.4.1
+Copyright © 2012-2014 Marcus Bointon, Copyright © 2010-2012 Jim Jagielski, Copyright © 2004-2009 Andy Prevost
 Used to send an EMail using configured settings.
 Select 1 - Array - Email address and display name of intended email target
 	[[$toEmail, $toName],[$toEmail, $toName],etc.]
