@@ -2,7 +2,7 @@
 
 The Team Administration/Logistics Interface, or TALI, is a Content Management System intended to provide unique functionality while remaining user friendly and compatible. User content is managed by a number of Modules that act as Graphical User Interfaces (GUI) in order to add, update, and remove content stored on a MySQL database handled by the user. Additionally, TALI contains multiple features tailored to organization and team management.
 
-This User Manual is intended to provide detailed information as to the purpose, function, FAQs, and minor troubleshooting for each of TALI’s Modules in addition to installation, uninstallation, and maintenance tips. For further information or specifics in the code, the user should read the comments to the code within TALI’s various files. 
+This User Manual is intended to provide detailed information as to the purpose, function, FAQs, and minor troubleshooting for each of TALI’s Modules in addition to installation, uninstallation, and maintenance tips. For further information or specifics in the code, the user should read the comments to the code within TALI’s various files. Any further questions or comments can be directed to the author. 
 
 ## Author Information
 
@@ -67,7 +67,7 @@ Contributions are welcomed and encouraged. Please follow the below guidelines:
 
 MIT License
 
-Copyright (c) 2014-2018 Kent "KC" Grimes. All Rights Reserved.
+Copyright (c) 2014-2024 Kent C. Grimes. All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
