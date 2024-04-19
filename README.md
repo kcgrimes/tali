@@ -41,8 +41,8 @@ Note: If the tali_init.php file is anywhere but the root directory (or whatever 
 8.	At this time, the user should not notice any changes to their website unless there are conflicting CSS definitions. 
 9.	The user should however be able to access the “admin panel” TALI GUI at /tali/index.php (Ex. https://www.domain.com/tali/index.php) and begin utilizing the modules!
 	1. The initial access login is temporary and should be changed to a permanent, unique login ASAP:
-		a. Username: admin
-		a. Password: password
+		1. Username: admin
+		1. Password: password
 	1. Although it is possible to set a hyperlink somewhere on the user’s website to access TALI, for security reasons it is suggested to instead setup a reasonably remembered redirect, such as /admin, pointing to /tali/index.php. This is done via the .htaccess file in the website’s root directory, or through a GUI such as cPanel, if made available by the website host. 
 	1. If a user is attempting to access TALI with a defined temporary password, they will be redirected to the Account page to set their own unique password. 
 
