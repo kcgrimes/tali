@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `tali_admin_accounts` (
   `password` varchar(40) NOT NULL,
   `password_reset_token` varchar(40) NOT NULL,
   `email` varchar(40) NOT NULL,
-  `personnel_id` int(40) NOT NULL,
+  `personnel_id` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
