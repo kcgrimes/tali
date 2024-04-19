@@ -403,7 +403,7 @@ else
 				else
 				{
 					//Adding, so INSERT to database
-					$SQL = "INSERT INTO tali_personnel_drillreports (designation_id, date_drill, date_report, attended, excused, absent, comments) VALUES ($designation_id, $dateofdrill_sql, $dateofreport_sql, $attended_sql, $excused_sql, $absent_sql, $report_comments_sql)";						
+					$SQL = "INSERT INTO tali_personnel_drillreports (designation_id, date_drill, date_report, attended, excused, absent, comments, special_id) VALUES ($designation_id, $dateofdrill_sql, $dateofreport_sql, $attended_sql, $excused_sql, $absent_sql, $report_comments_sql, '')";						
 					$result = mysqli_query($db_handle, $SQL);
 				}
 				

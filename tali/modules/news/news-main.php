@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$newbody_sql = htmlspecialchars($newbody);
 				$newbody_sql = TALI_quote_smart($newbody_sql, $db_handle);
 				
-				$SQL = "INSERT INTO tali_news (author, time, title, body) VALUES ($newauthor_sql, CURRENT_TIMESTAMP, $newtitle_sql, $newbody_sql)";
+				$SQL = "INSERT INTO tali_news (author, time, title, body, history) VALUES ($newauthor_sql, CURRENT_TIMESTAMP, $newtitle_sql, $newbody_sql, '')";
 				$result = mysqli_query($db_handle, $SQL);
 				
 				$SQL = "SELECT id FROM tali_news ORDER BY id DESC LIMIT 1";

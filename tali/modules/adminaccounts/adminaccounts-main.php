@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$newpersonnel_id = "";
 			}
 			
-			$SQL = "INSERT INTO tali_admin_accounts (level, username, password, email, personnel_id) VALUES ($newlevel_sql, $newusername_sql, md5($newpassword_sql), $newemail_sql, $newpersonnel_id_sql)";
+			$SQL = "INSERT INTO tali_admin_accounts (level, username, password, password_reset_token, email, personnel_id) VALUES ($newlevel_sql, $newusername_sql, md5($newpassword_sql), '', $newemail_sql, $newpersonnel_id_sql)";
 			$result = mysqli_query($db_handle, $SQL);
 			
 			//Obtain latest id from insertion for use in history report

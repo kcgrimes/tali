@@ -27,7 +27,7 @@ if (!isset($_POST['tali_page_edit'])) {
 					$newtitle = htmlspecialchars($newtitle);
 					$newtitle = TALI_quote_smart($newtitle, $db_handle);
 										
-					$SQL = "INSERT INTO tali_pages (title, time) VALUES ($newtitle, CURRENT_TIMESTAMP)";
+					$SQL = "INSERT INTO tali_pages (title, body, time, history) VALUES ($newtitle, '', CURRENT_TIMESTAMP, '')";
 					$result = mysqli_query($db_handle, $SQL);
 					
 					$SQL = "SELECT id FROM tali_pages ORDER BY id DESC LIMIT 1";
