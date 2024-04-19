@@ -153,6 +153,15 @@ if (in_array('TALI_Mailing_List',$module_array,true)) {
 					</a>
 	";
 }
+
+//bug - for tcsar to access inventory
+	//Entered as Inventory_Module, bottom level has this permission, but access within it (i.e. settings) uses TALI Versions as a surrogate
+echo "
+				<a href=\"modules/inventory.php\" class=\"tali-responsive-icon\">
+					<img src=\"images/icons/Personnel-DrillReports.png\" alt=\"Inventory Icon\" name=\"Inventory Icon\">
+					<p>Inventory Browser</p>
+				</a>
+";
 echo "
 				</div>
 			</div>
