@@ -11,7 +11,7 @@ echo "
 	<head>
 		<title>TALI Website Admin</title>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
+		<meta charset=\"utf-8\">
 		<link rel=\"stylesheet\" href=\"".TALI_URI_INHEAD."/includes/global/talistyles.css?v=".filemtime("".realpath(__DIR__)."/talistyles.css")."\" type=\"text/css\" />
 		<link rel=\"shortcut icon\" href=\"".TALI_URI_INHEAD."/images/favicon.ico\"/>
 		<link rel=\"icon\" href=\"".TALI_URI_INHEAD."/images/favicon.ico\"/>
