@@ -13,6 +13,7 @@ The point of this CMS is to rely a little more on functionality and less on inte
 ## Version
 
 TALI V1.0 is stable on PHP 5.6 and MySQL 5.7.3
+TALI V1.1 is stable on PHP 7.4 and MySQL 8.0
 
 ## Installation
 

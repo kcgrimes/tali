@@ -14,7 +14,7 @@ echo "
 	<main>
 		<div class=\"tali-container\">
 			<div class=\"tali-page-frame\">
-				<h1>Website Software Versions</h1>
+				<h1>Website Software Versions Currently Running</h1>
 				<p>
 				TALI: ".TALI_VERSION."
 				<br/>
