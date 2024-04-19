@@ -65,12 +65,16 @@ if (in_array('TALI_Admin_Permissions',$module_array,true)) {
 					</a>
 	";
 }
-
+//bug - manually added top admin requirement for permission to see cPanel link
+if (($_SESSION['TALI_User_Level']) == 1) {
+	echo "
+						<a target=\"_blank\" href=\"".TALI_INDEX_CPANEL_LINK."\" class=\"tali-responsive-icon\">
+							<img src=\"images/icons/Index-AccesscPanel.png\" alt=\"Access cPanel Icon\" name=\"Access cPanel Icon\">
+							<p>Access cPanel</p>
+						</a>
+	";
+}
 echo "
-					<a target=\"_blank\" href=\"".TALI_INDEX_CPANEL_LINK."\" class=\"tali-responsive-icon\">
-						<img src=\"images/icons/Index-AccesscPanel.png\" alt=\"Access cPanel Icon\" name=\"Access cPanel Icon\">
-						<p>Access cPanel</p>
-					</a>
 					<a href=\"".TALI_DOMAIN_URL."\" class=\"tali-responsive-icon\">
 						<img src=\"images/icons/Index-Home.png\" alt=\"Return to Homepage Icon\" name=\"Return to Homepage Icon\">
 						<p>Return To Homepage</p>
