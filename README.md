@@ -10,6 +10,10 @@ Kent C. Grimes is the author of the Team Administration/Logistics Interface (TAL
 
 The point of this CMS is to rely a little more on functionality and less on interface limitations, which is a step in a different direction from most CMS’s. Although this CMS may call for more understanding of website design than mainstream CMS’s, it will provide a more functional and more rewarding experience. The key is TALI’s ability to work seamlessly with other major installations in order to take advantage of its modules and functionality without the concern for compatibility and front-end appearance. This ultimately gives the user more freedom while developing their website.
 
+## Version
+
+TALI V1.0 is stable on PHP 5.6 and MySQL 5.7.3
+
 ## Installation
 
 For now, TALI is only hosted on github at: https://github.com/kcgrimes/tali  
